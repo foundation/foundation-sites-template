@@ -7,11 +7,15 @@
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^2.2.0",
     "gulp-load-plugins": "^0.10.0",
-    "gulp-sass": "^2.0.0"
+    "gulp-sass": "^2.1.0"
   },
   "scripts": {
     "start": "gulp"
   },
   "author": "ZURB <foundation@zurb.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "foundation-sites": "^6.0.0-alpha.1",
+    "jquery": "^2.1.4"
+  }
 }
