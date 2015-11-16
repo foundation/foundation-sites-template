@@ -13,9 +13,5 @@
     "start": "gulp"
   },
   "author": "ZURB <foundation@zurb.com>",
-  "license": "MIT",
-  "dependencies": {
-    "foundation-sites": "^6.0.0-alpha.1",
-    "jquery": "^2.1.4"
-  }
+  "license": "MIT"
 }

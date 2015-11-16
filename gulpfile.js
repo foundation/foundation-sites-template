@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var $    = require('gulp-load-plugins')();
 
 var sassPaths = [
-  'node_modules/foundation-sites/scss'
+  'bower_components/foundation-sites/scss'
 ];
 
 gulp.task('sass', function() {
