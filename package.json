@@ -13,5 +13,6 @@
     "start": "gulp"
   },
   "author": "ZURB <foundation@zurb.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "private": true
 }

@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites-template",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "authors": [
     "ZURB <foundation@zurb.com>"
   ],
@@ -18,5 +18,6 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "private": true
 }
