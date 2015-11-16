@@ -4,9 +4,9 @@
   "description": "Basic template for a new Foundation for Sites project.",
   "main": "gulpfile.js",
   "devDependencies": {
-    "gulp": "^3.8.11",
+    "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.2.0",
-    "gulp-load-plugins": "^0.10.0",
+    "gulp-load-plugins": "^1.1.0",
     "gulp-sass": "^2.1.0"
   },
   "scripts": {
