@@ -8,9 +8,9 @@ var sassPaths = [
 gulp.task('sass', function() {
   return gulp.src('./scss/app.scss')
     .pipe($.sass({
-      includePaths: sassPaths,
-      errLogToConsole: true
-    }))
+      includePaths: sassPaths
+    })
+      .on('error', $.sass.logError))
     .pipe($.autoprefixer({
       browsers: ['last 2 versions', 'ie >= 9']
     }))
