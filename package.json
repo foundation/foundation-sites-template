@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites-template",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Basic template for a new Foundation for Sites project.",
   "main": "gulpfile.js",
   "devDependencies": {
@@ -13,5 +13,6 @@
     "start": "gulp"
   },
   "author": "ZURB <foundation@zurb.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "private": true
 }
