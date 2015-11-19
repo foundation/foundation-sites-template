@@ -9,7 +9,7 @@
   "license": "MIT",
   "homepage": "http://foundation.zurb.com",
   "dependencies": {
-    "foundation-sites": "~6.0.0",
+    "foundation-sites": "zurb/foundation-sites-6#develop",
     "motion-ui": "~1.1.0"
   },
   "ignore": [
