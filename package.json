@@ -12,6 +12,14 @@
   "scripts": {
     "start": "gulp"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zurb/foundation-sites-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zurb/foundation-sites/issues",
+    "email": "foundation@zurb.com"
+  },
   "author": "ZURB <foundation@zurb.com>",
   "license": "MIT",
   "private": true
