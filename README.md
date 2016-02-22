@@ -8,7 +8,7 @@ This is the basic starter project for [Foundation for Sites 6](http://foundation
 
 To use this template, your computer needs:
 
-- [NodeJS](https://nodejs.org/en/) (0.10 or greater)
+- [NodeJS](https://nodejs.org/en/) (0.12 or greater)
 - [Git](https://git-scm.com/)
 
 This template can be installed with the Foundation CLI, or downloaded and set up manually.
