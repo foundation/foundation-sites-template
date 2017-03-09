@@ -9,6 +9,7 @@
   "license": "MIT",
   "homepage": "http://foundation.zurb.com",
   "dependencies": {
+    "fetch-inject": "~1.1.0",
     "foundation-sites": "~6.3.0",
     "motion-ui": "~1.2.2"
   },
