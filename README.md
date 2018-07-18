@@ -37,6 +37,8 @@ To manually set up the template, first download it with Git:
 git clone https://github.com/zurb/foundation-sites-template projectname
 ```
 
+For Mac users: install Xcode using the Mac App Store, if you havent already, then proceed.
+
 Then open the folder in your command line, and install the needed dependencies:
 
 ```bash
