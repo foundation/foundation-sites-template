@@ -1,0 +1,164 @@
+//  Spaces Custom Settings for Foundation
+//  -----------------------------
+//
+//  Table of Contents:
+//
+//   1. Cards
+//   2. Spaces Cards
+//   3. Clipping
+//   4. Dot Menu
+//   5. Dropdown
+
+
+
+// 1. Cards
+// ---------
+
+.card a {
+  color: inherit;
+}
+.card-section, .card-divider {
+  padding: 8px 12px !important;
+  &.small {
+    padding: 5px !important;
+  }
+}
+.card-divider {
+  border-top: 1px solid #f0f0f0;
+}
+
+// 2. Spaces Cards
+// ---------
+
+.space-title {
+  position: absolute;
+  display: inline-block;
+  padding: 0 10px 0;
+  z-index: 1;
+  background: #fff;
+  left: 0;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+  max-width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 300;
+  font-size: 1.1em;
+  border-radius: 0 2px 2px 0;
+}
+
+// 3. Clipping
+// ---------
+
+.clipped {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-content: center;
+  width: 100%;
+  img, iframe {
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    /* IE 9+ Hack for object-fit. Possibly good option as standard as well */
+    @media screen and (min-width:0\0) and (min-resolution: +72dpi) {
+      height: auto;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+.square {
+  padding-bottom: 100%;
+  height: 0; 
+}
+.letterbox {
+  padding-bottom: 56.25%;
+  height: 0; 
+}
+.space-header {
+  background: #f8f8f8;
+  padding-bottom: 65px;
+  height: 100%; 
+  align-content: center;
+  background-size: 50px;
+  background-repeat: repeat;
+  background-position: center;
+}
+
+
+// 4. Dot Menu
+// ---------
+
+.dots {
+  position: absolute;
+  display: inline-block;
+  white-space: nowrap;
+  right: 0;
+  bottom: 20px;
+  margin-left: 10px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+  letter-spacing: 2px;
+  align-self: flex-start;
+  margin-top: -0.1em;
+  &:hover {
+    background: none;
+  }
+}
+
+
+// 5. Dropdown
+// ---------
+
+
+.dropdown-pane {
+  max-width: 100%;
+  display: inline-block;
+}
+
+
+// 5. Dropdown
+// ---------
+
+
+.switch {
+  &.tiny {
+    height: 1.3em;
+    width: 2em;
+    min-width: 1.2em;
+    margin-left: 1em;
+    .switch-paddle {
+      border-radius: 0;
+      top: calc(50% - 1px);
+      width: 100%;
+      height: 100%;
+      background: none;
+      box-shadow: inset 0 1px 0 0 #aaa;
+      &:after {
+        top: calc(0.2em + 1px - 50%);
+        left: 0;
+        height: 1.3em;
+        width: 1.3em;
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 1px #aaa;
+        transform: translateX(0);
+        transition: all 100ms ease-in-out;
+        box-sizing: content-box;
+      }
+    }
+    input:checked ~ .switch-paddle {
+      color: #6ac767;
+      background: none;
+      &:after {
+        box-shadow: inset 0 0 0 1em currentColor;
+        left: 100%;
+        transform: translateX(calc(-100%));
+      }
+    }
+  }
+}
