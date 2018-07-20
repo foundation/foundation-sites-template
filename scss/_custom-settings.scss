@@ -32,7 +32,7 @@
 
 .space-title {
   position: absolute;
-  display: inline-block;
+  display: flex;
   padding: 0 10px 0;
   z-index: 1;
   background: #fff;
@@ -46,6 +46,11 @@
   font-weight: 300;
   font-size: 1.1em;
   border-radius: 0 2px 2px 0;
+  align-items: center;
+  .fa-lock {
+    font-size: 0.75em;
+    margin-right: 0.5em;
+  }
 }
 
 // 3. Clipping
@@ -138,21 +143,20 @@
       width: 100%;
       height: 100%;
       background: none;
-      box-shadow: inset 0 1px 0 0 #aaa;
+      box-shadow: inset 0 1px 0 0 $medium-gray;
       &:after {
         top: calc(0.2em + 1px - 50%);
         left: 0;
         height: 1.3em;
         width: 1.3em;
         border-radius: 50%;
-        box-shadow: inset 0 0 0 1px #aaa;
+        box-shadow: inset 0 0 0 1px $medium-gray;
         transform: translateX(0);
-        transition: all 100ms ease-in-out;
         box-sizing: content-box;
       }
     }
     input:checked ~ .switch-paddle {
-      color: #6ac767;
+      color: $success-color;
       background: none;
       &:after {
         box-shadow: inset 0 0 0 1em currentColor;
