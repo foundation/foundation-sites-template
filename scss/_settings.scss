@@ -373,7 +373,7 @@ $drilldown-arrow-size: 6px;
 
 $dropdown-padding: 0;
 $dropdown-background: $body-background;
-$dropdown-border: none;
+$dropdown-border: 1px solid $light-gray;
 $dropdown-font-size: 1rem;
 $dropdown-width: 250px;
 $dropdown-radius: $global-radius;
@@ -766,7 +766,7 @@ $switch-margin: $global-margin;
 $switch-paddle-background: $white;
 $switch-paddle-offset: 0.25rem;
 $switch-paddle-radius: $global-radius;
-$switch-paddle-transition: all 0.1s ease-in-out;
+$switch-paddle-transition: left 0.1s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
 
 // 50. Table
 // ---------

@@ -8,6 +8,8 @@
 //   3. Clipping
 //   4. Dot Menu
 //   5. Dropdown
+//   6. Switch
+//   7. Button
 
 
 
@@ -106,7 +108,7 @@
   bottom: 20px;
   margin-left: 10px;
   font-weight: bold;
-  color: #aaa;
+  color: $medium-gray;
   cursor: pointer;
   letter-spacing: 2px;
   align-self: flex-start;
@@ -125,9 +127,28 @@
   max-width: 100%;
   display: inline-block;
 }
+.space-info-block {
+  flex-wrap: wrap;
+  background: $white;
+  font-size: 0.75em;
+  display: inline-block;
+  color: $black;
+  margin: 3px;
+  border-radius: $global-radius;
+  overflow: hidden;
+  & span {
+    display: inline-block;
+    padding: 5px 8px;
+    & + span {
+      background: $light-gray;
+      color: $dark-gray;
+      font-weight: bold;
+    }
+  }
+}
 
 
-// 5. Dropdown
+// 6. Switch
 // ---------
 
 
@@ -157,12 +178,22 @@
     }
     input:checked ~ .switch-paddle {
       color: $success-color;
-      background: none;
       &:after {
         box-shadow: inset 0 0 0 1em currentColor;
         left: 100%;
-        transform: translateX(calc(-100%));
+        transform: translateX(-100%);
       }
     }
+  }
+}
+
+
+// 7. Button
+// ---------
+
+button {
+  &:focus, &:active {
+    background: none;
+    outline: none;
   }
 }
