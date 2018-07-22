@@ -21,12 +21,24 @@
 }
 .card-section, .card-divider {
   padding: 8px 12px !important;
+  & > a {
+    &:hover {
+      background: $very-light-gray;
+    }
+  }
   &.small {
     padding: 5px !important;
   }
+  &.no-padding {
+    padding: 0 !important;
+    & > a {
+      padding: 8px 12px;
+      width: 100%;
+    }
+  }
 }
 .card-divider {
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid $very-light-gray;
 }
 
 // 2. Spaces Cards
@@ -37,7 +49,7 @@
   display: flex;
   padding: 0 10px 0;
   z-index: 1;
-  background: #fff;
+  background: $white;
   left: 0;
   top: 50%;
   transform: perspective(1px) translateY(-50%);
