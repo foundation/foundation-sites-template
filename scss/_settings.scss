@@ -75,14 +75,16 @@ $foundation-palette: (
   warning: #ffae00,
   alert: #cc4b37,
 );
-$light-gray: #e6e6e6;
-$medium-gray: #cacaca;
-$dark-gray: #8a8a8a;
-$black: #0a0a0a;
+$very-light-gray: #fafafa;
+$light-gray: #f0f0f0;
+$medium-gray: #e6e6e6;
+$dark-gray: #cacaca;
+$very-dark-gray: #8a8a8a;
+$black: #333;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: 'Roboto', Helvetica, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -97,6 +99,10 @@ $global-flexbox: true;
 $global-prototype-breakpoints: false;
 $global-button-cursor: auto;
 $global-color-pick-contrast-tolerance: 0;
+$global-transition-short: 0.1s;
+$global-transition-medium: $global-transition-short * 2.5;
+$global-transition-long: $global-transition-short * 5;
+$global-transition-timing: ease-in-out;
 $print-transparent-backgrounds: true;
 
 @include add-foundation-colors;
@@ -106,13 +112,13 @@ $print-transparent-backgrounds: true;
 
 $breakpoints: (
   small: 0,
-  medium: 640px,
-  large: 1024px,
-  xlarge: 1200px,
-  xxlarge: 1440px,
+  medium: 420px,
+  large: 640px,
+  xlarge: 1024px,
+  xxlarge: 1200px,
 );
 $print-breakpoint: large;
-$breakpoint-classes: (small medium large);
+$breakpoint-classes: (small medium large xlarge);
 
 // 3. The Grid
 // -----------
@@ -130,7 +136,7 @@ $block-grid-max: 8;
 // 4. Base Typography
 // ------------------
 
-$header-font-family: $body-font-family;
+$header-font-family: 'Roboto Slab', sans-serif;
 $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
@@ -298,7 +304,9 @@ $button-palette: $foundation-palette;
 $button-opacity-disabled: 0.25;
 $button-background-hover-lightness: -20%;
 $button-hollow-hover-lightness: -50%;
-$button-transition: background-color 0.25s ease-out, color 0.25s ease-out;
+$button-transition: 
+  background-color $global-transition-medium $global-transition-timing, 
+  color $global-transition-medium $global-transition-timing;
 $button-responsive-expanded: false;
 
 // 12. Button Group
@@ -358,7 +366,8 @@ $closebutton-color-hover: $black;
 // 16. Drilldown
 // -------------
 
-$drilldown-transition: transform 0.15s linear;
+$drilldown-transition: 
+  transform $global-transition-short $global-transition-timing;
 $drilldown-arrows: true;
 $drilldown-padding: $global-menu-padding;
 $drilldown-nested-margin: 0;
@@ -443,7 +452,9 @@ $input-padding: $form-spacing / 2;
 $input-shadow: inset 0 1px 2px rgba($black, 0.1);
 $input-shadow-focus: 0 0 5px $medium-gray;
 $input-cursor-disabled: not-allowed;
-$input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+$input-transition: 
+  box-shadow $global-transition-long $global-transition-timing, 
+  border-color $global-transition-medium $global-transition-timing;
 $input-number-spinners: true;
 $input-radius: $global-radius;
 $form-button-radius: $global-radius;
@@ -508,8 +519,8 @@ $offcanvas-overlay-zindex: 11;
 $offcanvas-push-zindex: 12;
 $offcanvas-overlap-zindex: 13;
 $offcanvas-reveal-zindex: 12;
-$offcanvas-transition-length: 0.5s;
-$offcanvas-transition-timing: ease;
+$offcanvas-transition-length: $global-transition-long;
+$offcanvas-transition-timing: $global-transition-timing;
 $offcanvas-fixed-reveal: true;
 $offcanvas-exit-background: rgba($white, 0.25);
 $maincontent-class: 'off-canvas-content';
@@ -742,7 +753,7 @@ $reveal-overlay-background: rgba($black, 0.45);
 // ----------
 
 $slider-width-vertical: 0.5rem;
-$slider-transition: all 0.2s ease-in-out;
+$slider-transition: all $global-transition-medium $global-transition-timing;
 $slider-height: 0.5rem;
 $slider-background: $light-gray;
 $slider-fill-background: $medium-gray;
@@ -766,7 +777,10 @@ $switch-margin: $global-margin;
 $switch-paddle-background: $white;
 $switch-paddle-offset: 0.25rem;
 $switch-paddle-radius: $global-radius;
-$switch-paddle-transition: left 0.1s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
+$switch-paddle-transition: 
+  left $global-transition-short $global-transition-timing, 
+  transform $global-transition-short $global-transition-timing, 
+  box-shadow $global-transition-medium $global-transition-timing;
 
 // 50. Table
 // ---------
@@ -814,7 +828,8 @@ $thumbnail-border: solid 4px $white;
 $thumbnail-margin-bottom: $global-margin;
 $thumbnail-shadow: 0 0 0 1px rgba($black, 0.2);
 $thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
-$thumbnail-transition: box-shadow 200ms ease-out;
+$thumbnail-transition: 
+  box-shadow $global-transition-medium $global-transition-timing;
 $thumbnail-radius: $global-radius;
 
 // 53. Title Bar

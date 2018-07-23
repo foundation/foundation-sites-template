@@ -3,33 +3,59 @@
 //
 //  Table of Contents:
 //
-//   1. Cards
-//   2. Spaces Cards
+//   1. Card
+//   2. Spaces Card
 //   3. Clipping
 //   4. Dot Menu
 //   5. Dropdown
 //   6. Switch
 //   7. Button
+//   8. Breakpoints
 
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300|Roboto:300,400,700');
+body {
+  font-family: 'Roboto', sans-serif;
+}
 
-
-// 1. Cards
+// 1. Card
 // ---------
+
+.card:not(.static):hover {
+  /*transform: scale(0.99);
+  z-index: 100;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 8px rgba(0,0,0,0.23);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 8px rgba(0,0,0,0.2);*/
+
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+  transition: all $global-transition-medium $global-transition-timing;
+}
 
 .card a {
   color: inherit;
 }
 .card-section, .card-divider {
-  padding: 8px 12px !important;
+  padding: 8px 12px;
   &.small {
-    padding: 5px !important;
+    padding: 5px;
+  }
+  &.no-padding {
+    padding: 0;
+    & > a {
+      padding: 8px 12px;
+    }
+  }
+  & > a {
+    width: 100%;
+    &:hover {
+      background: $light-gray;
+    }
   }
 }
 .card-divider {
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid $light-gray;
 }
 
-// 2. Spaces Cards
+// 2. Spaces Card
 // ---------
 
 .space-title {
@@ -37,7 +63,7 @@
   display: flex;
   padding: 0 10px 0;
   z-index: 1;
-  background: #fff;
+  background: $white;
   left: 0;
   top: 50%;
   transform: perspective(1px) translateY(-50%);
@@ -87,7 +113,7 @@
   height: 0; 
 }
 .space-header {
-  background: #f8f8f8;
+  background: $very-light-gray;
   padding-bottom: 65px;
   height: 100%; 
   align-content: center;
@@ -108,7 +134,7 @@
   bottom: 20px;
   margin-left: 10px;
   font-weight: bold;
-  color: $medium-gray;
+  color: $dark-gray;
   cursor: pointer;
   letter-spacing: 2px;
   align-self: flex-start;
@@ -124,15 +150,16 @@
 
 
 .dropdown-pane {
+  margin-top: 10px;
   max-width: 100%;
   display: inline-block;
 }
 .space-info-block {
   flex-wrap: wrap;
-  background: $white;
   font-size: 0.75em;
   display: inline-block;
-  color: $black;
+  background: $very-light-gray;
+  color: $very-dark-gray;
   margin: 3px;
   border-radius: $global-radius;
   overflow: hidden;
@@ -141,7 +168,7 @@
     padding: 5px 8px;
     & + span {
       background: $light-gray;
-      color: $dark-gray;
+      color: $very-dark-gray;
       font-weight: bold;
     }
   }
@@ -164,14 +191,14 @@
       width: 100%;
       height: 100%;
       background: none;
-      box-shadow: inset 0 1px 0 0 $medium-gray;
+      box-shadow: inset 0 1px 0 0 $dark-gray;
       &:after {
         top: calc(0.2em + 1px - 50%);
         left: 0;
         height: 1.3em;
         width: 1.3em;
         border-radius: 50%;
-        box-shadow: inset 0 0 0 1px $medium-gray;
+        box-shadow: inset 0 0 0 1px $dark-gray;
         transform: translateX(0);
         box-sizing: content-box;
       }
