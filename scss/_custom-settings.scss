@@ -13,9 +13,6 @@
 //   8. Breakpoints
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300|Roboto:300,400,700');
-body {
-  font-family: 'Roboto', sans-serif;
-}
 
 // 1. Card
 // ---------
@@ -34,16 +31,12 @@ body {
   color: inherit;
 }
 .card-section, .card-divider {
-<<<<<<< HEAD
   padding: 8px 12px !important;
   & > a {
     &:hover {
       background: $very-light-gray;
     }
   }
-=======
-  padding: 8px 12px;
->>>>>>> newtmp
   &.small {
     padding: 5px;
   }
@@ -181,15 +174,9 @@ body {
 }
 .space-info-block {
   flex-wrap: wrap;
-<<<<<<< HEAD
-  background: $very-light-gray;
-  font-size: 0.75em;
-  display: inline-block;
-=======
   font-size: 0.75em;
   display: inline-block;
   background: $very-light-gray;
->>>>>>> newtmp
   color: $very-dark-gray;
   margin: 3px;
   border-radius: $global-radius;
