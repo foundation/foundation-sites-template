@@ -16,14 +16,12 @@
 // 1. Card
 // ---------
 
+.card {
+  transition: box-shadow $global-transition-medium $global-transition-timing;
+}
 .card:not(.static):hover {
-  /*transform: scale(0.99);
-  z-index: 100;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 8px rgba(0,0,0,0.23);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 8px rgba(0,0,0,0.2);*/
-
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
-  transition: all 0s $global-transition-timing;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.15);
+  transition: box-shadow $global-transition-short $global-transition-timing;
 }
 
 .card a {
@@ -89,7 +87,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 300;
-  font-size: 1rem;
+  font-size: 1.125rem;
   border-radius: 0 2px 2px 0;
   align-items: center;
   .fa-lock {
@@ -145,19 +143,23 @@
 
 .dots {
   position: absolute;
-  display: inline-block;
-  white-space: nowrap;
   right: 0;
-  bottom: 20px;
-  margin-left: 10px;
-  font-weight: bold;
-  color: $dark-gray;
+  bottom: 0;
   cursor: pointer;
-  letter-spacing: 2px;
-  align-self: flex-start;
-  margin-top: -0.1em;
-  &:hover {
-    background: none;
+  border-radius: 0;
+  &:hover:after {
+    border-left: 1px solid #f0f0f0;
+    color: $very-dark-gray;
+  }
+  &:after {
+    content: '...'; 
+    display: inline-block;
+    white-space: nowrap;
+    padding: 14px 8px 20px;
+    line-height: 0;
+    font-weight: 900;
+    color: $dark-gray;
+    letter-spacing: 2px;
   }
 }
 
@@ -167,9 +169,26 @@
 
 
 .dropdown-pane {
+  top: 10px;
   margin-top: 10px;
   max-width: 100%;
   display: inline-block;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.dropdown-pane-arrow {
+  display: block;
+  background: #fff;
+  border-left: 1px solid #f0f0f0;
+  border-top: 1px solid #f0f0f0;
+  width: 20px; 
+  height: 20px;
+  position: absolute;
+  right: 17px;
+  margin-top: -10px;
+  z-index: 100;
+  transform: rotate(45deg);
+  border-bottom-right-radius: 20px;
 }
 .space-info-block {
   flex-wrap: wrap;
