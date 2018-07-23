@@ -12,7 +12,6 @@
 //   7. Button
 //   8. Breakpoints
 
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300|Roboto:300,400,700');
 
 // 1. Card
 // ---------
@@ -24,7 +23,7 @@
   box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 8px rgba(0,0,0,0.2);*/
 
   box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
-  transition: all $global-transition-medium $global-transition-timing;
+  transition: all 0s $global-transition-timing;
 }
 
 .card a {
