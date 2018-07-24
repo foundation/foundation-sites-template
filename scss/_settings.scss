@@ -66,15 +66,17 @@
 // 1. Global
 // ---------
 
-$global-font-size: 100%;
+$global-font-size: 16px;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
   primary: #1779ba,
   secondary: #767676,
-  success: #3adb76,
+  // success: #3adb76,
+  success: #58ce3a,
   warning: #ffae00,
-  alert: #cc4b37,
+  // alert: #cc4b37,
+  alert: #e6244e,
 );
 $very-light-gray: #fafafa;
 $light-gray: #f0f0f0;
@@ -92,7 +94,7 @@ $global-padding: 1rem;
 $global-position: 1rem;
 $global-weight-normal: normal;
 $global-weight-bold: bold;
-$global-radius: 3px;
+$global-radius: 5px;
 $global-menu-padding: 0.7rem 1rem;
 $global-menu-nested-margin: 1rem;
 $global-text-direction: ltr;
@@ -165,6 +167,7 @@ $header-styles: (
 $header-text-rendering: optimizeLegibility;
 $small-font-size: 0.75em;
 $header-small-font-color: $medium-gray;
+$paragraph-font-size: 0.875rem;
 $paragraph-lineheight: 1.6;
 $paragraph-margin-bottom: 1rem;
 $paragraph-text-rendering: optimizeLegibility;
@@ -174,9 +177,9 @@ $code-font-weight: $global-weight-normal;
 $code-background: $light-gray;
 $code-border: 1px solid $medium-gray;
 $code-padding: rem-calc(2 5 1);
-$anchor-color: $primary-color;
+$anchor-color: $secondary-color;
 $anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
-$anchor-text-decoration: none;
+$anchor-text-decoration: underline;
 $anchor-text-decoration-hover: none;
 $hr-width: $global-width;
 $hr-border: 1px solid $medium-gray;
@@ -384,7 +387,7 @@ $drilldown-arrow-size: 6px;
 $dropdown-padding: 0;
 $dropdown-background: $body-background;
 $dropdown-border: none;
-$dropdown-font-size: 1rem;
+$dropdown-font-size: 0.75rem;
 $dropdown-width: 250px;
 $dropdown-radius: $global-radius;
 $dropdown-sizes: (
@@ -780,7 +783,7 @@ $switch-paddle-offset: 0.25rem;
 $switch-paddle-radius: $global-radius;
 $switch-paddle-transition: 
   left $global-transition-short $global-transition-timing, 
-  transform $global-transition-short $global-transition-timing, 
+  background $global-transition-short $global-transition-timing,
   box-shadow $global-transition-medium $global-transition-timing;
 
 // 50. Table

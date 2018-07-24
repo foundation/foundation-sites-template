@@ -10,28 +10,28 @@
 //   5. Dropdown
 //   6. Switch
 //   7. Button
-//   8. Breakpoints
-
+//   8. Typography
 
 // 1. Card
 // ---------
 
 .card {
   transition: box-shadow $global-transition-medium $global-transition-timing;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 .card:not(.static):hover {
   box-shadow: 0 5px 20px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.15);
   transition: box-shadow $global-transition-short $global-transition-timing;
 }
-
-.card a {
-  color: inherit;
-}
 .card-section, .card-divider {
-  padding: 8px 12px !important;
+  padding: 8px 12px;
   & > a {
+    width: 100%;
     &:hover {
-      background: $very-light-gray;
+      background: $light-gray;
     }
   }
   &.small {
@@ -39,25 +39,6 @@
   }
   &.no-padding {
     padding: 0;
-    & > a {
-      padding: 8px 12px;
-    }
-  }
-  & > a {
-    width: 100%;
-    &:hover {
-      background: $light-gray;
-    }
-  }
-  & > a {
-    width: 100%;
-    display: block;
-    &:hover {
-      background-color: $light-gray;
-    }
-  }
-  &.no-padding {
-    padding: 0 !important;
     & > a {
       padding: 8px 12px;
       &.small > a {
@@ -147,6 +128,7 @@
   bottom: 0;
   cursor: pointer;
   border-radius: 0;
+  
   &:hover:after {
     border-left: 1px solid #f0f0f0;
     color: $very-dark-gray;
@@ -192,7 +174,6 @@
 }
 .space-info-block {
   flex-wrap: wrap;
-  font-size: 0.75em;
   display: inline-block;
   background: $very-light-gray;
   color: $very-dark-gray;
@@ -217,34 +198,48 @@
 
 .switch {
   &.tiny {
+    display: flex;
+    align-items: center;
     height: 1.3em;
     width: 2em;
     min-width: 1.2em;
     margin-left: 1em;
     .switch-paddle {
+      display: flex;
+      align-items: center;
       border-radius: 0;
-      top: calc(50% - 1px);
-      width: 100%;
       height: 100%;
       background: none;
-      box-shadow: inset 0 1px 0 0 $dark-gray;
+      &:before {
+        content: '';
+        background: $dark-gray;
+        height: 1px;
+        width: 100%;
+      }
       &:after {
-        top: calc(0.2em + 1px - 50%);
+        content: '';
+        top: initial;
         left: 0;
         height: 1.3em;
         width: 1.3em;
         border-radius: 50%;
         box-shadow: inset 0 0 0 1px $dark-gray;
-        transform: translateX(0);
         box-sizing: content-box;
+      }
+      &:hover {
+        &:after {
+          background: $light-gray;
+        }
       }
     }
     input:checked ~ .switch-paddle {
       color: $success-color;
+      &:hover {
+        color: scale-color($success-color, $lightness: -15%);
+      }
       &:after {
         box-shadow: inset 0 0 0 1em currentColor;
-        left: 100%;
-        transform: translateX(-100%);
+        left: calc(100% - 1.3em);
       }
     }
   }
@@ -259,4 +254,15 @@ button {
     background: none;
     outline: none;
   }
+}
+
+
+// 8. Typography
+// ---------
+
+p {
+  font-size: $paragraph-font-size;
+}
+a.alert {
+  color: get-color(alert);
 }
