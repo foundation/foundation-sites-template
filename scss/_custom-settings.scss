@@ -313,26 +313,6 @@ small {
   display: block; /* Fallback for non-webkit */
   display: -webkit-box;
   font-size: $font-size;
-  @-moz-document url-prefix() {
-    overflow: hidden;
-    position: relative;
-    &:before {
-      bottom: 0;
-      position: absolute;
-      right: 0;
-      float: right;
-      content: '\2026';
-      margin-left: -3rem;
-      width: 3rem;
-    }
-    &:after {
-      content: '';
-      position: absolute;
-      height: 50px;
-      width: 100%;
-      z-index: 1;
-    }
-  }
 }
 .description-excerpt {
   @include excerpt($lines-to-show: 3);
