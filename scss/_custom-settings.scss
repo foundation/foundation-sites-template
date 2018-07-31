@@ -11,16 +11,35 @@
 //   6. Switch
 //   7. Button
 //   8. Typography
+//   9. Excerpt
+
+
 
 // 1. Card
 // ---------
 
+
+.cell:hover {
+  z-index: 100;
+}
 .card {
   transition: box-shadow $global-transition-medium $global-transition-timing;
   a {
     color: inherit;
     text-decoration: none;
   }
+  .fa {
+    font-size: 0.75em;
+    margin-right: 0.5em;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    display: flex;
+    align-items: center;
+  }
+}
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 300;
 }
 .card:not(.static):hover {
   box-shadow: 0 5px 20px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.15);
@@ -55,6 +74,7 @@
 // ---------
 
 .space-title {
+  @extend .card-title;
   position: absolute;
   display: flex;
   padding: 0 10px 0;
@@ -64,18 +84,12 @@
   top: 50%;
   transform: perspective(1px) translateY(-50%);
   max-width: 80%;
-  font-weight: 300;
-  font-size: 1.125rem;
   border-radius: 0 2px 2px 0;
   align-items: center;
   span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-  .fa-lock {
-    font-size: 0.75em;
-    margin-right: 0.5em;
   }
 }
 
@@ -265,6 +279,73 @@ button {
 p {
   font-size: $paragraph-font-size;
 }
-a.alert {
-  color: get-color(alert);
+a {
+  &:focus {
+    outline: none;
+  }
+  &.alert {
+    color: get-color(alert);
+  }
+}
+small {
+  color: $dark-gray;
+}
+
+
+// 9. Excerpt
+// ---------
+
+@mixin excerpt($font-size: 1em, $line-height: 1.4, $lines-to-show: 3, $expand: false) {
+  @if $expand == true {
+    max-height: initial; /* Fallback for non-webkit */
+    -webkit-line-clamp: initial;
+    -webkit-box-orient: vertical;
+    overflow: initial;
+    text-overflow: initial;
+  } @else {
+    max-height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  line-height: $line-height;
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  font-size: $font-size;
+  @-moz-document url-prefix() {
+    overflow: hidden;
+    position: relative;
+    &:before {
+      bottom: 0;
+      position: absolute;
+      right: 0;
+      float: right;
+      content: '\2026';
+      margin-left: -3rem;
+      width: 3rem;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      height: 50px;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+}
+.description-excerpt {
+  @include excerpt($lines-to-show: 3);
+}
+.description-excerpt-checkbox {
+  position: absolute;
+  margin: 0;
+  opacity: 0;
+  &:checked ~ .description-excerpt {
+    @include excerpt($expand: true);
+  }
+  &+label {
+    vertical-align: initial;
+    margin: initial;
+  }
 }
