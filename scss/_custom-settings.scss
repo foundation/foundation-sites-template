@@ -19,8 +19,11 @@
 // ---------
 
 
-.cell:hover {
-  z-index: 100;
+.cell {
+  position: relative;
+  &:hover {
+    z-index: 100;
+  }
 }
 .card {
   transition: box-shadow $global-transition-medium $global-transition-timing;
@@ -363,3 +366,51 @@ small {
     margin: initial;
   }
 }
+
+
+
+
+// 10. User
+// ---------
+
+
+
+
+.user {
+  display: flex;
+  align-items: center;
+  height: 65px;
+  &.small {
+    height: 36px;
+  }
+}
+.avatar-container {
+  width: calc(65px + 20px);
+  .small & {
+    width: calc(36px + 5px);
+  }
+}
+.user-meta {
+  padding: 0 1em;
+  width: 100%;
+  &.checkable {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.user-name {
+  font-size: 0.875em;
+  display: flex;
+  align-items: center;
+  .fa {
+    margin-left: 1em;
+    color: #aaa;
+  }
+}
+.user-mail {
+  font-size: 0.75em;
+  color: #aaa;
+}
+
+
