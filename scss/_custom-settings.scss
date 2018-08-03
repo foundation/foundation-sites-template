@@ -138,12 +138,6 @@
       max-height: initial;
     }
   }
-  .space-header {
-    height: 200px;
-    max-height: 25vw;
-    min-height: 65px;
-    font-size: 1.5rem;
-  }
 }
 // 3. Clipping
 // ---------
@@ -184,6 +178,20 @@
   background-size: 50px;
   background-repeat: repeat;
   background-position: center;
+  .large & {
+    height: 200px;
+    max-height: 25vw;
+    min-height: 65px;
+    font-size: 1.5rem;
+  }
+}
+.variable {
+  padding-bottom: 0;
+  height: 100%;
+  max-height: 200px;
+  img {
+    position: relative;
+  }
 }
 
 
