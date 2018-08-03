@@ -319,55 +319,59 @@ small {
 // ---------
 
 
+
 .switch {
-  &.tiny {
+  display: flex;
+  align-items: center;
+  .switch-paddle {
     display: flex;
     align-items: center;
-    height: 1.3em;
-    width: 2em;
-    min-width: 1.2em;
-    margin-left: 1em;
-    .switch-paddle {
-      display: flex;
-      align-items: center;
-      border-radius: 0;
-      height: 100%;
-      background: none;
-      &:before {
-        content: '';
-        background: $dark-gray;
-        height: 1px;
-        width: 100%;
-      }
-      &:after {
-        content: '';
-        top: initial;
-        left: 0;
-        height: 1.3em;
-        width: 1.3em;
-        border-radius: 50%;
-        box-shadow: inset 0 0 0 1px $dark-gray;
-        box-sizing: content-box;
-      }
-      &:hover {
-        &:after {
-          background: $light-gray;
-        }
-      }
+    border-radius: 0;
+    height: 100%;
+    background: none;
+    &:before {
+      content: '';
+      background: $dark-gray;
+      height: 1px;
+      width: 100%;
     }
-    input:checked ~ .switch-paddle {
-      color: $success-color;
-      &:hover {
-        color: scale-color($success-color, $lightness: -15%);
-      }
+    &:after {
+      content: '';
+      top: initial;
+      left: 0;
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 1px $dark-gray;
+      box-sizing: content-box;
+    }
+    &:hover {
       &:after {
-        box-shadow: inset 0 0 0 1em currentColor;
-        left: calc(100% - 1.3em);
+        background: $light-gray;
       }
     }
   }
+  @mixin foundation-palette($selector, $prepend: '', $colors: ('primary', 'secondary', 'success', 'warning', 'alert')) {
+    @each $color in $colors {
+      #{$prepend}.#{$color} #{$selector} {
+        color: get-color($color);
+        background: none;
+        #{$prepend}:hover {
+          color: scale-color(get-color($color), $lightness: -15%);
+        }
+      }
+    }
+  }
+  input:checked ~ .switch-paddle {
+    color: get-color(primary);
+    background: none;
+    &:after {
+      box-shadow: inset 0 0 0 1em currentColor;
+    }
+    &:hover {
+      color: scale-color(get-color(primary), $lightness: -15%);
+    }
+  }
+  @include foundation-palette('input:checked ~ .switch-paddle', '&');
 }
-
 
 // 9. Button
 // ---------

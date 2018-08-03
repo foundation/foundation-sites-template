@@ -70,12 +70,11 @@ $global-font-size: 16px;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #1779ba,
+  // primary: #1779ba,
+  primary: #ed624b,
   secondary: #767676,
-  // success: #3adb76,
   success: #58ce3a,
   warning: #ffae00,
-  // alert: #cc4b37,
   alert: #e6244e,
 );
 $very-light-gray: #fafafa;
@@ -772,14 +771,14 @@ $slider-radius: $global-radius;
 
 $switch-background: $medium-gray;
 $switch-background-active: $primary-color;
-$switch-height: 2rem;
-$switch-height-tiny: 1.5rem;
-$switch-height-small: 1.75rem;
-$switch-height-large: 2.5rem;
+$switch-height: 1.5rem;
+$switch-height-tiny: 0.75rem;
+$switch-height-small: 1rem;
+$switch-height-large: 2rem;
 $switch-radius: $global-radius;
 $switch-margin: $global-margin;
 $switch-paddle-background: $white;
-$switch-paddle-offset: 0.25rem;
+$switch-paddle-offset: 0;
 $switch-paddle-radius: $global-radius;
 $switch-paddle-transition: 
   left $global-transition-short $global-transition-timing, 
