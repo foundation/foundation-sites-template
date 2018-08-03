@@ -3,21 +3,22 @@
 //
 //  Table of Contents:
 //
-//   1. Card
-//   2. Spaces Card
-//   3. Clipping
-//   4. Dot Menu
-//   5. Dropdown
-//   6. Switch
-//   7. Button
-//   8. Typography
-//   9. Excerpt
+//   1. Grid
+//   2. Typography
+//   3. Card
+//   4. Spaces Card
+//   5. User Card
+//   6. Clipping
+//   7. Dropdown
+//   8. Switch
+//   9. Button
+//   10. Dot Menu
+//   11. Excerpt
 
 
 
-// 1. Card
+// 1. Grid
 // ---------
-
 
 .cell {
   position: relative;
@@ -25,6 +26,29 @@
     z-index: 100;
   }
 }
+
+// 2. Typography
+// ---------
+
+p {
+  font-size: $paragraph-font-size;
+}
+a {
+  &:focus {
+    outline: none;
+  }
+  &.alert {
+    color: get-color(alert);
+  }
+}
+small {
+  color: $dark-gray;
+}
+
+
+// 3. Card
+// ---------
+
 .card {
   transition: box-shadow $global-transition-medium $global-transition-timing;
   a {
@@ -88,7 +112,7 @@
   }
 }
 
-// 2. Spaces Card
+// 4. Spaces Card
 // ---------
 
 .space-title {
@@ -139,7 +163,51 @@
     }
   }
 }
-// 3. Clipping
+
+
+// 5. User Card
+// ---------
+
+.user {
+  display: flex;
+  align-items: center;
+  height: 65px;
+  &.small {
+    height: 36px;
+  }
+}
+.avatar-container {
+  width: calc(65px + 20px);
+  .small & {
+    width: calc(36px + 5px);
+  }
+}
+.user-meta {
+  padding: 0 1em;
+  width: 100%;
+  &.checkable {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.user-name {
+  font-size: 0.875em;
+  display: flex;
+  align-items: center;
+  .fa {
+    margin-left: 1em;
+    color: #aaa;
+  }
+}
+.user-mail {
+  font-size: 0.75em;
+  color: #aaa;
+}
+
+
+
+// 6. Clipping
 // ---------
 
 .clipped {
@@ -194,35 +262,7 @@
   }
 }
 
-
-// 4. Dot Menu
-// ---------
-
-.dots {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  cursor: pointer;
-  border-radius: 0;
-  
-  &:hover:after {
-    border-left: 1px solid #f0f0f0;
-    color: $very-dark-gray;
-  }
-  &:after {
-    content: '...'; 
-    display: inline-block;
-    white-space: nowrap;
-    padding: 14px 8px 20px;
-    line-height: 0;
-    font-weight: 900;
-    color: $dark-gray;
-    letter-spacing: 2px;
-  }
-}
-
-
-// 5. Dropdown
+// 7. Dropdown
 // ---------
 
 
@@ -275,7 +315,7 @@
 }
 
 
-// 6. Switch
+// 8. Switch
 // ---------
 
 
@@ -329,7 +369,7 @@
 }
 
 
-// 7. Button
+// 9. Button
 // ---------
 
 button {
@@ -340,26 +380,36 @@ button {
 }
 
 
-// 8. Typography
+// 10. Dot Menu
 // ---------
 
-p {
-  font-size: $paragraph-font-size;
-}
-a {
-  &:focus {
-    outline: none;
+.dots {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  border-radius: 0;
+  
+  &:hover:after {
+    border-left: 1px solid #f0f0f0;
+    color: $very-dark-gray;
   }
-  &.alert {
-    color: get-color(alert);
+  &:after {
+    content: '...'; 
+    display: inline-block;
+    white-space: nowrap;
+    padding: 14px 8px 20px;
+    line-height: 0;
+    font-weight: 900;
+    color: $dark-gray;
+    letter-spacing: 2px;
   }
-}
-small {
-  color: $dark-gray;
 }
 
 
-// 9. Excerpt
+
+
+// 11. Excerpt
 // ---------
 
 @mixin excerpt($font-size: 1em, $line-height: 1.4, $lines-to-show: 3, $expand: false) {
@@ -396,51 +446,4 @@ small {
     margin: initial;
   }
 }
-
-
-
-
-// 10. User
-// ---------
-
-
-
-
-.user {
-  display: flex;
-  align-items: center;
-  height: 65px;
-  &.small {
-    height: 36px;
-  }
-}
-.avatar-container {
-  width: calc(65px + 20px);
-  .small & {
-    width: calc(36px + 5px);
-  }
-}
-.user-meta {
-  padding: 0 1em;
-  width: 100%;
-  &.checkable {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-.user-name {
-  font-size: 0.875em;
-  display: flex;
-  align-items: center;
-  .fa {
-    margin-left: 1em;
-    color: #aaa;
-  }
-}
-.user-mail {
-  font-size: 0.75em;
-  color: #aaa;
-}
-
 
