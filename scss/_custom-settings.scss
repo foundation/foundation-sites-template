@@ -65,6 +65,9 @@ a {
 small {
   color: $dark-gray;
 }
+code {
+  border-radius: $global-radius-small;
+}
 
 
 // 4. Card
@@ -425,8 +428,6 @@ button {
 }
 
 
-
-
 // 12. Excerpt
 // ---------
 
@@ -465,3 +466,12 @@ button {
   }
 }
 
+
+// 13. Menu
+// ---------
+
+nav {
+  a, a:hover {
+    text-decoration: none;
+  }
+}
