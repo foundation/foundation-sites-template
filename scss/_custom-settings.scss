@@ -3,21 +3,44 @@
 //
 //  Table of Contents:
 //
-//   1. Grid
-//   2. Typography
-//   3. Card
-//   4. Spaces Card
-//   5. User Card
-//   6. Clipping
-//   7. Dropdown
-//   8. Switch
-//   9. Button
-//   10. Dot Menu
-//   11. Excerpt
+//   1. Mixins
+//   2. Grid
+//   3. Typography
+//   4. Card
+//   5. Spaces Card
+//   6. User Card
+//   7. Clipping
+//   8. Dropdown
+//   9. Switch
+//   10. Button
+//   11. Dot Menu
+//   12. Excerpt
 
 
 
-// 1. Grid
+// 1. Mixins
+// ---------
+
+@mixin foundation-palette($selector, $prepend: '', $property: 'color', $colors: ('primary', 'secondary', 'success', 'warning', 'alert')) {
+  @each $color in $colors {
+    #{$prepend}.#{$color} #{$selector} {
+      #{$property}: get-color($color);
+    }
+  }
+}
+
+@mixin foundation-palette-hover($selector, $prepend: '', $colors: ('primary', 'secondary', 'success', 'warning', 'alert')) {
+  @each $color in $colors {
+    #{$prepend}.#{$color} #{$selector} {
+      color: get-color($color);
+      background: none;
+      #{$prepend}:hover {
+        color: scale-color(get-color($color), $lightness: -15%);
+      }
+    }
+  }
+}
+// 2. Grid
 // ---------
 
 .cell {
@@ -27,7 +50,7 @@
   }
 }
 
-// 2. Typography
+// 3. Typography
 // ---------
 
 p {
@@ -37,16 +60,14 @@ a {
   &:focus {
     outline: none;
   }
-  &.alert {
-    color: get-color(alert);
-  }
+  @include foundation-palette('', '&');
 }
 small {
   color: $dark-gray;
 }
 
 
-// 3. Card
+// 4. Card
 // ---------
 
 .card {
@@ -56,6 +77,7 @@ small {
     text-decoration: none;
     display: flex;
     flex-direction: column;
+    @include foundation-palette('', '&');
   }
   .fa {
     font-size: 0.75em;
@@ -101,6 +123,9 @@ small {
 }
 .card-divider {
   border-top: 1px solid $light-gray;
+  &:first-child {
+    border: none;
+  }
   textarea {
     border: none;
     border-radius: 0;
@@ -112,7 +137,7 @@ small {
   }
 }
 
-// 4. Spaces Card
+// 5. Spaces Card
 // ---------
 
 .space-title {
@@ -165,7 +190,7 @@ small {
 }
 
 
-// 5. User Card
+// 6. User Card
 // ---------
 
 .user {
@@ -207,7 +232,7 @@ small {
 
 
 
-// 6. Clipping
+// 7. Clipping
 // ---------
 
 .clipped {
@@ -262,7 +287,7 @@ small {
   }
 }
 
-// 7. Dropdown
+// 8. Dropdown
 // ---------
 
 
@@ -315,7 +340,7 @@ small {
 }
 
 
-// 8. Switch
+// 9. Switch
 // ---------
 
 
@@ -349,17 +374,6 @@ small {
       }
     }
   }
-  @mixin foundation-palette($selector, $prepend: '', $colors: ('primary', 'secondary', 'success', 'warning', 'alert')) {
-    @each $color in $colors {
-      #{$prepend}.#{$color} #{$selector} {
-        color: get-color($color);
-        background: none;
-        #{$prepend}:hover {
-          color: scale-color(get-color($color), $lightness: -15%);
-        }
-      }
-    }
-  }
   input:checked ~ .switch-paddle {
     color: get-color(primary);
     background: none;
@@ -370,10 +384,10 @@ small {
       color: scale-color(get-color(primary), $lightness: -15%);
     }
   }
-  @include foundation-palette('input:checked ~ .switch-paddle', '&');
+  @include foundation-palette-hover('input:checked ~ .switch-paddle', '&');
 }
 
-// 9. Button
+// 10. Button
 // ---------
 
 button {
@@ -384,7 +398,7 @@ button {
 }
 
 
-// 10. Dot Menu
+// 11. Dot Menu
 // ---------
 
 .dots {
@@ -413,7 +427,7 @@ button {
 
 
 
-// 11. Excerpt
+// 12. Excerpt
 // ---------
 
 @mixin excerpt($font-size: 1em, $line-height: 1.4, $lines-to-show: 3, $expand: false) {
