@@ -68,6 +68,15 @@ small {
 code {
   border-radius: $global-radius-small;
 }
+.input-reset {
+  border: none;
+  border-radius: 0;
+  padding: 8px 12px;
+  min-height: 35px;
+  height: 35px;
+  resize: none;
+  font-size: 0.875rem;
+}
 
 
 // 4. Card
@@ -129,14 +138,8 @@ code {
   &:first-child {
     border: none;
   }
-  textarea {
-    border: none;
-    border-radius: 0;
-    padding: 8px 12px;
-    min-height: 35px;
-    height: 35px;
-    resize: none;
-    font-size: 0.875rem;
+  input, textarea {
+    @extend .input-reset;
   }
 }
 
@@ -201,7 +204,11 @@ code {
   align-items: center;
   height: 65px;
   &.small {
-    height: 36px;
+    height: 40px;
+  }
+  input,
+  textarea {
+    @extend .input-reset;
   }
 }
 .avatar-container {
@@ -352,6 +359,7 @@ code {
   display: flex;
   align-items: center;
   .switch-paddle {
+    padding: 0;
     display: flex;
     align-items: center;
     border-radius: 0;
@@ -390,12 +398,17 @@ code {
   @include foundation-palette-hover('input:checked ~ .switch-paddle', '&');
 }
 
-// 10. Button
+// 10. Button & Input
 // ---------
 
 button {
   &:focus, &:active {
     background: none;
+    outline: none;
+  }
+}
+input {
+  &:focus, &:active {
     outline: none;
   }
 }
