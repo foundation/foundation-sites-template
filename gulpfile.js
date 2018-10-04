@@ -1,6 +1,7 @@
-var gulp = require('gulp');
-var browserSync = require('browser-sync').create();
-var $    = require('gulp-load-plugins')();
+var gulp          = require('gulp');
+var browserSync   = require('browser-sync').create();
+var $             = require('gulp-load-plugins')();
+var autoprefixer  = require('autoprefixer');
 
 var sassPaths = [
   'node_modules/foundation-sites/scss',
@@ -24,9 +25,9 @@ gulp.task('sass', function() {
       outputStyle: 'compressed' // if css compressed **file size**
     })
       .on('error', $.sass.logError))
-    .pipe($.autoprefixer({
-      browsers: ['last 2 versions', 'ie >= 9']
-    }))
+    .pipe($.postcss([
+      autoprefixer({ browsers: ['last 2 versions', 'ie >= 9'] })
+    ]))
     .pipe(gulp.dest('css'))
     .pipe(browserSync.stream());
 });
