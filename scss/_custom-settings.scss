@@ -84,7 +84,7 @@ code {
 
 .card {
   transition: box-shadow $global-transition-medium $global-transition-timing;
-  a {
+  .card-anchor {
     color: inherit;
     text-decoration: none;
     display: flex;
@@ -105,6 +105,7 @@ code {
   font-weight: 300;
 }
 .card:not(.static):hover {
+  cursor: pointer;
   box-shadow: 0 5px 20px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.15);
   transition: box-shadow $global-transition-short $global-transition-timing;
 }
@@ -240,7 +241,23 @@ code {
   color: #aaa;
 }
 
+.author-thumbnail {
+  margin-right: 10px;
 
+  &.small {
+    min-width: 40px;
+    min-height: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  &.large {
+    min-width: 60px;
+    min-height: 60px;
+    width: 60px;
+    height: 60px;
+  }
+}
 
 // 7. Clipping
 // ---------
@@ -276,17 +293,23 @@ code {
 .space-header {
   background: $very-light-gray;
   padding-bottom: 65px;
-  height: 100%; 
+  height: 100%;
   align-content: center;
   background-size: 50px;
   background-repeat: repeat;
   background-position: center;
+
   .large & {
     height: 200px;
     max-height: 25vw;
     min-height: 65px;
     font-size: 1.5rem;
   }
+}
+.post-header {
+  @extend .space-header;
+  padding-bottom: 100px;
+
 }
 .variable {
   padding-bottom: 0;
@@ -432,11 +455,25 @@ input {
     content: '...'; 
     display: inline-block;
     white-space: nowrap;
-    padding: 14px 8px 20px;
+    padding: 15px 8px 20px;
     line-height: 0;
     font-weight: 900;
     color: $dark-gray;
     letter-spacing: 2px;
+  }
+}
+.reply-button { 
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  box-sizing: content-box;
+  fill: $dark-gray;
+  &:hover {
+    cursor: pointer;
+    fill: get-color('success');
   }
 }
 
