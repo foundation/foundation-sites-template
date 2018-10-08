@@ -71,7 +71,8 @@ $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
   // primary: #1779ba,
-  primary: #ed624b,
+  // primary: #ed624b,
+  primary: #415768,
   secondary: #767676,
   success: #58ce3a,
   warning: #ffae00,
@@ -93,7 +94,7 @@ $global-padding: 1rem;
 $global-position: 1rem;
 $global-weight-normal: normal;
 $global-weight-bold: bold;
-$global-radius: 5px;
+$global-radius: 3px;
 $global-radius-small: 2px;
 $global-menu-padding: 0.7rem 1rem;
 $global-menu-nested-margin: 1rem;
@@ -178,7 +179,7 @@ $code-background: scale-color($code-color, $lightness: 95%);
 $code-border: 1px solid scale-color($code-color, $lightness: 80%);
 $code-padding: rem-calc(2 5 1);
 $anchor-color: $secondary-color;
-$anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
+$anchor-color-hover: scale-color($anchor-color, $lightness: -15%);
 $anchor-text-decoration: underline;
 $anchor-text-decoration-hover: underline;
 $hr-width: $global-width;
@@ -296,7 +297,7 @@ $button-background: $primary-color;
 $button-background-hover: scale-color($button-background, $lightness: -15%);
 $button-color: $white;
 $button-color-alt: $black;
-$button-radius: $global-radius;
+$button-radius: 0;
 $button-hollow-border-width: 1px;
 $button-sizes: (
   tiny: 0.6rem,

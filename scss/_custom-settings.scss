@@ -91,10 +91,6 @@ code {
     flex-direction: column;
     @include foundation-palette('', '&');
   }
-  .fa {
-    font-size: 0.75em;
-    margin-right: 0.5em;
-  }
   h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
@@ -164,6 +160,10 @@ code {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .fa {
+    font-size: 0.75em;
+    margin-right: 0.5em;
   }
 }
 .wide {
@@ -424,7 +424,24 @@ code {
 // 10. Button & Input
 // ---------
 
-button {
+.button-group {
+  &.radius {
+    .button {
+      border-radius: 0;
+      &:first-child {
+        border-radius: $global-radius 0 0 $global-radius;
+      }
+
+      &:last-child {
+        border-radius: 0 $global-radius $global-radius 0;
+      }
+    }
+  }
+}
+button, .button {
+  &.radius, .radius & {
+    border-radius: $global-radius;
+  }
   &:focus, &:active {
     background: none;
     outline: none;
@@ -433,6 +450,22 @@ button {
 input {
   &:focus, &:active {
     outline: none;
+  }
+}
+.arrow-button {
+  display: flex;
+  align-items: center;
+  @include foundation-palette('', '&');
+  .fa {
+    margin-right: 0.5em;
+  }
+  span {
+    font-size: 0.875rem;
+  }
+  &::after {
+    margin-left: auto;
+    font-family: FontAwesome;
+    content: '\f105';
   }
 }
 
