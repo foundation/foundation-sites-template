@@ -45,9 +45,6 @@
 
 .cell {
   position: relative;
-  &:hover {
-    z-index: 100;
-  }
 }
 
 // 3. Typography
@@ -71,9 +68,9 @@ code {
 .input-reset {
   border: none;
   border-radius: 0;
-  padding: 8px 12px;
-  min-height: 35px;
-  height: 35px;
+  padding: 0.5rem 0.75rem;
+  min-height: 2.5em;
+  height: 2.5em;
   resize: none;
   font-size: 0.875rem;
 }
@@ -97,6 +94,8 @@ code {
   }
 }
 .card-title {
+  display: flex;
+  align-items: center;
   font-size: 1.125rem;
   font-weight: 300;
   .fa {
@@ -113,6 +112,7 @@ code {
   padding: 8px 12px;
   & > a {
     width: 100%;
+    text-decoration: none;
     &:hover {
       background: $very-light-gray;
     }
@@ -334,6 +334,7 @@ code {
   max-width: 100%;
   display: inline-block;
   box-shadow: 0 5px 20px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.15);
+  background-color: $white;
 }
 
 .dropdown-pane-arrow {
