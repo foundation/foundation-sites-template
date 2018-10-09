@@ -92,6 +92,14 @@ code {
     display: flex;
     align-items: center;
   }
+  &.muted {
+    opacity: 0.5;
+  }
+  &:not(.static):hover {
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05), 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: box-shadow $global-transition-short $global-transition-timing;
+  }
 }
 .card-title {
   display: flex;
@@ -102,11 +110,6 @@ code {
     font-size: 0.75em;
     margin-right: 0.5em;
   }
-}
-.card:not(.static):hover {
-  cursor: pointer;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.15);
-  transition: box-shadow $global-transition-short $global-transition-timing;
 }
 .card-section, .card-divider {
   padding: 8px 12px;
@@ -132,9 +135,6 @@ code {
         padding: 5px;
       }
     }
-  }
-  &.muted {
-    opacity: 0.5;
   }
 }
 .card-divider {
