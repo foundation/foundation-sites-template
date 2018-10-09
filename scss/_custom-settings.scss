@@ -99,6 +99,10 @@ code {
 .card-title {
   font-size: 1.125rem;
   font-weight: 300;
+  .fa {
+    font-size: 0.75em;
+    margin-right: 0.5em;
+  }
 }
 .card:not(.static):hover {
   cursor: pointer;
@@ -110,7 +114,7 @@ code {
   & > a {
     width: 100%;
     &:hover {
-      background: $light-gray;
+      background: $very-light-gray;
     }
   }
   &.small {
