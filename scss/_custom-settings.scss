@@ -15,6 +15,7 @@
 //   10. Button
 //   11. Dot Menu
 //   12. Excerpt
+//   13. Menu
 
 
 
@@ -94,6 +95,9 @@ code {
   }
   &.muted {
     opacity: 0.5;
+  }
+  &.large {
+    margin-bottom: 20px;
   }
   &:not(.static):hover {
     cursor: pointer;
@@ -328,7 +332,7 @@ code {
 }
 
 // 8. Dropdown
-// ---------
+// -----------
 
 
 .dropdown-pane {
@@ -561,8 +565,83 @@ input {
 // 13. Menu
 // ---------
 
+$border: 1px solid $light-gray;
+hr {
+  margin: 0 auto;
+  border-bottom: $border;
+}
 nav {
-  a, a:hover {
-    text-decoration: none;
+  background-color: $white;
+  // a,
+  // a:hover {
+  //   text-decoration: none;
+  // }
+
+  .menu {
+    font-size: 0.875rem;
+    border-left: $border;
+    li {
+      border-right: $border;
+      ul {
+        border: none;
+        li {
+          border: none;
+          a {
+            padding: 0.5rem;
+          }
+        }
+      }
+      input[type=search] {
+        border: none;
+        box-shadow: none;
+      }
+
+      a {
+        &:hover {
+          background: $very-light-gray;
+        }
+        &.avatar-profile-link {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+.dropdown .is-dropdown-submenu {
+  border: none;
+  a {
+    border-right: none;
+  }
+  li {
+    &:first-child a {
+      padding-top: 1rem;
+    }
+
+    &:last-child a {
+      padding-bottom: 1rem;
+    }
+  }
+}
+
+li .vertical.menu {
+  border-top: $border;
+
+  &,
+  & li:last-child a {
+    border-radius: 0 0 $global-radius $global-radius;
+  }
+}
+.dropdown.menu.vertical,
+.dropdown.menu.medium-horizontal {
+  &>li.is-dropdown-submenu-parent>a {
+
+    &:after {
+      content: '\f107';
+      font-family: FontAwesome;
+      border: none;
+      margin-right: 0.7rem;
+      line-height: 0.5;
+
+    }
   }
 }
