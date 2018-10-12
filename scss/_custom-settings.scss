@@ -41,6 +41,13 @@
     }
   }
 }
+@mixin crossBrowser($property, $val) {
+  -webkit-#{$property}: $val;
+  -moz-#{$property}: $val;
+  -ms-#{$property}: $val;
+  #{$property}: $val;
+}
+
 // 2. Grid
 // ---------
 
@@ -90,6 +97,7 @@ code {
     text-decoration: none;
     display: flex;
     flex-direction: column;
+    padding: 0;
     @include foundation-palette('', '&');
   }
   h1, h2, h3, h4, h5, h6 {
@@ -100,7 +108,7 @@ code {
     opacity: 0.5;
   }
   &.large {
-    margin-bottom: 20px;
+    margin: 15px 0;
   }
   &:not(.static):hover {
     cursor: pointer;
@@ -112,6 +120,7 @@ code {
   display: flex;
   align-items: center;
   font-size: 1.125rem;
+  line-height: 1.5em;
   font-weight: 300;
   .fa {
     font-size: 0.75em;
@@ -199,7 +208,6 @@ code {
 .large {
   .space-title {
     font-size: 1.5rem;
-    line-height: 1.5em;
     white-space: normal;
     max-height: 3em;
     @media (max-width: 640px) {
@@ -341,7 +349,7 @@ code {
 .dropdown-pane {
   max-width: 100%;
   display: inline-block;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.15);
+  box-shadow: $global-drop-shadow;
   background-color: $white;
   &.expanded {
     width: 100%;
@@ -351,6 +359,7 @@ code {
     transition-delay: 0;
     border-top: 1px solid $light-gray;
     box-shadow: none;
+    border-radius: 0 0 $global-radius $global-radius;
     @media print,
     screen and (max-width: 40em) {
       position: relative;
@@ -584,8 +593,11 @@ hr {
   margin: 0 auto;
   border-bottom: $border;
 }
+.flex-spacer-left {
+  margin-left: auto;
+}
 nav {
-  background-color: $white;
+  background-color: #fff;
   // a,
   // a:hover {
   //   text-decoration: none;
@@ -593,9 +605,14 @@ nav {
 
   .menu {
     font-size: 0.875rem;
-    border-left: $border;
     li {
-      border-right: $border;
+      &.menu-main-expand {
+        position: static;
+
+        .menu {
+          width: 100%;
+        }
+      }
       ul {
         border: none;
         li {
@@ -621,41 +638,110 @@ nav {
     }
   }
 }
-.dropdown .is-dropdown-submenu {
-  border: none;
+.dropdown .is-dropdown-submenu,
+.accordion-menu .is-accordion-submenu {
+  border-top: $border;
+  border-radius: 0 0 $global-radius $global-radius;
+  overflow: hidden;
   a {
     border-right: none;
   }
   li {
-    &:first-child a {
+    &:first-child .submenu-anchor {
       padding-top: 1rem;
     }
 
-    &:last-child a {
+    &:last-child .submenu-anchor {
       padding-bottom: 1rem;
     }
-  }
-}
-
-li .vertical.menu {
-  border-top: $border;
-
-  &,
-  & li:last-child a {
-    border-radius: 0 0 $global-radius $global-radius;
-  }
-}
-.dropdown.menu.vertical,
-.dropdown.menu.medium-horizontal {
-  &>li.is-dropdown-submenu-parent>a {
-
-    &:after {
-      content: '\f107';
-      font-family: FontAwesome;
-      border: none;
-      margin-right: 0.7rem;
-      line-height: 0.5;
-
+    .card-anchor {
+      padding: 0;
     }
   }
+}
+
+.caret {
+  content: '\f107';
+  font-family: FontAwesome;
+  border: none;
+}
+.accordion-menu .is-accordion-submenu-parent:not(.has-submenu-toggle)>a::after {
+  @extend .caret; 
+  width: 0.62em;
+  line-height: 0;
+  margin-top: 0.1em;
+}
+.dropdown {
+  &>li>a {
+    height: 48px;
+  }
+  &.menu {
+    &.vertical, &.medium-horizontal {
+      &>li.is-dropdown-submenu-parent>a {
+        &::after {
+          @extend .caret;
+          margin-right: 0.7rem;
+          line-height: 0.5;
+        }
+      }
+    }
+  }
+}
+
+// 14. Icons
+// ---------
+
+$icon-line-weight: 2;
+
+#search-state {
+  display: none;
+}
+
+.search-icon {
+  cursor: pointer;
+  padding: 0;
+  border-radius: 20px;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  transition: 500ms;
+  margin: -16px;
+  padding: 12px;
+  box-sizing: border-box;
+  
+  &:before,
+  &:after {
+    content: '';
+    height: $icon-line-weight * 1px;
+    position: absolute;
+    display: block;
+    box-shadow: inset 0 0 0 $icon-line-weight * 1px currentColor;
+    transition: 300ms;
+    transition-property: margin, width, height, transform, border-radius;
+  }
+
+  &:before {
+    width: 16px;
+    height: 16px;
+    border-radius: 20px;
+    @include crossBrowser(transform, translate(2px, 1px) rotate(0));
+  }
+  #search-state:checked~nav &:before {
+    height: 20px;
+    width: $icon-line-weight * 1px;
+    border-radius: 0;
+    @include crossBrowser(transform, translate((11 - $icon-line-weight / 2) * 1px, 1px) rotate(45deg));
+  }
+
+  &:after {
+    width: 8px;
+    transform: translate(13px, 15px) rotate(45deg);
+    @include crossBrowser(transform, translate(14px, (18 - $icon-line-weight) * 1px) rotate(45deg));
+  }
+
+  #search-state:checked~nav &:after {
+    width: 20px;
+    @include crossBrowser(transform, translate(1px, (11 - $icon-line-weight / 2) * 1px) rotate(45deg));
+  }
+
 }

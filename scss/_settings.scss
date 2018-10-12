@@ -108,6 +108,8 @@ $global-transition-medium: $global-transition-short * 2.5;
 $global-transition-long: $global-transition-short * 5;
 $global-transition-timing: ease-in-out;
 $print-transparent-backgrounds: true;
+$global-drop-shadow: 0 5px 20px rgba(0, 0, 0, 0.05),
+0 2px 5px rgba(0, 0, 0, 0.15);
 
 @include add-foundation-colors;
 
@@ -116,13 +118,13 @@ $print-transparent-backgrounds: true;
 
 $breakpoints: (
   small: 0,
-  medium: 420px,
-  large: 640px,
-  xlarge: 1024px,
+  medium: 480px,
+  large: 720px,
+  xlarge: 960px,
   xxlarge: 1200px,
 );
 $print-breakpoint: large;
-$breakpoint-classes: (small medium large xlarge);
+$breakpoint-classes: (small medium large xlarge xxlarge);
 
 // 3. The Grid
 // -----------
