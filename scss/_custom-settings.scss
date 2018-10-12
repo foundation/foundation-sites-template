@@ -598,11 +598,8 @@ hr {
 }
 nav {
   background-color: #fff;
-  // a,
-  // a:hover {
-  //   text-decoration: none;
-  // }
-
+  position: relative;
+  z-index: 1000;
   .menu {
     font-size: 0.875rem;
     li {
@@ -672,6 +669,18 @@ nav {
   margin-top: 0.1em;
 }
 .dropdown {
+  .avatar {
+    &>a {
+      padding: 0 !important;
+      &::after {
+        display: none !important;
+      }
+    }
+    img {
+      width: 48px;
+      height: 48px;
+    }
+  }
   &>li>a {
     height: 48px;
   }
@@ -691,7 +700,7 @@ nav {
 // 14. Icons
 // ---------
 
-$icon-line-weight: 2;
+$icon-line-weight: 1;
 
 #search-state {
   display: none;
@@ -725,23 +734,23 @@ $icon-line-weight: 2;
     height: 16px;
     border-radius: 20px;
     @include crossBrowser(transform, translate(2px, 1px) rotate(0));
+    #search-state:checked~nav & {
+      height: 20px;
+      width: $icon-line-weight * 1px;
+      border-radius: 0;
+      @include crossBrowser(transform, translate((11 - $icon-line-weight / 2) * 1px, 1px) rotate(45deg));
+    }
   }
-  #search-state:checked~nav &:before {
-    height: 20px;
-    width: $icon-line-weight * 1px;
-    border-radius: 0;
-    @include crossBrowser(transform, translate((11 - $icon-line-weight / 2) * 1px, 1px) rotate(45deg));
-  }
+  
 
   &:after {
     width: 8px;
     transform: translate(13px, 15px) rotate(45deg);
     @include crossBrowser(transform, translate(14px, (18 - $icon-line-weight) * 1px) rotate(45deg));
-  }
-
-  #search-state:checked~nav &:after {
-    width: 20px;
-    @include crossBrowser(transform, translate(1px, (11 - $icon-line-weight / 2) * 1px) rotate(45deg));
+    #search-state:checked~nav & {
+      width: 20px;
+      @include crossBrowser(transform, translate(1px, (11 - $icon-line-weight / 2) * 1px) rotate(45deg));
+    }
   }
 
 }
