@@ -63,6 +63,24 @@
 @import 'util/util';
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300|Roboto:300,400,700');
 
+@font-face {
+  font-family: Myriad Pro;
+  font-weight: thin;
+  src: url(http://www.leonvogler.de/MyriadPro-Light.otf);
+}
+
+@font-face {
+  font-family: Myriad Pro;
+  font-weight: normal;
+  src: url(http://www.leonvogler.de/MyriadPro-Regular.otf);
+}
+
+@font-face {
+  font-family: Myriad Pro;
+  font-weight: bold;
+  src: url(http://www.leonvogler.de/MyriadPro-Bold.otf);
+}
+
 // 1. Global
 // ---------
 
@@ -87,7 +105,7 @@ $black: #333;
 $white: #fefefe;
 $body-background: $light-gray;
 $body-font-color: $black;
-$body-font-family: 'Roboto', Helvetica, Arial, sans-serif;
+$body-font-family: 'Myriad Pro', 'Roboto', Helvetica, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -96,7 +114,7 @@ $global-weight-normal: normal;
 $global-weight-bold: bold;
 $global-radius: 3px;
 $global-radius-small: 2px;
-$global-menu-padding: 0.7rem 1rem;
+$global-menu-padding: 0.75rem 0.875rem;
 $global-menu-nested-margin: 1rem;
 $global-text-direction: ltr;
 $global-flexbox: true;
@@ -409,9 +427,9 @@ $dropdownmenu-arrow-padding: 1.5rem;
 $dropdownmenu-min-width: 200px;
 $dropdownmenu-background: $white;
 $dropdownmenu-submenu-background: $dropdownmenu-background;
-$dropdownmenu-padding: 1rem;
+$dropdownmenu-padding: 0.875rem;
 $dropdownmenu-nested-margin: 0;
-$dropdownmenu-submenu-padding: 0.75rem 1rem;
+$dropdownmenu-submenu-padding: 0.75rem 0.875rem;
 $dropdownmenu-border: none;
 $dropdown-menu-item-color-active: none;
 $dropdown-menu-item-background-active: $very-light-gray;
