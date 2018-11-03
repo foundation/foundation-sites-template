@@ -120,7 +120,7 @@ code {
   display: flex;
   align-items: center;
   font-size: 1.125rem;
-  line-height: 1.5em;
+  line-height: $header-lineheight;
   font-weight: 300;
   .fa {
     font-size: 0.75em;
