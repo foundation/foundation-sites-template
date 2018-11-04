@@ -139,9 +139,12 @@ code {
   &.small {
     padding: 5px;
   }
-
   &.large {
     padding: 16px 20px;
+  }
+
+  &.xlarge {
+    padding: 20px 30px;
   }
   &.no-padding {
     padding: 0;
@@ -321,7 +324,7 @@ code {
   background-repeat: repeat;
   background-position: center;
 
-  .large & {
+  .large>& {
     height: 200px;
     max-height: 25vw;
     min-height: 65px;
@@ -369,7 +372,7 @@ code {
 }
 .space-info-block {
   flex-wrap: wrap;
-  display: inline-block;
+  display: inline-flex;
   background: $very-light-gray;
   color: $very-dark-gray;
   margin: 3px;
@@ -638,6 +641,10 @@ hr {
       padding: 0;
     }
   }
+}
+.dropdown.menu>li:last-child>.is-dropdown-submenu {
+  right: 0;
+  left: auto;
 }
 .accordion-menu {
   .is-accordion-submenu-parent:not(.has-submenu-toggle)>a::after {
