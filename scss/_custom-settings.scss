@@ -171,6 +171,7 @@ code {
 
 .space-title {
   @extend .card-title;
+  line-height: 1.5;
   position: absolute;
   display: flex;
   padding: 0 10px 0;
@@ -229,7 +230,7 @@ code {
   display: flex;
   align-items: center;
   height: 65px;
-  &.small {
+  .small & {
     height: 40px;
   }
   input,
@@ -246,6 +247,7 @@ code {
 .user-meta {
   padding: 0 1em;
   width: 100%;
+  line-height: 1;
   &.checkable {
     display: flex;
     align-items: center;
@@ -381,11 +383,14 @@ code {
   & span {
     display: inline-block;
     padding: 5px 8px;
-    & + span {
+    &:last-child {
       background: $light-gray;
       color: $very-dark-gray;
       font-weight: bold;
     }
+  }
+  &.small {
+    font-size: 0.875em;
   }
   & a {
     display: inline-block;
@@ -479,12 +484,11 @@ input {
 .arrow-button {
   display: flex;
   align-items: center;
+  font-size: $paragraph-font-size;
   @include foundation-palette('', '&');
   .fa {
+    font-size: 1rem;
     margin-right: 0.5em;
-  }
-  span {
-    font-size: 0.875rem;
   }
   &::after {
     margin-left: auto;
