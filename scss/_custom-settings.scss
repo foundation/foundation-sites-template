@@ -16,6 +16,8 @@
 //   11. Dot Menu
 //   12. Excerpt
 //   13. Menu
+//   14. Icons
+//   15. Tabs
 
 
 
@@ -754,4 +756,26 @@ $icon-line-weight: 1;
     }
   }
 
+}
+// 15. Tabs
+// ---------
+
+.tabs {
+  display: flex;
+  border: none;
+}
+.tabs-title {
+  width: 100%;
+  text-align: center;
+  float: initial;
+  a {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+  }
+}
+.tabs-content {
+  border: none;
+  color: inherit;
 }
