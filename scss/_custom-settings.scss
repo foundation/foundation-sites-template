@@ -583,6 +583,7 @@ input {
 // 13. Menu
 // ---------
 
+
 $border: 1px solid $light-gray;
 hr {
   margin: 0 auto;
@@ -620,7 +621,14 @@ hr {
     }
   }
 }
-
+@include breakpoint(small) {
+  .main-menu .accordion-menu li:not(.keep-outside-burger) {
+    display: none;
+    #menu-state:checked~& {
+      display: block;
+    }
+  }
+}
 .caret {
   content: '\f107';
   font-family: FontAwesome;
@@ -705,12 +713,10 @@ hr {
 // ---------
 
 $icon-line-weight: 1;
-
 #search-state {
   display: none;
 }
-
-.search-icon {
+.sandwich-icon, .search-icon {
   cursor: pointer;
   padding: 0;
   border-radius: 20px;
@@ -720,7 +726,9 @@ $icon-line-weight: 1;
   transition: 500ms;
   padding: 12px;
   box-sizing: border-box;
-  
+}
+.search-icon {
+
   &:before,
   &:after {
     content: '';
@@ -737,6 +745,7 @@ $icon-line-weight: 1;
     height: 16px;
     border-radius: 20px;
     @include crossBrowser(transform, translate(2px, 1px) rotate(0));
+
     #search-state:checked~nav & {
       height: 20px;
       width: $icon-line-weight * 1px;
@@ -744,18 +753,55 @@ $icon-line-weight: 1;
       @include crossBrowser(transform, translate((12 - $icon-line-weight / 2) * 1px, 2px) rotate(45deg));
     }
   }
-  
+
 
   &:after {
     width: 8px;
     transform: translate(13px, 15px) rotate(45deg);
     @include crossBrowser(transform, translate(14px, (18 - $icon-line-weight) * 1px) rotate(45deg));
+
     #search-state:checked~nav & {
       width: 20px;
       @include crossBrowser(transform, translate(2px, (12 - $icon-line-weight / 2) * 1px) rotate(45deg));
     }
   }
 
+}
+
+#menu-state {
+  display: none;
+}
+.sandwich-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:before,
+  &:after {
+    content: '';
+    width: 20px;
+    height: $icon-line-weight * 1px;
+    position: absolute;
+    display: block;
+    box-shadow: inset 0 0 0 $icon-line-weight * 1px currentColor;
+    transition: 300ms;
+    transition-property: margin, width, height, transform, border-radius;
+  }
+
+  &:before {
+    @include crossBrowser(transform, translate(0, -5px) rotate(0deg));
+    #menu-state:checked~nav & {
+      @include crossBrowser(transform, translate(0, 0) rotate(-45deg));
+    }
+  }
+
+    
+  &:after {
+    @include crossBrowser(transform, translate(0, 5px) rotate(0deg));
+
+    #menu-state:checked~nav & {
+      @include crossBrowser(transform, translate(0, 0) rotate(45deg));
+    }
+  }
 }
 // 15. Tabs
 // ---------
