@@ -114,7 +114,7 @@ code {
   }
   &:not(.static):hover {
     cursor: pointer;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05), 0 2px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: $global-drop-shadow;
     transition: box-shadow $global-transition-short $global-transition-timing;
   }
 }
@@ -622,7 +622,7 @@ hr {
   }
 }
 @include breakpoint(small) {
-  .main-menu .accordion-menu li:not(.keep-outside-burger) {
+  .main-menu .accordion-menu li:not([data-index]) {
     display: none;
     #menu-state:checked~& {
       display: block;
@@ -640,6 +640,7 @@ hr {
   border-top: $border;
   border-radius: 0 0 $global-radius $global-radius;
   overflow: hidden;
+  box-shadow: $global-drop-shadow;
   a {
     border-right: none;
   }
@@ -667,7 +668,7 @@ hr {
     line-height: 0;
     margin-top: 0.1em;
   }
-  &>.keep-outside-burger {
+  &>[data-index] {
     width: initial;
     order: -1;
   }
@@ -740,10 +741,10 @@ $icon-line-weight: 2;
   }
 
   &:before {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
     border-radius: 20px;
-    @include crossBrowser(transform, translate(2px, 1px) rotate(0));
+    @include crossBrowser(transform, translate(4px, 4px) rotate(0));
 
     #search-state:checked~nav & {
       height: 20px;
@@ -755,9 +756,9 @@ $icon-line-weight: 2;
 
 
   &:after {
-    width: 8px;
+    width: 6px;
     transform: translate(13px, 15px) rotate(45deg);
-    @include crossBrowser(transform, translate(15px, (19 - $icon-line-weight) * 1px) rotate(45deg));
+    @include crossBrowser(transform, translate(14px, (18 - $icon-line-weight) * 1px) rotate(45deg));
 
     #search-state:checked~nav & {
       width: 20px;
@@ -809,8 +810,12 @@ $icon-line-weight: 2;
 
   &>.notifications {
     &>a {
+      padding-right: 0.875rem !important;
       &>svg {
-        width: 18px;
+        width: 14px;
+      }
+      &::after {
+        display: none !important;
       }
     }
   }
@@ -819,29 +824,10 @@ $icon-line-weight: 2;
 @include breakpoint(small only) {
   .main-menu .menu {
     justify-content: space-around;
-
-    &>.home {
-      order: -6;
-    }
-
-    &>.search {
-      order: -5;
-    }
-
-    &>.spaces {
-      order: -4;
-    }
-
-    &>.notifications {
-      order: -3;
-    }
-
-    &>.main-menu-icon {
-      order: -2;
-    }
-
-    &>.avatar {
-      order: -1;
+    @for $i from 1 through 10 {
+      &>[data-index='$i'] {
+        order: $i - 10;
+      }
     }
 
     &>.flex-spacer-left {
@@ -856,6 +842,11 @@ $icon-line-weight: 2;
       color: $very-dark-gray;
       fill: currentColor;
     }
+    &>.home {
+      &>a>b {
+        height: 0.6875rem;
+      }
+    }
 
     &>.spaces {
       &>a {
@@ -864,7 +855,7 @@ $icon-line-weight: 2;
         }
 
         &>svg {
-          width: 18px;
+          width: 14px;
         }
 
         &:after {
