@@ -232,8 +232,8 @@ code {
   display: flex;
   align-items: center;
   height: 65px;
-  .small & {
-    height: 40px;
+  &.small, .small & {
+    height: 36px;
   }
   input,
   textarea {
@@ -243,7 +243,7 @@ code {
 .avatar-container {
   width: calc(65px + 20px);
   .small & {
-    width: calc(36px + 5px);
+    width: 36px;
   }
 }
 .user-meta {
@@ -598,10 +598,6 @@ hr {
   z-index: 1000;
   .menu {
     font-size: 0.875rem;
-    ul,
-    li {
-      border: none;
-    }
     li {
       &.menu-main-expand {
         position: static;
@@ -622,7 +618,7 @@ hr {
   }
 }
 @include breakpoint(small) {
-  .main-menu .accordion-menu li:not([data-index]) {
+  .main-menu .accordion-menu li:not(.navbar-icon) {
     display: none;
     #menu-state:checked~& {
       display: block;
@@ -637,7 +633,7 @@ hr {
 
 .dropdown .is-dropdown-submenu,
 .accordion-menu .is-accordion-submenu {
-  border-top: $border;
+  // border-top: $border;
   border-radius: 0 0 $global-radius $global-radius;
   overflow: hidden;
   box-shadow: $global-drop-shadow;
@@ -668,7 +664,7 @@ hr {
     line-height: 0;
     margin-top: 0.1em;
   }
-  &>[data-index] {
+  &>.navbar-icon {
     width: initial;
     order: -1;
   }
@@ -821,27 +817,41 @@ $icon-line-weight: 2;
   }
 }
 
-@include breakpoint(small only) {
+@include breakpoint(medium) {
   .main-menu .menu {
-    justify-content: space-around;
-    @for $i from 1 through 10 {
-      &>[data-index='$i'] {
-        order: $i - 10;
+    @for $i from 1 through 5 {
+      &>[data-order='#{$i}'] {
+        order: $i;
+        @if ($i == 1) {
+          margin-left: auto;
+        }
       }
     }
+  }
+}
 
+@include breakpoint(small down) {
+  .main-menu .menu {
+    justify-content: space-around;
+    &>li {
+      &.navbar-icon {
+        flex-grow: 1;
+        flex-basis: 0;
+      }
+      &>a {
+          height: 48px;
+          box-sizing: border-box;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          color: $very-dark-gray;
+          fill: currentColor;
+      }
+    }
     &>.flex-spacer-left {
       margin-left: initial;
     }
 
-    li a {
-      height: 48px;
-      box-sizing: border-box;
-      align-items: center;
-      display: flex;
-      color: $very-dark-gray;
-      fill: currentColor;
-    }
     &>.home {
       &>a>b {
         height: 0.6875rem;
@@ -874,19 +884,42 @@ $icon-line-weight: 2;
 .tabs {
   display: flex;
   border: none;
-}
-.tabs-title {
-  width: 100%;
-  text-align: center;
-  float: initial;
-  a {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
+  .tabs-title {
+    text-align: center;
+    float: initial;
+    a {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: inherit;
+    }
   }
-}
-.tabs-content {
-  border: none;
-  color: inherit;
+
+  .tabs-content {
+    border: none;
+    color: inherit;
+  }
+  &.line {
+    border-bottom: $border;
+    padding: 0 $global-padding;
+    .tabs-title {
+      &>a {
+        &:hover {
+          background: none;
+          box-shadow: inset 0 -2px $light-gray;
+        }
+        &:focus,
+        &[aria-selected='true'] {
+          background: none;
+          box-shadow: inset 0 -2px $very-dark-gray;
+        }
+      }
+    }
+  }
+  &.bar {
+    .tabs-title {
+      width: 100%;
+    }
+  }
 }

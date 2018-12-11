@@ -62,6 +62,7 @@
 
 @import 'util/util';
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300|Roboto:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:500,700');
 
 @font-face {
   font-family: Myriad Pro;
@@ -85,7 +86,7 @@
 // ---------
 
 $global-font-size: 16px;
-$global-width: rem-calc(1200);
+$global-width: rem-calc(960);
 $global-lineheight: 1.5;
 $foundation-palette: (
   // primary: #1779ba,
@@ -105,7 +106,7 @@ $black: #333;
 $white: #fefefe;
 $body-background: $light-gray;
 $body-font-color: $black;
-$body-font-family: 'Myriad Pro', 'Roboto', Helvetica, Arial, sans-serif;
+$body-font-family: 'Myriad Pro', 'PT Sans', 'Roboto', Helvetica, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
