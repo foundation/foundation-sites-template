@@ -116,9 +116,12 @@ $global-weight-bold: bold;
 $global-radius: 3px;
 $global-radius-small: 2px;
 $global-menu-padding: 0.75rem 0.875rem;
+
 $global-menu-nested-margin: 1rem;
 $global-text-direction: ltr;
 $global-flexbox: true;
+$global-gutter-small: 10px;
+$global-gutter-large: 15px;
 $global-prototype-breakpoints: false;
 $global-button-cursor: auto;
 $global-color-pick-contrast-tolerance: 0;
@@ -151,8 +154,8 @@ $breakpoint-classes: (small medium large xlarge xxlarge);
 $grid-row-width: $global-width;
 $grid-column-count: 12;
 $grid-column-gutter: (
-  small: 10px,
-  medium: 10px,
+  small: $global-gutter-small,
+  medium: $global-gutter-small,
 );
 $grid-column-align-edge: true;
 $grid-column-alias: 'columns';
@@ -901,9 +904,9 @@ $xy-grid: true;
 $grid-container: $global-width;
 $grid-columns: 12;
 $grid-margin-gutters: (
-  small: 10px,
-  medium: 10px,
-  large: 15px
+  small: $global-gutter-small,
+  medium: $global-gutter-small,
+  large: $global-gutter-large
 );
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;

@@ -18,6 +18,7 @@
 //   13. Menu
 //   14. Icons
 //   15. Tabs
+//   16. Scroll Snapping
 
 
 
@@ -946,3 +947,74 @@ $icon-line-weight: 2;
     }
   }
 }
+
+// 16. Scroll Snapping
+// ---------
+
+.scroll-snap-container-x {
+  display: flex;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.scroll-snap-element {
+  &>span {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 1rem;
+    &+* {
+      margin-top: 0.5rem;
+    }
+  }
+  &.start {
+    scroll-snap-align: start;
+  }
+  width: initial !important;
+  max-width: 100%;
+  box-sizing: content-box;
+  @include breakpoint(small) {
+    @include xy-cell($gutter-type: padding, $breakpoint: small);
+  }
+  @include breakpoint(medium) {
+    @include xy-cell($gutter-type: padding, $breakpoint: medium);
+  }
+  @include breakpoint(large) {
+    @include xy-cell($gutter-type: padding, $breakpoint: large);
+  }
+  margin: 0;
+}
+
+.scroll-snap-container-x {
+  .grid-margin-x {
+    @for $i from 1 through $grid-column-count {
+      &>.small-#{$i} {
+        width: calc(100vw / (#{$grid-column-count} / #{$i}) - #{$global-gutter-small})
+      }
+    }
+    @include breakpoint(medium) {
+      @for $i from 1 through $grid-column-count {
+        &>.medium-#{$i} {
+          width: calc(100vw / (#{$grid-column-count} / #{$i}) - #{$global-gutter-small})
+        }
+      }
+    }
+    @include breakpoint(large) {
+      @for $i from 1 through $grid-column-count {
+        &>.large-#{$i} {
+          width: calc(100vw / (#{$grid-column-count} / #{$i}) - #{$global-gutter-large})
+        }
+      }
+    }
+    @include breakpoint(xlarge) {
+      @for $i from 1 through $grid-column-count {
+        &>.xlarge-#{$i} {
+          width: calc(#{$global-width} / (#{$grid-column-count} / #{$i}) - 0.9375rem)
+        }
+      }
+    }
+  }
+}
+
+// .menu-main-expand .is-dropdown-submenu {
+//   display: block !important;
+// }
