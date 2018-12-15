@@ -329,7 +329,8 @@ code {
   background-repeat: repeat;
   background-position: center;
 
-  .large>& {
+  .large>&,
+  .large>a>& {
     height: 200px;
     max-height: 25vw;
     min-height: 65px;
@@ -973,13 +974,13 @@ $icon-line-weight: 2;
   max-width: 100%;
   box-sizing: content-box;
   @include breakpoint(small) {
-    @include xy-cell($gutter-type: padding, $breakpoint: small);
+    @include xy-cell($gutter-type: padding, $gutter-position: top right bottom left, $breakpoint: small);
   }
   @include breakpoint(medium) {
-    @include xy-cell($gutter-type: padding, $breakpoint: medium);
+    @include xy-cell($gutter-type: padding, $gutter-position: top right bottom left, $breakpoint: medium);
   }
   @include breakpoint(large) {
-    @include xy-cell($gutter-type: padding, $breakpoint: large);
+    @include xy-cell($gutter-type: padding, $gutter-position: top right bottom left, $breakpoint: large);
   }
   margin: 0;
 }
@@ -988,27 +989,27 @@ $icon-line-weight: 2;
   .grid-margin-x {
     @for $i from 1 through $grid-column-count {
       &>.small-#{$i} {
-        width: calc(100vw / (#{$grid-column-count} / #{$i}) - #{$global-gutter-small})
+        width: calc((100vw - #{$global-gutter-small}) / (#{$grid-column-count} / #{$i}) - #{$global-gutter-small})
       }
     }
     @include breakpoint(medium) {
       @for $i from 1 through $grid-column-count {
         &>.medium-#{$i} {
-          width: calc(100vw / (#{$grid-column-count} / #{$i}) - #{$global-gutter-small})
+          width: calc((100vw - #{$global-gutter-small}) / (#{$grid-column-count} / #{$i}) - #{$global-gutter-small})
         }
       }
     }
     @include breakpoint(large) {
       @for $i from 1 through $grid-column-count {
         &>.large-#{$i} {
-          width: calc(100vw / (#{$grid-column-count} / #{$i}) - #{$global-gutter-large})
+          width: calc((100vw - #{$global-gutter-large}) / (#{$grid-column-count} / #{$i}) - #{$global-gutter-large})
         }
       }
     }
     @include breakpoint(xlarge) {
       @for $i from 1 through $grid-column-count {
         &>.xlarge-#{$i} {
-          width: calc(#{$global-width} / (#{$grid-column-count} / #{$i}) - 0.9375rem)
+          width: calc((#{$global-width} - #{$global-gutter-large}) / (#{$grid-column-count} / #{$i}) - #{$global-gutter-large})
         }
       }
     }
