@@ -602,8 +602,6 @@ hr {
     font-size: 0.875rem;
     li {
       &.menu-main-expand {
-        position: static;
-
         .menu {
           width: 100%;
         }
@@ -620,7 +618,7 @@ hr {
   }
 }
 @include breakpoint(small) {
-  .main-menu .accordion-menu li:not(.navbar-icon) {
+  .main-menu .accordion-menu>li:not(.navbar-icon) {
     display: none;
     #menu-state:checked~& {
       display: block;
@@ -664,8 +662,13 @@ hr {
     margin-top: 0.1em;
   }
   &>.navbar-icon {
+    position: static;
     width: initial;
-    order: -1;
+    .submenu {
+      position: absolute;
+      left: 0;
+      background: $white;
+    }
   }
 }
 .dropdown, 
@@ -984,32 +987,27 @@ $icon-line-weight: 2;
   }
   margin: 0;
 }
+@function strip-unit($number) {
+  @if type-of($number)=='number'and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
 
 .scroll-snap-container-x {
   .grid-margin-x {
-    @for $i from 1 through $grid-column-count {
-      &>.small-#{$i} {
-        width: calc((100vw - #{$global-gutter-small}) / (#{$grid-column-count} / #{$i}) - #{$global-gutter-small})
-      }
-    }
-    @include breakpoint(medium) {
-      @for $i from 1 through $grid-column-count {
-        &>.medium-#{$i} {
-          width: calc((100vw - #{$global-gutter-small}) / (#{$grid-column-count} / #{$i}) - #{$global-gutter-small})
-        }
-      }
-    }
-    @include breakpoint(large) {
-      @for $i from 1 through $grid-column-count {
-        &>.large-#{$i} {
-          width: calc((100vw - #{$global-gutter-large}) / (#{$grid-column-count} / #{$i}) - #{$global-gutter-large})
-        }
-      }
-    }
-    @include breakpoint(xlarge) {
-      @for $i from 1 through $grid-column-count {
-        &>.xlarge-#{$i} {
-          width: calc((#{$global-width} - #{$global-gutter-large}) / (#{$grid-column-count} / #{$i}) - #{$global-gutter-large})
+    @each $breakpoint, $width in $breakpoints {
+      @include breakpoint($breakpoint) {
+        @for $i from 1 through $grid-column-count {
+          $gutter: map-get($grid-margin-gutters, #{$breakpoint});
+          &>.#{$breakpoint}-#{$i} {
+            $container-width: 100vw;
+            @if (strip-unit(rem-calc(strip-unit($width))) >= strip-unit($global-width)) {
+              $container-width: $global-width;
+            }
+            width: calc((#{$container-width} - #{$gutter}) / (#{$grid-column-count} / #{$i}) - #{$gutter});
+          }
         }
       }
     }

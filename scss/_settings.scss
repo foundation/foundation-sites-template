@@ -906,7 +906,9 @@ $grid-columns: 12;
 $grid-margin-gutters: (
   small: $global-gutter-small,
   medium: $global-gutter-small,
-  large: $global-gutter-large
+  large: $global-gutter-large,
+  xlarge: $global-gutter-large,
+  xxlarge: $global-gutter-large
 );
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
