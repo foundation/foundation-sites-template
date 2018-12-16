@@ -602,6 +602,7 @@ hr {
     font-size: 0.875rem;
     li {
       &.menu-main-expand {
+        position: static;
         .menu {
           width: 100%;
         }
@@ -844,6 +845,10 @@ $icon-line-weight: 2;
     @for $i from 1 through 5 {
       &>[data-order='#{$i}'] {
         order: $i;
+        &>.is-dropdown-submenu {
+          right: 0 !important;
+          left: auto !important;
+        }
         @if ($i == 1) {
           margin-left: auto;
         }
@@ -957,7 +962,7 @@ $icon-line-weight: 2;
 
 .scroll-snap-container-x {
   display: flex;
-  scroll-snap-type: x mandatory;
+  @include crossBrowser(scroll-snap-type, x mandatory);
   overflow-x: auto;
   overflow-y: hidden;
 }
@@ -971,7 +976,7 @@ $icon-line-weight: 2;
     }
   }
   &.start {
-    scroll-snap-align: start;
+    @include crossBrowser(scroll-snap-align, start);
   }
   width: initial !important;
   max-width: 100%;
