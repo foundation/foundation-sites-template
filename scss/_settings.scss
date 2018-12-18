@@ -841,7 +841,7 @@ $tab-background: none;
 $tab-color: $primary-color;
 $tab-background-active: $light-gray;
 $tab-active-color: $primary-color;
-$tab-item-font-size: rem-calc(12);
+$tab-item-font-size: inherit;
 $tab-item-background-hover: $very-light-gray;
 $tab-item-padding: 0;
 $tab-expand-max: 6;

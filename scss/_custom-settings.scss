@@ -3,7 +3,7 @@
 //
 //  Table of Contents:
 //
-//   1. Mixins
+//   1. Mixins and Functions
 //   2. Grid
 //   3. Typography
 //   4. Card
@@ -22,24 +22,16 @@
 
 
 
-// 1. Mixins
+// 1. Mixins and Functions
 // ---------
 
-@mixin foundation-palette($selector, $prepend: '', $property: 'color', $colors: ('primary', 'secondary', 'success', 'warning', 'alert')) {
-  @each $color in $colors {
-    #{$prepend}.#{$color} #{$selector} {
-      #{$property}: get-color($color);
-    }
-  }
-}
 
-@mixin foundation-palette-hover($selector, $prepend: '', $colors: ('primary', 'secondary', 'success', 'warning', 'alert')) {
-  @each $color in $colors {
-    #{$prepend}.#{$color} #{$selector} {
-      color: get-color($color);
-      background: none;
-      #{$prepend}:hover {
-        color: scale-color(get-color($color), $lightness: -15%);
+@mixin foundation-palette($selector: '&', $child: '', $property: 'color') {
+  @each $color-name, $color in $foundation-palette {
+    #{$selector}.#{$color-name} #{$child} {
+      #{$property}: $color;
+      &:hover {
+        #{$property}: scale-color($color, $lightness: -15%);
       }
     }
   }
@@ -51,12 +43,21 @@
   #{$property}: $val;
 }
 
+@function strip-unit($number) {
+  @if type-of($number)=='number'and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+
 // 2. Grid
 // ---------
 
-.grid-container {
-  position: relative;
-}
+// .grid-container {
+//   position: relative;
+// }
 .cell {
   position: relative;
 }
@@ -71,7 +72,8 @@ a {
   &:focus {
     outline: none;
   }
-  @include foundation-palette('', '&');
+  @include foundation-palette();
+  @include foundation-palette('li', '>&');
 }
 small {
   color: $dark-gray;
@@ -101,7 +103,7 @@ code {
     display: flex;
     flex-direction: column;
     padding: 0 !important;
-    @include foundation-palette('', '&');
+    @include foundation-palette();
   }
   h1, h2, h3, h4, h5, h6 {
     display: flex;
@@ -451,7 +453,7 @@ code {
       color: scale-color(get-color(primary), $lightness: -15%);
     }
   }
-  @include foundation-palette-hover('input:checked ~ .switch-paddle', '&');
+  @include foundation-palette($child: 'input:checked ~ .switch-paddle');
 }
 
 // 10. Button & Input
@@ -489,7 +491,7 @@ input {
   display: flex;
   align-items: center;
   font-size: $paragraph-font-size;
-  @include foundation-palette('', '&');
+  @include foundation-palette();
   .fa {
     font-size: 1rem;
     margin-right: 0.5em;
@@ -618,6 +620,9 @@ hr {
     }
   }
 }
+li[role=menuitem] {
+  list-style: none;
+}
 @include breakpoint(small) {
   .main-menu .accordion-menu>li:not(.navbar-icon) {
     display: none;
@@ -634,7 +639,7 @@ hr {
 
 .dropdown .is-dropdown-submenu,
 .accordion-menu .is-accordion-submenu {
-  // border-top: $border;
+  border-top: $border;
   border-radius: 0 0 $global-radius $global-radius;
   overflow: hidden;
   box-shadow: $global-drop-shadow;
@@ -935,7 +940,7 @@ $icon-line-weight: 2;
   }
   &.line {
     border-bottom: $border;
-    padding: 0 $global-padding;
+    // padding: 0 $global-padding;
     .tabs-title {
       &>a {
         &:hover {
@@ -992,33 +997,46 @@ $icon-line-weight: 2;
   }
   margin: 0;
 }
-@function strip-unit($number) {
-  @if type-of($number)=='number'and not unitless($number) {
-    @return $number / ($number * 0 + 1);
-  }
-  @return $number;
-}
 
-
+/**
+ * Todo Create a Fallback if global width is bigger than the biggestbbreakpoint defined in a cell.
+ * $breakpoint-fallback is a start, not finished yet, though.
+ * At the moment $global width should no exceed width of 'large' breakpoint.
+ */
 .scroll-snap-container-x {
   .grid-margin-x {
+    $breakpoint-fallback: ();
+    // loop through each breakpoint-list-item.
     @each $breakpoint, $width in $breakpoints {
+      $index: index(($breakpoints), ($breakpoint $width)) !global;
+      @if $index==1 {
+        $breakpoint-fallback: append($breakpoint-fallback, $breakpoint);
+      }
+      // set-up media-query.
       @include breakpoint($breakpoint) {
+        // loop through all possible column counts.
         @for $i from 1 through $grid-column-count {
+          // set gutter width
           $gutter: map-get($grid-margin-gutters, #{$breakpoint});
           &>.#{$breakpoint}-#{$i} {
             $container-width: 100vw;
+            /*  
+             *  If breakpoint width is greater or equal to global width we set the
+             *  reference width from 100vw to the gloabl width.
+             */
             @if (strip-unit(rem-calc(strip-unit($width))) >= strip-unit($global-width)) {
               $container-width: $global-width;
             }
+            // This is where the magic happens.
             width: calc((#{$container-width} - #{$gutter}) / (#{$grid-column-count} / #{$i}) - #{$gutter});
           }
         }
       }
+      $breakpoint-fallback: append($breakpoint-fallback, $breakpoint);
     }
   }
 }
 
-// .menu-main-expand .is-dropdown-submenu {
-//   display: block !important;
-// }
+.menu-main-expand .is-dropdown-submenu {
+  display: block !important;
+}
