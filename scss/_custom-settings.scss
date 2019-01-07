@@ -609,17 +609,97 @@ hr {
           width: 100%;
         }
       }
+      a:hover {
+        background: $very-light-gray;
+      }
+      &.no-arrow {
+        &>a {
+          padding-right: 0.875rem;
+          &::after {
+            display: none;
+          }
+        }
+      }
       input[type=search] {
         border: none;
         box-shadow: none;
       }
-
-      a:hover {
-        background: $very-light-gray;
+      .menu-anchor {
+        fill: currentColor;
+      }
+    }
+    &>.navbar-icon {
+      &>a {
+        justify-content: center;
+        min-width: 48px;
+        &>svg {
+          width: 0.875rem;
+        }
       }
     }
   }
 }
+
+@include breakpoint(medium) {
+  .main-menu .menu {
+    &>.navbar-icon {
+      &>a {
+        &>span {
+          display: initial;
+          &+svg {
+            display: none;
+          }
+        }
+      }
+    }
+    @for $i from 1 through 5 {
+      &>[data-order='#{$i}'] {
+        order: $i;
+        &>.is-dropdown-submenu {
+          right: 0 !important;
+          left: auto !important;
+        }
+        @if ($i == 1) {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint(small down) {
+  .main-menu .menu {
+    justify-content: space-around;
+    &>li {
+      &.navbar-icon {
+        justify-content: center;
+        flex-grow: 1;
+        flex-basis: 0;
+        order: -1;
+        &>a {
+          &>span {
+            display: none;
+          }
+          &:after {
+            display: none;
+          }
+        }
+      }
+      &>.menu-anchor {
+          height: 48px;
+          box-sizing: border-box;
+          align-items: center;
+          display: flex;
+          color: $very-dark-gray;
+          fill: currentColor;
+      }
+    }
+    &>.flex-spacer-left {
+      margin-left: initial;
+    }
+  }
+}
+
 li[role=menuitem] {
   list-style: none;
 }
@@ -643,6 +723,7 @@ li[role=menuitem] {
   border-radius: 0 0 $global-radius $global-radius;
   overflow: hidden;
   box-shadow: $global-drop-shadow;
+  z-index: -1; // enforce drop-shadow hierachie.
   a {
     border-right: none;
   }
@@ -682,13 +763,7 @@ li[role=menuitem] {
   &>.no-padding>a {
     padding: 0 !important;
   }
-
   &>.avatar {
-    &>a {
-      &::after {
-        display: none !important;
-      }
-    }
     img {
       width: 48px;
       height: 48px;
@@ -723,6 +798,8 @@ li[role=menuitem] {
   }
 }
 
+
+
 // 14. Icons
 // ---------
 
@@ -742,7 +819,6 @@ $icon-line-weight: 2;
   box-sizing: border-box;
 }
 .search-icon {
-
   &:before,
   &:after {
     content: '';
@@ -827,94 +903,6 @@ $icon-line-weight: 2;
     }
   }
 }
-.main-menu .menu {
-  li .menu-anchor {
-    fill: currentColor;
-  }
-
-  &>.notifications {
-    &>a {
-      padding-right: 0.875rem !important;
-      &>svg {
-        width: 14px;
-      }
-      &::after {
-        display: none !important;
-      }
-    }
-  }
-}
-
-@include breakpoint(medium) {
-  .main-menu .menu {
-    @for $i from 1 through 5 {
-      &>[data-order='#{$i}'] {
-        order: $i;
-        &>.is-dropdown-submenu {
-          right: 0 !important;
-          left: auto !important;
-        }
-        @if ($i == 1) {
-          margin-left: auto;
-        }
-      }
-    }
-    .notifications {
-      &>a {
-        justify-content: center;
-        width: 48px;
-      }
-    }
-  }
-}
-
-@include breakpoint(small down) {
-  .main-menu .menu {
-    justify-content: space-around;
-    &>li {
-      &.navbar-icon {
-        flex-grow: 1;
-        flex-basis: 0;
-      }
-      &>.menu-anchor {
-          height: 48px;
-          box-sizing: border-box;
-          align-items: center;
-          justify-content: center;
-          display: flex;
-          color: $very-dark-gray;
-          fill: currentColor;
-      }
-    }
-    &>.flex-spacer-left {
-      margin-left: initial;
-    }
-
-    &>.home {
-      &>a>b {
-        height: 0.6875rem;
-      }
-    }
-
-    &>.spaces {
-      &>a {
-        &>span {
-          display: none;
-        }
-
-        &>svg {
-          width: 14px;
-        }
-
-        &:after {
-          display: none;
-        }
-      }
-    }
-  }
-
-}
-
 
 // 15. Tabs
 // ---------
@@ -970,6 +958,7 @@ $icon-line-weight: 2;
   @include crossBrowser(scroll-snap-type, x mandatory);
   overflow-x: auto;
   overflow-y: hidden;
+
 }
 .scroll-snap-element {
   &>span {
@@ -1004,6 +993,7 @@ $icon-line-weight: 2;
  * At the moment $global width should no exceed width of 'large' breakpoint.
  */
 .scroll-snap-container-x {
+  $widescreen-breakpoint: '';
   .grid-margin-x {
     $breakpoint-fallback: ();
     // loop through each breakpoint-list-item.
@@ -1025,6 +1015,9 @@ $icon-line-weight: 2;
              *  reference width from 100vw to the gloabl width.
              */
             @if (strip-unit(rem-calc(strip-unit($width))) >= strip-unit($global-width)) {
+              @if ($widescreen-breakpoint == '') {
+                $widescreen-breakpoint: $breakpoint;
+              }
               $container-width: $global-width;
             }
             // This is where the magic happens.
@@ -1035,8 +1028,8 @@ $icon-line-weight: 2;
       $breakpoint-fallback: append($breakpoint-fallback, $breakpoint);
     }
   }
-}
-
-.menu-main-expand .is-dropdown-submenu {
-  display: block !important;
+  width: 100vw;
+  @include breakpoint($widescreen-breakpoint) {
+    width: $global-width;
+  }
 }

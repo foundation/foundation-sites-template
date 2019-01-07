@@ -38,3 +38,20 @@
 
 // 2. Grid
 // ---------
+@include breakpoint(small down) {
+  .main-menu .menu {
+    &>li {
+      &.navbar-icon {
+        &>a>b {
+          height: 0.6875rem;
+        }
+      }
+    }
+  }
+}
+
+
+// DEV
+.menu-main-expand .is-dropdown-submenu {
+  display: block !important;
+}
