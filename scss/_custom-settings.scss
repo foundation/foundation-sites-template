@@ -1048,12 +1048,26 @@ $icon-line-weight: 2;
 .section-title {
   font-size: 2rem;
   font-weight: bold;
+  margin-bottom: 2rem;
 }
 .section-header {
   font-size: 1.5rem;
   font-weight: bold;
+  margin-bottom: 1.5rem;
 }
 
 .section-subheader {
   font-size: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.section-wrap {
+  margin: 2rem auto;
+  width: 100%;
+  max-width: $global-width;
+  &.small {
+    max-width: calc( $global-width / 3 * 2 );
+  }
+  @include breakpoint(medium) {
+    width: $global-width;
+  }
 }
