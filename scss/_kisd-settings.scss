@@ -10,31 +10,7 @@
 // 1. Mixins
 // ---------
 
-@mixin foundation-palette($selector, $prepend: '', $property: 'color', $colors: ('primary', 'secondary', 'success', 'warning', 'alert')) {
-  @each $color in $colors {
-    #{$prepend}.#{$color} #{$selector} {
-      #{$property}: get-color($color);
-    }
-  }
-}
 
-@mixin foundation-palette-hover($selector, $prepend: '', $colors: ('primary', 'secondary', 'success', 'warning', 'alert')) {
-  @each $color in $colors {
-    #{$prepend}.#{$color} #{$selector} {
-      color: get-color($color);
-      background: none;
-      #{$prepend}:hover {
-        color: scale-color(get-color($color), $lightness: -15%);
-      }
-    }
-  }
-}
-@mixin crossBrowser($property, $val) {
-  -webkit-#{$property}: $val;
-  -moz-#{$property}: $val;
-  -ms-#{$property}: $val;
-  #{$property}: $val;
-}
 
 // 2. Grid
 // ---------
@@ -53,5 +29,5 @@
 
 // DEV
 .menu-main-expand .is-dropdown-submenu {
-  display: block !important;
+  // display: block !important;
 }

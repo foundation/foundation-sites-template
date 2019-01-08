@@ -235,8 +235,13 @@ code {
   display: flex;
   align-items: center;
   height: 65px;
-  &.small, .small & {
+  &.small,
+  .small & {
     height: 36px;
+  }
+  &.large,
+  .large & {
+    height: 128px;
   }
   input,
   textarea {
@@ -247,6 +252,9 @@ code {
   width: calc(65px + 20px);
   .small & {
     width: 36px;
+  }
+  .large & {
+    width: 128px;
   }
 }
 .user-meta {
