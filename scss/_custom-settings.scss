@@ -112,9 +112,6 @@ code {
   &.muted {
     opacity: 0.5;
   }
-  &.large {
-    margin: 15px 0;
-  }
   &:not(.static):hover {
     cursor: pointer;
     box-shadow: $global-drop-shadow;
@@ -141,21 +138,21 @@ code {
       background: $very-light-gray;
     }
   }
-  &.small {
+  &.padding-small {
     padding: 5px;
   }
-  &.large {
+  &.padding-large {
     padding: 16px 20px;
   }
 
-  &.xlarge {
+  &.padding-xlarge {
     padding: 20px 30px;
   }
   &.no-padding {
     padding: 0;
     & > a {
       padding: 8px 12px;
-      &.small > a {
+      &.padding-small>a {
         padding: 5px;
       }
     }
@@ -234,50 +231,53 @@ code {
 .user {
   display: flex;
   align-items: center;
-  height: 65px;
-  &.small,
-  .small & {
-    height: 36px;
-  }
-  &.large,
+  height: 36px;
   .large & {
+    height: 65px;
+  }
+  .xlarge & {
     height: 128px;
   }
   input,
   textarea {
     @extend .input-reset;
   }
+  input[type='checkbox'] {
+    margin: 0 1rem 0 0;
+  }
 }
 .avatar-container {
-  width: calc(65px + 20px);
-  .small & {
-    width: 36px;
-  }
+  width: 36px;
+  min-width: 36px;
   .large & {
+    width: 65px;
+    min-width: 65px;
+  }
+  .xlarge & {
     width: 128px;
+    min-width: 128px;
   }
 }
 .user-meta {
   padding: 0 1em;
-  width: 100%;
+  flex-grow: 1;
   line-height: 1;
-  &.checkable {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
 }
+
 .user-name {
   font-size: 0.875em;
-  display: flex;
-  align-items: center;
+  height: 1.25rem;
   .fa {
     margin-left: 1em;
     color: #aaa;
   }
 }
-.user-mail {
+.user-info {
   font-size: 0.75em;
+  height: 1.25rem;
   color: #aaa;
 }
 
