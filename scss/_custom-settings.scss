@@ -1041,3 +1041,19 @@ $icon-line-weight: 2;
     width: $global-width;
   }
 }
+
+// 17. Sections
+// -----------
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.section-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.section-subheader {
+  font-size: 1.25rem;
+}
