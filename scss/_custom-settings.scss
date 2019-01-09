@@ -67,6 +67,9 @@
 
 p {
   font-size: $paragraph-font-size;
+  &.small {
+    font-size: $small-font-size;
+  }
 }
 a {
   &:focus {
@@ -259,25 +262,26 @@ code {
   }
 }
 .user-meta {
-  padding: 0 1em;
+  padding: 0 1rem;
   flex-grow: 1;
   line-height: 1;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   height: 100%;
 }
 
 .user-name {
-  font-size: 0.875em;
-  height: 1.25rem;
+  font-size: 0.875rem;
+  height: 0.875rem;
+  margin-bottom: 0.5rem;
   .fa {
     margin-left: 1em;
     color: #aaa;
   }
 }
 .user-info {
-  font-size: 0.75em;
-  height: 1.25rem;
+  font-size: 0.75rem;
+  height: 0.75rem;
   color: #aaa;
 }
 
