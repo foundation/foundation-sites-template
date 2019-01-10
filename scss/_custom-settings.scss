@@ -79,7 +79,7 @@ a {
   @include foundation-palette('li', '>&');
 }
 small {
-  color: $dark-gray;
+  color: $very-dark-gray;
 }
 code {
   border-radius: $global-radius-small;
@@ -278,11 +278,27 @@ code {
     margin-left: 1em;
     color: #aaa;
   }
+  .large & {
+    font-size: 1rem;
+    height: 1rem;
+  }
+  .xlarge & {
+    font-size: 1.5rem;
+    height: 1.5rem;
+  }
 }
 .user-info {
   font-size: 0.75rem;
   height: 0.75rem;
   color: #aaa;
+  .large & {
+    font-size: 0.875rem;
+    height: 0.875rem;
+  }
+  .xlarge & {
+    font-size: 1rem;
+    height: 1rem;
+  }
 }
 
 .author-thumbnail {
