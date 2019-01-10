@@ -58,6 +58,7 @@
 // .grid-container {
 //   position: relative;
 // }
+
 .cell {
   position: relative;
 }
@@ -169,6 +170,9 @@ code {
   input, textarea {
     @extend .input-reset;
   }
+}
+.box-shadow {
+  box-shadow: $global-drop-shadow;
 }
 
 // 5. Spaces Card
