@@ -942,6 +942,13 @@ $icon-line-weight: 2;
 .tabs {
   display: flex;
   border: none;
+  font-size: $paragraph-font-size;
+  &.small {
+    font-size: $small-font-size;
+  }
+  &.large {
+    font-size: $global-font-size;
+  }
   .tabs-title {
     text-align: center;
     float: initial;
