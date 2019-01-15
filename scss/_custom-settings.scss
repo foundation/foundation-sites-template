@@ -27,15 +27,19 @@
 
 
 @mixin foundation-palette($selector: '&', $child: '', $property: 'color') {
-  @each $color-name, $color in $foundation-palette {
+
+  @each $color-name,
+  $color in $foundation-palette {
     #{$selector}.#{$color-name} #{$child} {
       #{$property}: $color;
+
       &:hover {
         #{$property}: scale-color($color, $lightness: -15%);
       }
     }
   }
 }
+
 @mixin crossBrowser($property, $val) {
   -webkit-#{$property}: $val;
   -moz-#{$property}: $val;
@@ -68,23 +72,29 @@
 
 p {
   font-size: $paragraph-font-size;
+
   &.small {
     font-size: $small-font-size;
   }
 }
+
 a {
   &:focus {
     outline: none;
   }
+
   @include foundation-palette();
   @include foundation-palette('li', '>&');
 }
+
 small {
   color: $very-dark-gray;
 }
+
 code {
   border-radius: $global-radius-small;
 }
+
 .input-reset {
   border: none;
   border-radius: 0;
@@ -101,6 +111,7 @@ code {
 
 .card {
   transition: box-shadow $global-transition-medium $global-transition-timing;
+
   .card-anchor {
     color: inherit;
     text-decoration: none;
@@ -109,42 +120,58 @@ code {
     padding: 0 !important;
     @include foundation-palette();
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     display: flex;
     align-items: center;
   }
+
   &.muted {
     opacity: 0.5;
   }
+
   &:not(.static):hover {
     cursor: pointer;
     box-shadow: $global-drop-shadow;
     transition: box-shadow $global-transition-short $global-transition-timing;
   }
 }
+
 .card-title {
   display: flex;
   align-items: center;
   font-size: 1rem;
   line-height: $header-lineheight;
   font-weight: 300;
+
   .fa {
     font-size: 0.75em;
     margin-right: 0.5em;
   }
 }
-.card-section, .card-divider {
+
+.card-section,
+.card-divider {
   padding: 8px 12px;
-  & > a {
+
+  &>a {
     width: 100%;
     text-decoration: none;
+
     &:hover {
       background: $very-light-gray;
     }
   }
+
   &.padding-small {
     padding: 5px;
   }
+
   &.padding-large {
     padding: 16px 20px;
   }
@@ -152,25 +179,33 @@ code {
   &.padding-xlarge {
     padding: 20px 30px;
   }
+
   &.no-padding {
     padding: 0;
-    & > a {
+
+    &>a {
       padding: 8px 12px;
+
       &.padding-small>a {
         padding: 5px;
       }
     }
   }
 }
+
 .card-divider {
   border-top: 1px solid $light-gray;
+
   &:first-child {
     border: none;
   }
-  input, textarea {
+
+  input,
+  textarea {
     @extend .input-reset;
   }
 }
+
 .box-shadow {
   box-shadow: $global-drop-shadow;
 }
@@ -192,28 +227,33 @@ code {
   max-width: 80%;
   border-radius: 0 2px 2px 0;
   align-items: center;
+
   span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   .fa {
     font-size: 0.75em;
     margin-right: 0.5em;
   }
 }
+
 .wide {
   width: 100%;
   max-width: 100%;
   padding: 0;
+
   .large {
     border-radius: 0;
     margin: 0;
   }
+
   @media (min-width: 1366px) {
     .space-title {
       left: calc(50vw - ((1080px - 20px) / 2));
-      border-radius: 2px;
+      border-radius: $global-radius-small;
     }
   }
 }
@@ -223,6 +263,7 @@ code {
     font-size: 1.5rem;
     white-space: normal;
     max-height: 3em;
+
     @media (max-width: 640px) {
       font-size: 1.25rem;
       white-space: nowrap;
@@ -239,32 +280,40 @@ code {
   display: flex;
   align-items: center;
   height: 36px;
+
   .large & {
     height: 65px;
   }
+
   .xlarge & {
     height: 128px;
   }
+
   input,
   textarea {
     @extend .input-reset;
   }
+
   input[type='checkbox'] {
     margin: 0 1rem 0 0;
   }
 }
+
 .avatar-container {
   width: 36px;
   min-width: 36px;
+
   .large & {
     width: 65px;
     min-width: 65px;
   }
+
   .xlarge & {
     width: 128px;
     min-width: 128px;
   }
 }
+
 .user-meta {
   padding: 0 1rem;
   flex-grow: 1;
@@ -278,27 +327,33 @@ code {
   font-size: 0.875rem;
   height: 0.875rem;
   margin-bottom: 0.5rem;
+
   .fa {
     margin-left: 1em;
     color: #aaa;
   }
+
   .large & {
     font-size: 1rem;
     height: 1rem;
   }
+
   .xlarge & {
     font-size: 1.5rem;
     height: 1.5rem;
   }
 }
+
 .user-info {
   font-size: 0.75rem;
   height: 0.75rem;
   color: #aaa;
+
   .large & {
     font-size: 0.875rem;
     height: 0.875rem;
   }
+
   .xlarge & {
     font-size: 1rem;
     height: 1rem;
@@ -332,56 +387,111 @@ code {
   display: flex;
   align-content: center;
   width: 100%;
-  img, iframe {
+
+  img,
+  iframe {
     position: absolute;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     height: 100%;
     width: 100%;
     object-fit: cover;
+
     /* IE 9+ Hack for object-fit. Possibly good option as standard as well */
-    @media screen and (min-width:0\0) and (min-resolution: +72dpi) {
+    @media screen and (min-width: 0\0) and (min-resolution: +72dpi) {
       height: auto;
       transform: translate(-50%, -50%);
     }
   }
-}
-.square {
-  padding-bottom: 100%;
-  height: 0; 
-}
-.letterbox {
-  padding-bottom: 56.25%;
-  height: 0; 
-}
-.space-header {
-  background: $very-light-gray;
-  padding-bottom: 65px;
-  height: 100%;
-  align-content: center;
-  background-size: 50px;
-  background-repeat: repeat;
-  background-position: center;
 
-  .large>&,
-  .large>a>& {
-    height: 200px;
-    max-height: 25vw;
-    min-height: 65px;
-    font-size: 1.5rem;
+  &.tint {
+    .title {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      padding: $global-padding;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 1.25rem;
+      text-align: center;
+      line-height: 1;
+      color: $white;
+      &>span {
+        margin-bottom: $global-margin;
+        &:last-child {
+          margin-bottom: initial;
+        }
+      }
+    }
+
+    &::after {
+      content: '';
+      background-color: rgba(0, 0, 0, 0.2);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: background-color $global-transition-medium $global-transition-timing;
+    }
   }
-}
-.post-header {
-  @extend .space-header;
-  padding-bottom: 100px;
 
-}
-.variable {
-  padding-bottom: 0;
-  height: 100%;
-  max-height: 200px;
-  img {
-    position: relative;
+  a:hover &.tint {
+    &::after {
+      content: '';
+      background-color: #ed624bcc;
+      transition: background-color $global-transition-medium $global-transition-timing;
+    }
+  }
+
+  &.square {
+    padding-bottom: 100%;
+    height: 0;
+  }
+
+  &.letterbox {
+    padding-bottom: 56.25%;
+    height: 0;
+  }
+
+  &.space-header {
+    background: $very-light-gray;
+    padding-bottom: 65px;
+    height: 100%;
+    align-content: center;
+
+    .large>&,
+    .large>a>& {
+      height: 200px;
+      max-height: 25vw;
+      min-height: 65px;
+      font-size: 1.5rem;
+    }
+  }
+
+  &.post-header {
+    @extend .space-header;
+    padding-bottom: 100px;
+  }
+
+  &.variable {
+    padding-bottom: 0;
+    height: 100%;
+    max-height: 200px;
+
+    img {
+      position: relative;
+    }
+  }
+
+  @for $i from 1 through 8 {
+    $number: $i * 50;
+
+    &.height-#{$number} {
+      height: 100%;
+      padding-bottom: #{$number}px;
+    }
   }
 }
 
@@ -401,7 +511,7 @@ code {
   background: #fff;
   border-left: 1px solid #f0f0f0;
   border-top: 1px solid #f0f0f0;
-  width: 20px; 
+  width: 20px;
   height: 20px;
   position: absolute;
   right: 17px;
@@ -410,6 +520,19 @@ code {
   transform: rotate(45deg);
   border-bottom-right-radius: 20px;
 }
+
+.space-info-container {
+  font-size: rem-calc( $global-font-size * 0.875 );
+
+  &.small {
+    font-size: rem-calc( $global-font-size * 0.75 );
+  }
+
+  &.large {
+    font-size: rem-calc( $global-font-size );
+  }
+}
+
 .space-info-block {
   flex-wrap: wrap;
   display: inline-flex;
@@ -418,21 +541,21 @@ code {
   margin: 3px;
   border-radius: $global-radius;
   overflow: hidden;
+
   & span {
     display: inline-block;
-    padding: 5px 8px;
+    padding: 0.25em 0.375em 0.125em;
+
     &:last-child {
       background: $light-gray;
       color: $very-dark-gray;
       font-weight: bold;
     }
   }
-  &.small {
-    font-size: 0.875em;
-  }
+
   & a {
     display: inline-block;
-    padding: 5px 8px;
+    padding: 0.25em 0.375em 0.125em;
     background: $light-gray;
     color: $very-dark-gray;
     font-weight: bold;
@@ -448,6 +571,7 @@ code {
 .switch {
   display: flex;
   align-items: center;
+
   .switch-paddle {
     padding: 0;
     display: flex;
@@ -455,13 +579,15 @@ code {
     border-radius: 0;
     height: 100%;
     background: none;
-    &:before {
+
+    &::before {
       content: '';
       background: $dark-gray;
       height: 1px;
       width: 100%;
     }
-    &:after {
+
+    &::after {
       content: '';
       top: initial;
       left: 0;
@@ -469,22 +595,27 @@ code {
       box-shadow: inset 0 0 0 1px $dark-gray;
       box-sizing: content-box;
     }
+
     &:hover {
-      &:after {
+      &::after {
         background: $light-gray;
       }
     }
   }
-  input:checked ~ .switch-paddle {
+
+  input:checked~.switch-paddle {
     color: get-color(primary);
     background: none;
-    &:after {
+
+    &::after {
       box-shadow: inset 0 0 0 1em currentColor;
     }
+
     &:hover {
       color: scale-color(get-color(primary), $lightness: -15%);
     }
   }
+
   @include foundation-palette($child: 'input:checked ~ .switch-paddle');
 }
 
@@ -492,42 +623,49 @@ code {
 // ---------
 
 .button-group {
-  &.radius {
-    .button {
-      border-radius: 0;
-      &:first-child {
-        border-radius: $global-radius 0 0 $global-radius;
-      }
+  .button {
+    border-radius: 0;
 
-      &:last-child {
-        border-radius: 0 $global-radius $global-radius 0;
-      }
+    &:first-child {
+      border-radius: $global-radius 0 0 $global-radius;
+    }
+
+    &:last-child {
+      border-radius: 0 $global-radius $global-radius 0;
     }
   }
 }
-button, .button {
-  &.radius, .radius & {
-    border-radius: $global-radius;
-  }
-  &:focus, &:active {
+
+button,
+.button {
+  border-radius: $global-radius;
+
+  &:focus,
+  &:active {
     background: none;
     outline: none;
   }
 }
+
 input {
-  &:focus, &:active {
+
+  &:focus,
+  &:active {
     outline: none;
   }
 }
+
 .arrow-button {
   display: flex;
   align-items: center;
   font-size: $paragraph-font-size;
   @include foundation-palette();
+
   .fa {
     font-size: 1rem;
     margin-right: 0.5em;
   }
+
   &::after {
     margin-left: auto;
     font-family: FontAwesome;
@@ -545,13 +683,14 @@ input {
   bottom: 0;
   cursor: pointer;
   border-radius: 0;
-  
-  &:hover:after {
+
+  &:hover::after {
     border-left: 1px solid #f0f0f0;
     color: $very-dark-gray;
   }
-  &:after {
-    content: '...'; 
+
+  &::after {
+    content: '...';
     display: inline-block;
     white-space: nowrap;
     padding: 15px 8px 20px;
@@ -561,7 +700,8 @@ input {
     letter-spacing: 2px;
   }
 }
-.reply-button { 
+
+.reply-button {
   position: absolute;
   width: 15px;
   height: 15px;
@@ -570,6 +710,7 @@ input {
   padding: 10px;
   box-sizing: content-box;
   fill: $dark-gray;
+
   &:hover {
     cursor: pointer;
     fill: get-color('success');
@@ -581,34 +722,44 @@ input {
 // ---------
 
 @mixin excerpt($font-size: 1em, $line-height: 1.4, $lines-to-show: 3, $expand: false) {
-  @if $expand == true {
-    max-height: initial; /* Fallback for non-webkit */
+  @if $expand==true {
+    max-height: initial;
+    /* Fallback for non-webkit */
     -webkit-line-clamp: initial;
     -webkit-box-orient: vertical;
     overflow: initial;
     text-overflow: initial;
-  } @else {
-    max-height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+  }
+
+  @else {
+    max-height: $font-size*$line-height*$lines-to-show;
+    /* Fallback for non-webkit */
     -webkit-line-clamp: $lines-to-show;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   line-height: $line-height;
-  display: block; /* Fallback for non-webkit */
+  display: block;
+  /* Fallback for non-webkit */
   display: -webkit-box;
   font-size: $font-size;
 }
+
 .description-excerpt {
   @include excerpt($lines-to-show: 3);
 }
+
 .description-excerpt-checkbox {
   position: absolute;
   margin: 0;
   opacity: 0;
-  &:checked ~ .description-excerpt {
+
+  &:checked~.description-excerpt {
     @include excerpt($expand: true);
   }
+
   &+label {
     vertical-align: initial;
     margin: initial;
@@ -621,49 +772,62 @@ input {
 
 
 $border: 1px solid $light-gray;
+
 hr {
   margin: 0 auto;
   border-bottom: $border;
 }
+
 .flex-spacer-left {
   margin-left: auto;
 }
+
 .main-menu {
   background-color: #fff;
   position: relative;
   z-index: 1000;
+
   .menu {
     font-size: 0.875rem;
+
     li {
       &.menu-main-expand {
         position: static;
+
         .menu {
           width: 100%;
         }
       }
+
       a:hover {
         background: $very-light-gray;
       }
+
       &.no-arrow {
         &>a {
           padding-right: 0.875rem;
+
           &::after {
             display: none;
           }
         }
       }
+
       input[type=search] {
         border: none;
         box-shadow: none;
       }
+
       .menu-anchor {
         fill: currentColor;
       }
     }
+
     &>.navbar-icon {
       &>a {
         justify-content: center;
         min-width: 48px;
+
         &>svg {
           width: 0.875rem;
         }
@@ -678,20 +842,24 @@ hr {
       &>a {
         &>span {
           display: initial;
+
           &+svg {
             display: none;
           }
         }
       }
     }
+
     @for $i from 1 through 5 {
       &>[data-order='#{$i}'] {
         order: $i;
+
         &>.is-dropdown-submenu {
           right: 0 !important;
           left: auto !important;
         }
-        @if ($i == 1) {
+
+        @if ($i==1) {
           margin-left: auto;
         }
       }
@@ -702,30 +870,35 @@ hr {
 @include breakpoint(small down) {
   .main-menu .menu {
     justify-content: space-around;
+
     &>li {
       &.navbar-icon {
         justify-content: center;
         flex-grow: 1;
         flex-basis: 0;
         order: -1;
+
         &>a {
           &>span {
             display: none;
           }
-          &:after {
+
+          &::after {
             display: none;
           }
         }
       }
+
       &>.menu-anchor {
-          height: 48px;
-          box-sizing: border-box;
-          align-items: center;
-          display: flex;
-          color: $very-dark-gray;
-          fill: currentColor;
+        height: 48px;
+        box-sizing: border-box;
+        align-items: center;
+        display: flex;
+        color: $very-dark-gray;
+        fill: currentColor;
       }
     }
+
     &>.flex-spacer-left {
       margin-left: initial;
     }
@@ -735,14 +908,17 @@ hr {
 li[role=menuitem] {
   list-style: none;
 }
+
 @include breakpoint(small) {
   .main-menu .accordion-menu>li:not(.navbar-icon) {
     display: none;
+
     #menu-state:checked~& {
       display: block;
     }
   }
 }
+
 .caret {
   content: '\f107';
   font-family: FontAwesome;
@@ -756,9 +932,11 @@ li[role=menuitem] {
   overflow: hidden;
   box-shadow: $global-drop-shadow;
   z-index: -1; // enforce drop-shadow hierachie.
+
   a {
     border-right: none;
   }
+
   li {
     &:first-child .submenu-anchor {
       padding-top: 1rem;
@@ -767,6 +945,7 @@ li[role=menuitem] {
     &:last-child .submenu-anchor {
       padding-bottom: 1rem;
     }
+
     .card-anchor {
       padding: 0;
     }
@@ -780,9 +959,11 @@ li[role=menuitem] {
     line-height: 0;
     margin-top: 0.1em;
   }
+
   &>.navbar-icon {
     position: static;
     width: initial;
+
     .submenu {
       position: absolute;
       left: 0;
@@ -790,11 +971,13 @@ li[role=menuitem] {
     }
   }
 }
-.dropdown, 
+
+.dropdown,
 .accordion-menu {
   &>.no-padding>a {
     padding: 0 !important;
   }
+
   &>.avatar {
     img {
       width: 48px;
@@ -802,27 +985,31 @@ li[role=menuitem] {
     }
   }
 }
+
 .dropdown {
   &>li>a {
     display: flex;
     align-items: center;
     height: 48px;
   }
+
   &.menu {
     &>li {
       &>a {
         @include breakpoint(medium down) {
-          padding: 0.5rem;  
+          padding: 0.5rem;
         }
       }
+
       &.is-dropdown-submenu-parent>a {
         &::after {
           @extend .caret;
           margin-right: 0.75rem;
           line-height: 0.5;
         }
+
         @include breakpoint(medium down) {
-          padding-right: 1.25rem;  
+          padding-right: 1.25rem;
         }
       }
     }
@@ -836,12 +1023,14 @@ li[role=menuitem] {
 // ---------
 
 $icon-line-weight: 2;
+
 #search-state {
   display: none;
 }
-.sandwich-icon, .search-icon {
+
+.sandwich-icon,
+.search-icon {
   cursor: pointer;
-  padding: 0;
   border-radius: 20px;
   position: relative;
   width: 48px;
@@ -850,9 +1039,11 @@ $icon-line-weight: 2;
   padding: 12px;
   box-sizing: border-box;
 }
+
 .search-icon {
-  &:before,
-  &:after {
+
+  &::before,
+  &::after {
     content: '';
     height: $icon-line-weight * 1px;
     position: absolute;
@@ -862,7 +1053,7 @@ $icon-line-weight: 2;
     transition-property: margin, width, height, transform, border-radius;
   }
 
-  &:before {
+  &::before {
     width: 14px;
     height: 14px;
     border-radius: 20px;
@@ -877,7 +1068,7 @@ $icon-line-weight: 2;
   }
 
 
-  &:after {
+  &::after {
     width: 6px;
     transform: translate(13px, 15px) rotate(45deg);
     @include crossBrowser(transform, translate(14px, (18 - $icon-line-weight) * 1px) rotate(45deg));
@@ -889,12 +1080,14 @@ $icon-line-weight: 2;
   }
 
 }
+
 .search input {
   display: none;
   position: absolute;
   left: 0;
   z-index: 10;
   width: calc(100% - 150px);
+
   #search-state:checked~nav & {
     display: block;
   }
@@ -903,12 +1096,14 @@ $icon-line-weight: 2;
 #menu-state {
   display: none;
 }
+
 .sandwich-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  &:before,
-  &:after {
+
+  &::before,
+  &::after {
     content: '';
     width: 20px;
     height: $icon-line-weight * 1px;
@@ -919,16 +1114,64 @@ $icon-line-weight: 2;
     transition-property: margin, width, height, transform, border-radius;
   }
 
-  &:before {
+  &::before {
     @include crossBrowser(transform, translate(0, -5px) rotate(0deg));
+
     #menu-state:checked~nav & {
       @include crossBrowser(transform, translate(0, 0) rotate(-45deg));
     }
   }
 
-    
-  &:after {
+
+  &::after {
     @include crossBrowser(transform, translate(0, 5px) rotate(0deg));
+
+    #menu-state:checked~nav & {
+      @include crossBrowser(transform, translate(0, 0) rotate(45deg));
+    }
+  }
+}
+
+.flat-arrow-down-icon {
+  cursor: pointer;
+  position: relative;
+  width: 48px;
+  height: 24px;
+  transition: 500ms;
+}
+
+.flat-arrow-down-icon {
+  color: #fff;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before,
+  &::after {
+    content: '';
+    width: 20px;
+    height: $icon-line-weight * 1px;
+    position: absolute;
+    display: block;
+    box-shadow: inset 0 0 0 $icon-line-weight * 1px currentColor;
+    transition: 300ms;
+    transition-property: margin, width, height, transform, border-radius;
+  }
+
+  &::before {
+    @include crossBrowser(transform, translate(-50%, 0) rotate(22.5deg));
+    @include crossBrowser(transform-origin, 100% 100%);
+
+    #menu-state:checked~nav & {
+      @include crossBrowser(transform, translate(0, 0) rotate(-45deg));
+    }
+  }
+
+
+  &::after {
+    @include crossBrowser(transform, translate(50%, 0) rotate(-22.5deg));
+    @include crossBrowser(transform-origin, 0 100%);
 
     #menu-state:checked~nav & {
       @include crossBrowser(transform, translate(0, 0) rotate(45deg));
@@ -943,15 +1186,19 @@ $icon-line-weight: 2;
   display: flex;
   border: none;
   font-size: $paragraph-font-size;
+
   &.small {
     font-size: $small-font-size;
   }
+
   &.large {
     font-size: $global-font-size;
   }
+
   .tabs-title {
     text-align: center;
     float: initial;
+
     a {
       height: 40px;
       display: flex;
@@ -965,8 +1212,10 @@ $icon-line-weight: 2;
     border: none;
     color: inherit;
   }
+
   &.line {
     border-bottom: $border;
+
     // padding: 0 $global-padding;
     .tabs-title {
       &>a {
@@ -974,6 +1223,7 @@ $icon-line-weight: 2;
           background: none;
           box-shadow: inset 0 -2px $light-gray;
         }
+
         &:focus,
         &[aria-selected='true'] {
           background: none;
@@ -982,6 +1232,7 @@ $icon-line-weight: 2;
       }
     }
   }
+
   &.bar {
     .tabs-title {
       width: 100%;
@@ -999,30 +1250,46 @@ $icon-line-weight: 2;
   overflow-y: hidden;
 
 }
+
 .scroll-snap-element {
+  width: initial !important;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  &.start {
+    @include crossBrowser(scroll-snap-align, start);
+  }
+
+  &.center {
+    @include crossBrowser(scroll-snap-align, center);
+  }
+
+  &.end {
+    @include crossBrowser(scroll-snap-align, end);
+  }
+
   &>span {
     position: -webkit-sticky;
     position: sticky;
     left: 1rem;
+
     &+* {
       margin-top: 0.5rem;
     }
   }
-  &.start {
-    @include crossBrowser(scroll-snap-align, start);
-  }
-  width: initial !important;
-  max-width: 100%;
-  box-sizing: content-box;
+
   @include breakpoint(small) {
     @include xy-cell($gutter-type: padding, $gutter-position: top right bottom left, $breakpoint: small);
   }
+
   @include breakpoint(medium) {
     @include xy-cell($gutter-type: padding, $gutter-position: top right bottom left, $breakpoint: medium);
   }
+
   @include breakpoint(large) {
     @include xy-cell($gutter-type: padding, $gutter-position: top right bottom left, $breakpoint: large);
   }
+
   margin: 0;
 }
 
@@ -1033,43 +1300,64 @@ $icon-line-weight: 2;
  */
 .scroll-snap-container-x {
   $widescreen-breakpoint: '';
+
   .grid-margin-x {
     $breakpoint-fallback: ();
+
     // loop through each breakpoint-list-item.
-    @each $breakpoint, $width in $breakpoints {
+    @each $breakpoint,
+    $width in $breakpoints {
       $index: index(($breakpoints), ($breakpoint $width)) !global;
+
       @if $index==1 {
         $breakpoint-fallback: append($breakpoint-fallback, $breakpoint);
       }
+
       // set-up media-query.
       @include breakpoint($breakpoint) {
+
         // loop through all possible column counts.
         @for $i from 1 through $grid-column-count {
           // set gutter width
           $gutter: map-get($grid-margin-gutters, #{$breakpoint});
+
           &>.#{$breakpoint}-#{$i} {
             $container-width: 100vw;
+
             /*  
              *  If breakpoint width is greater or equal to global width we set the
              *  reference width from 100vw to the gloabl width.
              */
-            @if (strip-unit(rem-calc(strip-unit($width))) >= strip-unit($global-width)) {
-              @if ($widescreen-breakpoint == '') {
+            @if (strip-unit(rem-calc(strip-unit($width))) >=strip-unit($global-width)) {
+              @if ($widescreen-breakpoint=='') {
                 $widescreen-breakpoint: $breakpoint;
               }
+
               $container-width: $global-width;
             }
+
             // This is where the magic happens.
             width: calc((#{$container-width} - #{$gutter}) / (#{$grid-column-count} / #{$i}) - #{$gutter});
           }
         }
       }
+
       $breakpoint-fallback: append($breakpoint-fallback, $breakpoint);
     }
   }
-  width: 100vw;
-  @include breakpoint($widescreen-breakpoint) {
-    width: $global-width;
+
+  @each $breakpoint,
+  $width in $breakpoints {
+    @include breakpoint($breakpoint) {
+      $container-width: 100vw;
+      $gutter: map-get($grid-margin-gutters, #{$breakpoint});
+
+      @if (strip-unit(rem-calc(strip-unit($width))) >=strip-unit($global-width)) {
+        $container-width: $global-width;
+      }
+
+      width: calc(#{$container-width} - #{$gutter});
+    }
   }
 }
 
@@ -1080,24 +1368,31 @@ $icon-line-weight: 2;
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 2rem;
+  line-height: $header-lineheight;
 }
+
 .section-header {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
+  line-height: $header-lineheight;
 }
 
 .section-subheader {
   font-size: 1.25rem;
   margin-bottom: 1.25rem;
+  line-height: $header-lineheight;
 }
+
 .section-wrap {
   margin: 2rem auto;
   width: 100%;
   max-width: $global-width;
+
   &.small {
-    max-width: calc( $global-width / 3 * 2 );
+    max-width: calc($global-width / 3 * 2);
   }
+
   @include breakpoint(medium) {
     width: $global-width;
   }
