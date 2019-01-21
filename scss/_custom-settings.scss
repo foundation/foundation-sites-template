@@ -419,8 +419,10 @@ code {
       text-align: center;
       line-height: 1;
       color: $white;
+
       &>span {
         margin-bottom: $global-margin;
+
         &:last-child {
           margin-bottom: initial;
         }
@@ -522,14 +524,14 @@ code {
 }
 
 .space-info-container {
-  font-size: rem-calc( $global-font-size * 0.875 );
+  font-size: rem-calc($global-font-size * 0.875);
 
   &.small {
-    font-size: rem-calc( $global-font-size * 0.75 );
+    font-size: rem-calc($global-font-size * 0.75);
   }
 
   &.large {
-    font-size: rem-calc( $global-font-size );
+    font-size: rem-calc($global-font-size);
   }
 }
 
@@ -1245,6 +1247,7 @@ $icon-line-weight: 2;
 
 .scroll-snap-container-x {
   display: flex;
+  flex-wrap: nowrap;
   @include crossBrowser(scroll-snap-type, x mandatory);
   overflow-x: auto;
   overflow-y: hidden;
@@ -1252,9 +1255,10 @@ $icon-line-weight: 2;
 }
 
 .scroll-snap-element {
-  width: initial !important;
+  width: initial;
   max-width: 100%;
   box-sizing: border-box;
+  margin: 0;
 
   &.start {
     @include crossBrowser(scroll-snap-align, start);
@@ -1280,17 +1284,18 @@ $icon-line-weight: 2;
 
   @include breakpoint(small) {
     @include xy-cell($gutter-type: padding, $gutter-position: top right bottom left, $breakpoint: small);
+    width: initial;
   }
 
   @include breakpoint(medium) {
     @include xy-cell($gutter-type: padding, $gutter-position: top right bottom left, $breakpoint: medium);
+    width: initial;
   }
 
   @include breakpoint(large) {
     @include xy-cell($gutter-type: padding, $gutter-position: top right bottom left, $breakpoint: large);
+    width: initial;
   }
-
-  margin: 0;
 }
 
 /**
