@@ -59,9 +59,11 @@
 // 2. Grid
 // ---------
 
-// .grid-container {
-//   position: relative;
-// }
+.grid-container {
+  &.no-padding {
+    padding: 0;
+  }
+}
 
 .cell {
   position: relative;
@@ -1305,10 +1307,6 @@ $icon-line-weight: 2;
  */
 .scroll-snap-container-x {
   $widescreen-breakpoint: '';
-  &.wide {
-    padding-left: calc(50vw - (#{$global-width} / 2));
-    width: 100vw;
-  }
 
   .grid-margin-x {
     $breakpoint-fallback: ();
@@ -1354,18 +1352,19 @@ $icon-line-weight: 2;
       $breakpoint-fallback: append($breakpoint-fallback, $breakpoint);
     }
   }
+  .grid-container:not(.no-padding) & {
+    @each $breakpoint,
+    $width in $breakpoints {
+      @include breakpoint($breakpoint) {
+        $container-width: 100vw;
+        $gutter: map-get($grid-margin-gutters, #{$breakpoint});
 
-  @each $breakpoint,
-  $width in $breakpoints {
-    @include breakpoint($breakpoint) {
-      $container-width: 100vw;
-      $gutter: map-get($grid-margin-gutters, #{$breakpoint});
+        @if (strip-unit(rem-calc(strip-unit($width))) >=strip-unit($global-width)) {
+          $container-width: $global-width;
+        }
 
-      @if (strip-unit(rem-calc(strip-unit($width))) >=strip-unit($global-width)) {
-        $container-width: $global-width;
+        width: calc(#{$container-width} - #{$gutter});
       }
-
-      width: calc(#{$container-width} - #{$gutter});
     }
   }
 }
