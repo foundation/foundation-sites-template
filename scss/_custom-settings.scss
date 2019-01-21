@@ -1305,6 +1305,10 @@ $icon-line-weight: 2;
  */
 .scroll-snap-container-x {
   $widescreen-breakpoint: '';
+  &.wide {
+    padding-left: calc(50vw - (#{$global-width} / 2));
+    width: 100vw;
+  }
 
   .grid-margin-x {
     $breakpoint-fallback: ();
