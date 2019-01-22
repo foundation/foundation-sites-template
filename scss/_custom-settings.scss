@@ -407,30 +407,6 @@ code {
   }
 
   &.tint {
-    .title {
-      position: absolute;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      padding: $global-padding;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-size: 1.25rem;
-      text-align: center;
-      line-height: 1;
-      color: $white;
-
-      &>span {
-        margin-bottom: $global-margin;
-
-        &:last-child {
-          margin-bottom: initial;
-        }
-      }
-    }
-
     &::after {
       content: '';
       background-color: rgba(0, 0, 0, 0.2);
@@ -441,10 +417,10 @@ code {
     }
   }
 
-  a:hover &.tint {
+  a:hover &.tint, .is-active &.tint {
     &::after {
       content: '';
-      background-color: #ed624bcc;
+      background-color: rgba(0, 0, 0, 0.7);
       transition: background-color $global-transition-medium $global-transition-timing;
     }
   }
@@ -1145,7 +1121,7 @@ $icon-line-weight: 2;
 }
 
 .flat-arrow-down-icon {
-  color: #fff;
+  color: inherit;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -1164,22 +1140,21 @@ $icon-line-weight: 2;
   }
 
   &::before {
-    @include crossBrowser(transform, translate(-50%, 0) rotate(22.5deg));
-    @include crossBrowser(transform-origin, 100% 100%);
+    @include crossBrowser(transform, translate(-45%, 0) rotate(22.5deg));
 
-    #menu-state:checked~nav & {
-      @include crossBrowser(transform, translate(0, 0) rotate(-45deg));
+    .is-active & {
+      @include crossBrowser(transform, translate(-45%, 0) rotate(-22.5deg));
     }
   }
 
 
   &::after {
-    @include crossBrowser(transform, translate(50%, 0) rotate(-22.5deg));
-    @include crossBrowser(transform-origin, 0 100%);
+    @include crossBrowser(transform, translate(45%, 0) rotate(-22.5deg));
 
-    #menu-state:checked~nav & {
-      @include crossBrowser(transform, translate(0, 0) rotate(45deg));
-    }
+    .is-active & {
+      @include crossBrowser(transform, translate(45%, 0) rotate(22.5deg));
+}
+
   }
 }
 
@@ -1204,7 +1179,6 @@ $icon-line-weight: 2;
     float: initial;
 
     a {
-      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1220,9 +1194,10 @@ $icon-line-weight: 2;
   &.line {
     border-bottom: $border;
 
-    // padding: 0 $global-padding;
     .tabs-title {
+
       &>a {
+        height: 40px;
         &:hover {
           background: none;
           box-shadow: inset 0 -2px $light-gray;
@@ -1240,6 +1215,36 @@ $icon-line-weight: 2;
   &.bar {
     .tabs-title {
       width: 100%;
+      &>a {
+        height: 40px;
+      }
+    }
+  }
+  &.image {
+    .tabs-title {
+      .title {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        padding: $global-padding;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 1.25rem;
+        text-align: center;
+        line-height: 1;
+        color: $white;
+
+        &>span {
+          margin-bottom: $global-margin;
+
+          &:last-child {
+            margin-bottom: initial;
+          }
+        }
+      }
     }
   }
 }
