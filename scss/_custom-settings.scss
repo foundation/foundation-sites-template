@@ -40,11 +40,26 @@
   }
 }
 
-@mixin crossBrowser($property, $val) {
+@mixin cross-browser($property, $val) {
   -webkit-#{$property}: $val;
   -moz-#{$property}: $val;
   -ms-#{$property}: $val;
   #{$property}: $val;
+}
+
+@mixin header-style($header-size, $property: ('font-size', 'margin-bottom')) {
+
+  @each $breakpoint,
+  $header-style in $header-styles {
+    @include breakpoint($breakpoint) {
+      $size: rem-calc(map-deep-get($header-styles, $breakpoint, $header-size, font-size));
+
+      @each $property,
+      $value in $property {
+        #{$property}: $size;
+      }
+    }
+  }
 }
 
 @function strip-unit($number) {
@@ -262,12 +277,11 @@ code {
 
 .large {
   .space-title {
-    font-size: 1.5rem;
+    @include header-style('h2', 'font-size');
     white-space: normal;
     max-height: 3em;
 
-    @media (max-width: 640px) {
-      font-size: 1.25rem;
+    @include breakpoint(large) {
       white-space: nowrap;
       max-height: initial;
     }
@@ -385,18 +399,16 @@ code {
 
 .clipped {
   position: relative;
-  overflow: hidden;
   display: flex;
   align-content: center;
   width: 100%;
+  overflow: hidden;
 
   img,
   iframe {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
     width: 100%;
+    height: 100%;
     object-fit: cover;
 
     /* IE 9+ Hack for object-fit. Possibly good option as standard as well */
@@ -409,19 +421,25 @@ code {
   &.tint {
     &::after {
       content: '';
-      background-color: rgba(0, 0, 0, 0.2);
+      position: absolute;
       width: 100%;
       height: 100%;
-      position: absolute;
-      transition: background-color $global-transition-medium $global-transition-timing;
+      pointer-events: none;
+      background-color: rgba(0, 0, 0, 0.4);
+      transition: background-color $global-transition-long $global-transition-timing-cubic-bezier;
+    }
+
+    &>*:not(img, iframe) {
+      color: $white;
+      z-index: 1;
     }
   }
 
-  a:hover &.tint, .is-active &.tint {
+  a:hover &.tint,
+  .is-active &.tint {
     &::after {
-      content: '';
       background-color: rgba(0, 0, 0, 0.7);
-      transition: background-color $global-transition-medium $global-transition-timing;
+      transition: background-color $global-transition-long $global-transition-timing-cubic-bezier;
     }
   }
 
@@ -437,22 +455,19 @@ code {
 
   &.space-header {
     background: $very-light-gray;
-    padding-bottom: 65px;
-    height: 100%;
-    align-content: center;
+    height: 65px;
 
     .large>&,
     .large>a>& {
       height: 200px;
       max-height: 25vw;
       min-height: 65px;
-      font-size: 1.5rem;
     }
   }
 
   &.post-header {
-    @extend .space-header;
-    padding-bottom: 100px;
+    background: $very-light-gray;
+    height: 100px;
   }
 
   &.variable {
@@ -529,7 +544,7 @@ code {
     &:last-child {
       background: $light-gray;
       color: $very-dark-gray;
-      font-weight: bold;
+      font-weight: $global-weight-bold;
     }
   }
 
@@ -538,7 +553,7 @@ code {
     padding: 0.25em 0.375em 0.125em;
     background: $light-gray;
     color: $very-dark-gray;
-    font-weight: bold;
+    font-weight: $global-weight-bold;
   }
 }
 
@@ -675,7 +690,7 @@ input {
     white-space: nowrap;
     padding: 15px 8px 20px;
     line-height: 0;
-    font-weight: 900;
+    font-weight: $global-weight-bold;
     color: $dark-gray;
     letter-spacing: 2px;
   }
@@ -1015,7 +1030,7 @@ $icon-line-weight: 2;
   position: relative;
   width: 48px;
   height: 48px;
-  transition: 500ms;
+  transition: $global-transition-medium;
   padding: 12px;
   box-sizing: border-box;
 }
@@ -1029,7 +1044,7 @@ $icon-line-weight: 2;
     position: absolute;
     display: block;
     box-shadow: inset 0 0 0 $icon-line-weight * 1px currentColor;
-    transition: 300ms;
+    transition: $global-transition-medium;
     transition-property: margin, width, height, transform, border-radius;
   }
 
@@ -1037,13 +1052,13 @@ $icon-line-weight: 2;
     width: 14px;
     height: 14px;
     border-radius: 20px;
-    @include crossBrowser(transform, translate(4px, 4px) rotate(0));
+    @include cross-browser(transform, translate(4px, 4px) rotate(0));
 
     #search-state:checked~nav & {
       height: 20px;
       width: $icon-line-weight * 1px;
       border-radius: 0;
-      @include crossBrowser(transform, translate((12 - $icon-line-weight / 2) * 1px, 2px) rotate(45deg));
+      @include cross-browser(transform, translate((12 - $icon-line-weight / 2) * 1px, 2px) rotate(45deg));
     }
   }
 
@@ -1051,11 +1066,11 @@ $icon-line-weight: 2;
   &::after {
     width: 6px;
     transform: translate(13px, 15px) rotate(45deg);
-    @include crossBrowser(transform, translate(14px, (18 - $icon-line-weight) * 1px) rotate(45deg));
+    @include cross-browser(transform, translate(14px, (18 - $icon-line-weight) * 1px) rotate(45deg));
 
     #search-state:checked~nav & {
       width: 20px;
-      @include crossBrowser(transform, translate(2px, (12 - $icon-line-weight / 2) * 1px) rotate(45deg));
+      @include cross-browser(transform, translate(2px, (12 - $icon-line-weight / 2) * 1px) rotate(45deg));
     }
   }
 
@@ -1090,24 +1105,24 @@ $icon-line-weight: 2;
     position: absolute;
     display: block;
     box-shadow: inset 0 0 0 $icon-line-weight * 1px currentColor;
-    transition: 300ms;
+    transition: $global-transition-medium;
     transition-property: margin, width, height, transform, border-radius;
   }
 
   &::before {
-    @include crossBrowser(transform, translate(0, -5px) rotate(0deg));
+    @include cross-browser(transform, translate(0, -5px) rotate(0deg));
 
     #menu-state:checked~nav & {
-      @include crossBrowser(transform, translate(0, 0) rotate(-45deg));
+      @include cross-browser(transform, translate(0, 0) rotate(-45deg));
     }
   }
 
 
   &::after {
-    @include crossBrowser(transform, translate(0, 5px) rotate(0deg));
+    @include cross-browser(transform, translate(0, 5px) rotate(0deg));
 
     #menu-state:checked~nav & {
-      @include crossBrowser(transform, translate(0, 0) rotate(45deg));
+      @include cross-browser(transform, translate(0, 0) rotate(45deg));
     }
   }
 }
@@ -1117,15 +1132,11 @@ $icon-line-weight: 2;
   position: relative;
   width: 48px;
   height: 24px;
-  transition: 500ms;
-}
-
-.flat-arrow-down-icon {
-  color: inherit;
-  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: inherit;
+  z-index: 1;
 
   &::before,
   &::after {
@@ -1135,25 +1146,25 @@ $icon-line-weight: 2;
     position: absolute;
     display: block;
     box-shadow: inset 0 0 0 $icon-line-weight * 1px currentColor;
-    transition: 300ms;
+    transition: $global-transition-long $global-transition-timing-cubic-bezier;
     transition-property: margin, width, height, transform, border-radius;
   }
 
   &::before {
-    @include crossBrowser(transform, translate(-45%, 0) rotate(22.5deg));
+    @include cross-browser(transform, translate(-45%, 0) rotate(22.5deg));
 
     .is-active & {
-      @include crossBrowser(transform, translate(-45%, 0) rotate(-22.5deg));
+      @include cross-browser(transform, translate(-45%, 0) rotate(-22.5deg));
     }
   }
 
 
   &::after {
-    @include crossBrowser(transform, translate(45%, 0) rotate(-22.5deg));
+    @include cross-browser(transform, translate(45%, 0) rotate(-22.5deg));
 
     .is-active & {
-      @include crossBrowser(transform, translate(45%, 0) rotate(22.5deg));
-}
+      @include cross-browser(transform, translate(45%, 0) rotate(22.5deg));
+    }
 
   }
 }
@@ -1198,6 +1209,7 @@ $icon-line-weight: 2;
 
       &>a {
         height: 40px;
+
         &:hover {
           background: none;
           box-shadow: inset 0 -2px $light-gray;
@@ -1215,35 +1227,42 @@ $icon-line-weight: 2;
   &.bar {
     .tabs-title {
       width: 100%;
+
       &>a {
         height: 40px;
       }
     }
   }
+
   &.image {
     .tabs-title {
+      text-align: left;
       .title {
         position: absolute;
-        z-index: 1;
         width: 100%;
         height: 100%;
-        padding: $global-padding;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-end;
         flex-direction: column;
-        font-size: 1.25rem;
-        text-align: center;
-        line-height: 1;
-        color: $white;
+        padding: $global-padding;
+        font-weight: $global-weight-bold;
+        line-height: $header-lineheight;
+        z-index: 1;
+        pointer-events: none;
+
+        &>* {
+          pointer-events: all;
+        }
 
         &>span {
-          margin-bottom: $global-margin;
+          margin-bottom: $header-margin-bottom;
 
           &:last-child {
             margin-bottom: initial;
           }
         }
+
+        @include header-style('h3', 'font-size');
       }
     }
   }
@@ -1255,7 +1274,7 @@ $icon-line-weight: 2;
 .scroll-snap-container-x {
   display: flex;
   flex-wrap: nowrap;
-  @include crossBrowser(scroll-snap-type, x mandatory);
+  @include cross-browser(scroll-snap-type, x mandatory);
   overflow-x: auto;
   overflow-y: hidden;
 
@@ -1268,15 +1287,15 @@ $icon-line-weight: 2;
   margin: 0;
 
   &.start {
-    @include crossBrowser(scroll-snap-align, start);
+    @include cross-browser(scroll-snap-align, start);
   }
 
   &.center {
-    @include crossBrowser(scroll-snap-align, center);
+    @include cross-browser(scroll-snap-align, center);
   }
 
   &.end {
-    @include crossBrowser(scroll-snap-align, end);
+    @include cross-browser(scroll-snap-align, end);
   }
 
   &>span {
@@ -1357,7 +1376,9 @@ $icon-line-weight: 2;
       $breakpoint-fallback: append($breakpoint-fallback, $breakpoint);
     }
   }
+
   .grid-container:not(.no-padding) & {
+
     @each $breakpoint,
     $width in $breakpoints {
       @include breakpoint($breakpoint) {
@@ -1378,22 +1399,19 @@ $icon-line-weight: 2;
 // -----------
 
 .section-title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
+  @include header-style('h1');
+  font-weight: $global-weight-bold;
   line-height: $header-lineheight;
 }
 
 .section-header {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
+  @include header-style('h2');
+  font-weight: $global-weight-bold;
   line-height: $header-lineheight;
 }
 
 .section-subheader {
-  font-size: 1.25rem;
-  margin-bottom: 1.25rem;
+  @include header-style('h3');
   line-height: $header-lineheight;
 }
 

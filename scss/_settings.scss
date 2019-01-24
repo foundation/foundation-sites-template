@@ -129,6 +129,7 @@ $global-transition-short: 0.1s;
 $global-transition-medium: $global-transition-short * 2.5;
 $global-transition-long: $global-transition-short * 5;
 $global-transition-timing: ease-in-out;
+$global-transition-timing-cubic-bezier: cubic-bezier(.8, 0, .2, 1.2);
 $print-transparent-backgrounds: true;
 $global-drop-shadow: 0 5px 20px rgba(0, 0, 0, 0.05),
 0 2px 5px rgba(0, 0, 0, 0.15);
