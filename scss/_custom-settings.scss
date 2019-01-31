@@ -164,7 +164,6 @@ code {
   align-items: center;
   font-size: 1rem;
   line-height: $header-lineheight;
-  font-weight: 300;
 
   .fa {
     font-size: 0.75em;
@@ -181,7 +180,7 @@ code {
     text-decoration: none;
 
     &:hover {
-      background: $white;
+      background: $very-light-gray;
     }
   }
 
@@ -211,7 +210,7 @@ code {
 }
 
 .card-divider {
-  border-top: 1px solid $very-light-gray;
+  border-top: $hr-border;
 
   &:first-child {
     border: none;
@@ -500,22 +499,6 @@ code {
   box-shadow: $global-drop-shadow;
   background-color: $white;
 }
-
-.dropdown-pane-arrow {
-  display: block;
-  background: #fff;
-  border-left: 1px solid #f0f0f0;
-  border-top: 1px solid #f0f0f0;
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  right: 17px;
-  margin-top: -10px;
-  z-index: 100;
-  transform: rotate(45deg);
-  border-bottom-right-radius: 20px;
-}
-
 .space-info-container {
   font-size: rem-calc($global-font-size * 0.875);
 
@@ -531,7 +514,7 @@ code {
 .space-info-block {
   flex-wrap: wrap;
   display: inline-flex;
-  background: $white;
+  background: $very-light-gray;
   color: $dark-gray;
   margin: 3px;
   border-radius: $global-radius;
@@ -542,8 +525,7 @@ code {
     padding: 0.25em 0.375em 0.125em;
 
     &:last-child {
-      background: $very-light-gray;
-      color: $dark-gray;
+      background: $light-gray;
       font-weight: $global-weight-bold;
     }
   }
@@ -551,8 +533,8 @@ code {
   & a {
     display: inline-block;
     padding: 0.25em 0.375em 0.125em;
-    background: $very-light-gray;
-    color: $dark-gray;
+    background: $light-gray;
+    color: inherit;
     font-weight: $global-weight-bold;
   }
 }
@@ -774,7 +756,7 @@ $border: 1px solid $very-light-gray;
 
 hr {
   margin: 0 auto;
-  border-bottom: $border;
+  border-bottom: $hr-border;
 }
 
 .flex-spacer-left {
@@ -799,7 +781,7 @@ hr {
       }
 
       a:hover {
-        background: $white;
+        background: $very-light-gray;
       }
 
       &.no-arrow {
@@ -926,7 +908,7 @@ li[role=menuitem] {
 
 .dropdown .is-dropdown-submenu,
 .accordion-menu .is-accordion-submenu {
-  border-top: $border;
+  border-top: $hr-border;
   border-radius: 0 0 $global-radius $global-radius;
   overflow: hidden;
   box-shadow: $global-drop-shadow;
@@ -1207,7 +1189,7 @@ $icon-line-weight: 2;
   }
 
   &.line {
-    border-bottom: $border;
+    border-bottom: $hr-border;
 
     .tabs-title {
 

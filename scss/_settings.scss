@@ -61,26 +61,26 @@
 //  56. Xy Grid
 
 @import 'util/util';
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300|Roboto:300,400,700');
-@import url('https://fonts.googleapis.com/css?family=PT+Sans:500,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
 
-@font-face {
-  font-family: Myriad Pro;
-  font-weight: thin;
-  src: url(http://www.leonvogler.de/MyriadPro-Light.otf);
-}
+// @font-face {
+//   font-family: Myriad Pro;
+//   font-weight: thin;
+//   src: url(http://www.leonvogler.de/MyriadPro-Light.otf);
+// }
 
-@font-face {
-  font-family: Myriad Pro;
-  font-weight: normal;
-  src: url(http://www.leonvogler.de/MyriadPro-Regular.otf);
-}
+// @font-face {
+//   font-family: Myriad Pro;
+//   font-weight: normal;
+//   src: url(http://www.leonvogler.de/MyriadPro-Regular.otf);
+// }
 
-@font-face {
-  font-family: Myriad Pro;
-  font-weight: bold;
-  src: url(http://www.leonvogler.de/MyriadPro-Bold.otf);
-}
+// @font-face {
+//   font-family: Myriad Pro;
+//   font-weight: bold;
+//   src: url(http://www.leonvogler.de/MyriadPro-Bold.otf);
+// }
 
 // 1. Global
 // ---------
@@ -96,22 +96,22 @@ $foundation-palette: (
   warning: #ffae00,
   alert: #e6244e,
 );
-$white: #fafafa;
-$very-light-gray: #f2f2f2;
-$light-gray: #e6e6e6;
+$white: #fff;
+$very-light-gray: #fafafa;
+$light-gray: #eee;
 $medium-gray: #ccc;
 $dark-gray: #999;
 $very-dark-gray: #666;
 $black: #333;
 $body-background: $very-light-gray;
 $body-font-color: $black;
-$body-font-family: 'Myriad Pro', 'PT Sans', 'Roboto', Helvetica, Arial, sans-serif;
+$body-font-family: 'Roboto', Helvetica, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
 $global-position: 1rem;
-$global-weight-normal: normal;
-$global-weight-bold: bold;
+$global-weight-normal: 400;
+$global-weight-bold: 700;
 $global-radius: 0.1875rem;
 $global-radius-small: 0.125rem;
 $global-menu-padding: 0.75rem 0.875rem;
