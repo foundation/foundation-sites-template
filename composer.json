@@ -1,0 +1,12 @@
+{
+    "name": "blended/spaces-foundation",
+    "description": "Built on top of \"Foundation for Sites Template\"",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "vitus",
+            "email": "vitus.schuhwerk@gmail.com"
+        }
+    ],
+    "require": {}
+}
