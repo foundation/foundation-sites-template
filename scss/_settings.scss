@@ -90,8 +90,8 @@ $global-width: rem-calc(960);
 $global-lineheight: 1.5;
 $foundation-palette: (
   // primary: #ed624b,
-  primary: #415768,
-  secondary: #767676,
+  primary: #607d8b,
+  secondary: #cfd8dc,
   success: #58ce3a,
   warning: #ffae00,
   alert: #e6244e,
@@ -324,7 +324,7 @@ $button-color-alt: $black;
 $button-radius: $global-radius;
 $button-hollow-border-width: 1px;
 $button-sizes: (
-  tiny: 0.6rem,
+  tiny: 0.625rem,
   small: 0.75rem,
   default: 0.875rem,
   large: 1rem,
@@ -345,7 +345,7 @@ $buttongroup-margin: 1rem;
 $buttongroup-spacing: 1px;
 $buttongroup-child-selector: '.button';
 $buttongroup-expand-max: 6;
-$buttongroup-radius-on-each: true;
+$buttongroup-radius-on-each: false;
 
 // 13. Callout
 // -----------

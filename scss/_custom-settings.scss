@@ -40,6 +40,15 @@
   }
 }
 
+@mixin button-sizes() {
+  @each $size-name,
+  $size in $button-sizes {
+    &.#{$size-name} {
+      font-size: $size;
+    }
+  }
+}
+
 @mixin cross-browser($property, $val) {
   -webkit-#{$property}: $val;
   -moz-#{$property}: $val;
@@ -102,6 +111,7 @@ a {
 
   @include foundation-palette();
   @include foundation-palette('li', '>&');
+  @include button-sizes();
 }
 
 small {
@@ -601,23 +611,8 @@ code {
 // 10. Button & Input
 // ---------
 
-.button-group {
-  .button {
-    border-radius: 0;
-
-    &:first-child {
-      border-radius: $global-radius 0 0 $global-radius;
-    }
-
-    &:last-child {
-      border-radius: 0 $global-radius $global-radius 0;
-    }
-  }
-}
-
 button,
 .button {
-  border-radius: $global-radius;
 
   &:focus,
   &:active {
@@ -1164,6 +1159,7 @@ $icon-line-weight: 2;
   display: flex;
   border: none;
   font-size: $paragraph-font-size;
+  border-bottom: $hr-border;
 
   &.small {
     font-size: $small-font-size;
@@ -1176,12 +1172,13 @@ $icon-line-weight: 2;
   .tabs-title {
     text-align: center;
     float: initial;
-
-    a {
+    &>a {
       display: flex;
       align-items: center;
       justify-content: center;
       color: inherit;
+      height: 40px;
+      padding: $global-menu-padding;
     }
   }
 
@@ -1189,15 +1186,16 @@ $icon-line-weight: 2;
     border: none;
     color: inherit;
   }
-
+  &.expanded {
+    .tabs-title {
+      width: 100%;
+    }
+  }
   &.line {
-    border-bottom: $hr-border;
 
     .tabs-title {
 
       &>a {
-        height: 40px;
-        padding: $global-menu-padding;
 
         &:hover {
           background: none;
@@ -1214,13 +1212,7 @@ $icon-line-weight: 2;
   }
 
   &.bar {
-    .tabs-title {
-      width: 100%;
-
-      &>a {
-        height: 40px;
-      }
-    }
+    // styles for type: bar.
   }
 
   &.image {
