@@ -453,7 +453,7 @@ code {
   }
 
   &.space-header {
-    background: $white;
+    background: $very-light-gray;
     height: 65px;
 
     .large>&,
@@ -499,6 +499,7 @@ code {
   box-shadow: $global-drop-shadow;
   background-color: $white;
 }
+
 .space-info-container {
   font-size: rem-calc($global-font-size * 0.875);
 
@@ -519,6 +520,7 @@ code {
   margin: 3px;
   border-radius: $global-radius;
   overflow: hidden;
+  line-height: $header-lineheight;
 
   & span {
     display: inline-block;
@@ -1259,13 +1261,58 @@ $icon-line-weight: 2;
 // 16. Scroll Snapping
 // ---------
 
+.left-right-navigation {
+  position: relative;
+
+  &:hover {
+
+    &::before,
+    &::after {
+      opacity: 1;
+      transition: opacity $global-transition-medium;
+    }
+  }
+
+  &::before,
+  &::after {
+    opacity: 0;
+    transition: opacity $global-transition-medium;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    @include cross-browser(transform, translateY(-50%));
+    padding: $global-padding;
+    background: $white;
+    border-radius: $global-radius-small;
+    box-shadow: $global-drop-shadow;
+    font-family: FontAwesome;
+    font-size: 1rem;
+    font-weight: $global-weight-bold;
+    z-index: 10;
+  }
+
+  &::before {
+    content: '\f104';
+    left: $global-gutter-small;
+
+  }
+
+  &::after {
+    content: '\f105';
+    right: $global-gutter-small;
+
+  }
+
+}
+
+
 .scroll-snap-container-x {
+  position: relative;
   display: flex;
   flex-wrap: nowrap;
   @include cross-browser(scroll-snap-type, x mandatory);
   overflow-x: auto;
   overflow-y: hidden;
-
 }
 
 .scroll-snap-element {
@@ -1287,9 +1334,8 @@ $icon-line-weight: 2;
   }
 
   &>span {
-    position: -webkit-sticky;
-    position: sticky;
-    left: 1rem;
+    position: relative;
+    left: 0.5rem;
 
     &+* {
       margin-top: 0.5rem;
