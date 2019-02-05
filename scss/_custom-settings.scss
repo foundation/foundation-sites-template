@@ -1195,6 +1195,7 @@ $icon-line-weight: 2;
 
       &>a {
         height: 40px;
+        padding: $global-menu-padding;
 
         &:hover {
           background: none;
