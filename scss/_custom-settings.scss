@@ -246,6 +246,7 @@ code {
   display: flex;
   padding: 0 10px 0;
   z-index: 1;
+  color: $body-font-color;
   background: $white;
   left: 0;
   top: 50%;
@@ -776,7 +777,9 @@ hr {
           width: 100%;
         }
       }
-
+      a {
+        color: $very-dark-gray;
+      }
       a:hover {
         background: $very-light-gray;
       }

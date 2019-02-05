@@ -202,7 +202,7 @@ $code-font-weight: $global-weight-normal;
 $code-background: scale-color($code-color, $lightness: 95%);
 $code-border: 1px solid scale-color($code-color, $lightness: 80%);
 $code-padding: rem-calc(2 5 1);
-$anchor-color: $secondary-color;
+$anchor-color: $primary-color;
 $anchor-color-hover: scale-color($anchor-color, $lightness: -15%);
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
@@ -364,7 +364,7 @@ $callout-link-tint: 30%;
 // --------
 
 $card-background: $white;
-$card-font-color: $body-font-color;
+$card-font-color: inherit;
 $card-divider-background: $white;
 $card-border: none;
 $card-shadow: none;
@@ -847,7 +847,7 @@ $tab-item-padding: 0;
 $tab-expand-max: 6;
 $tab-content-background: none;
 $tab-content-border: none;
-$tab-content-color: $body-font-color;
+$tab-content-color: inherit;
 $tab-content-padding: 0;
 
 // 52. Thumbnail
