@@ -612,13 +612,15 @@ code {
 // 10. Button & Input
 // ---------
 
-button,
 .button {
 
   &:focus,
   &:active {
     background: none;
     outline: none;
+  }
+  &::last-child {
+    margin-bottom: 0;
   }
 }
 
