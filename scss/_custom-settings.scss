@@ -764,6 +764,7 @@ hr {
 }
 
 .main-menu {
+  color: $very-dark-gray;
   background-color: $white;
   position: relative;
   z-index: 1000;
@@ -778,9 +779,6 @@ hr {
         .menu {
           width: 100%;
         }
-      }
-      a {
-        color: $very-dark-gray;
       }
       a:hover {
         background: $very-light-gray;
