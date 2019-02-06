@@ -9,16 +9,17 @@
 //   4. Card
 //   5. Spaces Card
 //   6. User Card
-//   7. Clipping
-//   8. Dropdown
-//   9. Switch
-//   10. Button
-//   11. Dot Menu
-//   12. Excerpt
-//   13. Menu
-//   14. Icons
-//   15. Tabs
-//   16. Scroll Snapping
+//   7. Post Card
+//   8. Clipping
+//   9. Dropdown
+//   10. Switch
+//   11. Button
+//   12. Dot Menu
+//   13. Excerpt
+//   14. Menu
+//   15. Icons
+//   16. Tabs
+//   17. Scroll Snapping
 
 
 
@@ -82,6 +83,10 @@
 
 // 2. Grid
 // ---------
+
+body {
+  min-height: 100vh;
+}
 
 .grid-container {
   &.no-padding {
@@ -183,7 +188,7 @@ code {
 
 .card-section,
 .card-divider {
-  padding: 8px 12px;
+  padding: $button-padding;
 
   &>a {
     width: 100%;
@@ -330,8 +335,8 @@ code {
   min-width: 36px;
 
   .large & {
-    width: 65px;
-    min-width: 65px;
+    width: 64px;
+    min-width: 64px;
   }
 
   .xlarge & {
@@ -386,25 +391,34 @@ code {
   }
 }
 
-.author-thumbnail {
-  margin-right: 10px;
+.avatar {
+  img {
+    border-radius: 50%;
+  }
 
   &.small {
-    min-width: 40px;
-    min-height: 40px;
-    width: 40px;
-    height: 40px;
+    min-width: 36px;
+    min-height: 36px;
   }
 
   &.large {
-    min-width: 60px;
-    min-height: 60px;
-    width: 60px;
-    height: 60px;
+    min-width: 48px;
+    min-height: 48px;
   }
 }
 
-// 7. Clipping
+// 6. Post Card
+// ---------
+
+.post-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 $global-padding;
+}
+
+
+// 8. Clipping
 // ---------
 
 .clipped {
@@ -475,7 +489,7 @@ code {
     }
   }
 
-  &.post-header {
+  &.feature-image {
     background: $white;
     height: 100px;
   }
@@ -500,7 +514,7 @@ code {
   }
 }
 
-// 8. Dropdown
+// 9. Dropdown
 // -----------
 
 
@@ -553,7 +567,7 @@ code {
 }
 
 
-// 9. Switch
+// 10. Switch
 // ---------
 
 
@@ -609,7 +623,7 @@ code {
   @include foundation-palette($child: 'input:checked ~ .switch-paddle');
 }
 
-// 10. Button & Input
+// 11. Button & Input
 // ---------
 
 .button {
@@ -651,7 +665,7 @@ input {
 }
 
 
-// 11. Dot Menu
+// 12. Dot Menu
 // ---------
 
 .dots {
@@ -699,7 +713,7 @@ input {
 }
 
 
-// 12. Excerpt
+// 13. Excerpt
 // ---------
 
 @mixin excerpt($font-size: 1em, $line-height: 1.4, $lines-to-show: 3, $expand: false) {
@@ -748,7 +762,7 @@ input {
 }
 
 
-// 13. Menu
+// 14. Menu
 // ---------
 
 
@@ -959,7 +973,7 @@ li[role=menuitem] {
     padding: 0 !important;
   }
 
-  &>.avatar {
+  .menu-anchor {
     img {
       width: 48px;
       height: 48px;
@@ -1000,7 +1014,7 @@ li[role=menuitem] {
 
 
 
-// 14. Icons
+// 15. Icons
 // ---------
 
 $icon-line-weight: 2;
@@ -1155,7 +1169,7 @@ $icon-line-weight: 2;
   }
 }
 
-// 15. Tabs
+// 16. Tabs
 // ---------
 
 .tabs {
@@ -1253,7 +1267,7 @@ $icon-line-weight: 2;
   }
 }
 
-// 16. Scroll Snapping
+// 17. Scroll Snapping
 // ---------
 
 .left-right-navigation {
