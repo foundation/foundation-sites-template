@@ -20,6 +20,7 @@
 //   15. Icons
 //   16. Tabs
 //   17. Scroll Snapping
+//   18. Calendar
 
 
 
@@ -1469,5 +1470,45 @@ $icon-line-weight: 2;
 
   @include breakpoint(medium) {
     width: $global-width;
+  }
+}
+
+
+
+// 18. Calendar
+// ---------
+
+.calendar-icon {
+  display: flex;
+  flex-direction: column;
+  height: 48px;
+  width: 48px;
+  border-radius: 3px;
+  overflow: hidden;
+  border-radius: $global-radius;
+  text-align: center;
+  font-weight: $global-weight-bold;
+  line-height: $global-lineheight;
+  box-shadow: $global-drop-shadow;
+  .month {
+    display: flex;
+    text-transform: uppercase;
+    justify-content: center;
+    color: $white;
+    background: get-color('alert');
+    font-size: 0.75rem;
+    height: 38%;
+  }
+  .day {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    color: $black;
+    // border: $hr-border;
+    // border-radius: 0 0 3px 3px;
+    // border-top: none;
+    height: 62%;
   }
 }
