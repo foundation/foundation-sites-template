@@ -627,6 +627,7 @@ code {
 // 11. Button & Input
 // ---------
 
+button,
 .button {
 
   &:focus,
@@ -976,8 +977,8 @@ li[role=menuitem] {
 
   .menu-anchor {
     img {
-      width: 48px;
-      height: 48px;
+      width: 36px;
+      height: 36px;
     }
   }
 }
@@ -1496,8 +1497,9 @@ $icon-line-weight: 2;
     justify-content: center;
     color: $white;
     background: get-color('alert');
+    background: linear-gradient(30deg, get-color('alert') 0%,scale-color(get-color('alert'), $lightness: 20%) 100%);
     font-size: 0.75rem;
-    height: 38%;
+    height: 38.2%;
   }
   .day {
     display: flex;
@@ -1509,6 +1511,6 @@ $icon-line-weight: 2;
     // border: $hr-border;
     // border-radius: 0 0 3px 3px;
     // border-top: none;
-    height: 62%;
+    height: 61.8%;
   }
 }
