@@ -1404,14 +1404,14 @@ $icon-line-weight: 2;
 }
 
 /**
- * Todo Create a Fallback if global width is bigger than the biggestbbreakpoint defined in a cell.
+ * Todo Create a Fallback if global width is bigger than the biggest breakpoint defined in a cell.
  * $breakpoint-fallback is a start, not finished yet, though.
  * At the moment $global width should no exceed width of 'large' breakpoint.
  */
 .scroll-snap-container-x {
   $widescreen-breakpoint: '';
 
-  .grid-margin-x {
+  .grid-x {
     $breakpoint-fallback: ();
 
     // loop through each breakpoint-list-item.
@@ -1423,31 +1423,33 @@ $icon-line-weight: 2;
         $breakpoint-fallback: append($breakpoint-fallback, $breakpoint);
       }
 
-      // set-up media-query.
+      // set up media-query.
       @include breakpoint($breakpoint) {
 
         // loop through all possible column counts.
         @for $i from 1 through $grid-column-count {
           // set gutter width
-          $gutter: map-get($grid-margin-gutters, #{$breakpoint});
+          $grid-margin-gutter: map-get($grid-margin-gutters, #{$breakpoint});
+          $grid-container-gutter: map-get($grid-container-padding, #{$breakpoint});
 
+          // this is the cell, e.g. medium-8.
           &>.#{$breakpoint}-#{$i} {
             $container-width: 100vw;
 
-            /*  
-             *  If breakpoint width is greater or equal to global width we set the
-             *  reference width from 100vw to the gloabl width.
+            /**
+             *  If breakpoint width is greater or equal to grid-container we set the
+             *  reference width from 100vw to the grid-container.
              */
-            @if (strip-unit(rem-calc(strip-unit($width))) >=strip-unit($global-width)) {
+            @if (strip-unit(rem-calc(strip-unit($width))) >=strip-unit($grid-container)) {
               @if ($widescreen-breakpoint=='') {
                 $widescreen-breakpoint: $breakpoint;
               }
 
-              $container-width: $global-width;
+              $container-width: $grid-container;
             }
 
             // This is where the magic happens.
-            width: calc((#{$container-width} - #{$gutter}) / (#{$grid-column-count} / #{$i}) - #{$gutter});
+            width: calc((#{$container-width} - #{$grid-container-gutter}) / (#{$grid-column-count} / #{$i}) - #{$grid-margin-gutter});
           }
         }
       }
@@ -1462,10 +1464,10 @@ $icon-line-weight: 2;
     $width in $breakpoints {
       @include breakpoint($breakpoint) {
         $container-width: 100vw;
-        $gutter: map-get($grid-margin-gutters, #{$breakpoint});
+        $gutter: map-get($grid-container-padding, #{$breakpoint});
 
-        @if (strip-unit(rem-calc(strip-unit($width))) >=strip-unit($global-width)) {
-          $container-width: $global-width;
+        @if (strip-unit(rem-calc(strip-unit($width))) >=strip-unit($grid-container)) {
+          $container-width: $grid-container;
         }
 
         width: calc(#{$container-width} - #{$gutter});
@@ -1542,9 +1544,6 @@ $icon-line-weight: 2;
     align-items: center;
     font-size: 1.25rem;
     color: $black;
-    // border: $hr-border;
-    // border-radius: 0 0 3px 3px;
-    // border-top: none;
     height: 61.8%;
   }
 }

@@ -912,8 +912,8 @@ $grid-margin-gutters: (
 );
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: (
-  small: $global-gutter-large,
-  medium: 2 * $global-gutter-large,
+  small: 2 * $global-gutter-small,
+  medium: 2 * $global-gutter-small,
   large: 2 * $global-gutter-large,
   xlarge: 2 * $global-gutter-large,
   xxlarge: 2 * $global-gutter-large
