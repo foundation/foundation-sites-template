@@ -21,6 +21,7 @@
 //   16. Tabs
 //   17. Scroll Snapping
 //   18. Calendar
+//   19. Utilities
 
 
 
@@ -99,6 +100,7 @@ body {
 .cell {
   position: relative;
 }
+
 
 // 3. Typography
 // ---------
@@ -197,34 +199,10 @@ code {
   &>a {
     width: 100%;
     text-decoration: none;
+    box-sizing: content-box;
 
     &:hover {
       background: $very-light-gray;
-    }
-  }
-
-  &.padding-small {
-    padding: 5px;
-  }
-
-  &.padding-large {
-    padding: 16px 20px;
-  }
-
-  &.padding-xlarge {
-    padding: 20px 30px;
-  }
-
-  &.no-padding {
-    padding: 0;
-
-    &>a {
-      padding: 8px 12px;
-      display: flex;
-
-      &.padding-small>a {
-        padding: 5px;
-      }
     }
   }
 }
@@ -454,6 +432,8 @@ code {
 // ---------
 
 .post-header {
+  position: relative;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1221,6 +1201,7 @@ $icon-line-weight: 2;
   border: none;
   font-size: $paragraph-font-size;
   border-bottom: $hr-border;
+
   &:last-child {
     border-bottom: none;
   }
@@ -1521,11 +1502,6 @@ $icon-line-weight: 2;
   line-height: $header-lineheight;
 }
 
-.section-subheader {
-  @include header-style('h3');
-  line-height: $header-lineheight;
-}
-
 .section-wrap {
   margin: 2rem auto;
   width: 100%;
@@ -1577,5 +1553,53 @@ $icon-line-weight: 2;
     font-size: 1.25rem;
     color: $black;
     height: 61.8%;
+  }
+}
+
+
+// 19. Utilities
+// ---------
+
+$padding-sizes: (
+  small: 0.3125rem,
+  medium: 0.5rem 0.75rem,
+  large: 1rem 1.25rem,
+  xlarge: 1.25rem 2rem,
+  button: 0.625rem 0.75rem 0.5rem
+);
+
+.no-padding {
+  padding: 0;
+
+  &>a {
+    display: flex;
+  }
+}
+
+@each $size-name,
+$size in $padding-sizes {
+  .padding-#{$size-name} {
+    padding: $size;
+
+    &>a, &>a:last-child {
+      display: flex;
+      padding: $size;
+
+      @if length($size)>3 {
+        margin: (nth($size, 1) * -1) (nth($size, 2) * -1) (nth($size, 3) * -1) (nth($size, 4) * -1);
+      }
+
+      @else if length($size)>2 {
+        margin: (nth($size, 1) * -1) (nth($size, 2) * -1) (nth($size, 3) * -1);
+      }
+
+      @else if length($size)>1 {
+        margin: (nth($size, 1) * -1) (nth($size, 2) * -1);
+      }
+
+      @else {
+        margin: $size * -1;
+      }
+    }
   }
 }
