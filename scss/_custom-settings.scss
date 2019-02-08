@@ -180,6 +180,7 @@ code {
   align-items: center;
   font-size: 1rem;
   line-height: $header-lineheight;
+  font-weight: $global-weight-normal;
 
   .fa {
     font-size: 0.75em;
@@ -217,6 +218,7 @@ code {
 
     &>a {
       padding: 8px 12px;
+      display: flex;
 
       &.padding-small>a {
         padding: 5px;
@@ -398,15 +400,49 @@ code {
   }
 
   &.small {
+    width: 36px;
+    height: 36px;
     min-width: 36px;
     min-height: 36px;
   }
 
   &.large {
+    width: 48px;
+    height: 48px;
     min-width: 48px;
     min-height: 48px;
   }
 }
+
+.avatar-array {
+  position: relative;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .avatar-item {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 28px;
+    & + .avatar-item {
+      margin-left: -25%;
+    }
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        z-index: 5 - $i;
+      }
+    }
+  
+  }
+  img {
+    width: 28px;
+    height: 28px;
+    box-shadow: 0 0 0 1px #fff;
+    margin: 0 auto;
+    border-radius: 50%;
+  }
+}
+
 
 // 6. Post Card
 // ---------
@@ -415,7 +451,7 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 $global-padding;
+  padding-left: $global-padding;
 }
 
 
@@ -542,7 +578,7 @@ code {
   flex-wrap: wrap;
   display: inline-flex;
   background: $very-light-gray;
-  color: $dark-gray;
+  color: $very-dark-gray;
   margin: 3px;
   border-radius: $global-radius;
   overflow: hidden;
@@ -554,7 +590,6 @@ code {
 
     &:last-child {
       background: $light-gray;
-      font-weight: $global-weight-bold;
     }
   }
 
@@ -563,7 +598,6 @@ code {
     padding: 0.25em 0.375em 0.125em;
     background: $light-gray;
     color: inherit;
-    font-weight: $global-weight-bold;
   }
 }
 
