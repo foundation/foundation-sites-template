@@ -43,6 +43,7 @@
 }
 
 @mixin button-sizes() {
+
   @each $size-name,
   $size in $button-sizes {
     &.#{$size-name} {
@@ -116,7 +117,8 @@ a {
   }
 
   @include foundation-palette();
-  @include foundation-palette('li', '>&');
+  @include foundation-palette($selector: 'li', $child: '>&');
+
   @include button-sizes();
 }
 
@@ -420,20 +422,24 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
+
   .avatar-item {
     position: relative;
     flex: 1 1 auto;
     min-width: 28px;
-    & + .avatar-item {
+
+    &+.avatar-item {
       margin-left: -25%;
     }
+
     @for $i from 1 through 5 {
       &:nth-child(#{$i}) {
         z-index: 5 - $i;
       }
     }
-  
+
   }
+
   img {
     width: 28px;
     height: 28px;
@@ -669,6 +675,7 @@ button,
     background: none;
     outline: none;
   }
+
   &::last-child {
     margin-bottom: 0;
   }
@@ -830,6 +837,7 @@ hr {
           width: 100%;
         }
       }
+
       a:hover {
         background: $very-light-gray;
       }
@@ -1213,6 +1221,9 @@ $icon-line-weight: 2;
   border: none;
   font-size: $paragraph-font-size;
   border-bottom: $hr-border;
+  &:last-child {
+    border-bottom: none;
+  }
 
   &.small {
     font-size: $small-font-size;
@@ -1225,6 +1236,7 @@ $icon-line-weight: 2;
   .tabs-title {
     text-align: center;
     float: initial;
+
     &>a {
       display: flex;
       align-items: center;
@@ -1239,15 +1251,15 @@ $icon-line-weight: 2;
     border: none;
     color: inherit;
   }
+
   &.expanded {
     .tabs-title {
       width: 100%;
     }
   }
+
   &.line {
-
     .tabs-title {
-
       &>a {
 
         &:hover {
@@ -1265,7 +1277,25 @@ $icon-line-weight: 2;
   }
 
   &.bar {
-    // styles for type: bar.
+    .tabs-title {
+      border-right: $hr-border;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      &>a {
+
+        &:hover {
+          background: $very-light-gray;
+        }
+
+        &:focus,
+        &[aria-selected='true'] {
+          background: $very-light-gray;
+        }
+      }
+    }
   }
 
   &.image {
@@ -1527,16 +1557,18 @@ $icon-line-weight: 2;
   font-weight: $global-weight-bold;
   line-height: $global-lineheight;
   box-shadow: $global-drop-shadow;
+
   .month {
     display: flex;
     text-transform: uppercase;
     justify-content: center;
     color: $white;
     background: get-color('alert');
-    background: linear-gradient(30deg, get-color('alert') 0%,scale-color(get-color('alert'), $lightness: 20%) 100%);
+    background: linear-gradient(30deg, get-color('alert') 0%, scale-color(get-color('alert'), $lightness: 20%) 100%);
     font-size: 0.75rem;
     height: 38.2%;
   }
+
   .day {
     display: flex;
 
