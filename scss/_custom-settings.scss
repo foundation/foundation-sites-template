@@ -375,6 +375,8 @@ code {
 }
 
 .avatar {
+  flex: 0 0 auto;
+
   img {
     border-radius: 50%;
   }
@@ -382,15 +384,11 @@ code {
   &.small {
     width: 36px;
     height: 36px;
-    min-width: 36px;
-    min-height: 36px;
   }
 
   &.large {
     width: 48px;
     height: 48px;
-    min-width: 48px;
-    min-height: 48px;
   }
 }
 
@@ -1526,6 +1524,7 @@ $icon-line-weight: 2;
   flex-direction: column;
   height: 48px;
   width: 48px;
+  flex: 0 0 auto;
   border-radius: 3px;
   overflow: hidden;
   border-radius: $global-radius;
