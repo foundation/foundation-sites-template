@@ -4,6 +4,8 @@
 //  Table of Contents:
 //
 //   1. Mixins
+//   2. Menu
+//   X. DEV
 
 
 
@@ -12,7 +14,7 @@
 
 
 
-// 2. Grid
+// 2. Menu
 // ---------
 @include breakpoint(small down) {
   .main-menu .menu {
@@ -27,7 +29,7 @@
 }
 
 
-// DEV
+// X. DEV
 .menu-main-expand .is-dropdown-submenu {
   // display: block !important;
 }

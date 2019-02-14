@@ -72,10 +72,9 @@ $global-font-size: 16px;
 $global-width: rem-calc(960);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  // primary: #ed624b,
   primary: #607d8b,
   secondary: #cfd8dc,
-  success: #58ce3a,
+  success: #30d66d,
   warning: #ffae00,
   alert: #e6244e,
 );
@@ -105,7 +104,7 @@ $global-gutter-small: 10px;
 $global-gutter-large: 15px;
 $global-prototype-breakpoints: false;
 $global-button-cursor: auto;
-$global-color-pick-contrast-tolerance: 0;
+$global-color-pick-contrast-tolerance: 3;
 $global-transition-short: 100ms;
 $global-transition-medium: $global-transition-short * 2.5;
 $global-transition-long: $global-transition-short * 5;
@@ -790,7 +789,7 @@ $switch-paddle-offset: 0;
 $switch-paddle-radius: $global-radius;
 $switch-paddle-transition: 
   left $global-transition-short $global-transition-timing, 
-  background $global-transition-short $global-transition-timing,
+  color $global-transition-short $global-transition-timing,
   box-shadow $global-transition-medium $global-transition-timing;
 
 // 50. Table

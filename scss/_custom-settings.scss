@@ -111,6 +111,10 @@ p {
   &.small {
     font-size: $small-font-size;
   }
+  &:last-child {
+    margin-bottom: 0;
+  }
+  @include foundation-palette();
 }
 
 a {
@@ -142,7 +146,11 @@ code {
   font-size: 0.875rem;
 }
 
-
+.hover-underline {
+  &:hover {
+    text-decoration: underline;
+  }
+}
 // 4. Card
 // ---------
 
@@ -179,13 +187,24 @@ code {
   }
 }
 
+.card-header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: nth($global-menu-padding, 1);
+}
+
 .card-title {
   display: flex;
   align-items: center;
   font-size: 1rem;
   line-height: $header-lineheight;
   font-weight: $global-weight-normal;
-
+  &.small {
+    font-size: 0.875rem;
+  }
   .fa {
     font-size: 0.75em;
     margin-right: 0.5em;
@@ -293,14 +312,16 @@ code {
 .user {
   display: flex;
   align-items: center;
-  height: 36px;
+  height: 48px;
 
-  .large & {
-    height: 65px;
+   .small & {
+    height: 36px;
   }
-
-  .xlarge & {
-    height: 128px;
+   .large & {
+    height: 96px;
+  }
+   .xlarge & {
+    height: 144px;
   }
 
   input,
@@ -314,63 +335,56 @@ code {
 }
 
 .avatar-container {
-  width: 36px;
-  min-width: 36px;
+  width: 48px;
+  min-width: 48px;
 
+  .small & {
+    width: 36px;
+    min-width: 36px;
+  }
   .large & {
-    width: 64px;
-    min-width: 64px;
+    width: 96px;
+    min-width: 96px;
   }
-
   .xlarge & {
-    width: 128px;
-    min-width: 128px;
+    width: 144px;
+    min-width: 144px;
   }
-}
-
-.user-meta {
-  padding: 0 1rem;
-  flex-grow: 1;
-  line-height: 1;
-  display: flex;
-  justify-content: center;
-  height: 100%;
 }
 
 .user-name {
   font-size: 0.875rem;
-  height: 0.875rem;
-  margin-bottom: 0.5rem;
 
   .fa {
     margin-left: 1em;
-    color: #aaa;
+    color: $dark-gray;
   }
-
+  .small & {
+    height: 1rem;
+    &:last-child {
+      height: initial;
+    }
+  }
   .large & {
     font-size: 1rem;
-    height: 1rem;
   }
-
   .xlarge & {
     font-size: 1.5rem;
-    height: 1.5rem;
   }
 }
 
 .user-info {
   font-size: 0.75rem;
-  height: 0.75rem;
-  color: #aaa;
+  color: $dark-gray;
 
+  .small & {
+    height: 1rem;
+  }
   .large & {
     font-size: 0.875rem;
-    height: 0.875rem;
   }
-
   .xlarge & {
     font-size: 1rem;
-    height: 1rem;
   }
 }
 
@@ -378,7 +392,7 @@ code {
   flex: 0 0 auto;
 
   img {
-    border-radius: 50%;
+    border-radius: $global-radius;
   }
 
   &.small {
@@ -419,7 +433,7 @@ code {
   img {
     width: 28px;
     height: 28px;
-    box-shadow: 0 0 0 1px #fff;
+    box-shadow: 0 0 0 1px $very-light-gray;
     margin: 0 auto;
     border-radius: 50%;
   }
@@ -429,14 +443,6 @@ code {
 // 6. Post Card
 // ---------
 
-.post-header {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: $global-padding;
-}
 
 
 // 8. Clipping
@@ -500,19 +506,22 @@ code {
 
   &.space-header {
     background: $very-light-gray;
-    height: 65px;
+    height: 64px;
 
     .large>&,
     .large>a>& {
       height: 200px;
       max-height: 25vw;
-      min-height: 65px;
+      min-height: 64px;
     }
   }
 
   &.feature-image {
     background: $white;
     height: 100px;
+    .large & {
+      height: 200px;
+    }
   }
 
   &.variable {
@@ -646,7 +655,7 @@ code {
 // ---------
 
 button,
-.button {
+.button, input {
 
   &:focus,
   &:active {
@@ -654,16 +663,8 @@ button,
     outline: none;
   }
 
-  &::last-child {
+  &:last-child {
     margin-bottom: 0;
-  }
-}
-
-input {
-
-  &:focus,
-  &:active {
-    outline: none;
   }
 }
 
