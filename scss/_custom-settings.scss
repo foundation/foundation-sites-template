@@ -1253,7 +1253,7 @@ $icon-line-weight: 2;
       a {
         &:hover {
           background: none;
-          box-shadow: inset 0 -2px $very-light-gray;
+          box-shadow: inset 0 -2px rgba($dark-gray, .25);
         }
 
         &:focus,
