@@ -1209,7 +1209,7 @@ $icon-line-weight: 2;
   display: flex;
   border: none;
   font-size: $paragraph-font-size;
-  border-bottom: $hr-border;
+  border-bottom: 1px solid rgba($dark-gray, .17);
 
   &:last-child {
     border-bottom: none;
@@ -1227,7 +1227,7 @@ $icon-line-weight: 2;
     text-align: center;
     float: initial;
 
-    a {
+    &>a {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1250,10 +1250,10 @@ $icon-line-weight: 2;
 
   &.line {
     .tabs-title {
-      a {
+      &>a {
         &:hover {
           background: none;
-          box-shadow: inset 0 -2px rgba($dark-gray, .25);
+          box-shadow: inset 0 -2px rgba($dark-gray, .17);
         }
 
         &:focus,
@@ -1280,7 +1280,7 @@ $icon-line-weight: 2;
         border-right: none;
       }
 
-      & a {
+      &>a {
 
         &:hover {
           background: $very-light-gray;
