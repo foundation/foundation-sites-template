@@ -159,6 +159,7 @@ code {
 
 .card {
   transition: box-shadow $global-transition-medium $global-transition-timing;
+  flex-grow: 0;
 
   .card-anchor {
     color: inherit;
@@ -196,6 +197,7 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   padding-left: nth($global-menu-padding, 1);
 }
 
@@ -1376,6 +1378,7 @@ $icon-line-weight: 2;
   @include cross-browser(scroll-snap-type, x mandatory);
   overflow-x: auto;
   overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .scroll-snap-element {
