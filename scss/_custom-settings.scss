@@ -1248,6 +1248,11 @@ $icon-line-weight: 2;
       height: 40px;
       padding: $global-menu-padding;
     }
+    &.is-active {
+      &>a {
+        background: $very-light-gray;
+      }
+    }
   }
 
   .tabs-content {
@@ -1292,13 +1297,12 @@ $icon-line-weight: 2;
       &:last-child {
         border-right: none;
       }
-
+      
       &>a {
 
         &:hover {
           background: $very-light-gray;
         }
-
         &:focus,
         &[aria-selected='true'] {
           background: $very-light-gray;
