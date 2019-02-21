@@ -819,15 +819,15 @@ $table-stack-breakpoint: medium;
 
 $tab-margin: 0;
 $tab-background: none;
-$tab-color: $primary-color;
+$tab-color: $body-font-color;
 $tab-background-active: $very-light-gray;
-$tab-active-color: $primary-color;
+$tab-active-color: $body-font-color;
 $tab-item-font-size: inherit;
 $tab-item-background-hover: $white;
-$tab-item-padding: 0;
+$tab-item-padding: $global-menu-padding;
 $tab-expand-max: 6;
 $tab-content-background: none;
-$tab-content-border: none;
+$tab-content-border: transparent;
 $tab-content-color: inherit;
 $tab-content-padding: 0;
 
@@ -836,8 +836,8 @@ $tab-content-padding: 0;
 
 $thumbnail-border: solid 4px $white;
 $thumbnail-margin-bottom: $global-margin;
-$thumbnail-shadow: 0 0 0 1px rgba($black, 0.2);
-$thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
+$thumbnail-shadow: none;
+$thumbnail-shadow-hover: $global-drop-shadow;
 $thumbnail-transition: 
   box-shadow $global-transition-medium $global-transition-timing;
 $thumbnail-radius: $global-radius;

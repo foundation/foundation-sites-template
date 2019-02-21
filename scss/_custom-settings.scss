@@ -83,6 +83,12 @@
   @return $number;
 }
 
+@function gradient($color, $tilt: 0deg, $lightness: 20%) {
+  @return linear-gradient($tilt, $color 0%, scale-color($color, $lightness) 100%);
+}
+
+
+
 
 // 2. Grid
 // ---------
@@ -1227,6 +1233,9 @@ $icon-line-weight: 2;
   &:last-child {
     //border-bottom: none;
   }
+  &::before, &::after {
+    width: 0;
+  }
 
   &.small {
     font-size: $small-font-size;
@@ -1246,18 +1255,12 @@ $icon-line-weight: 2;
       justify-content: center;
       color: inherit;
       height: 40px;
-      padding: $global-menu-padding;
     }
     &.is-active {
       &>a {
         background: $very-light-gray;
       }
     }
-  }
-
-  .tabs-content {
-    border: none;
-    color: inherit;
   }
 
   &.expanded {
@@ -1344,6 +1347,10 @@ $icon-line-weight: 2;
       }
     }
   }
+}
+
+.tabs-content {
+  border: none;
 }
 
 // 17. Scroll Snapping
@@ -1574,7 +1581,7 @@ $icon-line-weight: 2;
     justify-content: center;
     color: $white;
     background: get-color('alert');
-    background: linear-gradient(30deg, get-color('alert') 0%, scale-color(get-color('alert'), $lightness: 20%) 100%);
+    background: gradient(get-color('alert'), 30deg, 20%);
     font-size: 0.75rem;
     height: 38.2%;
   }
