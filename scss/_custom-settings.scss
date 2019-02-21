@@ -338,6 +338,9 @@ code {
   .xlarge & {
     height: 144px;
   }
+  .xxlarge & {
+    height: 300px;
+  }
 
   input,
   textarea {
@@ -367,6 +370,10 @@ code {
     width: 144px;
     min-width: 144px;
   }
+  .xxlarge & {
+    width: 300px;
+    min-width: 300px;
+  }
 }
 
 .user-name {
@@ -392,6 +399,9 @@ code {
   .xlarge & {
     font-size: 1.5rem;
   }
+  .xxlarge & {
+    font-size: 1.5rem;
+  }
 }
 
 .user-info {
@@ -407,6 +417,9 @@ code {
   }
 
   .xlarge & {
+    font-size: 1rem;
+  }
+  .xxlarge & {
     font-size: 1rem;
   }
 }
@@ -1218,7 +1231,7 @@ $icon-line-weight: 2;
   border-bottom: 1px solid rgba($dark-gray, .17);
 
   &:last-child {
-    border-bottom: none;
+    //border-bottom: none;
   }
   &::before, &::after {
     width: 0;
@@ -1267,7 +1280,7 @@ $icon-line-weight: 2;
       }
 
       &.is-active {
-        a {
+        &>a {
           background: none;
           box-shadow: inset 0 -2px $dark-gray;
         }
@@ -1588,6 +1601,7 @@ $padding-sizes: (small: 0.3125rem,
 medium: 0.5rem 0.75rem,
 large: 1rem 1.25rem,
 xlarge: 1.25rem 2rem,
+xxlarge: 1.25rem 2rem,
 button: 0.625rem 0.75rem 0.5rem);
 
 .no-padding {
