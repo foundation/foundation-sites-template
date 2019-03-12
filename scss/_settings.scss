@@ -194,7 +194,7 @@ $list-lineheight: $paragraph-lineheight;
 $list-margin-bottom: $paragraph-margin-bottom;
 $list-style-type: disc;
 $list-style-position: outside;
-$list-side-margin: 0;
+$list-side-margin: rem-calc(20);
 $list-nested-side-margin: 0;
 $defnlist-margin-bottom: 1rem;
 $defnlist-term-weight: $global-weight-bold;
@@ -211,6 +211,7 @@ $keystroke-background: $very-light-gray;
 $keystroke-padding: rem-calc(2 4 0);
 $keystroke-radius: $global-radius-small;
 $abbr-underline: 1px dotted $black;
+
 
 // 5. Typography Helpers
 // ---------------------

@@ -697,7 +697,7 @@ input {
 
   &:focus,
   &:active {
-    background: none;
+    background: $light-gray;
     outline: none;
   }
 
@@ -728,10 +728,13 @@ input {
 // 12. Dot Menu
 // ---------
 
-.dots {
-  position: absolute;
+.post-edit-bar {
+  position: relative;
+  display: flex;
+  top:0;
   right: 0;
-  bottom: 0;
+}
+.dots {
   cursor: pointer;
   border-radius: 0;
 
@@ -757,11 +760,9 @@ input {
 }
 
 .reply-button {
-  position: absolute;
+  position: relative;
   width: 15px;
   height: 15px;
-  top: 0;
-  right: 0;
   padding: 10px;
   box-sizing: content-box;
   fill: $medium-gray;
