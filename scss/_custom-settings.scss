@@ -111,7 +111,7 @@ body {
 // 3. Typography
 // ---------
 
-p {
+p  {
   font-size: $paragraph-font-size;
 
   &.small {
@@ -136,6 +136,10 @@ a {
   @include button-sizes();
 }
 
+ul  {
+  font-size: $paragraph-font-size;
+  @include foundation-palette();
+}
 small {
   color: $dark-gray;
 }
@@ -154,6 +158,13 @@ code {
   font-size: 0.875rem;
 }
 
+
+input,
+  textarea,
+  select {
+    font-size:$paragraph-font-size;
+    
+  }
 .hover-underline {
   &:hover {
     text-decoration: underline;
@@ -166,6 +177,7 @@ code {
 .card {
   transition: box-shadow $global-transition-medium $global-transition-timing;
   flex-grow: 0;
+  font-size:$paragraph-font-size;
 
   .card-anchor {
     color: inherit;
@@ -195,6 +207,11 @@ code {
     box-shadow: $global-drop-shadow;
     transition: box-shadow $global-transition-short $global-transition-timing;
   }
+  input,
+  textarea,
+  select {
+    font-size:$paragraph-font-size;
+  }
 }
 
 .card-header {
@@ -212,7 +229,6 @@ code {
   align-items: center;
   font-size: 1rem;
   line-height: $header-lineheight;
-  font-weight: $global-weight-normal;
 
   &.small {
     font-size: 0.875rem;
@@ -249,6 +265,7 @@ code {
   input,
   textarea {
     @extend .input-reset;
+    height: auto;
   }
 }
 
@@ -345,6 +362,7 @@ code {
   input,
   textarea {
     @extend .input-reset;
+  
   }
 
   input[type='checkbox'] {
@@ -590,6 +608,10 @@ code {
   display: inline-block;
   box-shadow: $global-drop-shadow;
   background-color: $white;
+  font-size: $small-font-size;
+  &.is-open {
+    z-index: 2000;
+  }
 }
 
 .space-info-container {
@@ -728,13 +750,10 @@ input {
 // 12. Dot Menu
 // ---------
 
-.post-edit-bar {
-  position: relative;
-  display: flex;
-  top:0;
-  right: 0;
-}
 .dots {
+  position: absolute;
+  right: 0;
+  bottom: 0;
   cursor: pointer;
   border-radius: 0;
 
@@ -758,25 +777,86 @@ input {
     color: $dark-gray;
   }
 }
-
-.reply-button {
-  position: relative;
-  width: 15px;
-  height: 15px;
-  padding: 10px;
+.reply-button, .comment-count-button, .edit-button  {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  right: 0;
+  padding: 10px 0px;
   box-sizing: content-box;
-  fill: $medium-gray;
-
+  a {
   &:hover {
     cursor: pointer;
-    fill: get-color('success');
+    color: $black;
+  }
+  &:hover::after {
+    color: $black;
   }
 }
+}
+.reply-button {
+  a {
+  &::after {
+    content: "\f112";
+    font-family: 'FontAwesome';
+    font-weight: $global-weight-normal;
+    color: $dark-gray;
+  }
+}
+}
+.comment-count-button {
+  font-size: 1.4rem;
+  padding: 5px 10px 10px 5px;
+  a {
+  &::after {
+    content: "\f075";
+    font-family: 'FontAwesome';
+    font-weight: $global-weight-normal;
+    color: $dark-gray;
+  }
+}
+.comment-number {
+  line-height: 0;
+  position: absolute;
+  top: 21px;
+  font-size: .65rem;
+  font-weight: bold;
+  width: 10px;
+  text-align: center;
+  letter-spacing: -0.05em;
+  color: white;
+}
+}
 
+.edit-button {
+  a {
+  &::after {
+    content: "\f040";
+    font-family: 'FontAwesome';
+    font-weight: $global-weight-normal;
+    color: $dark-gray;
+  }
+}
+}
+.edit-bar {
+  position: absolute;
+  display: flex;
+  top:5px;
+  right: 0;
+  flex-direction: row-reverse;
+  width:25%;
 
+  .dots {
+    position: static;
+  }
+  .reply-button, .edit-button, .comment-count-button  {
+    position: static;
+  }
+  
+}
 // 13. Excerpt
 // ---------
-
 @mixin excerpt($font-size: 1em, $line-height: 1.4, $lines-to-show: 3, $expand: false) {
   @if $expand==true {
     max-height: initial;
@@ -825,8 +905,6 @@ input {
 
 // 14. Menu
 // ---------
-
-
 $border: 1px solid $very-light-gray;
 
 hr {

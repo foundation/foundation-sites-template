@@ -72,11 +72,11 @@ $global-font-size: 16px;
 $global-width: rem-calc(960);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #607d8b,
-  secondary: #cfd8dc,
-  success: #30d66d,
+  primary: #333,
+  secondary: #ffffff,
+  success: #73A343,
   warning: #ffae00,
-  alert: #e6244e,
+  alert: #f1484d,
 );
 $white: #fff;
 $very-light-gray: #fafafa;
@@ -171,7 +171,7 @@ $header-styles: (
   ),
 );
 $header-text-rendering: optimizeLegibility;
-$small-font-size: 0.75em;
+$small-font-size: 0.85em;
 $header-small-font-color: $dark-gray;
 $paragraph-font-size: 0.875rem;
 $paragraph-lineheight: 1.6;
