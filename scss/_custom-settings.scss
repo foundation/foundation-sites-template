@@ -1126,6 +1126,7 @@ li[role=menuitem] {
     display: flex;
     align-items: center;
     height: 48px;
+    box-sizing: border-box;
   }
 
   &.menu {
