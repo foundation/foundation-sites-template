@@ -142,6 +142,8 @@ ul  {
 }
 small {
   color: $dark-gray;
+  display: inline-block;
+  line-height: $header-lineheight;
 }
 
 code {
@@ -244,7 +246,7 @@ input,
 .card-divider {
   padding: $button-padding;
 
-  &>a {
+  &>a, &>.button {
     width: 100%;
     text-decoration: none;
     box-sizing: content-box;
@@ -262,7 +264,7 @@ input,
     border: none;
   }
 
-  input,
+  input[type='text'],
   textarea {
     @extend .input-reset;
     height: auto;
@@ -652,6 +654,9 @@ input,
     color: inherit;
   }
 }
+.user-space-info {
+  line-height: $header-lineheight;
+}
 
 
 // 10. Switch
@@ -719,13 +724,21 @@ input {
 
   &:focus,
   &:active {
-    background: $light-gray;
+    // background: $light-gray;
     outline: none;
   }
 
   &:last-child {
     margin-bottom: 0;
   }
+  .fa {
+    font-size: 1rem;
+    margin-right: 0.5em;
+  }
+}
+label > .fa {
+  font-size: 1rem;
+  margin-right: 0.5em;
 }
 
 .arrow-button {
@@ -733,11 +746,6 @@ input {
   align-items: center;
   font-size: $paragraph-font-size;
   @include foundation-palette();
-
-  .fa {
-    font-size: 1rem;
-    margin-right: 0.5em;
-  }
 
   &::after {
     margin-left: auto;
@@ -924,6 +932,7 @@ hr {
 
   .menu {
     font-size: 0.875rem;
+    margin: 0 -#{$dropdownmenu-padding};
 
     li {
       &.menu-main-expand {
@@ -940,7 +949,7 @@ hr {
 
       &.no-arrow {
         &>a {
-          padding-right: 0.875rem;
+          padding-right: $dropdownmenu-padding;
 
           &::after {
             display: none;
@@ -1059,40 +1068,54 @@ li[role=menuitem] {
   font-family: FontAwesome;
   border: none;
 }
+.main-menu {
+  .dropdown .is-dropdown-submenu,
+  .accordion-menu .is-accordion-submenu {
+    border-top: $hr-border;
+    border-radius: 0 0 $global-radius $global-radius;
+    overflow: hidden;
+    box-shadow: $global-drop-shadow;
+    z-index: -1; // enforce drop-shadow hierachie.
 
-.dropdown .is-dropdown-submenu,
-.accordion-menu .is-accordion-submenu {
-  border-top: $hr-border;
-  border-radius: 0 0 $global-radius $global-radius;
-  overflow: hidden;
-  box-shadow: $global-drop-shadow;
-  z-index: -1; // enforce drop-shadow hierachie.
-
-  a {
-    border-right: none;
-  }
-
-  li {
-    &:first-child .submenu-anchor {
-      padding-top: 1rem;
+    a {
+      border-right: none;
     }
 
-    &:last-child .submenu-anchor {
-      padding-bottom: 1rem;
-    }
+    li {
+      &:first-child .submenu-anchor {
+        padding-top: 1rem;
+      }
 
-    .card-anchor {
-      padding: 0;
+      &:last-child .submenu-anchor {
+        padding-bottom: 1rem;
+      }
+
+      .card-anchor {
+        padding: 0;
+      }
     }
   }
 }
-
 .accordion-menu {
-  .is-accordion-submenu-parent:not(.has-submenu-toggle)>a::after {
-    @extend .caret;
-    width: 0.62em;
-    line-height: 0;
-    margin-top: 0.1em;
+  .is-accordion-submenu-parent:not(.has-submenu-toggle) {
+    &>a::after {
+      @extend .caret;
+      display: inline-block;
+      width: 0.62em;
+      line-height: 0;
+      margin-left: 0.5em;
+    }
+    &[aria-expanded='false']>a::after {
+      transform: rotate(-90deg);
+      transition: $global-transition-medium;
+    }
+    &[aria-expanded='true']>a::after {
+      transform: rotate(-180deg);
+      transition: $global-transition-medium;
+    }
+  }
+  .button {
+    text-align: left;
   }
 
   &>.navbar-icon {
@@ -1120,18 +1143,18 @@ li[role=menuitem] {
     }
   }
 }
-
 .dropdown {
   &>li>a {
     display: flex;
     align-items: center;
     height: 48px;
+    box-sizing: border-box;
   }
 
   &.menu {
     &>li {
-      &.avatar>a {
-        padding: 0.375rem;
+      img.avatar {
+        padding: 0;
       }
 
       &>a {
@@ -1698,6 +1721,7 @@ button: 0.625rem 0.75rem 0.5rem);
 @each $size-name,
 $size in $padding-sizes {
   .padding-#{$size-name} {
+    display: flex;
     padding: $size;
 
     &>a,
@@ -1722,4 +1746,7 @@ $size in $padding-sizes {
       }
     }
   }
+}
+.flex {
+  display: flex;
 }
