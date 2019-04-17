@@ -12,7 +12,7 @@
 //   7. Post Card
 //   8. Clipping
 //   9. Dropdown
-//   10. Switch
+//   10. Switch & Checkbox
 //   11. Button
 //   12. Dot Menu
 //   13. Excerpt
@@ -370,9 +370,31 @@ input,
   input[type='checkbox'] {
     margin: 0 1rem 0 0;
   }
+  .avatar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .clipped {
+      z-index: 10;
+    }
+    .checkable {
+      position: absolute;
+      [type='checkbox']+label {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+  &:hover .avatar-container, &.is-active {
+    .clipped {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
 }
 
 .avatar-container {
+  z-index: 20;
   width: 48px;
   min-width: 48px;
 
@@ -659,10 +681,8 @@ input,
 }
 
 
-// 10. Switch
+// 10. Switch & Checkbox
 // ---------
-
-
 
 .switch {
   display: flex;
@@ -675,20 +695,20 @@ input,
     border-radius: 0;
     height: 100%;
     background: none;
-
-    &::before {
+    &::before, &::after {
       content: '';
+    }
+    &::before {
       background: $medium-gray;
-      height: 1px;
+      height: 2px;
       width: 100%;
     }
 
     &::after {
-      content: '';
       top: initial;
       left: 0;
       border-radius: 50%;
-      box-shadow: inset 0 0 0 1px $medium-gray;
+      box-shadow: inset 0 0 0 2px $medium-gray;
       box-sizing: content-box;
     }
 
@@ -713,6 +733,88 @@ input,
   }
 
   @include foundation-palette($child: 'input:checked ~ .switch-paddle');
+}
+
+// Checkbox
+.checkbox {
+  display: flex;
+  align-items: center;
+
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  @include foundation-palette();
+
+  font-size: $switch-height;
+  &.tiny {
+    font-size: $switch-height-tiny;
+  }
+  &.small {
+    font-size: $switch-height-small;
+  }
+  &.large {
+    font-size: $switch-height-large;
+  }
+  &.round {
+    .checkbox-label {
+      &::before {
+        border-radius: 50%;
+      }
+    }
+  }
+  // Unchecked
+  .checkbox-label {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1em;
+    height: 1.5em;
+
+    
+    &::before, &::after {
+      content: '';
+      position: absolute;
+    }
+    &::before {
+      box-shadow: inset 0 0 0 2px $medium-gray;
+      border-radius: $global-radius-small;
+      z-index: 1;
+      transition: all $global-transition-medium;
+      height: 1.5em;
+      width: 1.5em;
+    }
+    
+    &::after {
+      width: 0.375em;
+      height: 0.125em;
+      border-bottom: 2px solid transparent;
+      border-right: 2px solid transparent;
+      transform: rotate(45deg);
+      z-index: 2;
+      transition: all $global-transition-medium;
+    }
+  }
+  
+  // Checked
+  input:checked ~ .checkbox-label {
+    &::before {
+      box-shadow: inset 0 0 0 2em currentColor;
+      transition: all $global-transition-medium;
+    }
+    
+    &::after {
+      height: 0.75em;
+      margin-top: -0.05em;
+      transform: rotate(45deg);
+      transition: all $global-transition-short;
+      transition-delay: $global-transition-short;
+      border-color: $white;
+    }
+  }
 }
 
 // 11. Button & Input
