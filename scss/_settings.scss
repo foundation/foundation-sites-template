@@ -73,8 +73,8 @@ $global-width: rem-calc(960);
 $global-lineheight: 1.5;
 $foundation-palette: (
   primary: #333,
-  secondary: #ffffff,
-  success: #73A343,
+  secondary: #fff,
+  success: #5cc233,
   warning: #ffae00,
   alert: #f1484d,
 );
@@ -323,7 +323,7 @@ $button-responsive-expanded: false;
 // 12. Button Group
 // ----------------
 
-$buttongroup-margin: 1rem;
+$buttongroup-margin: 0;
 $buttongroup-spacing: 1px;
 $buttongroup-child-selector: '.button';
 $buttongroup-expand-max: 6;

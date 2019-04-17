@@ -1,7 +1,7 @@
 jQuery(document).ready(function () {
 	jQuery(document).foundation();
 
-	$('.user input[type=checkbox]').on('change', function() {
+	$(document).on('change', '.user input[type=checkbox]', function() {
 		$(this).parents('.user').toggleClass('is-active');
 	});
 });
