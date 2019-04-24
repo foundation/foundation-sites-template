@@ -72,9 +72,9 @@ $global-font-size: 16px;
 $global-width: rem-calc(960);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #333,
-  secondary: #fff,
-  success: #5cc233,
+  primary: #668899,
+  secondary: #455A64,
+  success: #28aa6d,
   warning: #ffae00,
   alert: #f1484d,
 );
@@ -171,7 +171,7 @@ $header-styles: (
   ),
 );
 $header-text-rendering: optimizeLegibility;
-$small-font-size: 0.85em;
+$small-font-size: 0.75rem;
 $header-small-font-color: $dark-gray;
 $paragraph-font-size: 0.875rem;
 $paragraph-lineheight: 1.6;
@@ -316,8 +316,8 @@ $button-opacity-disabled: 0.25;
 $button-background-hover-lightness: -20%;
 $button-hollow-hover-lightness: -50%;
 $button-transition: 
-  background-color $global-transition-medium $global-transition-timing, 
-  color $global-transition-medium $global-transition-timing;
+  background-color $global-transition-short $global-transition-timing, 
+  color $global-transition-short $global-transition-timing;
 $button-responsive-expanded: false;
 
 // 12. Button Group
@@ -347,7 +347,7 @@ $callout-link-tint: 30%;
 
 $card-background: $white;
 $card-font-color: inherit;
-$card-divider-background: $white;
+$card-divider-background: transparent;
 $card-border: none;
 $card-shadow: none;
 $card-border-radius: $global-radius;
@@ -497,7 +497,7 @@ $menu-items-padding: $global-menu-padding;
 $menu-simple-margin: 1rem;
 $menu-item-color-active: none;
 $menu-item-background-active: none;
-$menu-icon-spacing: 0.25rem;
+$menu-icon-spacing: 0.5rem;
 $menu-item-background-hover: $very-light-gray;
 $menu-state-back-compat: true;
 $menu-centered-back-compat: true;
@@ -541,12 +541,12 @@ $maincontent-class: 'off-canvas-content';
 
 $orbit-bullet-background: $light-gray;
 $orbit-bullet-background-active: $medium-gray;
-$orbit-bullet-diameter: 1.2rem;
-$orbit-bullet-margin: 0.1rem;
-$orbit-bullet-margin-top: 0.8rem;
-$orbit-bullet-margin-bottom: 0.8rem;
+$orbit-bullet-diameter: 0.75rem;
+$orbit-bullet-margin: 0.25rem;
+$orbit-bullet-margin-top: 0.5rem;
+$orbit-bullet-margin-bottom: 0.5rem;
 $orbit-caption-background: rgba($black, 0.5);
-$orbit-caption-padding: 1rem;
+$orbit-caption-padding: 0.25rem;
 $orbit-control-background-hover: rgba($black, 0.5);
 $orbit-control-padding: 1rem;
 $orbit-control-zindex: 10;
@@ -784,7 +784,7 @@ $switch-height-tiny: 0.625rem;
 $switch-height-small: 0.75rem;
 $switch-height-large: 1.5rem;
 $switch-radius: $global-radius;
-$switch-margin: $global-margin;
+$switch-margin: 0;
 $switch-paddle-background: $white;
 $switch-paddle-offset: 0;
 $switch-paddle-radius: $global-radius;
