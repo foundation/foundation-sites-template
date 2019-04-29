@@ -238,7 +238,10 @@ label[for] {
   justify-content: center;
 	align-items: flex-start;
 	flex: 1;
-  padding-left: nth($global-menu-padding, 1);
+	padding-left: nth($global-menu-padding, 1);
+	.xlarge &, .xxlarge & {
+		padding-left: calc(2 * #{nth($global-menu-padding, 1)});
+	}
 }
 
 .card-title {
@@ -272,7 +275,7 @@ label[for] {
 			background: $very-light-gray;
 		}
 	}
-	.menu {
+	&.flex-dir-column .menu {
 		margin-top: nth($button-padding, 1);
 	}
 }
@@ -2025,4 +2028,16 @@ $size in $padding-sizes {
 	background-color: $white;
 	color: $very-dark-gray;
 	opacity: .7;
+}
+
+.shake {
+	animation: shake 0.4s 1 linear;
+}
+
+@keyframes shake {
+	8%, 41% { -webkit-transform: translateX(-0.25em); }
+	25%, 58% { -webkit-transform: translateX(0.25em); }
+	75% {	-webkit-transform: translateX(-0.1em); }
+	92% { -webkit-transform: translateX(0.1em); }
+	0%, 100% { -webkit-transform: translateX(0); }
 }
