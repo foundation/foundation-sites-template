@@ -23,6 +23,8 @@
 //   18. Calendar
 //   19. Utilities
 //   20. Orbit
+//   21. Spinner
+//   22. Typeahead
 
 
 
@@ -390,7 +392,7 @@ $user-card-sizes: (
   input,
   textarea {
     @extend .input-reset;
-  
+
   }
 
   input[type='checkbox'] {
@@ -426,10 +428,10 @@ $user-card-sizes: (
 
 .avatar-container {
 	z-index: 20;
-	
+
 	width: map-get($user-card-sizes, medium);
 	min-width: map-get($user-card-sizes, medium);
-	
+
 	@each $size-label, $size in $user-card-sizes {
 		.#{$size-label} & {
 			width: $size;
@@ -787,7 +789,7 @@ $user-card-sizes: (
       }
     }
 	}
-	
+
   // Unchecked
   .checkbox-label {
     position: relative;
@@ -798,7 +800,7 @@ $user-card-sizes: (
     font-size: 1em;
     height: 1.125em;
 
-    
+
     &::before, &::after {
       content: '';
       position: absolute;
@@ -811,7 +813,7 @@ $user-card-sizes: (
       height: 1.125em;
       width: 1.125em;
     }
-    
+
     &::after {
       width: 0.3em;
 			height: 0.6em;
@@ -832,14 +834,14 @@ $user-card-sizes: (
 			}
 		}
   }
-  
+
   // Checked
   input:checked ~ .checkbox-label {
     &::before {
       box-shadow: inset 0 0 0 2em currentColor;
       transition: all $global-transition-medium;
     }
-    
+
     &::after {
       margin-top: -0.05em;
       transform: rotate(45deg);
@@ -872,7 +874,7 @@ $user-card-sizes: (
   &.large {
     font-size: $switch-height-large;
   }
-	
+
   // Unchecked
   .radio-label {
     position: relative;
@@ -883,7 +885,7 @@ $user-card-sizes: (
     font-size: 1em;
     height: 1.125em;
 
-    
+
     &::before {
 			content: '';
 			position: absolute;
@@ -895,7 +897,7 @@ $user-card-sizes: (
       z-index: 1;
 		}
   }
-  
+
   // Checked
   input:checked ~ .radio-label {
     &::before {
@@ -1049,7 +1051,7 @@ input,
   .reply-button, .edit-button, .comment-count-button  {
     position: static;
   }
-  
+
 }
 // 13. Excerpt
 // ---------
@@ -1622,7 +1624,7 @@ $icon-line-weight: 2;
       &:last-child {
         border-right: none;
       }
-      
+
       &>a {
 
         &:hover {
@@ -2025,4 +2027,104 @@ $size in $padding-sizes {
 	background-color: $white;
 	color: $very-dark-gray;
 	opacity: .7;
+}
+
+
+
+
+
+// 21. Spinner
+// ---------
+
+$spinner-sizes: (
+	tiny: $switch-height-tiny,
+  small: $switch-height-small,
+  medium: $switch-height,
+  large: $switch-height-large,
+);
+
+.spinner {
+  border: 2px solid #f0f0f0;
+  border-radius: 50%;
+  border-top: 2px solid get-color(primary);
+  animation: spin 0.875s infinite cubic-bezier(.9,.3,.3,.7);
+  width: 1.5rem;
+	height: 1.5rem;
+
+	@each $size-name,
+  $size in $spinner-sizes {
+    &.#{$size-name} {
+      width: $size;
+      height: $size;
+    }
+  }
+  &.quick {
+    animation-duration: .5s;
+  }
+  &.slow {
+    animation-duration: 1.5s;
+  }
+}
+@keyframes spin {
+  0% {
+  	transform: rotate(-20deg);
+  }
+  100% {
+  	transform: rotate(340deg);
+  }
+}
+
+
+// 22. Typeahead
+// ---------
+
+
+.tt-menu {
+	width: 100%;
+	background-color: #fff;
+}
+.tt-input {
+	margin-bottom: 0;
+}
+
+.tt-suggestion.tt-cursor {
+	color: #fff;
+	background-color: get-color(primary);
+	small {
+		color: #fff;
+	}
+}
+
+.tt-suggestion p {
+	margin: 0;
+}
+
+.add-user-typeahead {
+	position: relative;
+	width: 100%;
+	input, .twitter-typeahead {
+		width: 100%;
+	}
+	.tt-suggestion {
+		padding: $button-padding;
+		line-height: $header-lineheight;
+		border-bottom: $hr-border;
+		cursor: pointer;
+		&:last-child {
+			padding-bottom: 10px;
+		}
+		&.tt-cursor {
+			background-color: get-color(success);
+		}
+	}
+}
+
+
+.add-user-typeahead .spinner-container {
+	position: absolute;
+	top: 0;
+	right: nth($button-padding, 1);
+	display: none;
+	align-items: center;
+	height: 100%;
 }

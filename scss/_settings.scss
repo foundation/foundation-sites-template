@@ -315,8 +315,8 @@ $button-palette: $foundation-palette;
 $button-opacity-disabled: 0.25;
 $button-background-hover-lightness: -20%;
 $button-hollow-hover-lightness: -50%;
-$button-transition: 
-  background-color $global-transition-short $global-transition-timing, 
+$button-transition:
+  background-color $global-transition-short $global-transition-timing,
   color $global-transition-short $global-transition-timing;
 $button-responsive-expanded: false;
 
@@ -377,7 +377,7 @@ $closebutton-color-hover: $black;
 // 16. Drilldown
 // -------------
 
-$drilldown-transition: 
+$drilldown-transition:
   transform $global-transition-short $global-transition-timing;
 $drilldown-arrows: true;
 $drilldown-padding: $global-menu-padding;
@@ -463,8 +463,8 @@ $input-padding: $form-spacing / 2;
 $input-shadow: none;
 $input-shadow-focus: none;
 $input-cursor-disabled: not-allowed;
-$input-transition: 
-  box-shadow $global-transition-long $global-transition-timing, 
+$input-transition:
+  box-shadow $global-transition-long $global-transition-timing,
   border-color $global-transition-medium $global-transition-timing;
 $input-number-spinners: true;
 $input-radius: $global-radius;
@@ -788,8 +788,8 @@ $switch-margin: 0;
 $switch-paddle-background: $white;
 $switch-paddle-offset: 0;
 $switch-paddle-radius: $global-radius;
-$switch-paddle-transition: 
-  left $global-transition-short $global-transition-timing, 
+$switch-paddle-transition:
+  left $global-transition-short $global-transition-timing,
   color $global-transition-short $global-transition-timing,
   box-shadow $global-transition-medium $global-transition-timing;
 
@@ -839,7 +839,7 @@ $thumbnail-border: solid 4px $white;
 $thumbnail-margin-bottom: $global-margin;
 $thumbnail-shadow: none;
 $thumbnail-shadow-hover: $global-drop-shadow;
-$thumbnail-transition: 
+$thumbnail-transition:
   box-shadow $global-transition-medium $global-transition-timing;
 $thumbnail-radius: $global-radius;
 
