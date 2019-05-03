@@ -400,13 +400,14 @@ $user-card-sizes: (
     margin: 0 1rem 0 0;
   }
   .avatar-container {
+		position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     .clipped {
       z-index: 10;
     }
-    .checkable {
+    .checkbox {
       position: absolute;
       [type='checkbox']+label {
         margin-left: 0;
@@ -418,7 +419,7 @@ $user-card-sizes: (
     }
   }
   &:hover .avatar-container, &.is-active {
-		.checkable~.clipped {
+		.checkbox~.clipped {
 			pointer-events: none;
 			transform: scale(0.5);
 			opacity: 0;
