@@ -296,8 +296,14 @@ $breadcrumbs-item-separator-color: $light-gray;
 // ----------
 
 $button-font-family: inherit;
+$button-sizes: (
+  tiny: 0.625rem,
+  small: 0.75rem,
+  default: 0.875rem,
+  large: 1rem,
+);
 $button-padding: 0.625em 0.75em 0.5em;
-$button-margin: 0 0 $global-margin 0;
+$button-margin: 0 0 map-get($button-sizes, default) 0;
 $button-fill: solid;
 $button-background: $primary-color;
 $button-background-hover: scale-color($button-background, $lightness: -15%);
@@ -305,12 +311,6 @@ $button-color: $white;
 $button-color-alt: $black;
 $button-radius: $global-radius;
 $button-hollow-border-width: 1px;
-$button-sizes: (
-  tiny: 0.625rem,
-  small: 0.75rem,
-  default: 0.875rem,
-  large: 1rem,
-);
 $button-palette: $foundation-palette;
 $button-opacity-disabled: 0.25;
 $button-background-hover-lightness: -20%;
@@ -323,7 +323,7 @@ $button-responsive-expanded: false;
 // 12. Button Group
 // ----------------
 
-$buttongroup-margin: 0;
+$buttongroup-margin: map-get($button-sizes, default);
 $buttongroup-spacing: 1px;
 $buttongroup-child-selector: '.button';
 $buttongroup-expand-max: 6;

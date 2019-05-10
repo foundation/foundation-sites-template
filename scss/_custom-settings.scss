@@ -13,7 +13,7 @@
 //   8. Clipping
 //   9. Dropdown
 //   10. Switch & Checkbox
-//   11. Button
+//   11. Button & Input
 //   12. Dot Menu
 //   13. Excerpt
 //   14. Menu
@@ -171,7 +171,16 @@ select {
 }
 .button-group {
   select {
-    margin: 0;
+		margin: 0;
+		border-radius: 0;
+		&:first-child {
+			border-top-left-radius: $global-radius;
+			border-bottom-left-radius: $global-radius;
+		}
+		&:last-child {
+			border-top-right-radius: $global-radius;
+			border-bottom-right-radius: $global-radius;
+		}
   }
   input {
     width: initial;
@@ -204,7 +213,13 @@ label[for] {
     flex-direction: column;
     padding: 0 !important;
     @include foundation-palette();
-  }
+	}
+	&.overflow-auto {
+		overflow: auto;
+	}
+	&.overflow-hidden {
+		overflow: hidden;
+	}
 
   h1,
   h2,
@@ -273,9 +288,6 @@ label[for] {
 		&:hover {
 			background: $very-light-gray;
 		}
-	}
-	.menu {
-		margin-top: nth($button-padding, 1);
 	}
 }
 
@@ -372,13 +384,13 @@ $user-card-sizes: (
 );
 
 .user {
-  display: flex;
-  align-items: center;
-  height: map-get($user-card-sizes, medium);
-  .checkbox-label {
-    height: map-get($user-card-sizes, medium);
-    width: map-get($user-card-sizes, medium);
-  }
+	display: flex;
+	align-items: center;
+	height: map-get($user-card-sizes, medium);
+	.checkbox-label {
+		height: map-get($user-card-sizes, medium);
+		width: map-get($user-card-sizes, medium);
+	}
 	@each $size-label, $size in $user-card-sizes {
 		.#{$size-label} & {
 			height: $size;
@@ -389,41 +401,42 @@ $user-card-sizes: (
 		}
 	}
 
-  input,
-  textarea {
-    @extend .input-reset;
+	input,
+	textarea {
+		@extend .input-reset;
 
-  }
+	}
 
-  input[type='checkbox'] {
-    margin: 0 1rem 0 0;
-  }
-  .avatar-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .clipped {
-      z-index: 10;
-    }
-    .checkable {
-      position: absolute;
-      [type='checkbox']+label {
-        margin-left: 0;
-        margin-right: 0;
+	input[type='checkbox'] {
+		margin: 0 1rem 0 0;
+	}
+	.avatar-container {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.clipped {
+			z-index: 10;
+		}
+		.checkbox {
+			position: absolute;
+			[type='checkbox']+label {
+				margin-left: 0;
+				margin-right: 0;
 			}
 			&~.clipped {
 				transition: $global-transition-medium;
 			}
-    }
-  }
-  &:hover .avatar-container, &.is-active {
-		.checkable~.clipped {
+		}
+	}
+	&:hover .avatar-container, &.is-active {
+		.checkbox~.clipped {
 			pointer-events: none;
 			transform: scale(0.5);
 			opacity: 0;
 			transition: $global-transition-short;
-    }
-  }
+		}
+	}
 }
 
 .avatar-container {
@@ -910,6 +923,16 @@ $user-card-sizes: (
 // 11. Button & Input
 // ---------
 
+
+select {
+	height: 2rem;
+	padding: $label-padding;
+	padding-right: 1.5rem;
+	line-height: 1.3;
+	&+button, &+.button {
+		height: 2rem;
+	}
+}
 button,
 .button,
 input,
@@ -1968,13 +1991,27 @@ $size in $padding-sizes {
 					margin: $size * -1;
 				}
 			}
+			&+* {
+				margin-top: nth($size, 1);
+			}
 		}
   }
 }
 .flex {
   display: flex;
 }
-
+.sticky {
+	position: -webkit-sticky;
+	position: sticky;
+	z-index: 200;
+	background: $card-background;
+	&[data-sticky-top] {
+		top: 0;
+	}
+	&[data-sticky-bottom] {
+		bottom: 0;
+	}
+}
 
 // 20. Orbit
 // ---------
@@ -2088,16 +2125,12 @@ $spinner-sizes: (
 }
 
 .tt-suggestion.tt-cursor {
-	color: #fff;
 	background-color: get-color(primary);
-	small {
+	span, small {
 		color: #fff;
 	}
 }
 
-.tt-suggestion p {
-	margin: 0;
-}
 
 .add-user-typeahead {
 	position: relative;
@@ -2117,14 +2150,12 @@ $spinner-sizes: (
 			background-color: get-color(success);
 		}
 	}
-}
-
-
-.add-user-typeahead .spinner-container {
-	position: absolute;
-	top: 0;
-	right: nth($button-padding, 1);
-	display: none;
-	align-items: center;
-	height: 100%;
+	.spinner-container {
+		position: absolute;
+		top: 0;
+		right: nth($button-padding, 1);
+		display: none;
+		align-items: center;
+		height: 100%;
+	}
 }
