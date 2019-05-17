@@ -258,10 +258,7 @@ label[for] {
   justify-content: center;
 	align-items: flex-start;
 	flex: 1;
-	padding-left: nth($global-menu-padding, 1);
-	.xlarge &, .xxlarge & {
-		padding-left: calc(2 * #{nth($global-menu-padding, 1)});
-	}
+	padding: $button-padding;
 }
 
 .card-title {
@@ -406,6 +403,13 @@ $user-card-sizes: (
 			}
 		}
 	}
+	.profile & {
+		flex-direction: column;
+		height: initial;
+		.avatar-container {
+			width: 100%;
+		}
+	}
 
 	input,
 	textarea {
@@ -460,7 +464,7 @@ $user-card-sizes: (
 
 .user-name {
   font-size: 0.875rem;
-
+	margin: 0;
   .fa {
     margin-left: 1em;
     color: $dark-gray;
@@ -474,7 +478,7 @@ $user-card-sizes: (
     }
   }
 
-  .large & {
+  .large &, .profile & {
     font-size: 1rem;
   }
 
@@ -483,7 +487,7 @@ $user-card-sizes: (
   }
   .xxlarge & {
     font-size: 1.5rem;
-  }
+	}
 }
 
 .user-info {
@@ -494,14 +498,11 @@ $user-card-sizes: (
     height: 1rem;
   }
 
-  .large & {
+  .large &, &.large {
     font-size: 0.875rem;
   }
 
-  .xlarge & {
-    font-size: 1rem;
-  }
-  .xxlarge & {
+  .xlarge &, .xxlarge & {
     font-size: 1rem;
   }
 }
@@ -698,7 +699,23 @@ $user-card-sizes: (
   margin: 3px;
   border-radius: $global-radius;
   overflow: hidden;
-  line-height: $header-lineheight;
+	line-height: $header-lineheight;
+	&.clear {
+		flex-direction: column;
+		background: none;
+		margin: 0.5em 0;
+		& span, & a {
+			color: $black;
+			display: block;
+			padding: 0;
+
+			&:last-child {
+				color: $dark-gray;
+				background: none;
+			}
+		}
+	}
+
 
   & span {
     display: inline-block;
@@ -1150,7 +1167,6 @@ hr {
 
   .menu {
     font-size: 0.875rem;
-    margin: 0 -#{$dropdownmenu-padding};
 
     li {
       &.menu-main-expand {
@@ -1646,6 +1662,9 @@ $icon-line-weight: 2;
   }
 
   &.bar {
+		&:last-child {
+			border-bottom: none;
+		}
     .tabs-title {
       border-right: $hr-border;
 
@@ -1971,7 +1990,6 @@ button: 0.625rem 0.75rem 0.5rem);
 @each $size-name,
 $size in $padding-sizes {
   .padding-#{$size-name} {
-    display: flex;
     padding: $size;
 
     &>a,
@@ -2009,12 +2027,20 @@ $size in $padding-sizes {
 	position: -webkit-sticky;
 	position: sticky;
 	z-index: 200;
-	background: $card-background;
+	&.card-divider, &.card-section {
+		background: $card-background;
+	}
 	&[data-sticky-top] {
 		top: 0;
 	}
 	&[data-sticky-bottom] {
 		bottom: 0;
+	}
+	&[data-sticky-top="padding"] {
+		top: $global-padding;
+	}
+	&[data-sticky-bottom="padding"] {
+		bottom: $global-padding;
 	}
 }
 
