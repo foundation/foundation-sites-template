@@ -246,7 +246,7 @@ $accordion-item-color: $primary-color;
 $accordion-item-background-hover: $very-light-gray;
 $accordion-item-padding: 1.25rem 1rem;
 $accordion-content-background: $white;
-$accordion-content-border: 1px solid $very-light-gray;
+$accordion-content-border: none;
 $accordion-content-color: $body-font-color;
 $accordion-content-padding: 1rem;
 
@@ -752,10 +752,10 @@ $responsive-embed-ratios: (
 // ----------
 
 $reveal-background: $white;
-$reveal-width: 600px;
-$reveal-max-width: $global-width;
+$reveal-width: calc(100% - 2 * #{$global-gutter-large});
+$reveal-max-width: map-get($breakpoints, large);
 $reveal-padding: $global-padding;
-$reveal-border: 1px solid $light-gray;
+$reveal-border: none;
 $reveal-radius: $global-radius;
 $reveal-zindex: 1005;
 $reveal-overlay-background: rgba($black, 0.45);

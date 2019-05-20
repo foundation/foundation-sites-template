@@ -25,6 +25,7 @@
 //   20. Orbit
 //   21. Spinner
 //   22. Typeahead
+//   23. Accordion
 
 
 
@@ -259,6 +260,7 @@ label[for] {
 	align-items: flex-start;
 	flex: 1;
 	padding: $button-padding;
+	line-height: 1;
 }
 
 .card-title {
@@ -403,11 +405,21 @@ $user-card-sizes: (
 			}
 		}
 	}
-	.profile & {
-		flex-direction: column;
-		height: initial;
-		.avatar-container {
-			width: 100%;
+
+	.profile .accordion-item.is-active & {
+		.user-name {
+			font-size: 1rem;
+		}
+	}
+	.profile .accordion-item:not(.is-active) & {
+		.user-name {
+			font-size: 0.875rem;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			&+.user-info {
+				font-size: 0.75rem;
+			}
 		}
 	}
 
@@ -478,7 +490,7 @@ $user-card-sizes: (
     }
   }
 
-  .large &, .profile & {
+  .large & {
     font-size: 1rem;
   }
 
@@ -680,6 +692,9 @@ $user-card-sizes: (
 }
 
 .space-info-container {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
   font-size: rem-calc($global-font-size * 0.875);
 
   &.small {
@@ -693,7 +708,7 @@ $user-card-sizes: (
 
 .space-info-block {
   flex-wrap: wrap;
-  display: inline-flex;
+  display: flex;
   background: $very-light-gray;
   color: $very-dark-gray;
   margin: 3px;
@@ -703,7 +718,13 @@ $user-card-sizes: (
 	&.clear {
 		flex-direction: column;
 		background: none;
-		margin: 0.5em 0;
+		margin: 1em 0;
+		&:first-child {
+			margin-top: 0;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
 		& span, & a {
 			color: $black;
 			display: block;
@@ -998,7 +1019,8 @@ input,
   right: 0;
   bottom: 0;
   cursor: pointer;
-  border-radius: 0;
+	border-radius: 0;
+	z-index: 100;
 
   &:hover::after {
     color: $black;
@@ -1098,6 +1120,7 @@ input,
   }
 
 }
+
 // 13. Excerpt
 // ---------
 @mixin excerpt($font-size: 1em, $line-height: 1.4, $lines-to-show: 3, $expand: false) {
@@ -1991,7 +2014,6 @@ button: 0.625rem 0.75rem 0.5rem);
 $size in $padding-sizes {
   .padding-#{$size-name} {
     padding: $size;
-
     &>a,
     &>a:last-child {
 			&, &>label {
@@ -2022,6 +2044,12 @@ $size in $padding-sizes {
 }
 .flex {
   display: flex;
+}
+.align-flex-start {
+	justify-content: flex-start;
+}
+.align-flex-end {
+	justify-content: flex-end;
 }
 .sticky {
 	position: -webkit-sticky;
@@ -2201,4 +2229,50 @@ $spinner-sizes: (
 	75% {	-webkit-transform: translateX(-0.1em); }
 	92% { -webkit-transform: translateX(0.1em); }
 	0%, 100% { -webkit-transform: translateX(0); }
+}
+
+
+// 23. Accordion
+// ---------
+
+
+.accordion {
+	.accordion-item {
+		.user {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			color: inherit;
+			position: relative;
+			height: initial;
+		}
+		.avatar-container {
+			width: map-get($user-card-sizes, medium);
+			transition: 300ms;
+		}
+		.arrow-down-icon {
+			color: #999;
+		}
+		&.is-active {
+			.avatar-container {
+				width: 100%;
+			}
+			.arrow-down-icon {
+				color: #fff;
+			}
+		}
+		&:not(.is-active) {
+			.accordion-content {
+				display: none;
+			}
+		}
+	}
+	.accordion-content {
+		border: none;
+	}
+	&:hover {
+		.arrow-down-icon {
+			opacity: 1;
+		}
+	}
 }
