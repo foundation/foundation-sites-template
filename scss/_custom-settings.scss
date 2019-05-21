@@ -281,7 +281,11 @@ label[for] {
 
 .card-section,
 .card-divider {
-  padding: $button-padding;
+	padding: $button-padding;
+	flex-direction: column;
+	&.flex-dir-row {
+		flex-direction: row;
+	}
 
   &>a {
 		width: 100%;
