@@ -247,7 +247,7 @@ label[for] {
   input,
   textarea,
   select {
-    font-size:$paragraph-font-size;
+    font-size: $paragraph-font-size;
   }
 }
 
@@ -260,7 +260,11 @@ label[for] {
 	align-items: flex-start;
 	flex: 1;
 	padding: $button-padding;
-	line-height: 1;
+	line-height: $paragraph-lineheight;
+	&.small {
+		padding: 0;
+		padding-left: nth($button-padding, 2);
+	}
 }
 
 .card-title {
@@ -386,19 +390,20 @@ label[for] {
 
 $user-card-sizes: (
   small: 36px,
-  medium: 48px,
+  medium: 54px,
   large: 96px,
   xlarge: 144px,
   xxlarge: 240px,
 );
+$user-card-default-size: map-get($user-card-sizes, medium);
 
 .user {
 	display: flex;
 	align-items: center;
-	height: map-get($user-card-sizes, medium);
+	height: $user-card-default-size;
 	.checkbox-label {
-		height: map-get($user-card-sizes, medium);
-		width: map-get($user-card-sizes, medium);
+		height: $user-card-default-size;
+		width: $user-card-default-size;
 	}
 	@each $size-label, $size in $user-card-sizes {
 		.#{$size-label} & {
@@ -421,6 +426,8 @@ $user-card-sizes: (
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
+			width: 100%;
+			display: inline-block;
 			&+.user-info {
 				font-size: 0.75rem;
 			}
@@ -467,8 +474,8 @@ $user-card-sizes: (
 .avatar-container {
 	z-index: 20;
 
-	width: map-get($user-card-sizes, medium);
-	min-width: map-get($user-card-sizes, medium);
+	width: $user-card-default-size;
+	min-width: $user-card-default-size;
 
 	@each $size-label, $size in $user-card-sizes {
 		.#{$size-label} & {
@@ -481,6 +488,7 @@ $user-card-sizes: (
 .user-name {
   font-size: 0.875rem;
 	margin: 0;
+	display: inline-block;
   .fa {
     margin-left: 1em;
     color: $dark-gray;
@@ -2242,32 +2250,65 @@ $spinner-sizes: (
 
 .accordion {
 	.accordion-item {
+		.expand-button {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: $user-card-default-size / 1.5;
+			height: $user-card-default-size;
+			display: flex;
+			opacity: 0;
+			align-items: center;
+			justify-content: center;
+			z-index: 100;
+			&::after {
+				content: '\f107';
+				font-family: FontAwesome;
+				font-size: 1rem;
+				font-weight: 900;
+				color: $dark-gray;
+				opacity: 0.5;
+			}
+			&:hover {
+				&::after {
+					opacity: 1;
+				}
+			}
+		}
 		.user {
 			display: flex;
-			align-items: center;
+			flex-direction: column;
+			align-items: flex-start;
 			flex-wrap: wrap;
 			color: inherit;
 			position: relative;
 			height: initial;
 		}
 		.avatar-container {
-			width: map-get($user-card-sizes, medium);
-			transition: 300ms;
-		}
-		.arrow-down-icon {
-			color: #999;
+			width: $user-card-default-size;
+			transition: $global-transition-medium;
 		}
 		&.is-active {
 			.avatar-container {
 				width: 100%;
 			}
-			.arrow-down-icon {
-				color: #fff;
+			.expand-button {
+				&::after {
+					content: '\f106';
+					color: $white;
+				}
 			}
 		}
 		&:not(.is-active) {
 			.accordion-content {
 				display: none;
+			}
+			.user {
+				flex-direction: row;
+				align-items: center;
+				.card-header {
+					max-width: calc(100% - #{$user-card-default-size} * 1.5);
+				}
 			}
 		}
 	}
@@ -2275,7 +2316,7 @@ $spinner-sizes: (
 		border: none;
 	}
 	&:hover {
-		.arrow-down-icon {
+		.expand-button {
 			opacity: 1;
 		}
 	}
