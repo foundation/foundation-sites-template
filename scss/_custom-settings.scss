@@ -203,9 +203,10 @@ label[for] {
 // ---------
 
 .card {
-  transition: box-shadow $global-transition-medium $global-transition-timing;
-  flex-grow: 0;
+	flex-grow: 0;
   font-size:$paragraph-font-size;
+	box-shadow: 0 0 0 nth($hr-border, 1) nth($hr-border, 3);
+  transition: box-shadow $global-transition-medium $global-transition-timing;
 
   .card-anchor {
     color: inherit;
@@ -239,10 +240,12 @@ label[for] {
     opacity: 0.5;
   }
 
-  &:not(.static):hover {
-    cursor: pointer;
-    box-shadow: $global-drop-shadow;
-    transition: box-shadow $global-transition-short $global-transition-timing;
+	&:not(.static) {
+		&:hover {
+			cursor: pointer;
+			box-shadow: $global-drop-shadow;
+			transition: box-shadow $global-transition-short $global-transition-timing;
+		}
   }
   input,
   textarea,
@@ -460,6 +463,17 @@ $user-card-default-size: map-get($user-card-sizes, medium);
 				transition: $global-transition-medium;
 			}
 		}
+
+	.spinner-container {
+		position: absolute;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		width: 100%;
+		z-index: 10;
+		background: $reveal-overlay-background;
+	}
 	}
 	&:hover .avatar-container, &.is-active {
 		.checkbox~.clipped {
