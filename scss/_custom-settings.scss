@@ -880,7 +880,7 @@ $user-card-default-size: map-get($user-card-sizes, medium);
 
     &::after {
       width: 0.3em;
-			height: 0.6em;
+			height: 0.55em;
       border-bottom: 2px solid transparent;
 			border-right: 2px solid transparent;
       transform: rotate(45deg);
