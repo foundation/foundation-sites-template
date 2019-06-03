@@ -2292,7 +2292,6 @@ $spinner-sizes: (
 // 23. Accordion
 // ---------
 
-
 .accordion {
 	.accordion-item {
 		.expand-button {
@@ -2320,6 +2319,7 @@ $spinner-sizes: (
 				}
 			}
 		}
+
 		.user {
 			display: flex;
 			flex-direction: column;
@@ -2341,6 +2341,7 @@ $spinner-sizes: (
 				&::after {
 					content: '\f106';
 					color: $white;
+					background: pink;
 				}
 			}
 		}
