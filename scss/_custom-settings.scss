@@ -263,7 +263,9 @@ label[for] {
   display: flex;
   align-items: center;
   font-size: 1rem;
-  line-height: $header-lineheight;
+	line-height: $header-lineheight;
+	font-weight: $global-weight-normal;
+	margin: 0;
 
   &.small {
     font-size: 0.875rem;
@@ -582,7 +584,6 @@ $user-card-default-size: map-get($user-card-sizes, medium);
 // ---------
 
 
-
 // 8. Clipping
 // ---------
 
@@ -658,7 +659,7 @@ $user-card-default-size: map-get($user-card-sizes, medium);
     background: $white;
     height: 100px;
 
-    .large & {
+    &.large {
       height: 200px;
     }
   }
