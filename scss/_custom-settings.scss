@@ -837,9 +837,6 @@ $user-card-default-size: map-get($user-card-sizes, medium);
   @include foundation-palette();
 
 	font-size: $switch-height;
-  &.tiny {
-		font-size: $switch-height-tiny;
-  }
   &.small {
 		font-size: $switch-height-small;
   }
@@ -884,11 +881,11 @@ $user-card-default-size: map-get($user-card-sizes, medium);
 			height: 0.55em;
       border-bottom: 2px solid transparent;
 			border-right: 2px solid transparent;
-      transform: rotate(45deg);
+      transform: rotate(45deg) translate(0.03125em, 0.03125em);
       z-index: 2;
       transition: all $global-transition-medium;
 		}
-		&.tiny, &.small {
+		&.small {
 			.checkbox-label {
 				&::before {
 					box-shadow: inset 0 0 0 1px $medium-gray;
@@ -908,9 +905,7 @@ $user-card-default-size: map-get($user-card-sizes, medium);
     }
 
     &::after {
-      margin-top: -0.05em;
-      margin-left: 0.03em;
-      transform: rotate(45deg);
+      transform: rotate(45deg) translate(-0.03125em, -0.03125em);
       transition: all $global-transition-short;
       transition-delay: $global-transition-short;
       border-color: $white;
@@ -931,9 +926,7 @@ $user-card-default-size: map-get($user-card-sizes, medium);
   @include foundation-palette();
 
 	font-size: $switch-height;
-  &.tiny {
-		font-size: $switch-height-tiny;
-  }
+
   &.small {
 		font-size: $switch-height-small;
   }
@@ -949,17 +942,18 @@ $user-card-default-size: map-get($user-card-sizes, medium);
     align-items: center;
     cursor: pointer;
     font-size: 1em;
-    height: 1.125em;
+    height: 1em;
 
 
     &::before {
 			content: '';
 			position: absolute;
-      box-shadow: inset 0 0 0 2px $medium-gray;
-      border-radius: $global-radius-small;
-      transition: all $global-transition-medium;
-      height: 1.125em;
-      width: 1.125em;
+      box-shadow: inset 0 0 0 2px #{$medium-gray};
+      border-radius: #{$global-radius-small};
+			transition: all #{$global-transition-medium};
+			border-radius: 1em;
+      height: 1em;
+      width: 1em;
       z-index: 1;
 		}
   }
@@ -967,7 +961,7 @@ $user-card-default-size: map-get($user-card-sizes, medium);
   // Checked
   input:checked ~ .radio-label {
     &::before {
-      box-shadow: inset 0 0 0 calc(1em - 2px) currentColor;
+      box-shadow: inset 0 0 0 calc(0.5em - 2px) currentColor;
       transition: all $global-transition-medium;
     }
   }
