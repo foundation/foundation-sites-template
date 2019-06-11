@@ -92,6 +92,15 @@
 }
 
 
+$user-card-sizes: (
+  small: 36px,
+  medium: 54px,
+  large: 96px,
+  xlarge: 144px,
+  xxlarge: 240px,
+);
+$user-card-default-size: map-get($user-card-sizes, medium);
+
 
 
 // 2. Grid
@@ -253,9 +262,11 @@ label[for] {
 	flex: 1;
 	padding: $button-padding;
 	line-height: $paragraph-lineheight;
-	&.small {
-		padding: 0;
-		padding-left: nth($button-padding, 2);
+	@each $size-label, $size in $user-card-sizes {
+		.#{$size-label} & {
+			width: calc(100% - #{$size});
+			padding-left: nth($button-padding, 2);
+		}
 	}
 }
 
@@ -296,11 +307,13 @@ label[for] {
 			background: $very-light-gray;
 		}
 	}
-
 	&.no-padding {
 		[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea, select {
 			border: none;
 			resize: none;
+		}
+		&>a {
+			box-sizing: border-box;
 		}
 	}
 }
@@ -383,15 +396,6 @@ label[for] {
 // 6. User Card
 // ---------
 
-$user-card-sizes: (
-  small: 36px,
-  medium: 54px,
-  large: 96px,
-  xlarge: 144px,
-  xxlarge: 240px,
-);
-$user-card-default-size: map-get($user-card-sizes, medium);
-
 .user {
 	display: flex;
 	align-items: center;
@@ -401,7 +405,7 @@ $user-card-default-size: map-get($user-card-sizes, medium);
 		width: $user-card-default-size;
 	}
 	@each $size-label, $size in $user-card-sizes {
-		.#{$size-label} & {
+		.#{$size-label} &, &.#{$size-label} {
 			height: $size;
 			.checkbox-label {
 				height: $size;
@@ -409,13 +413,36 @@ $user-card-default-size: map-get($user-card-sizes, medium);
 			}
 		}
 	}
-
+	.profile .accordion-item & {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			flex-wrap: wrap;
+			color: inherit;
+			position: relative;
+			height: initial;
+	}
 	.profile .accordion-item.is-active & {
 		.user-name {
 			font-size: 1rem;
 		}
+
+			.avatar-container {
+				width: 100%;
+			}
+			.expand-button {
+				&::after {
+					content: '\f106';
+					color: $white;
+				}
+			}
 	}
 	.profile .accordion-item:not(.is-active) & {
+		flex-direction: row;
+		align-items: center;
+		.card-header {
+			max-width: calc(100% - #{$user-card-default-size} * 1.5);
+		}
 		.user-name {
 			font-size: 0.875rem;
 			white-space: nowrap;
@@ -426,6 +453,9 @@ $user-card-default-size: map-get($user-card-sizes, medium);
 			&+.user-info {
 				font-size: 0.75rem;
 			}
+		}
+		.accordion-content {
+			display: none;
 		}
 	}
 	.avatar-container {
@@ -446,17 +476,20 @@ $user-card-default-size: map-get($user-card-sizes, medium);
 				transition: $global-transition-medium;
 			}
 		}
-
-	.spinner-container {
-		position: absolute;
-		display: none;
-		align-items: center;
-		justify-content: center;
-		height: 100%;
-		width: 100%;
-		z-index: 10;
-		background: $reveal-overlay-background;
-	}
+		.spinner-container {
+			position: absolute;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			height: 100%;
+			width: 100%;
+			z-index: 10;
+			background: $reveal-overlay-background;
+		}
+		.profile .accordion-item & {
+			width: $user-card-default-size;
+			transition: $global-transition-medium;
+		}
 	}
 	&:hover .avatar-container, &.is-active {
 		.checkbox~.clipped {
@@ -583,6 +616,16 @@ $user-card-default-size: map-get($user-card-sizes, medium);
 // 6. Post Card
 // ---------
 
+.additional-comments {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: $very-light-gray;
+	color: $dark-gray;
+	font-weight: $global-weight-bold;
+	font-size: $small-font-size;
+}
 
 // 8. Clipping
 // ---------
@@ -1103,74 +1146,68 @@ input,
   padding: 10px 0px;
   box-sizing: content-box;
   a {
-  &:hover {
-    cursor: pointer;
-    color: $black;
-  }
-  &:hover::after {
-    color: $black;
-  }
+		&:hover {
+			cursor: pointer;
+			color: $black;
+		}
+		&:hover::after {
+			color: $black;
+		}
+	}
 }
-}
+
 .reply-button {
   a {
-  &::after {
-    content: "\f112";
-    font-family: 'FontAwesome';
-    font-weight: $global-weight-normal;
-    color: $dark-gray;
-  }
-}
+		&::after {
+			content: "\f112";
+			font-family: 'FontAwesome';
+			font-weight: $global-weight-normal;
+			color: $dark-gray;
+		}
+	}
 }
 .comment-count-button {
   font-size: 1.4rem;
   padding: 5px 10px 10px 5px;
   a {
-  &::after {
-    content: "\f075";
-    font-family: 'FontAwesome';
-    font-weight: $global-weight-normal;
-    color: $dark-gray;
-  }
-}
-.comment-number {
-  line-height: 0;
-  position: absolute;
-  top: 21px;
-  font-size: .65rem;
-  font-weight: bold;
-  width: 10px;
-  text-align: center;
-  letter-spacing: -0.05em;
-  color: white;
-}
+		&::after {
+			content: "\f075";
+			font-family: 'FontAwesome';
+			font-weight: $global-weight-normal;
+			color: $dark-gray;
+		}
+	}
+	.comment-number {
+		line-height: 0;
+		position: absolute;
+		top: 21px;
+		font-size: .65rem;
+		font-weight: bold;
+		width: 10px;
+		text-align: center;
+		letter-spacing: -0.05em;
+		color: white;
+	}
 }
 
 .edit-button {
   a {
-  &::after {
-    content: "\f040";
-    font-family: 'FontAwesome';
-    font-weight: $global-weight-normal;
-    color: $dark-gray;
-  }
-}
+		&::after {
+			content: "\f040";
+			font-family: 'FontAwesome';
+			font-weight: $global-weight-normal;
+			color: $dark-gray;
+		}
+	}
 }
 .edit-bar {
-  position: absolute;
+	position: relative;
   display: flex;
-  top: 0;
-  right: 0;
-  flex-direction: row-reverse;
-  width: 50%;
+	margin-left: auto;
 
-  .dots {
-    position: static;
-  }
   .reply-button, .edit-button, .comment-count-button  {
     position: static;
   }
-
 }
 
 // 13. Excerpt
@@ -1405,28 +1442,54 @@ li[role=menuitem] {
     }
   }
 }
+.accordion-menu .is-accordion-submenu-parent, .accordion .accordion-item {
+	&>a {
+		&::after {
+			@extend .caret;
+			display: inline-block;
+			width: 0.62em;
+			margin-left: auto;
+		}
+		&[aria-expanded='false']::after {
+			transform: rotate(-90deg);
+			transition: $global-transition-medium;
+		}
+		&[aria-expanded='true']::after {
+			transform: rotate(-180deg);
+			transition: $global-transition-medium;
+		}
+	}
+	&[aria-expanded='false']>a::after {
+		transform: rotate(-90deg);
+		transition: $global-transition-medium;
+	}
+	&[aria-expanded='true']>a::after {
+		transform: rotate(-180deg);
+		transition: $global-transition-medium;
+	}
+}
 .accordion-menu {
-  .is-accordion-submenu-parent:not(.has-submenu-toggle) {
-    &>a {
-			&::after {
-				@extend .caret;
-				display: inline-block;
-				width: 0.62em;
-				margin-left: 0.5em;
-			}
-			span {
-				width: 100%;
-			}
-    }
-    &[aria-expanded='false']>a::after {
-      transform: rotate(-90deg);
-      transition: $global-transition-medium;
-    }
-    &[aria-expanded='true']>a::after {
-      transform: rotate(-180deg);
-      transition: $global-transition-medium;
-    }
-  }
+  // .is-accordion-submenu-parent:not(.has-submenu-toggle) {
+  //   &>a {
+	// 		&::after {
+	// 			@extend .caret;
+	// 			display: inline-block;
+	// 			width: 0.62em;
+	// 			margin-left: 0.5em;
+	// 		}
+	// 		// span {
+	// 		// 	width: 100%;
+	// 		// }
+  //   }
+  //   &[aria-expanded='false']>a::after {
+  //     transform: rotate(-90deg);
+  //     transition: $global-transition-medium;
+  //   }
+  //   &[aria-expanded='true']>a::after {
+  //     transform: rotate(-180deg);
+  //     transition: $global-transition-medium;
+	// 	}
+	// }
   .button {
     text-align: left;
   }
@@ -2289,23 +2352,23 @@ $spinner-sizes: (
 
 .accordion {
 	.accordion-item {
+		position: relative;
 		.expand-button {
 			position: absolute;
 			top: 0;
 			right: 0;
 			width: $user-card-default-size / 1.5;
-			height: $user-card-default-size;
+			height: $user-card-default-size / 1.5;
 			display: flex;
 			opacity: 0;
 			align-items: center;
 			justify-content: center;
 			z-index: 100;
 			&::after {
-				content: '\f107';
-				font-family: FontAwesome;
-				font-size: 1rem;
-				font-weight: 900;
-				color: $dark-gray;
+				@extend .caret;
+				display: inline-block;
+				width: 0.62em;
+				margin-left: 0.5em;
 				opacity: 0.5;
 			}
 			&:hover {
@@ -2315,42 +2378,6 @@ $spinner-sizes: (
 			}
 		}
 
-		.user {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			flex-wrap: wrap;
-			color: inherit;
-			position: relative;
-			height: initial;
-		}
-		.avatar-container {
-			width: $user-card-default-size;
-			transition: $global-transition-medium;
-		}
-		&.is-active {
-			.avatar-container {
-				width: 100%;
-			}
-			.expand-button {
-				&::after {
-					content: '\f106';
-					color: $white;
-				}
-			}
-		}
-		&:not(.is-active) {
-			.accordion-content {
-				display: none;
-			}
-			.user {
-				flex-direction: row;
-				align-items: center;
-				.card-header {
-					max-width: calc(100% - #{$user-card-default-size} * 1.5);
-				}
-			}
-		}
 	}
 	.accordion-content {
 		border: none;
