@@ -33,16 +33,20 @@
 // ---------
 
 
-@mixin foundation-palette($selector: '&', $child: '', $property: 'color') {
+@mixin foundation-palette($selector: '&', $child: '', $property: 'color', $hover: 'true') {
 
   @each $color-name,
   $color in $foundation-palette {
     #{$selector}.#{$color-name} #{$child} {
       #{$property}: $color;
-
-      &:hover {
-        #{$property}: scale-color($color, $lightness: -15%);
-      }
+			@if $property=='background' {
+				color: color-pick-contrast($color);
+			}
+			@if $hover=='true' {
+				&:hover {
+					#{$property}: scale-color($color, $lightness: -15%);
+				}
+			}
     }
   }
 }
@@ -262,6 +266,10 @@ label[for] {
 	flex: 1;
 	padding: $button-padding;
 	line-height: $paragraph-lineheight;
+	&.no-padding {
+		padding: 0;
+		padding-left: nth($button-padding, 2);
+	}
 	@each $size-label, $size in $user-card-sizes {
 		.#{$size-label} & {
 			width: calc(100% - #{$size});
@@ -314,6 +322,14 @@ label[for] {
 		}
 		&>a {
 			box-sizing: border-box;
+		}
+	}
+	
+	@each $size-label, $size in $user-card-sizes {
+		 &.#{$size-label} {
+			&:last-child {
+				height: $size;
+			}
 		}
 	}
 }
@@ -422,22 +438,21 @@ label[for] {
 			position: relative;
 			height: initial;
 	}
-	.profile .accordion-item.is-active & {
+	.profile .accordion-item.is-selected & {
 		.user-name {
 			font-size: 1rem;
 		}
-
-			.avatar-container {
-				width: 100%;
+		.avatar-container {
+			width: 100%;
+		}
+		.expand-button {
+			&::after {
+				content: '\f106';
+				color: $white;
 			}
-			.expand-button {
-				&::after {
-					content: '\f106';
-					color: $white;
-				}
-			}
+		}
 	}
-	.profile .accordion-item:not(.is-active) & {
+	.profile .accordion-item:not(.is-selected) & {
 		flex-direction: row;
 		align-items: center;
 		.card-header {
@@ -491,7 +506,7 @@ label[for] {
 			transition: $global-transition-medium;
 		}
 	}
-	&:hover .avatar-container, &.is-active {
+	&:hover .avatar-container, &.is-selected {
 		.checkbox~.clipped {
 			pointer-events: none;
 			transform: scale(0.5);
@@ -525,7 +540,7 @@ label[for] {
   }
 
   .small & {
-    height: 1rem;
+    height: 1.125rem;
 
     &:last-child {
       height: initial;
@@ -549,7 +564,7 @@ label[for] {
   color: $dark-gray;
 
   .small & {
-    height: 1rem;
+    height: 1.125rem;
   }
 
   .large &, &.large {
@@ -616,6 +631,15 @@ label[for] {
 // 6. Post Card
 // ---------
 
+.post-card {
+	.post-content {
+		a {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
 .additional-comments {
 	height: 100%;
 	display: flex;
@@ -766,6 +790,7 @@ label[for] {
   border-radius: $global-radius;
   overflow: hidden;
 	line-height: $header-lineheight;
+
 	&.clear {
 		flex-direction: column;
 		background: none;
@@ -789,11 +814,15 @@ label[for] {
 	}
 
 
+
   & span {
     display: inline-block;
-    padding: 0.25em 0.375em 0.125em;
-
+		padding: 0.25em 0.375em 0.125em;
+		
+		
+		
     &:last-child {
+			@include foundation-palette($property: 'background', $hover: 'false');
       background: $light-gray;
     }
   }
@@ -1157,11 +1186,18 @@ input,
 }
 
 .reply-button {
+	width: initial;
   a {
+		// &::after {
+		// 	content: '\f112';
+		// 	font-family: 'FontAwesome';
+		// 	font-weight: $global-weight-normal;
+		// 	color: $dark-gray;
+		// }
 		&::after {
-			content: "\f112";
-			font-family: 'FontAwesome';
-			font-weight: $global-weight-normal;
+			content: 'reply';
+			padding: 0.5rem;
+			font-size: 0.75rem;
 			color: $dark-gray;
 		}
 	}
@@ -1191,11 +1227,18 @@ input,
 }
 
 .edit-button {
+	width: initial;
   a {
+		// &::after {
+		// 	content: '\f040';
+		// 	font-family: 'FontAwesome';
+		// 	font-weight: $global-weight-normal;
+		// 	color: $dark-gray;
+		// }
 		&::after {
-			content: "\f040";
-			font-family: 'FontAwesome';
-			font-weight: $global-weight-normal;
+			content: 'edit';
+			padding: 0.5rem;
+			font-size: 0.75rem;
 			color: $dark-gray;
 		}
 	}
