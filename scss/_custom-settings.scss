@@ -430,20 +430,28 @@ label[for] {
 		}
 	}
 	.profile .accordion-item & {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			flex-wrap: wrap;
-			color: inherit;
-			position: relative;
-			height: initial;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		color: inherit;
+		position: relative;
+		height: initial;
+		@include breakpoint(medium only) {
+			flex-direction: row;
+		}
 	}
 	.profile .accordion-item.is-active & {
 		.user-name {
 			font-size: 1rem;
 		}
 		.avatar-container {
-			width: 100%;
+			@include breakpoint(small only) {
+				width: 100%;
+			}
+			@include breakpoint(large) {
+				width: 100%;
+			}
 		}
 		.expand-button {
 			&::after {
