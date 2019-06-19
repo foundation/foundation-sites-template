@@ -26,6 +26,7 @@
 //   21. Spinner
 //   22. Typeahead
 //   23. Accordion
+//   24. Paginate
 
 
 
@@ -303,7 +304,9 @@ label[for] {
 	&.flex-dir-row {
 		flex-direction: row;
 	}
-
+	&.small {
+		line-height: 1.25rem;
+	}
 	&>a {
 		width: 100%;
 		text-decoration: none;
@@ -1147,9 +1150,6 @@ input,
 // ---------
 
 .dots {
-	position: absolute;
-	right: 0;
-	bottom: 0;
 	cursor: pointer;
 	border-radius: 0;
 	z-index: 100;
@@ -1164,101 +1164,47 @@ input,
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		padding-bottom: 3px;
+		padding-bottom: 0.675rem;
 		width: 36px;
 		height: 36px;
 		line-height: 0;
 		font-weight: $global-weight-bold;
-		letter-spacing: 2px;
+		font-size: 1.25rem;
+		letter-spacing: 0.03125rem;
 		white-space: nowrap;
 		color: $dark-gray;
 	}
 }
-.reply-button, .comment-count-button, .edit-button {
-	position: absolute;
-	width: 20px;
-	height: 20px;
-	top: 0;
-	right: 0;
-	padding: 10px 0px;
-	box-sizing: content-box;
-	a {
-		&:hover {
-			cursor: pointer;
-			color: $black;
-		}
-		&:hover::after {
-			color: $black;
-		}
-	}
-}
-
 .reply-button {
-	width: initial;
 	a {
-		// &::after {
-		// 	content: '\f112';
-		// 	font-family: 'FontAwesome';
-		// 	font-weight: $global-weight-normal;
-		// 	color: $dark-gray;
-		// }
 		&::after {
 			content: 'reply';
 			padding: 0.5rem;
 			font-size: 0.75rem;
 			color: $dark-gray;
 		}
-	}
-}
-.comment-count-button {
-	font-size: 1.4rem;
-	padding: 5px 10px 10px 5px;
-	a {
-		&::after {
-			content: "\f075";
-			font-family: 'FontAwesome';
-			font-weight: $global-weight-normal;
-			color: $dark-gray;
+		&:hover::after {
+			color: $black;
 		}
 	}
-	.comment-number {
-		line-height: 0;
-		position: absolute;
-		top: 21px;
-		font-size: .65rem;
-		font-weight: bold;
-		width: 10px;
-		text-align: center;
-		letter-spacing: -0.05em;
-		color: white;
-	}
 }
-
 .edit-button {
-	width: initial;
 	a {
-		// &::after {
-		// 	content: '\f040';
-		// 	font-family: 'FontAwesome';
-		// 	font-weight: $global-weight-normal;
-		// 	color: $dark-gray;
-		// }
 		&::after {
 			content: 'edit';
 			padding: 0.5rem;
 			font-size: 0.75rem;
 			color: $dark-gray;
 		}
+		&:hover::after {
+			color: $black;
+		}
 	}
 }
 .edit-bar {
-	position: relative;
 	display: flex;
+	align-items: center;
 	margin-left: auto;
-
-	.reply-button, .edit-button, .comment-count-button {
-		position: static;
-	}
 }
 
 // 13. Excerpt
@@ -2447,5 +2393,16 @@ $spinner-sizes: (
 		.expand-button {
 			opacity: 1;
 		}
+	}
+}
+
+// 24. Paginate
+// ---------
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	.pages {
+		display: none !important;
 	}
 }
