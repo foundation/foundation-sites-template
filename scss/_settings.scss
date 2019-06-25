@@ -240,7 +240,7 @@ $abbr-underline: 1px dotted $black;
 $lead-font-size: rem-calc($global-font-size * 1.25);
 $lead-lineheight: 1.3;
 $subheader-lineheight: 1.4;
-$subheader-color: $medium-gray;
+$subheader-color: $dark-gray;
 $subheader-font-weight: $global-weight-normal;
 $subheader-margin-top: 0.2rem;
 $subheader-margin-bottom: 0.5rem;
@@ -254,8 +254,8 @@ $abide-labels: true;
 $input-background-invalid: get-color(alert);
 $form-label-color-invalid: get-color(alert);
 $input-error-color: get-color(alert);
-$input-error-font-size: rem-calc(12);
-$input-error-font-weight: $global-weight-bold;
+$input-error-font-size: $small-font-size;
+$input-error-font-weight: $global-weight-normal;
 
 // 7. Accordion
 // ------------
@@ -437,7 +437,7 @@ $dropdownmenu-nested-margin: 0;
 $dropdownmenu-submenu-padding: 0.75rem 0.875rem;
 $dropdownmenu-border: none;
 $dropdown-menu-item-color-active: none;
-$dropdown-menu-item-background-active: $white;
+$dropdown-menu-item-background-active: $very-light-gray;
 
 // 19. Flexbox Utilities
 // ---------------------
