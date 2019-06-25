@@ -1009,10 +1009,10 @@ label[for] {
 	line-height: 1;
 	margin: 0;
 	width: initial;
-	.small & {
+	.small>& {
 		font-size: $switch-height-small;
 	}
-	.large & {
+	.large>& {
 		font-size: $switch-height-large;
 	}
 	[type='checkbox']+&, [type='radio']+& {
