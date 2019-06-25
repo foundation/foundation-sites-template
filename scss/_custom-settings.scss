@@ -917,6 +917,7 @@ label[for] {
 
 .label-wrapper {
 	display: flex;
+	align-items: center;
 	width: 100%;
 
 	&>*:first-child {
@@ -1004,10 +1005,16 @@ label[for] {
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
-	font-size: 1em;
+	font-size: $switch-height;
 	line-height: 1;
 	margin: 0;
 	width: initial;
+	.small & {
+		font-size: $switch-height-small;
+	}
+	.large & {
+		font-size: $switch-height-large;
+	}
 	[type='checkbox']+&, [type='radio']+& {
 		margin: 0;
 	}
