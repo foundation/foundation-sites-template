@@ -573,10 +573,10 @@ $orbit-control-zindex: 10;
 // --------------
 
 $pagination-font-size: rem-calc(14);
-$pagination-margin-bottom: $global-margin;
-$pagination-item-color: $black;
+$pagination-margin-bottom: 0;
+$pagination-item-color: $very-dark-gray;
 $pagination-item-padding: rem-calc(3 10);
-$pagination-item-spacing: rem-calc(1);
+$pagination-item-spacing: 0.125rem;
 $pagination-radius: $global-radius;
 $pagination-item-background-hover: $very-light-gray;
 $pagination-item-background-current: $primary-color;

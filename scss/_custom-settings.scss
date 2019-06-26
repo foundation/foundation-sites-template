@@ -2523,10 +2523,16 @@ $spinner-sizes: (
 
 .pagination {
   display: flex;
-  justify-content: center;
+	justify-content: center;
+	.current {
+		border-radius: $pagination-radius;
+	}
   .pages {
     display: none !important;
-  }
+	}
+	a, span {
+			margin: 0 $pagination-item-spacing;
+	}
 }
 
 
