@@ -932,13 +932,17 @@ label[for] {
     margin-left: auto;
   }
 
+	[disabled]~.switch-paddle {
+		opacity: 0.5;
+	}
   .switch-paddle {
     padding: 0;
     display: flex;
     align-items: center;
     border-radius: 0;
     height: 100%;
-    background: none;
+		background: none;
+
     &::before,
     &::after {
       content: "";
@@ -1014,6 +1018,9 @@ label[for] {
 	}
 	.large>& {
 		font-size: $switch-height-large;
+	}
+	[disabled]~& {
+		opacity: 0.5;
 	}
 	[type='checkbox']+&, [type='radio']+& {
 		margin: 0;
@@ -1175,6 +1182,9 @@ select {
 }
 .input-group {
 	margin: 0;
+	.input-group-label {
+		padding: $label-padding;
+	}
 	.input-group-field {
 		&:first-child {
 			border-radius: $global-radius 0 0 $global-radius;
