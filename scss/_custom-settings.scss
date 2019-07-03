@@ -1132,6 +1132,7 @@ label[for] {
 	}
 }
 .radio-accordion {
+	list-style: none;
 	@include foundation-palette($child: ".radio-label");
 
 	.radio-accordion-item {
