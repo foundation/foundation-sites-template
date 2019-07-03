@@ -1111,11 +1111,11 @@ label[for] {
 		height: 1em;
 
 		&::before{
-			content: "";
+			content: '';
 			position: absolute;
 			box-shadow: inset 0 0 0 2px $medium-gray;
 			border-radius: $global-radius-small;
-			z-index: 1;
+			// z-index: 1;
 			transition: all $global-transition-medium;
 			border-radius: 1em;
 			height: 1em;
