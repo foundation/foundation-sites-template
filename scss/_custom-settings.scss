@@ -303,7 +303,12 @@ label[for] {
   align-items: flex-start;
   flex: 1;
   padding: $button-padding;
-  line-height: $paragraph-lineheight;
+	line-height: $paragraph-lineheight;
+	&.flex-dir-row {
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+	}
   &.no-padding {
     padding: 0;
     padding-left: nth($button-padding, 2);
@@ -868,7 +873,7 @@ label[for] {
   margin: 3px;
   border-radius: $global-radius;
   overflow: hidden;
-  line-height: $header-lineheight;
+	line-height: $header-lineheight;
 
   &.clear {
     flex-direction: column;
@@ -907,8 +912,14 @@ label[for] {
     display: inline-block;
     padding: 0.25em 0.375em 0.125em;
     background: $light-gray;
-    color: inherit;
-  }
+		color: inherit;
+	}
+	a:hover>& {
+		background: $light-gray;
+		& span:last-child {
+			background: $medium-gray;
+		}
+	}
 }
 .user-space-info {
   line-height: $header-lineheight;
@@ -1045,10 +1056,10 @@ label[for] {
 		height: 1.125em;
 
 		&::before {
-			content: "";
+			content: '';
 			box-shadow: inset 0 0 0 2px $medium-gray;
 			border-radius: $global-radius-small;
-			z-index: 1;
+			// z-index: 1;
 			transition: all $global-transition-medium;
 			height: 1em;
 			width: 1em;
@@ -1677,7 +1688,8 @@ li {
       display: flex;
       -ms-flex-flow: row nowrap;
       flex-flow: row nowrap;
-      align-items: center;
+			align-items: center;
+			justify-content: flex-start;
     }
   }
 }
