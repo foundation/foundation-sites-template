@@ -2300,7 +2300,7 @@ $icon-line-weight: 2;
   }
 }
 .flex {
-  display: flex;
+  display: flex !important;
 }
 .align-flex-start {
   justify-content: flex-start;
@@ -2565,6 +2565,8 @@ $spinner-sizes: (
 // ---------
 
 .callout {
+	@include foundation-palette();
+	border: none;
 	&:last-child {
 		margin-bottom: 0;
 	}
