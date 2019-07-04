@@ -149,6 +149,9 @@ p {
 
   @include foundation-palette();
 }
+.fa {
+	@include foundation-palette($hover: false);
+}
 
 a {
   &:focus {
