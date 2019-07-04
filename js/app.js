@@ -27,5 +27,7 @@ jQuery(document).ready(function () {
 		let target = $('#' + $(this).attr('data-touch-toggle'));
 		target.removeClass(target.attr('data-touch-toggler'));
 	});
-
+	$(document).on('click', '[data-stay-open-on-click-inside] .is-dropdown-submenu', function(e) {
+		$(this).parents('.is-dropdown-submenu-parent').attr('data-is-click', true);
+	});
 });
