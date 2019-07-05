@@ -1272,22 +1272,24 @@ textarea {
 // 12. Dot Menu
 // ---------
 
-.dots {
+
+.dots, .add {
   cursor: pointer;
   border-radius: 0;
   z-index: 100;
+	width: 36px;
+	height: 36px;
+	color: $dark-gray;
 
-  &:hover::after {
+  &:hover {
     color: $black;
   }
 
   &::after {
-    content: "...";
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 0.5rem;
     width: 36px;
     height: 36px;
     line-height: 0;
@@ -1295,8 +1297,20 @@ textarea {
     font-size: 1.25rem;
     letter-spacing: 0.03125rem;
     white-space: nowrap;
-    color: $dark-gray;
+    color: currentColor;
   }
+}
+.dots {
+	padding-bottom: 0.5rem;
+	&::after {
+		content: '...';
+		height: 0;
+	}
+}
+.add {
+	&::after {
+    content: '+';
+	}
 }
 .reply-button {
   a {
@@ -1657,7 +1671,7 @@ hr {
       img.avatar {
         padding: 0;
       }
-      &.no-padding > a {
+      &.no-padding > a, & > a.no-padding  {
         padding: 0 !important;
       }
 
@@ -2439,10 +2453,11 @@ $spinner-sizes: (
   width: 100%;
   background-color: #fff;
 }
-.tt-input {
-  margin-bottom: 0;
+.twitter-typeahead, .tt-input, .tt-hint {
+	margin-bottom: 0;
+	height: 48px;
+	width: 100%;
 }
-
 .tt-suggestion.tt-cursor {
   background-color: get-color(primary);
   span,
@@ -2450,13 +2465,11 @@ $spinner-sizes: (
     color: #fff;
   }
 }
-
 .add-user-typeahead {
   position: relative;
   width: 100%;
-  input,
-  .twitter-typeahead {
-    width: 100%;
+  input {
+		width: 100%;
   }
   .tt-suggestion {
     padding: $button-padding;
