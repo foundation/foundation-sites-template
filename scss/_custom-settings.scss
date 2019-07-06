@@ -347,9 +347,11 @@ label[for] {
 .card-section,
 .card-divider {
   padding: $button-padding;
-  flex-direction: column;
   &.flex-dir-row {
     flex-direction: row;
+  }
+  &.flex-dir-column {
+    flex-direction: column;
   }
   &.small {
     line-height: 1.25rem;
@@ -479,7 +481,11 @@ label[for] {
 .user {
   display: flex;
   align-items: center;
-  height: $user-card-default-size;
+	height: $user-card-default-size;
+	&:not(:first-child) {
+		border-top: $hr-border;
+	}
+
   .checkbox-label {
     height: $user-card-default-size;
     width: $user-card-default-size;
@@ -592,17 +598,26 @@ label[for] {
 }
 
 .avatar-container {
-  z-index: 20;
+	z-index: 20;
+	width: $user-card-default-size;
+	min-width: $user-card-default-size;
 
-  width: $user-card-default-size;
-  min-width: $user-card-default-size;
+	img[data-toggle] {
+		cursor: pointer;
+		transition: $global-transition-short;
+	}
+	&:hover img[data-toggle], [aria-expanded="true"] {
+		border-radius: $global-radius;
+		transform: scale(0.8);
+	}
 
   @each $size-label, $size in $user-card-sizes {
     .#{$size-label} & {
-      width: $size;
-      min-width: $size;
+			width: $size;
+			min-width: $size;
     }
-  }
+	}
+
 }
 
 .user-name {
@@ -752,7 +767,8 @@ label[for] {
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+		object-fit: cover;
+		background: $very-light-gray;
 
     /* IE 9+ Hack for object-fit. Possibly good option as standard as well */
     @media screen and (min-width: 0\0) and (min-resolution: +72dpi) {
@@ -879,7 +895,7 @@ label[for] {
 	line-height: $header-lineheight;
 
   &.clear {
-    flex-direction: column;
+    width: 100%;
     background: none;
     margin: 1em 0;
     &:first-child {
