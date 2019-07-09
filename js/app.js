@@ -1,4 +1,5 @@
-jQuery(document).ready(function () {
+jQuery(document).ready(function ($) {
+	var $ = jQuery;
 	$(document).foundation();
 	jQuery(document).on('click', '.dots', function(e) {
 		e.preventDefault();
