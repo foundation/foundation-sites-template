@@ -323,7 +323,7 @@ $button-sizes: (
 	default: 0.875rem,
 	large: 1rem
 );
-$button-padding: 0.625em 0.75em 0.5em;
+$button-padding: 0.625rem 0.75rem 0.5rem;
 $button-margin: 0 0 map-get($button-sizes, default) 0;
 $button-fill: solid;
 $button-background: $primary-color;
@@ -335,7 +335,7 @@ $button-hollow-border-width: 0;
 $button-palette: $foundation-palette;
 $button-opacity-disabled: 0.25;
 $button-background-hover-lightness: -20%;
-$button-hollow-hover-lightness: -50%;
+$button-hollow-hover-lightness: -20%;
 $button-transition: background-color $global-transition-short $global-transition-timing,
 	color $global-transition-short $global-transition-timing;
 $button-responsive-expanded: false;
