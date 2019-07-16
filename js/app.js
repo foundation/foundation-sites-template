@@ -1,6 +1,7 @@
 jQuery(document).ready(function () {
+	var $ = jQuery;
 	$(document).foundation();
-	jQuery(document).on('click', '.dots', function(e) {
+	$(document).on('click', '.dots', function(e) {
 		e.preventDefault();
 	});
 	$(document).on('change', '.radio-accordion .radio-input', function(e) {
