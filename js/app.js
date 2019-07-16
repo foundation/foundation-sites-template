@@ -1,4 +1,4 @@
-jQuery(document).ready(function () {
+jQuery(document).ready(function ($) {
 	var $ = jQuery;
 	$(document).foundation();
 	$(document).on('click', '.dots', function(e) {
