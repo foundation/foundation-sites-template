@@ -1911,7 +1911,7 @@ $icon-line-weight: 2;
   display: flex;
   border: none;
   font-size: $paragraph-font-size;
-  border-bottom: 1px solid $light-gray-transparent;
+  border-bottom: 1px solid rgba($black, 0.17);
 
 	// &:last-child {
 	// 	border-bottom: none;
@@ -1961,7 +1961,7 @@ $icon-line-weight: 2;
       & > a {
         &:hover {
           background: none;
-          box-shadow: inset 0 -2px $light-gray-transparent;
+          box-shadow: inset 0 -2px rgba($black, 0.17);
         }
 
         &:focus {
