@@ -4,7 +4,6 @@
 @import 'foundation';
 @import 'motion-ui';
 
-// Global styles
 @include foundation-global-styles;
 @include foundation-forms;
 @include foundation-typography;
@@ -62,3 +61,6 @@
 // Motion UI
 @include motion-ui-transitions;
 @include motion-ui-animations;
+
+@import 'custom-settings';
+@import 'kisd-settings';
