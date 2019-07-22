@@ -1911,11 +1911,6 @@ $icon-line-weight: 2;
   display: flex;
   border: none;
   font-size: $paragraph-font-size;
-  border-bottom: 1px solid rgba($black, 0.17);
-
-	// &:last-child {
-	// 	border-bottom: none;
-	// }
   &::before,
   &::after {
     width: 0;
@@ -1979,7 +1974,10 @@ $icon-line-weight: 2;
           box-shadow: inset 0 -2px $dark-gray;
         }
       }
-    }
+		}
+		& + .tabs-content {
+			border-top: #{nth($hr-border, 1)} solid rgba($dark-gray, .17);
+		}
   }
 
   &.bar {
