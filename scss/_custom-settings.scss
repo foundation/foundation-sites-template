@@ -737,7 +737,13 @@ label[for] {
         text-decoration: underline;
       }
     }
-  }
+	}
+}
+.author {
+	&:after {
+		content: '\00b7';
+		margin: 0 0.5em;
+	}
 }
 .additional-comments {
   height: 100%;
@@ -2494,7 +2500,7 @@ $spinner-sizes: (
 // 22. Typeahead
 // ---------
 
-.tt-menu {
+.sf-typeahead .tt-menu {
   width: 100%;
 	background-color: #fff;
 	z-index: 200;
@@ -2503,10 +2509,16 @@ $spinner-sizes: (
 	overflow: hidden;
 }
 .twitter-typeahead, .tt-input, .tt-hint {
+	font-size: $paragraph-font-size;
 	margin-bottom: 0;
 	width: 100%;
 	.menu & {
 		height: 48px;
+	}
+}
+.tt-input {
+	.menu & {
+		min-width: 250px;
 	}
 }
 .tt-suggestion.tt-cursor {
@@ -2515,6 +2527,29 @@ $spinner-sizes: (
   small {
     color: #fff;
   }
+}
+.menu .sf-typeahead .tt-suggestion {
+	padding: 0;
+	.v-center {
+		padding: 0;
+		.sf-user-image {
+			min-width: 48px;
+			width: 48px;
+			height: 48px;
+			margin-left: 0;
+			margin-right: 0.875rem;
+			img {
+				min-width: 48px;
+				width: 48px;
+				height: 48px;
+			}
+		}
+	}
+}
+.no-found {
+	padding: $button-padding;
+	font-size: $small-font-size;
+	color: $dark-gray;
 }
 .add-user-typeahead {
   position: relative;
