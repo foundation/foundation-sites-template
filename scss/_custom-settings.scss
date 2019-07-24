@@ -167,6 +167,10 @@ a {
   @include foundation-palette($selector: "li", $child: ">&");
   @include button-sizes();
 }
+.text-truncate {
+	display: block !important;
+	flex-shrink: 1;
+}
 .hover-underline:hover {
   text-decoration: underline;
 }
@@ -876,18 +880,32 @@ label[for] {
 }
 
 .space-info-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  font-size: rem-calc($global-font-size * 0.875);
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	font-size: rem-calc($global-font-size * 0.875);
 
-  &.small {
-    font-size: rem-calc($global-font-size * 0.75);
-  }
+	&.small {
+		font-size: rem-calc($global-font-size * 0.75);
+	}
 
-  &.large {
-    font-size: rem-calc($global-font-size);
-  }
+	&.large {
+		font-size: rem-calc($global-font-size);
+	}
+
+	.flex-nowrap & {
+		flex-wrap: nowrap;
+		overflow: hidden;
+		&>a {
+			overflow: hidden;
+			.space-info-block {
+				span {
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+			}
+		}
+	}
 }
 
 .space-info-block {
@@ -1428,11 +1446,6 @@ hr {
   margin: 0 auto;
   border-bottom: $hr-border;
 }
-
-.flex-spacer-left {
-  margin-left: auto;
-}
-
 .menu {
   a,
   .button {
@@ -1468,7 +1481,7 @@ hr {
 
       &.no-arrow {
         & > a {
-          padding-right: $dropdownmenu-padding;
+          padding-right: #{nth($dropdownmenu-padding, 1)};
 
           &::after {
             display: none;
@@ -1975,7 +1988,7 @@ $icon-line-weight: 2;
         }
       }
 		}
-		& + .tabs-content {
+		& + .tabs-content .tabs-panel{
 			border-top: #{nth($hr-border, 1)} solid rgba($dark-gray, .17);
 		}
   }
@@ -2303,6 +2316,12 @@ $icon-line-weight: 2;
 // 19. Utilities
 // ---------
 
+
+.flex-spacer-left {
+  margin-left: auto;
+}
+
+
 .no-padding {
   padding: 0;
 
@@ -2485,8 +2504,10 @@ $spinner-sizes: (
 }
 .twitter-typeahead, .tt-input, .tt-hint {
 	margin-bottom: 0;
-	height: 48px;
 	width: 100%;
+	.menu & {
+		height: 48px;
+	}
 }
 .tt-suggestion.tt-cursor {
   background-color: get-color(primary);
@@ -2497,9 +2518,19 @@ $spinner-sizes: (
 }
 .add-user-typeahead {
   position: relative;
-  width: 100%;
+	width: 100%;
+	&::before {
+		content: '\f002';
+		font-family: FontAwesome;
+		font-size: 0.75rem;
+		position: absolute;
+		z-index: 1;
+		padding: $button-padding;
+		color: $dark-gray;
+	}
   input {
 		width: 100%;
+		padding-left: 2rem;
   }
   .tt-suggestion {
     padding: $button-padding;
@@ -2603,11 +2634,12 @@ $spinner-sizes: (
 		justify-content: center;
 		border-radius: $pagination-radius;
 		margin: 0 $pagination-item-spacing;
-		&:not(.current):hover {
+		&:not(.current):not(.dots):hover {
 			color: #333;
 			background-color: $very-light-gray;
 		}
 		&.dots {
+			cursor: default;
 			font-weight: $global-weight-bold;
 			font-size: 1.25rem;
 			color: $pagination-item-color;
@@ -2693,5 +2725,16 @@ $spinner-sizes: (
 		.input {
 			border-radius: $global-radius $global-radius 0 0;
 		}
+	}
+}
+
+
+// 27. Breadcrumbs
+// ---------
+
+.breadcrumbs {
+	padding: $button-padding;
+	li {
+		height: 1rem;
 	}
 }
