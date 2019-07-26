@@ -831,7 +831,8 @@ label[for] {
 
   &.space-header {
     background: $very-light-gray;
-    height: 64px;
+    // height: 64px;
+    height: 80px;
 
     .large > &,
     .large > a > & {
