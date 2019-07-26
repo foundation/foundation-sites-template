@@ -111,4 +111,10 @@ $items: 10;
 	.card-divider {
 		border-color: transparent;
 	}
+	.event-item {
+		flex: 1 1 100%;
+		@include breakpoint(medium) {
+			flex: 1 1 50%;
+		}
+	}
 }
