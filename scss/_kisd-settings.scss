@@ -7,20 +7,16 @@
 //   2. Menu
 //   X. DEV
 
-
-
 // 1. Mixins
 // ---------
-
-
 
 // 2. Menu
 // ---------
 @include breakpoint(small down) {
   .main-menu .menu {
-    &>li {
+    & > li {
       &.navbar-icon {
-        &>a>b {
+        & > a > b {
           height: 0.6875rem;
         }
       }
@@ -28,73 +24,91 @@
   }
 }
 
-
 // X. DEV
 .menu-main-expand .is-dropdown-submenu {
   // display: block !important;
 }
 
-
-
-
 body {
-	overflow-x: hidden;
+  overflow-x: hidden;
 }
 .spaces__posts,
 .spaces__pages {
-	position: absolute;
-	width: 100%;
+  position: absolute;
+  width: 100%;
 }
 $timing: 500;
 $delay: $timing / 10;
 $items: 10;
-.spaces__posts>.grid-x>.cell,
-.spaces__pages>.grid-x>.cell {
-	transition-timing-function: ease-in-out;
-	transition: all #{$timing}ms;
+.spaces__posts > .grid-x > .cell,
+.spaces__pages > .grid-x > .cell {
+  transition-timing-function: ease-in-out;
+  transition: all #{$timing}ms;
 }
 
-.spaces__posts>.grid-x>.cell {
-	@for $i from 1 through $items {
-		$number: $i * $delay + $timing;
-		$item: $i;
-		&:nth-child(#{$item}) {
-			transition-delay: #{$number}ms;
-		}
-	}
+.spaces__posts > .grid-x > .cell {
+  @for $i from 1 through $items {
+    $number: $i * $delay + $timing;
+    $item: $i;
+    &:nth-child(#{$item}) {
+      transition-delay: #{$number}ms;
+    }
+  }
 }
-.spaces__pages>.grid-x>.cell {
-	transform: translateY(50px) scale(0.98);
-	opacity: 0;
-	@for $i from 1 through $items {
-		$number: $i * $delay;
-		$item: $i;
-		&:nth-child(#{$item}) {
-			transition-delay: #{$number}ms;
-		}
-	}
-}
-
-.show-pages .spaces__posts>.grid-x>.cell {
-	transform: translateY(50px) scale(0.98);
-	opacity: 0;
-	@for $i from 1 through $items {
-		$number: $i * $delay;
-		$item: 1 + $items - $i;
-		&:nth-child(#{$item}) {
-			transition-delay: #{$number}ms;
-		}
-	}
+.spaces__pages > .grid-x > .cell {
+  transform: translateY(50px) scale(0.98);
+  opacity: 0;
+  @for $i from 1 through $items {
+    $number: $i * $delay;
+    $item: $i;
+    &:nth-child(#{$item}) {
+      transition-delay: #{$number}ms;
+    }
+  }
 }
 
-.show-pages .spaces__pages>.grid-x>.cell {
-	transform: translateY(0);
-	opacity: 1;
-	@for $i from 1 through $items {
-		$number: $i * $delay + $delay * $items + $timing;
-		$item: $i;
-		&:nth-child(#{$item}) {
-			transition-delay: #{$number}ms;
+.show-pages .spaces__posts > .grid-x > .cell {
+  transform: translateY(50px) scale(0.98);
+  opacity: 0;
+  @for $i from 1 through $items {
+    $number: $i * $delay;
+    $item: 1 + $items - $i;
+    &:nth-child(#{$item}) {
+      transition-delay: #{$number}ms;
+    }
+  }
+}
+
+.show-pages .spaces__pages > .grid-x > .cell {
+  transform: translateY(0);
+  opacity: 1;
+  @for $i from 1 through $items {
+    $number: $i * $delay + $delay * $items + $timing;
+    $item: $i;
+    &:nth-child(#{$item}) {
+      transition-delay: #{$number}ms;
+    }
+  }
+}
+
+
+.event-info {
+	padding: $button-padding;
+}
+
+.overview {
+  .event-item {
+    &:hover {
+      background-color: #fafafa;
 		}
+  }
+}
+.miniview {
+	.card {
+		box-shadow: none;
+		background: none;
+	}
+	.card-divider {
+		border-color: transparent;
 	}
 }
