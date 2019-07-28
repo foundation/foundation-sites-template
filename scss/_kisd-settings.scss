@@ -91,7 +91,11 @@ $items: 10;
   }
 }
 
-
+.widget_eo_scheduler_widget {
+	&>.card, &>.accordion {
+		background: none;
+	}
+}
 .event-info {
 	padding: $button-padding;
 }
@@ -117,4 +121,19 @@ $items: 10;
 			flex: 1 1 50%;
 		}
 	}
+}
+.eo-magnific-container {
+	.reveal {
+		display: block;
+		@include breakpoint(medium down) {
+			max-width: calc(100% - 2 * #{$global-gutter-small});
+			height: initial;
+			min-height: initial;
+			margin: $global-gutter-small auto;
+			border-radius: $global-radius;
+		}
+	}
+}
+.mfp-container {
+	padding: 0 !important;
 }
