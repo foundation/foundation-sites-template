@@ -31,4 +31,12 @@ jQuery(document).ready(function ($) {
 	$(document).on('click', '[data-stay-open-on-click-inside] .is-dropdown-submenu', function(e) {
 		$(this).parents('.is-dropdown-submenu-parent').attr('data-is-click', true);
 	});
+	// $(document).on(down.zf.accordion, $(document).foundation());
+	$(document)
+		.on("down.zf.accordionMenu", function() {
+			$('.masonry-container, .masonry-parent').masonry();
+		})
+		.on("up.zf.accordionMenu", function() {
+			$('.masonry-container, .masonry-parent').masonry();
+		});
 });

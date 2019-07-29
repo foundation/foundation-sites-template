@@ -1966,7 +1966,8 @@ $icon-line-weight: 2;
     .tabs-title {
       width: 100%;
       a {
-        padding: 0;
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
       }
     }
   }
@@ -2507,9 +2508,9 @@ $spinner-sizes: (
 // 22. Typeahead
 // ---------
 
-.sf-typeahead .tt-menu {
+.tt-menu {
   width: 100%;
-	background-color: #fff;
+	background-color: $dropdown-background;
 	z-index: 200;
 	box-shadow: $global-drop-shadow;
 	border-radius: 0 0 $global-radius $global-radius;
