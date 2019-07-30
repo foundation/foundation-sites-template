@@ -33,28 +33,32 @@ body {
   overflow-x: hidden;
 }
 $timing: 500;
-$delay: $timing / 10;
+$delay: $timing / 20;
 $items: 10;
 $delay_total: $delay * $items;
+$scale: .95;
+$h-offset: 200px;
+$v-offset: 0;
 .spaces__posts,
 .spaces__pages {
   position: absolute;
   width: 100%;
 	transition: all #{$timing}ms;
 	transition-timing-function: ease-in-out;
+	transform-origin: 50% 0;
 	& > .grid-x > .cell {
-		transition-timing-function: ease-in-out;
+		transition-timing-function: cubic-bezier(.1,.9,.2,1);
 		transition: all #{$timing}ms;
 	}
 }
 
 .spaces__posts {
-	transform: translateX(0);
-	transition-delay: #{$delay_total * 1.5}ms;
+	// transform: translateX(0);
+	// transition-delay: #{$delay_total}ms;
 	pointer-events: auto;
 	& > .grid-x > .cell {
 		@for $i from 1 through $items {
-			$number: $i * $delay + $delay * $items + $timing;
+			$number: $i * $delay + $delay * $items;
 			$item: $i;
 			&:nth-child(#{$item}) {
 				transition-delay: #{$number}ms;
@@ -63,15 +67,15 @@ $delay_total: $delay * $items;
 	}
 }
 .spaces__pages {
-	transform: translateX(100px);
-	transition-delay: #{$delay_total}ms;
+	transform: scale($scale);
 	pointer-events: none;
 	& > .grid-x > .cell {
-		transform: translateY(50px) scale(0.98);
+		transform: translateX($h-offset) translateY($v-offset) scale($scale);
 		opacity: 0;
 		@for $i from 1 through $items {
 			$number: $i * $delay;
-			$item: 1 + $items - $i;
+			// $item: 1 + $items - $i;
+			$item: $i;
 			&:nth-child(#{$item}) {
 				transition-delay: #{$number}ms;
 			}
@@ -81,15 +85,15 @@ $delay_total: $delay * $items;
 
 .show-pages {
 	.spaces__posts {
-		transform: translateX(-100px);
-		transition-delay: #{$delay_total}ms;
+		transform: scale($scale);
 		pointer-events: none;
 		& > .grid-x > .cell {
-			transform: translateY(50px) scale(0.98);
+			transform: translateX(-#{$h-offset}) translateY($v-offset) scale($scale);
 			opacity: 0;
 			@for $i from 1 through $items {
 				$number: $i * $delay;
-				$item: 1 + $items - $i;
+				// $item: 1 + $items - $i;
+				$item: $i;
 				&:nth-child(#{$item}) {
 					transition-delay: #{$number}ms;
 				}
@@ -97,14 +101,13 @@ $delay_total: $delay * $items;
 		}
 	}
 	.spaces__pages {
-		transform: translateX(0);
-		transition-delay: #{$delay_total * 1.5}ms;
+		transform: scale(1);
 		pointer-events: auto;
 		& > .grid-x > .cell {
-			transform: translateY(0);
+			transform: translateX(0) translateY(0) scale(1);
 			opacity: 1;
 			@for $i from 1 through $items {
-				$number: $i * $delay + $delay * $items + $timing;
+				$number: $i * $delay + $delay * $items;
 				$item: $i;
 				&:nth-child(#{$item}) {
 					transition-delay: #{$number}ms;
