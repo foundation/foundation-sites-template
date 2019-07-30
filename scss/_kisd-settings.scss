@@ -32,63 +32,89 @@
 body {
   overflow-x: hidden;
 }
+$timing: 500;
+$delay: $timing / 20;
+$items: 10;
+$delay_total: $delay * $items;
+$scale: .95;
+$h-offset: 200px;
+$v-offset: 0;
 .spaces__posts,
 .spaces__pages {
   position: absolute;
   width: 100%;
-}
-$timing: 500;
-$delay: $timing / 10;
-$items: 10;
-.spaces__posts > .grid-x > .cell,
-.spaces__pages > .grid-x > .cell {
-  transition-timing-function: ease-in-out;
-  transition: all #{$timing}ms;
-}
-
-.spaces__posts > .grid-x > .cell {
-  @for $i from 1 through $items {
-    $number: $i * $delay + $timing;
-    $item: $i;
-    &:nth-child(#{$item}) {
-      transition-delay: #{$number}ms;
-    }
-  }
-}
-.spaces__pages > .grid-x > .cell {
-  transform: translateY(50px) scale(0.98);
-  opacity: 0;
-  @for $i from 1 through $items {
-    $number: $i * $delay;
-    $item: $i;
-    &:nth-child(#{$item}) {
-      transition-delay: #{$number}ms;
-    }
-  }
+	transition: all #{$timing}ms;
+	transition-timing-function: ease-in-out;
+	transform-origin: 50% 0;
+	& > .grid-x > .cell {
+		transition-timing-function: cubic-bezier(.1,.9,.2,1);
+		transition: all #{$timing}ms;
+	}
 }
 
-.show-pages .spaces__posts > .grid-x > .cell {
-  transform: translateY(50px) scale(0.98);
-  opacity: 0;
-  @for $i from 1 through $items {
-    $number: $i * $delay;
-    $item: 1 + $items - $i;
-    &:nth-child(#{$item}) {
-      transition-delay: #{$number}ms;
-    }
-  }
+.spaces__posts {
+	// transform: translateX(0);
+	// transition-delay: #{$delay_total}ms;
+	pointer-events: auto;
+	& > .grid-x > .cell {
+		@for $i from 1 through $items {
+			$number: $i * $delay + $delay * $items;
+			$item: $i;
+			&:nth-child(#{$item}) {
+				transition-delay: #{$number}ms;
+			}
+		}
+	}
+}
+.spaces__pages {
+	transform: scale($scale);
+	pointer-events: none;
+	& > .grid-x > .cell {
+		transform: translateX($h-offset) translateY($v-offset) scale($scale);
+		opacity: 0;
+		@for $i from 1 through $items {
+			$number: $i * $delay;
+			// $item: 1 + $items - $i;
+			$item: $i;
+			&:nth-child(#{$item}) {
+				transition-delay: #{$number}ms;
+			}
+		}
+	}
 }
 
-.show-pages .spaces__pages > .grid-x > .cell {
-  transform: translateY(0);
-  opacity: 1;
-  @for $i from 1 through $items {
-    $number: $i * $delay + $delay * $items + $timing;
-    $item: $i;
-    &:nth-child(#{$item}) {
-      transition-delay: #{$number}ms;
-    }
-  }
+.show-pages {
+	.spaces__posts {
+		transform: scale($scale);
+		pointer-events: none;
+		& > .grid-x > .cell {
+			transform: translateX(-#{$h-offset}) translateY($v-offset) scale($scale);
+			opacity: 0;
+			@for $i from 1 through $items {
+				$number: $i * $delay;
+				// $item: 1 + $items - $i;
+				$item: $i;
+				&:nth-child(#{$item}) {
+					transition-delay: #{$number}ms;
+				}
+			}
+		}
+	}
+	.spaces__pages {
+		transform: scale(1);
+		pointer-events: auto;
+		& > .grid-x > .cell {
+			transform: translateX(0) translateY(0) scale(1);
+			opacity: 1;
+			@for $i from 1 through $items {
+				$number: $i * $delay + $delay * $items;
+				$item: $i;
+				&:nth-child(#{$item}) {
+					transition-delay: #{$number}ms;
+				}
+			}
+		}
+	}
 }
 
 .widget_eo_scheduler_widget {
