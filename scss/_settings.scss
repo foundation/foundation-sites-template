@@ -324,7 +324,7 @@ $button-sizes: (
 	default: 0.875rem,
 	large: 1rem
 );
-$button-padding: 0.625rem 0.75rem 0.5rem;
+$button-padding: 0.5rem 0.75rem;
 $button-margin: 0 0 map-get($button-sizes, default) 0;
 $button-fill: solid;
 $button-background: $primary-color;

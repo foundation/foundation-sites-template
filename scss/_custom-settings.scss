@@ -1790,12 +1790,15 @@ $icon-line-weight: 2;
 .flat-arrow-down-icon {
   cursor: pointer;
   border-radius: 20px;
-  position: relative;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
   width: 48px;
   height: 48px;
   padding: 12px;
   color: inherit;
-  box-sizing: border-box;
+	box-sizing: border-box;
 
   &::before,
   &::after {
@@ -1819,48 +1822,44 @@ $icon-line-weight: 2;
     height: 14px;
     width: 14px;
     border-radius: 20px;
-    @include cross-browser(transform, translate(4px, 4px) rotate(0));
+    @include cross-browser(transform, rotate(0));
 
-    nav .is-active & {
+    .search-container.is-active ~ & {
       height: 20px;
       width: $icon-line-weight * 1px;
       border-radius: 0;
-      @include cross-browser(
-        transform,
-        translate((12 - $icon-line-weight / 2) * 1px, 2px) rotate(45deg)
-      );
+      @include cross-browser( transform, rotate(45deg) );
     }
   }
 
   &::after {
     width: 6px;
-    @include cross-browser(
-      transform,
-      translate(14px, (18 - $icon-line-weight) * 1px) rotate(45deg)
-    );
+    @include cross-browser( transform, translate(6px, 6px) rotate(45deg) );
 
-    nav .is-active & {
+    .search-container.is-active ~ & {
       width: 20px;
-      @include cross-browser(
-        transform,
-        translate(2px, (12 - $icon-line-weight / 2) * 1px) rotate(45deg)
-      );
+      @include cross-browser( transform, translate(0) rotate(45deg) );
     }
   }
 }
 
 #global-search.twitter-typeahead {
-  display: none;
-  position: absolute;
-  left: 0;
-  z-index: 10;
-  width: calc(100% - 85px);
-
-  nav .is-active & {
-    display: block;
-  }
+	display: none;
+	position: absolute;
+	left: 0;
+	z-index: 10;
+	width: calc(100% - 85px);
+	.search-container.is-active & {
+		display: block;
+}
 }
 
+.twitter-typeahead.tt-hint {
+	display: none;
+	.search-container.is-active & {
+		display: block;
+	}
+}
 #menu-state {
   display: none;
 }
