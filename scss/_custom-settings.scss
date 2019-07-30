@@ -1782,9 +1782,6 @@ svg {
 
 $icon-line-weight: 2;
 
-#search-state {
-  display: none;
-}
 
 .sandwich-icon,
 .search-icon,
@@ -1822,7 +1819,7 @@ $icon-line-weight: 2;
     border-radius: 20px;
     @include cross-browser(transform, translate(4px, 4px) rotate(0));
 
-    #search-state:checked ~ nav & {
+    nav .is-active & {
       height: 20px;
       width: $icon-line-weight * 1px;
       border-radius: 0;
@@ -1840,7 +1837,7 @@ $icon-line-weight: 2;
       translate(14px, (18 - $icon-line-weight) * 1px) rotate(45deg)
     );
 
-    #search-state:checked ~ nav & {
+    nav .is-active & {
       width: 20px;
       @include cross-browser(
         transform,
@@ -1850,14 +1847,14 @@ $icon-line-weight: 2;
   }
 }
 
-.search input {
+#global-search.twitter-typeahead {
   display: none;
   position: absolute;
   left: 0;
   z-index: 10;
-  width: calc(100% - 150px);
+  width: calc(100% - 85px);
 
-  #search-state:checked ~ nav & {
+  nav .is-active & {
     display: block;
   }
 }
@@ -2507,7 +2504,7 @@ $spinner-sizes: (
 // 22. Typeahead
 // ---------
 
-.sf-typeahead .tt-menu {
+.twitter-typeahead .tt-menu, {
   width: 100%;
 	background-color: #fff;
 	z-index: 200;
@@ -2520,7 +2517,7 @@ $spinner-sizes: (
 	margin-bottom: 0;
 	width: 100%;
 	.menu & {
-		height: 48px;
+		height: 40px;
 	}
 }
 .tt-input {
@@ -2535,7 +2532,7 @@ $spinner-sizes: (
     color: #fff;
   }
 }
-.menu .sf-typeahead .tt-suggestion {
+.menu .twitter-typeahead .tt-suggestion {
 	padding: 0;
 	.v-center {
 		padding: 0;
