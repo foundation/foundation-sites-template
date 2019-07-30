@@ -657,6 +657,11 @@ label[for] {
   }
 }
 
+.user-name.text-truncate {
+	/* truncate needs display block, so vertical flex center no longer works. */
+	transform: translateY(50%);
+}
+
 .user-info {
   font-size: 0.75rem;
   color: $dark-gray;
@@ -1702,15 +1707,6 @@ hr {
   }
 }
 
-.dropdown,
-.accordion-menu {
-  .menu-anchor {
-    img {
-      width: 36px;
-      height: 36px;
-    }
-  }
-}
 .dropdown {
   & > li > a {
     display: flex;
@@ -2540,9 +2536,8 @@ $spinner-sizes: (
   }
 }
 .menu .twitter-typeahead .tt-suggestion {
-	padding: 0;
-	.v-center {
-		padding: 0;
+
+
 		.sf-user-image {
 			min-width: 48px;
 			width: 48px;
@@ -2555,7 +2550,7 @@ $spinner-sizes: (
 				height: 48px;
 			}
 		}
-	}
+
 }
 .no-found {
 	padding: $button-padding;
