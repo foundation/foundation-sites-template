@@ -658,6 +658,11 @@ label[for] {
   }
 }
 
+.user-name.text-truncate {
+	/* truncate needs display block, so vertical flex center no longer works. */
+	transform: translateY(50%);
+}
+
 .user-info {
   font-size: 0.75rem;
   color: $dark-gray;
