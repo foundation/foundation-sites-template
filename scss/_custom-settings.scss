@@ -490,6 +490,7 @@ label[for] {
 // ---------
 
 .user {
+	position: relative;
   display: flex;
   align-items: center;
 	height: $user-card-default-size;
@@ -1462,7 +1463,10 @@ hr {
 .menu {
   a,
   .button {
-    display: flex;
+		display: flex;
+		&.no-padding {
+			padding: 0;
+		}
   }
   li {
     &[role="menuitem"],
@@ -1702,15 +1706,15 @@ hr {
   }
 }
 
-.dropdown,
-.accordion-menu {
-  .menu-anchor {
-    img {
-      width: 36px;
-      height: 36px;
-    }
-  }
-}
+// .dropdown,
+// .accordion-menu {
+//   .menu-anchor {
+//     img {
+//       width: 36px;
+//       height: 36px;
+//     }
+//   }
+// }
 .dropdown {
   & > li > a {
     display: flex;
@@ -2345,6 +2349,9 @@ $icon-line-weight: 2;
 }
 
 @each $size-name, $size in $padding-sizes {
+	.margin-#{$size-name} {
+		margin: $size;
+	}
   .padding-#{$size-name} {
     padding: $size;
     & > a,
@@ -2538,20 +2545,29 @@ $spinner-sizes: (
     color: #fff;
   }
 }
-.menu .twitter-typeahead .tt-suggestion {
-	padding: 0;
-	.v-center {
+.menu .twitter-typeahead {
+	.tt-dataset-blogs {
+		padding: map-get($padding-sizes, small);
+		.tt-suggestion {
+			padding: map-get($padding-sizes, small);
+		}
+	}
+
+	.tt-suggestion {
 		padding: 0;
-		.sf-user-image {
-			min-width: 48px;
-			width: 48px;
-			height: 48px;
-			margin-left: 0;
-			margin-right: 0.875rem;
-			img {
+		.v-center {
+			padding: 0;
+			.sf-user-image {
 				min-width: 48px;
 				width: 48px;
 				height: 48px;
+				margin-left: 0;
+				margin-right: 0.875rem;
+				img {
+					min-width: 48px;
+					width: 48px;
+					height: 48px;
+				}
 			}
 		}
 	}
