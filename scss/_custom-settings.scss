@@ -1305,6 +1305,13 @@ select {
 	.menu & {
 		padding: $button-padding;
 	}
+	&.load {
+		transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+		color: #fff;
+		background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+		background-size: 300% 300%;
+		animation: gradient 7s ease infinite;
+	}
 }
 button,
 .button,
@@ -1329,6 +1336,18 @@ textarea {
 	.card-divider.no-padding:not(:last-child) & {
 		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 0;
+	}
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
 	}
 }
 
