@@ -133,6 +133,10 @@ body {
   position: relative;
 }
 
+.sidebar {
+	z-index: 10;
+}
+
 // 3. Typography
 // ---------
 
@@ -314,7 +318,8 @@ label[for] {
   justify-content: center;
   align-items: flex-start;
   flex: 1;
-  padding: $button-padding;
+	padding: $button-padding;
+	padding-bottom: 0.25rem;
 	line-height: $paragraph-lineheight;
 	&.flex-dir-row {
 		flex-direction: row;
@@ -444,11 +449,11 @@ label[for] {
   border-radius: 0 2px 2px 0;
   align-items: center;
 
-  span {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  // span {
+  //   white-space: nowrap;
+  //   overflow: hidden;
+  //   text-overflow: ellipsis;
+  // }
 
   .fa {
     font-size: 0.75em;
@@ -492,23 +497,26 @@ label[for] {
 .user {
 	position: relative;
   display: flex;
-  align-items: center;
-	height: $user-card-default-size;
-
-  .checkbox-label {
-    height: $user-card-default-size;
-    width: $user-card-default-size;
-  }
-  @each $size-label, $size in $user-card-sizes {
-    .#{$size-label} &,
-    &.#{$size-label} {
-      height: $size;
-      .checkbox-label {
-        height: $size;
-        width: $size;
-      }
-    }
-  }
+	align-items: flex-start;
+	.card-header {
+		min-height: $user-card-default-size;
+	}
+	.checkbox-label {
+		height: $user-card-default-size;
+		width: $user-card-default-size;
+	}
+	@each $size-label, $size in $user-card-sizes {
+		.#{$size-label} &,
+		&.#{$size-label} {
+			.card-header {
+				min-height: $size;
+			}
+			.checkbox-label {
+				height: $size;
+				width: $size;
+			}
+		}
+	}
   .profile .accordion-item & {
     display: flex;
     flex-direction: column;
@@ -554,6 +562,7 @@ label[for] {
       width: 100%;
       display: inline-block;
       & + .user-info {
+				display: block;
         font-size: 0.75rem;
       }
     }
@@ -660,7 +669,7 @@ label[for] {
 
 .user-name.text-truncate {
 	/* truncate needs display block, so vertical flex center no longer works. */
-	transform: translateY(50%);
+	// transform: translateY(50%);
 }
 
 .user-info {
@@ -885,7 +894,8 @@ label[for] {
   display: inline-block;
   box-shadow: $global-drop-shadow;
   background-color: $white;
-  font-size: $small-font-size;
+	font-size: $small-font-size;
+	min-width: 200px;
   &.is-open {
     z-index: 2000;
   }
