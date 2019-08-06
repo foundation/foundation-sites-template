@@ -439,11 +439,12 @@ label[for] {
 	padding: 1rem 0;
 }
 .card-divider, .card-section {
-	&.nested {
+	&.nested { // @todo: make padding and margin dynamic.
 		border-top: none;
+		margin-top: -1rem;
 		.card-section.no-padding.flex-dir-row {
 			border-top: $hr-border;
-			margin-top: -2.375rem;
+			margin-top: -1.375rem;
 			padding-top: 0.75rem;
 			.page-title {
 				font-size: 1rem;
