@@ -438,6 +438,19 @@ label[for] {
 .page-content {
 	padding: 1rem 0;
 }
+.card-divider, .card-section {
+	&.nested {
+		border-top: none;
+		.card-section.no-padding.flex-dir-row {
+			border-top: $hr-border;
+			margin-top: -2.375rem;
+			padding-top: 0.75rem;
+			.page-title {
+				font-size: 1rem;
+			}
+		}
+	}
+}
 
 
 // 5. Spaces Card
