@@ -43,8 +43,8 @@ $v-offset: 0;
 	overflow: hidden;
 	position: relative;
 }
-.spaces__posts,
-.spaces__pages {
+.spaces__stream,
+.spaces__book {
   position: absolute;
   width: 100%;
 	transition: all #{$timing}ms;
@@ -56,7 +56,7 @@ $v-offset: 0;
 	}
 }
 
-.spaces__posts {
+.spaces__stream {
 	// transform: translateX(0);
 	// transition-delay: #{$delay_total}ms;
 	z-index: 1;
@@ -71,7 +71,7 @@ $v-offset: 0;
 		}
 	}
 }
-.spaces__pages {
+.spaces__book {
 	transform: scale($scale);
 	z-index: 0;
 	pointer-events: none;
@@ -89,8 +89,8 @@ $v-offset: 0;
 	}
 }
 
-.show-pages {
-	.spaces__posts {
+.show-book {
+	.spaces__stream {
 		transform: scale($scale);
 		z-index: 0;
 		pointer-events: none;
@@ -107,7 +107,7 @@ $v-offset: 0;
 			}
 		}
 	}
-	.spaces__pages {
+	.spaces__book {
 		transform: scale(1);
 		z-index: 1;
 		pointer-events: auto;

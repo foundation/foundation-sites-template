@@ -430,6 +430,16 @@ label[for] {
   box-shadow: $global-drop-shadow;
 }
 
+.page-title {
+	@extend .card-title ;
+	font-size: 1.25rem;
+	padding-top: 0.5rem;
+}
+.page-content {
+	padding: 1rem 0;
+}
+
+
 // 5. Spaces Card
 // ---------
 
@@ -2101,7 +2111,10 @@ $icon-line-weight: 2;
 }
 
 .tabs-content {
-  border: none;
+	border: none;
+	// .card>&:last-child {
+	// 	border-radius: 0 0 $global-radius $global-radius;
+	// }
 }
 
 // 17. Scroll Snapping
