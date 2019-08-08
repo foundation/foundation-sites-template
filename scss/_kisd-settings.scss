@@ -40,8 +40,11 @@ $scale: .95;
 $h-offset: 200px;
 $v-offset: 0;
 .spaces__content {
+    /*
+	this messes up masonry...
 	overflow: hidden;
 	position: relative;
+	height: 100%; */
 }
 .spaces__stream,
 .spaces__book {
