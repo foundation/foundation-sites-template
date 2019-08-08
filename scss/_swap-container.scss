@@ -16,7 +16,7 @@ toggle the class show-first and show-second to toggle visibility.
 
 $timing: 100;
 $delay: $timing / 2;
-$items: 8;
+$items: 0;
 $delay_total: $delay * $items;
 $scale: 1;
 $h-offset: 0;
@@ -25,20 +25,20 @@ $v-offset: 0;
 .swap-container-parent {
 
 }
-
 .first-swap-container,
 .second-swap-container {
-	left: 0;
+/* 		left: 0;
 	top: 0;
-	position: absolute;
+	position: absolute; */
+	display: none;
 	// transition-delay: #{$delay_total}ms;
-	// transition: all #{$timing}ms;
+/* 	// transition: all #{$timing}ms;
 	transition-timing-function: ease-in-out;
 	transform-origin: 50% 0;
 	transform: scale($scale);
-	z-index: 0;
-	pointer-events: none;
-	& > .grid-x > .cell { // hiding
+	//z-index: -10;
+	pointer-events: none; */
+/* 	& > .grid-x > .cell { // hiding
 		transform: translateX($h-offset) translateY($v-offset) scale($scale);
 		opacity: 0;
 		@for $i from 1 through $items {
@@ -49,16 +49,18 @@ $v-offset: 0;
 				transition-delay: #{$number}ms;
 			}
 		}
-	}
+	} */
 }
+
 
 .show-second .second-swap-container,
 .show-first .first-swap-container {
-	transform: scale(1);
-	z-index: 1;
+	display: block;
+	//transform: scale(1);
+	//z-index: 1;
 	pointer-events: auto;
 	& > .grid-x > .cell { //showing
-		transform: translateX(0) translateY(0) scale(1);
+		//transform: translateX(0) translateY(0) scale(1); // this messes up z-index things. dot-menus hide behind cards.
 		opacity: 1;
 		@for $i from 0 through $items {
 			$number: $i * $delay + $delay * $items;
