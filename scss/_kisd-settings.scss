@@ -39,17 +39,14 @@ $delay_total: $delay * $items;
 $scale: .95;
 $h-offset: 200px;
 $v-offset: 0;
-.spaces__content {
-    /*
-	this messes up masonry...
-	overflow: hidden;
-	position: relative;
-	height: 100%; */
-}
+
 .spaces__stream,
 .spaces__book {
   position: absolute;
-  width: 100%;
+  left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 	transition: all #{$timing}ms;
 	transition-timing-function: ease-in-out;
 	transform-origin: 50% 0;

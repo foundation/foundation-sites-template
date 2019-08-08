@@ -32,11 +32,4 @@ jQuery(document).ready(function ($) {
 		$(this).parents('.is-dropdown-submenu-parent').attr('data-is-click', true);
 	});
 	// $(document).on(down.zf.accordion, $(document).foundation());
-	$(document)
-		.on("down.zf.accordionMenu", function() {
-			$('.masonry-container, .masonry-parent').masonry();
-		})
-		.on("up.zf.accordionMenu", function() {
-			$('.masonry-container, .masonry-parent').masonry();
-		});
 });
