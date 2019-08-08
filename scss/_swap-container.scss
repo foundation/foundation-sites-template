@@ -1,5 +1,7 @@
 /**
-"masonry-item" needs to recive the height of the first/second-swap container via js.
+"
+this description is currently obsolete...
+masonry-item" needs to recive the height of the first/second-swap container via js.
 toggle the class show-first and show-second to toggle visibility.
 
 <div class="masonry-item swap-container-parent show-first">
@@ -21,11 +23,7 @@ $h-offset: 0;
 $v-offset: 0;
 
 .swap-container-parent {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
+
 }
 
 .first-swap-container,
