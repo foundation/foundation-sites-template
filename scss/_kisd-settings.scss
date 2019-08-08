@@ -1,4 +1,6 @@
 //  Spaces Custom Settings for the KISD instance
+// @todo don't do this. move things to the appropriate places.
+// If you need gutter, transitions, ... make helper classes and assignt them in the theme..
 //  -----------------------------
 //
 //  Table of Contents:
@@ -22,107 +24,6 @@
       }
     }
   }
-}
-
-// X. DEV
-.menu-main-expand .is-dropdown-submenu {
-  // display: block !important;
-}
-
-body {
-  overflow-x: hidden;
-}
-$timing: 500;
-$delay: $timing / 20;
-$items: 10;
-$delay_total: $delay * $items;
-$scale: .95;
-$h-offset: 200px;
-$v-offset: 0;
-
-.spaces__stream,
-.spaces__book {
-  position: absolute;
-  left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-	transition: all #{$timing}ms;
-	transition-timing-function: ease-in-out;
-	transform-origin: 50% 0;
-	& > .grid-x > .cell {
-		transition-timing-function: cubic-bezier(.1,.9,.2,1);
-		transition: all #{$timing}ms;
-	}
-}
-
-.spaces__stream {
-	// transform: translateX(0);
-	// transition-delay: #{$delay_total}ms;
-	z-index: 1;
-	pointer-events: auto;
-	& > .grid-x > .cell {
-		@for $i from 1 through $items {
-			$number: $i * $delay + $delay * $items;
-			$item: $i;
-			&:nth-child(#{$item}) {
-				transition-delay: #{$number}ms;
-			}
-		}
-	}
-}
-.spaces__book {
-	transform: scale($scale);
-	z-index: 0;
-	pointer-events: none;
-	& > .grid-x > .cell {
-		transform: translateX($h-offset) translateY($v-offset) scale($scale);
-		opacity: 0;
-		@for $i from 1 through $items {
-			$number: $i * $delay;
-			// $item: 1 + $items - $i;
-			$item: $i;
-			&:nth-child(#{$item}) {
-				transition-delay: #{$number}ms;
-			}
-		}
-	}
-}
-
-.show-book {
-	.spaces__stream {
-		transform: scale($scale);
-		z-index: 0;
-		pointer-events: none;
-		& > .grid-x > .cell {
-			transform: translateX(-#{$h-offset}) translateY($v-offset) scale($scale);
-			opacity: 0;
-			@for $i from 1 through $items {
-				$number: $i * $delay;
-				// $item: 1 + $items - $i;
-				$item: $i;
-				&:nth-child(#{$item}) {
-					transition-delay: #{$number}ms;
-				}
-			}
-		}
-	}
-	.spaces__book {
-		transform: scale(1);
-		z-index: 1;
-		pointer-events: auto;
-		& > .grid-x > .cell {
-			transform: translateX(0) translateY(0) scale(1);
-			opacity: 1;
-			@for $i from 1 through $items {
-				$number: $i * $delay + $delay * $items;
-				$item: $i;
-				&:nth-child(#{$item}) {
-					transition-delay: #{$number}ms;
-				}
-			}
-		}
-	}
 }
 
 .widget_eo_scheduler_widget {
@@ -173,10 +74,6 @@ $v-offset: 0;
 }
 
 
-
-
-
-
 .search {
 	.s-fg-c1-hover, .s-fg-c1-hover:hover, .s-fg-c1-active:active {
 		.tt-menu {
@@ -206,21 +103,5 @@ $v-offset: 0;
 		right: 0;
 		opacity: 1;
 		pointer-events: all;
-	}
-}
-
-
-.customize-partial-edit-shortcut, .widget .customize-partial-edit-shortcut {
-	position: relative;
-	float: right;
-
-	.current .space-header &.customize-partial-edit-shortcut-header_image {
-		position: absolute;
-		right: calc(25px + 0.75rem);
-		bottom: calc(15px + 0.75rem);
-	}
-	button {
-		left: -5px !important;
-		top: -15px;
 	}
 }

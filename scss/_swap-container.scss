@@ -1,0 +1,74 @@
+/**
+"masonry-item" needs to recive the height of the first/second-swap container via js.
+toggle the class show-first and show-second to toggle visibility.
+
+<div class="masonry-item swap-container-parent show-first">
+	<div class="this-is-needed">
+		<div class="first-swap-container">
+		</div>
+		<div class="second-swap-container">
+		</div>
+	</div>
+</div>
+**/
+
+$timing: 100;
+$delay: $timing / 2;
+$items: 8;
+$delay_total: $delay * $items;
+$scale: 1;
+$h-offset: 0;
+$v-offset: 0;
+
+.swap-container-parent {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+.first-swap-container,
+.second-swap-container {
+	left: 0;
+	top: 0;
+	position: absolute;
+	// transition-delay: #{$delay_total}ms;
+	// transition: all #{$timing}ms;
+	transition-timing-function: ease-in-out;
+	transform-origin: 50% 0;
+	transform: scale($scale);
+	z-index: 0;
+	pointer-events: none;
+	& > .grid-x > .cell { // hiding
+		transform: translateX($h-offset) translateY($v-offset) scale($scale);
+		opacity: 0;
+		@for $i from 1 through $items {
+			$number: $i * $delay * 2;
+			// $item: 1 + $items - $i;
+			$item: $i;
+			&:nth-child(#{$item}) {
+				transition-delay: #{$number}ms;
+			}
+		}
+	}
+}
+
+.show-second .second-swap-container,
+.show-first .first-swap-container {
+	transform: scale(1);
+	z-index: 1;
+	pointer-events: auto;
+	& > .grid-x > .cell { //showing
+		transform: translateX(0) translateY(0) scale(1);
+		opacity: 1;
+		@for $i from 0 through $items {
+			$number: $i * $delay + $delay * $items;
+			$item: $i;
+			&:nth-child(#{$item}) {
+				transition-delay: #{$number}ms;
+			}
+		}
+	}
+}
+
