@@ -1531,9 +1531,6 @@ hr {
     &[role="treeitem"] {
       list-style: none;
     }
-    a:hover {
-      background: $very-light-gray;
-    }
   }
 }
 .main-menu {
@@ -1672,6 +1669,9 @@ hr {
   border: none;
 }
 .main-menu {
+	.dropdown .menu-anchor:hover {
+		background: $very-light-gray;
+	}
   &>*>.dropdown .is-dropdown-submenu,
   &>*>.accordion-menu .is-accordion-submenu {
     border-top: $hr-border;
@@ -1682,7 +1682,7 @@ hr {
 
     a {
       border-right: none;
-    }
+		}
 
     li {
       &:first-child .submenu-anchor {
@@ -1759,6 +1759,7 @@ hr {
     .submenu {
       position: absolute;
       left: 0;
+      top: 3rem;
       background: $white;
     }
   }
