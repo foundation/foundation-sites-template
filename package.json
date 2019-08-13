@@ -23,6 +23,7 @@
     "autoprefixer": "^9.1.5",
     "browser-sync": "^2.18.13",
     "gulp": "^4.0.0",
+    "gulp-sourcemaps": "^2.6.5",
     "gulp-load-plugins": "^1.1.0",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.1"
