@@ -1991,9 +1991,11 @@ $icon-line-weight: 2;
 
 // 16. Tabs
 // ---------
-
+.tabs-panel.is-active-tab {
+	display:block
+}
 .tabs {
-  display: flex;
+	display: flex;
   border: none;
   font-size: $paragraph-font-size;
   &::before,
@@ -2020,7 +2022,7 @@ $icon-line-weight: 2;
       color: inherit;
       height: 40px;
     }
-    &.is-active {
+    &.is-active-tab, &.is-active {
       & > a {
         background: $very-light-gray;
       }
@@ -2048,13 +2050,13 @@ $icon-line-weight: 2;
         &:focus {
           background: none;
         }
-        &[aria-selected="true"] {
+        &.is-active-tab, &.is-active {
           background: none;
           box-shadow: inset 0 -2px $dark-gray;
         }
       }
 
-      &.is-active {
+      &.is-active-tab, &.is-active {
         & > a {
           background: none;
           box-shadow: inset 0 -2px $dark-gray;
