@@ -363,6 +363,10 @@ label[for] {
 .card-section,
 .card-divider {
 	padding: $button-padding;
+	&-negative {
+		margin-left: -#{nth($button-padding, 2)};
+		margin-right:-#{nth($button-padding, 2)};
+	}
 	display: flex;
 	flex-direction: column;
 	&.flex-dir-row {
@@ -545,41 +549,42 @@ label[for] {
 			}
 		}
 	}
-	.profile .accordion-item & {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		flex-wrap: wrap;
-		color: inherit;
-		position: relative;
-		height: initial;
-		@include breakpoint(medium only) {
-			flex-direction: row;
-		}
-	}
 	.profile {
+		.accordion-item & {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			flex-wrap: wrap;
+			color: inherit;
+			position: relative;
+			height: initial;
+			@include breakpoint(medium only) {
+				flex-direction: row;
+			}
+		}
 		.accordion-item.is-active & {
-		.user-name {
-			font-size: 1rem;
-		}
-		.avatar-container {
-			width: 100%;
-			@include breakpoint(medium only) {
-				width: map-get($user-card-sizes, large);
+			.user-name {
+				font-size: 1rem;
 			}
-		}
-		.card-header {
-			transition: $global-transition-medium;
-			@include breakpoint(medium only) {
-				min-height: map-get($user-card-sizes, large);
-				height: map-get($user-card-sizes, large);
-				padding-left: 1rem;
+			.avatar-container {
+				width: 100%;
+				@include breakpoint(medium only) {
+					width: map-get($user-card-sizes, large);
+				}
 			}
-		}
-		.expand-button {
-			&::after {
-				content: "\f106";
-				color: $white;
+			.card-header {
+				transition: $global-transition-medium;
+				@include breakpoint(medium only) {
+					min-height: map-get($user-card-sizes, large);
+					height: map-get($user-card-sizes, large);
+					padding-left: 1rem;
+				}
+			}
+			.expand-button {
+				&::after {
+					content: "\f106";
+					color: $white;
+				}
 			}
 		}
 		.accordion-item:not(.is-active) & {
