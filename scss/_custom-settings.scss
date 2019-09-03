@@ -1580,10 +1580,6 @@ textarea {
 // ---------
 $border: 1px solid $very-light-gray;
 
-hr {
-	margin: 0 auto;
-	border-bottom: $hr-border;
-}
 .menu {
 	a,
 	.button {
@@ -1604,6 +1600,10 @@ hr {
 	background-color: $white;
 	position: relative;
 	z-index: 1000;
+	hr {
+		margin: 0 auto;
+		border-bottom: $hr-border;
+	}
 
 	.menu {
 		font-size: 0.875rem;
