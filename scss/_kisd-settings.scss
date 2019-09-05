@@ -54,8 +54,22 @@
 		flex: 1 1 100%;
 		@include breakpoint(medium) {
 			flex: 1 1 50%;
+			max-width: 50%;
+		}
+		position: relative;
+		&>.card-section{
+			max-width: 100%;
 		}
 	}
+	.event-info {
+		max-width: 80%;
+	}
+	.event-headline {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
 }
 .eo-magnific-container {
 	.reveal {
