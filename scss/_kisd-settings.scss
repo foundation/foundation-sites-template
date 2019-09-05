@@ -35,6 +35,10 @@
 	padding: $button-padding;
 }
 
+.event-item>.card-section{
+	max-width: 90%;
+}
+
 .overview {
   .event-item {
     &:hover {
@@ -57,12 +61,9 @@
 			max-width: 50%;
 		}
 		position: relative;
-		&>.card-section{
-			max-width: 100%;
-		}
 	}
 	.event-info {
-		max-width: 80%;
+		max-width: 90%;
 	}
 	.event-headline {
 		overflow: hidden;
