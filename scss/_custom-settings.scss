@@ -1744,7 +1744,7 @@ $border: 1px solid $very-light-gray;
 		border-radius: 0 0 $global-radius $global-radius;
 		overflow: hidden;
 		box-shadow: $global-drop-shadow;
-		z-index: -1; // enforce drop-shadow hierachie.
+		z-index: 1; // enforce drop-shadow hierachie.
 
 		a {
 			border-right: none;
