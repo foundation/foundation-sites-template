@@ -18,7 +18,7 @@ function sass() {
     })
       .on('error', $.sass.logError))
     .pipe($.postcss([
-      autoprefixer({ browsers: ['last 2 versions', 'ie >= 9'] })
+      autoprefixer({ overrideBrowserslist: ['last 2 versions', 'ie >= 9'] })
 		]))
 		.pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest('css'))
