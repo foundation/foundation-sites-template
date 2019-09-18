@@ -528,10 +528,14 @@ label[for] {
 // 6. User Card
 // ---------
 
-.user {
-	position: relative;
-	display: flex;
-	align-items: flex-start;
+.card-user {
+
+	.user-card-header {
+		position: relative;
+		display: flex;
+		align-items: flex-start;
+		flex-wrap: wrap;
+	}
 	.card-header {
 		min-height: $user-card-default-size;
 	}
@@ -551,7 +555,8 @@ label[for] {
 			}
 		}
 	}
-	.profile {
+
+	/* .profile { */
 		.accordion-item & {
 			display: flex;
 			flex-direction: column;
@@ -564,7 +569,7 @@ label[for] {
 				flex-direction: row;
 			}
 		}
-		.accordion-item.is-active & {
+		.accordion-item.is-active {
 			.user-name {
 				font-size: 1rem;
 			}
@@ -611,7 +616,8 @@ label[for] {
 				display: none;
 			}
 		}
-	}
+/* 	} */
+
 	.avatar-container {
 		position: relative;
 		display: flex;
