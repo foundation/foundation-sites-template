@@ -2709,6 +2709,11 @@ $spinner-sizes: (
 
 	.tt-suggestion {
 		padding: 0;
+		&.user {
+			position: relative;
+			display: flex;
+			align-items: flex-start;
+		}
 		.v-center {
 			padding: 0;
 			.sf-user-image {
