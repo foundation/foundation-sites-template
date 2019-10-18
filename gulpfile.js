@@ -16,7 +16,7 @@ function sass() {
     })
       .on('error', $.sass.logError))
     .pipe($.postcss([
-      autoprefixer({ browsers: ['last 2 versions', 'ie >= 9'] })
+      autoprefixer()
     ]))
     .pipe(gulp.dest('css'))
     .pipe(browserSync.stream());
