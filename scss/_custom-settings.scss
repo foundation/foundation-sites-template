@@ -475,8 +475,9 @@ label[for] {
 	padding: 0.375rem 0.75rem;
 	z-index: 1;
 	color: $body-font-color;
-	background: rgba(255, 255, 255, 0.7);
-	backdrop-filter: blur(3px);
+	background: rgba($white, 0.75);
+	-webkit-backdrop-filter: (20px) saturate(200%);
+	backdrop-filter: blur(20px) saturate(200%);
 	left: 0;
 	top: 50%;
 	transform: perspective(1px) translateY(-50%);
@@ -829,7 +830,8 @@ label[for] {
 		}
 	}
 	a:first-child .post-feature-image,
-	.post-feature-image:first-child {
+	.post-feature-image:first-child,
+	.space-header:first-child {
 		overflow: hidden;
 		border-radius: $card-border-radius $card-border-radius 0 0;
 	}
