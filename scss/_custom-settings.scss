@@ -829,19 +829,26 @@ label[for] {
 			}
 		}
 	}
+	
+}
+.post-card,
+.activity-card {
 	a:first-child .post-feature-image,
 	.post-feature-image:first-child,
 	.space-header:first-child {
 		overflow: hidden;
 		border-radius: $card-border-radius $card-border-radius 0 0;
 	}
-	.user:first-child .avatar-container {
+	& > .user:first-child .avatar-container {
 		overflow: hidden;
 		border-radius: $card-border-radius 0 0 0;
 	}
 	.card-divider:last-child .post-images .avatar-container:first-child {
 		overflow: hidden;
 		border-radius: 0 0 0 $card-border-radius;
+	}
+	.user:not(:first-child) {
+		border-top: $hr-border;
 	}
 }
 .dot-after {
@@ -964,6 +971,9 @@ label[for] {
 			max-height: 25vw;
 			min-height: 64px;
 		}
+		.activity-card > &{
+      height: 30px;
+    }
 	}
 
 	&.feature-image {
