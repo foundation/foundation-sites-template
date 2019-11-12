@@ -158,6 +158,10 @@ p {
 	font-weight: $global-weight-bold;
 	line-height: 1.2;
 	text-transform: uppercase;
+	@include breakpoint(medium down) {
+		font-size: 2rem;
+	}
+
 }
 span {
 	&.small {
@@ -1000,6 +1004,9 @@ label[for] {
 		img {
 			position: relative;
 		}
+	}
+	&.full {
+		padding-bottom: 100vh;
 	}
 
 	@for $i from 1 through 8 {
