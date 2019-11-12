@@ -153,6 +153,12 @@ p {
 
 	@include foundation-palette();
 }
+
+.stat {
+	font-weight: $global-weight-bolt;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
 span {
 	&.small {
 		font-size: $small-font-size;
@@ -346,7 +352,7 @@ label[for] {
 	display: flex;
 	align-items: center;
 	font-size: 1rem;
-	padding-bottom: 0.4rem;
+	padding-bottom: 0.3rem;
 	line-height: $header-lineheight;
 	font-weight: $global-weight-normal;
 	margin: 0;
@@ -829,7 +835,7 @@ label[for] {
 			}
 		}
 	}
-	
+
 }
 .post-card,
 .activity-card {
