@@ -122,13 +122,14 @@ $user-card-default-size: map-get($user-card-sizes, medium);
 body {
 	min-height: 100vh;
 }
-
+html {
+    overflow-y: scroll;
+}
 .grid-container {
 	&.no-padding {
 		padding: 0;
 	}
 }
-
 .cell {
 	position: relative;
 }
