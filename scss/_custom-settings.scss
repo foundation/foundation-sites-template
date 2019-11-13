@@ -154,6 +154,16 @@ p {
 
 	@include foundation-palette();
 }
+
+.stat {
+	font-weight: $global-weight-bold;
+	line-height: 1.2;
+	text-transform: uppercase;
+	@include breakpoint(medium down) {
+		font-size: 2rem;
+	}
+
+}
 span {
 	&.small {
 		font-size: $small-font-size;
@@ -347,7 +357,7 @@ label[for] {
 	display: flex;
 	align-items: center;
 	font-size: 1rem;
-	padding-bottom: 0.4rem;
+	padding-bottom: 0.3rem;
 	line-height: $header-lineheight;
 	font-weight: $global-weight-normal;
 	margin: 0;
@@ -476,8 +486,9 @@ label[for] {
 	padding: 0.375rem 0.75rem;
 	z-index: 1;
 	color: $body-font-color;
-	background: rgba(255, 255, 255, 0.7);
-	backdrop-filter: blur(3px);
+	background: rgba($white, 0.75);
+	-webkit-backdrop-filter: (20px) saturate(200%);
+	backdrop-filter: blur(20px) saturate(200%);
 	left: 0;
 	top: 50%;
 	transform: perspective(1px) translateY(-50%);
@@ -820,7 +831,7 @@ label[for] {
 			box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 		}
 		.alignwide {
-			margin: 1rem -2rem;
+			margin: 0rem -2rem 1rem;
 			max-width: calc(100% + 4rem);
 		}
 		a {
@@ -829,18 +840,26 @@ label[for] {
 			}
 		}
 	}
+
+}
+.post-card,
+.activity-card {
 	a:first-child .post-feature-image,
-	.post-feature-image:first-child {
+	.post-feature-image:first-child,
+	.space-header:first-child {
 		overflow: hidden;
 		border-radius: $card-border-radius $card-border-radius 0 0;
 	}
-	.user:first-child .avatar-container {
+	& > .user:first-child .avatar-container {
 		overflow: hidden;
 		border-radius: $card-border-radius 0 0 0;
 	}
 	.card-divider:last-child .post-images .avatar-container:first-child {
 		overflow: hidden;
 		border-radius: 0 0 0 $card-border-radius;
+	}
+	.user:not(:first-child) {
+		border-top: $hr-border;
 	}
 }
 .dot-after {
@@ -963,6 +982,9 @@ label[for] {
 			max-height: 25vw;
 			min-height: 64px;
 		}
+		.activity-card > &{
+      height: 30px;
+    }
 	}
 
 	&.feature-image {
@@ -983,6 +1005,9 @@ label[for] {
 		img {
 			position: relative;
 		}
+	}
+	&.full {
+		padding-bottom: 100vh;
 	}
 
 	@for $i from 1 through 8 {
