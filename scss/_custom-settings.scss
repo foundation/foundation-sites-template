@@ -590,6 +590,7 @@ label[for] {
 				@include breakpoint(medium only) {
 					width: map-get($user-card-sizes, large);
 				}
+				transition: $global-transition-medium;
 			}
 			.card-header {
 				transition: $global-transition-medium;
@@ -635,6 +636,7 @@ label[for] {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		transition: $global-transition-medium;
 		.clipped {
 			z-index: 10;
 		}
