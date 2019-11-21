@@ -378,19 +378,19 @@ $card-margin-bottom: 0;
 
 $closebutton-position: right top;
 $closebutton-offset-horizontal: (
-	small: 0.5rem,
+	small: 1rem,
 	medium: 0.75rem
 );
 $closebutton-offset-vertical: (
-	small: 0.25rem,
+	small: 1rem,
 	medium: 0.5rem
 );
 $closebutton-size: (
-	small: 1.5em,
+	small: .875rem,
 	medium: 2em
 );
 $closebutton-lineheight: 1;
-$closebutton-color: $dark-gray;
+$closebutton-color:$black;
 $closebutton-color-hover: $black;
 
 // 16. Drilldown
