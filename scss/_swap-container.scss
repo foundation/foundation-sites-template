@@ -26,9 +26,7 @@ $v-offset: 0;
 
 }
 .first-swap-container,
-.second-swap-container,
-.dynamic-swap-container,
-.static-swap-container {
+.second-swap-container {
 /* 		left: 0;
 	top: 0;
 	position: absolute; */
@@ -56,9 +54,7 @@ $v-offset: 0;
 
 
 .show-second .second-swap-container,
-.show-first .first-swap-container,
-.show-static .static-swap-container,
-.show-dynamic .dynamic-swap-container {
+.show-first .first-swap-container {
 	display: block;
 	//transform: scale(1);
 	//z-index: 1;
