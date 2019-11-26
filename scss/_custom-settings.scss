@@ -921,6 +921,11 @@ label[for] {
 	width: 100%;
 	overflow: hidden;
 
+	img {
+		// this shows the upper third of the image. think about images with people where you don't want to crop heads...
+		object-position: 50% 33%;
+	}
+
 	img,
 	iframe {
 		position: absolute;
