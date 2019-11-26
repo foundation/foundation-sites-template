@@ -1795,7 +1795,7 @@ $border: 1px solid $very-light-gray;
 	& > * > .accordion-menu .is-accordion-submenu {
 		border-top: $hr-border;
 		border-radius: 0 0 $global-radius $global-radius;
-		overflow: hidden;
+		// overflow: hidden; // if you have lots of blogcategories the selectbox is cropped.
 		box-shadow: $global-drop-shadow;
 		z-index: 1; // enforce drop-shadow hierachie.
 
