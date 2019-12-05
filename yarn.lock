@@ -1386,10 +1386,10 @@ form-data@~2.3.1:
     combined-stream "1.0.6"
     mime-types "^2.1.12"
 
-foundation-sites@^6.5.1:
-  version "6.5.1"
-  resolved "https://registry.yarnpkg.com/foundation-sites/-/foundation-sites-6.5.1.tgz#a96da2da2dc81b84ff7730714ca1090445de4a42"
-  integrity sha512-Z+FiBvogwIDjRlefJ5pYkVcmsGx3pbndRJ80+OvPvI9UwfKCif6YtOyTxpCjUoS3XBlOms5vYonfnasp2V2wZw==
+foundation-sites@^6.6.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/foundation-sites/-/foundation-sites-6.6.0.tgz#7ce7133a2750d3553a45d11bc9cfb925ee928ea8"
+  integrity sha512-/KXP7rLOO8HvpxiW+uS9jJ2GiRDXj/OGe1W0UeCWv8t+sfxQkDVz4nXmFG4NUjuhEFMulMq/DlbdiqrFlAOpNQ==
 
 fragment-cache@^0.2.1:
   version "0.2.1"
