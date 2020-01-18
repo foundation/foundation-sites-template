@@ -272,6 +272,7 @@ label[for] {
 // ---------
 
 .card {
+	min-width: auto;
 	flex-grow: 0;
 	font-size: $paragraph-font-size;
 	box-shadow: 0 0 0 nth($hr-border, 1) nth($hr-border, 3);
@@ -676,6 +677,7 @@ label[for] {
 		}
 	}
 }
+
 .profile .accordion-item {
 	&.is-active {
 		@include breakpoint(medium only) {
@@ -1170,17 +1172,15 @@ label[for] {
 		height: 100%;
 		background: none;
 
-		&::before,
-		&::after {
-			content: "";
-		}
 		&::before {
+			content: "";
 			background: $medium-gray;
 			height: 2px;
 			width: 100%;
 		}
 
 		&::after {
+			content: "";
 			top: initial;
 			left: 0;
 			border-radius: 50%;
@@ -1200,7 +1200,7 @@ label[for] {
 		background: none;
 
 		&::after {
-			box-shadow: inset 0 0 0 1em currentColor;
+			box-shadow: inset 0 0 0 2em currentColor;
 		}
 
 		&:hover {
@@ -1209,6 +1209,73 @@ label[for] {
 	}
 
 	@include foundation-palette($child: "input:checked ~ .switch-paddle");
+}
+
+.switch-with-labels {
+	margin-right: 0.25rem;
+	height: auto;
+	align-items: flex-start;
+
+	.switch-paddle {
+		width: 4rem;
+		flex: 0 0 4rem;
+		margin: 0;
+	}
+	 input:checked {
+		~ .switch-paddle::after {
+			left: 2rem;
+		 }
+		 ~ .switch-paddle .switch-label-left {
+			color: white;
+		}
+		~ .switch-paddle .switch-label-right {
+			color: get-color(primary);
+			zoom: 1
+		}
+		~ .switch-label-description-left {
+			display: none;
+		}
+		~ .switch-label-description-right {
+			display: block;
+		}
+	}
+	.switch-paddle::before{
+		height: 2rem;
+		border-radius: 20px
+	}
+	 .switch-paddle::after {
+		width:2rem;
+		height:2rem;
+		box-shadow: inset 0 0 0 2px $medium-gray !important;
+	}
+
+	.switch-label-left,
+	.switch-label-right {
+		position: absolute;
+		z-index:999;
+		color: white;
+		zoom: 0.9;
+		transition: zoom 0.5s;
+	}
+
+	.switch-label-left {
+		left: 0.5rem;
+		color: get-color(primary);
+		zoom: 1;
+	}
+	.switch-label-right {
+		right: 0.5rem;
+	}
+
+	.switch-label-description-right {
+		display: none;
+	}
+
+	.switch-label-description-left,
+	.switch-label-description-right {
+		color: $body-font-color;
+		margin-left: 10px;
+	}
 }
 
 .checkbox,
@@ -1966,6 +2033,9 @@ svg {
 	.icons.icon-right > & {
 		margin-left: $menu-icon-spacing;
 	}
+}
+i.fa {
+	font-style: normal;
 }
 
 $icon-line-weight: 2;
