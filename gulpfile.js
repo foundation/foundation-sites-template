@@ -9,8 +9,8 @@ var sassPaths = [
   'node_modules/motion-ui/src'
 ];
 
-function sass() {
-	return gulp.src('scss/app.scss')
+function sass( path ) {
+	return gulp.src( path )
 		.pipe(sourcemaps.init())
     .pipe($.sass({
       includePaths: sassPaths,
@@ -25,15 +25,26 @@ function sass() {
     .pipe(browserSync.stream());
 };
 
+function sassFrontend(){
+	return sass('scss/app.scss');
+}
+function sassBackend(){
+	return sass('scss/app-backend.scss');
+}
+
+
 function serve() {
   browserSync.init({
     server: "./"
   });
 
-  gulp.watch("scss/*.scss", sass);
+  gulp.watch("scss/*.scss", sassFrontend);
+  gulp.watch("scss/*.scss", sassBackend);
   gulp.watch("*.html").on('change', browserSync.reload);
 }
 
-gulp.task('sass', sass);
-gulp.task('serve', gulp.series('sass', serve));
-gulp.task('default', gulp.series('sass', serve));
+gulp.task('sassFrontend', sassFrontend);
+gulp.task('sassBackend', sassBackend);
+
+gulp.task('serve', gulp.series('sassFrontend', 'sassBackend', serve));
+gulp.task('default', gulp.series('sassFrontend', 'sassBackend', serve));

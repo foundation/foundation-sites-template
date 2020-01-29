@@ -1,0 +1,18 @@
+@include foundation-normalize;
+
+// These styles are applied to a <meta> tag, which is read by the Foundation JavaScript
+.foundation-mq {
+    font-family: '#{-zf-bp-serialize($breakpoints)}';
+}
+
+html {
+    box-sizing: border-box;
+    font-size: $global-font-size;
+}
+
+// Set box-sizing globally to handle padding and border widths
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
