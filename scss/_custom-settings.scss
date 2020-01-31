@@ -824,6 +824,34 @@ label[for] {
 // 6. Post Card
 // ---------
 
+.post-card, .page-section {
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: normal;
+	}
+	h1 {
+		font-size: 1.25rem;
+	}
+	h2 {
+		font-size: 1.125rem;
+	}
+	h3 {
+		font-size: 1rem;
+	}
+	h4 {
+		font-size: 0.875rem;
+		color: $dark-gray;
+	}
+	h5 {
+		font-size: 0.875rem;
+		font-style: italic;
+		color: $dark-gray;
+	}
+	h6 {
+		font-size: 0.75rem;
+		font-style: italic;
+		color: $dark-gray;
+	}
+}
 .post-card {
 	.post-content {
 		padding: map-get($padding-sizes, xlarge);
