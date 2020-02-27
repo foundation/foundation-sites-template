@@ -33,45 +33,58 @@
 }
 .event-info {
 	padding: $button-padding;
+	width: calc(100% - 2 * #{nth($button-padding, 2)});
 }
 
-.event-item>.card-section{
-	max-width: 90%;
-}
 
 .overview {
-  .event-item {
-    &:hover {
-      background-color: #fafafa;
+  .event-items {
+		display: block !important;
+		overflow-x: hidden !important;
+		width: initial !important;
+		margin: initial !important;
+		padding: initial !important;
+		.event-item {
+			flex-basis: initial !important;
+			min-width: initial !important;
+			max-width: initial !important;
+			&:hover {
+				background-color: #fafafa;
+			}
 		}
-  }
+	}
 }
 .miniview {
-	.card {
+	.event-list {
 		box-shadow: none;
 		background: none;
-	}
-	.card-divider {
-		border-color: transparent;
-	}
-	.event-item {
-		flex: 1 1 100%;
-		@include breakpoint(medium) {
-			flex: 1 1 50%;
-			max-width: 50%;
+		.card-divider {
+			border-color: transparent;
 		}
-		position: relative;
 	}
-	.event-info {
-		width: 90%;
+	.event-item>*{
+		width: 100%;
 	}
-	.event-headline {
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-	}
-
 }
+// .miniview {
+// 	.event-item {
+// 		flex: 1 1 100%;
+// 		@include breakpoint(medium) {
+// 			flex: 1 1 50%;
+// 			max-width: 50%;
+// 		}
+// 		position: relative;
+// 	}
+// 	.event-info {
+// 		width: 90%;
+// 	}
+// 	.event-headline {
+// 		overflow: hidden;
+// 		white-space: nowrap;
+// 		text-overflow: ellipsis;
+// 	}
+
+// }
 .eo-magnific-container {
 	.reveal {
 		display: block;
