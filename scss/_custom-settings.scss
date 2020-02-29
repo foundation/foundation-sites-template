@@ -126,6 +126,16 @@ html {
     overflow-y: scroll;
 }
 .grid-container {
+	&.space {
+		@each $breakpoint, $width in $breakpoints {
+			@include breakpoint( #{$breakpoint} only ) {
+				margin-top: map-get(
+					$grid-container-padding,
+					#{$breakpoint}
+				);
+			}
+		}
+	}
 	&.no-padding {
 		padding: 0;
 	}
@@ -162,8 +172,16 @@ p {
 	@include breakpoint(medium down) {
 		font-size: 2rem;
 	}
-
 }
+.highlight-word {
+	&:before {
+		content: '»';
+	}
+	&:after {
+		content: '«';
+	}
+}
+
 span {
 	&.small {
 		font-size: $small-font-size;
@@ -183,7 +201,7 @@ a {
 	@include button-sizes();
 }
 .text-truncate {
-	display: block !important;
+	display: block;
 	flex-shrink: 1;
 }
 .hover-underline:hover {
@@ -197,6 +215,11 @@ small {
 	color: $header-small-font-color;
 	display: inline-block;
 	line-height: $header-lineheight;
+	& > a {
+		&:hover {
+			color: $black;
+		}
+	}
 }
 
 code {
@@ -434,6 +457,9 @@ label[for] {
 				height: $size;
 			}
 		}
+	}
+	&:last-child {
+		margin-top: auto;
 	}
 }
 
@@ -694,6 +720,12 @@ label[for] {
 	z-index: 20;
 	width: $user-card-default-size;
 	min-width: $user-card-default-size;
+	@each $user-card-size, $size in $user-card-sizes {
+		&.#{$user-card-size} {
+			width: $size;
+			min-width: $size;
+		}
+	}
 
 	img[data-toggle] {
 		cursor: pointer;
@@ -773,19 +805,16 @@ label[for] {
 
 .avatar {
 	flex: 0 0 auto;
-
+	width: $user-card-default-size;
+	height: $user-card-default-size;
 	img {
 		border-radius: $global-radius;
 	}
-
-	&.small {
-		width: 36px;
-		height: 36px;
-	}
-
-	&.large {
-		width: 48px;
-		height: 48px;
+	@each $user-card-size, $size in $user-card-sizes {
+		&.#{$user-card-size} {
+			width: $size;
+			height: $size;
+		}
 	}
 }
 
@@ -824,9 +853,46 @@ label[for] {
 // 6. Post Card
 // ---------
 
+.post-card, .page-section, .report-card {
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: normal;
+	}
+	h1 {
+		font-size: 1.25rem;
+	}
+	h2 {
+		font-size: 1.125rem;
+	}
+	h3 {
+		font-size: 1rem;
+	}
+	h4 {
+		font-size: 0.875rem;
+		color: $dark-gray;
+	}
+	h5 {
+		font-size: 0.875rem;
+		font-style: italic;
+		color: $dark-gray;
+	}
+	h6 {
+		font-size: 0.75rem;
+		font-style: italic;
+		color: $dark-gray;
+	}
+}
 .post-card {
 	.post-content {
-		padding: map-get($padding-sizes, xlarge);
+		// padding: map-get($padding-sizes, xlarge);
+		@include breakpoint(small) {
+			padding: map-get($padding-sizes, medium);
+		}
+		@include breakpoint(medium) {
+			padding: map-get($padding-sizes, large);
+		}
+		@include breakpoint(large) {
+			padding: map-get($padding-sizes, xlarge);
+		}
 		overflow-wrap: break-word; /* break long links in post-content. */
 
 		.alignfull {
@@ -866,17 +932,21 @@ label[for] {
 		border-top: $hr-border;
 	}
 }
-.notifications-item {
-	min-width: 300px;
-	a.card-section {
-		z-index: 100;
-		width: 100%;
+.main-menu {
+	.notifications-item {
+		min-width: 300px;
+		a.card-section {
+			z-index: 100;
+			width: 100%;
+		}
 	}
 }
 .notification-message {
 	color: $dark-gray;
 }
 .notification-author, .notification-post, .notification-space {
+	display: initial !important;
+	padding: initial !important;
 	color: $black;
 }
 .dot-after {
@@ -925,6 +995,7 @@ label[for] {
 		position: absolute;
 	}
 }
+
 
 // 8. Clipping
 // ---------
@@ -1004,8 +1075,8 @@ label[for] {
 			max-height: 25vw;
 			min-height: 64px;
 		}
-		.activity-card > &{
-      height: 30px;
+		.activity-card > & {
+			height: 36px;
     }
 	}
 	&.line {
@@ -1109,7 +1180,9 @@ label[for] {
 	margin: 3px;
 	border-radius: $global-radius;
 	overflow: hidden;
-	line-height: $header-lineheight;
+	line-height: 1.3;
+	text-align: center;
+	white-space: nowrap;
 	.round > & {
 		border-radius: 1rem;
 	}
@@ -1607,8 +1680,8 @@ textarea {
 .add {
 	cursor: pointer;
 	z-index: 50;
-	width: 36px;
-	height: 36px;
+	width: 2.25rem;
+	height: 2rem;
 	color: $dark-gray;
 
 	&:hover {
@@ -1620,12 +1693,10 @@ textarea {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 36px;
-		height: 36px;
+		width: 2.25rem;
 		line-height: 0;
 		font-weight: $global-weight-bold;
 		font-size: 1.25rem;
-		letter-spacing: 0.03125rem;
 		white-space: nowrap;
 		color: currentColor;
 	}
@@ -1634,12 +1705,14 @@ textarea {
 	padding-bottom: 0.675rem;
 	&::after {
 		content: "...";
+		letter-spacing: 0.03125rem;
 		height: 0;
 	}
 }
 .add {
 	&::after {
 		content: "+";
+		height: 2rem;
 	}
 }
 .reply-button {
@@ -2018,7 +2091,8 @@ $border: 1px solid $very-light-gray;
 					margin-right: 0.75rem;
 					line-height: 0.5;
 				}
-
+			}
+			&.is-dropdown-submenu-parent:not(.no-arrow) > a {
 				@include breakpoint(medium down) {
 					padding-right: 1.25rem;
 				}
@@ -2046,6 +2120,15 @@ li {
 // 15. Icons
 // ---------
 
+.icons {
+	&.icon-left {
+		li {
+			i {
+				margin-right: 0.5rem;
+			}
+		}
+	}
+}
 img,
 i,
 svg {
@@ -2397,18 +2480,26 @@ $icon-line-weight: 2;
 }
 
 .scroll-snap-container-x {
-	position: relative;
 	display: flex;
+	position: relative;
 	flex-wrap: nowrap;
 	@include cross-browser(scroll-snap-type, x mandatory);
 	overflow-x: auto;
 	overflow-y: hidden;
 	-webkit-overflow-scrolling: touch;
+	.activity-card {
+		.card-header {
+			width: 100vw;
+		}
+	}
 }
 
 .scroll-snap-element {
 	width: initial;
 	max-width: 100%;
+	width: 100%;
+	min-width: 100%;
+	width: initial;
 	box-sizing: border-box;
 	margin: 0;
 
@@ -2432,32 +2523,51 @@ $icon-line-weight: 2;
 			margin-top: 0.5rem;
 		}
 	}
+}
 
-	@include breakpoint(small) {
-		@include xy-cell(
-			$gutter-type: padding,
-			$gutter-position: top right bottom left,
-			$breakpoint: small
-		);
-		width: initial;
+@each $breakpoint, $width in $breakpoints {
+	.#{$breakpoint}-scroll-snap.scroll-snap-container-x {
+		display: block;
 	}
-
-	@include breakpoint(medium) {
-		@include xy-cell(
-			$gutter-type: padding,
-			$gutter-position: top right bottom left,
-			$breakpoint: medium
-		);
-		width: initial;
+	@include breakpoint(#{$breakpoint} down) {
+		.scroll-snap-container-x {
+			&.#{$breakpoint}-scroll-snap {
+				display: flex;
+				.scroll-snap-element {
+					&.width-large {
+						flex-basis: 80%;
+					}
+					&.width-medium {
+						flex-basis: 60%;
+					}
+					&.width-small {
+						flex-basis: 60%;
+					}
+					&.width-fixed {
+						flex-basis: 40%;
+						min-width: 200px;
+						max-width: 360px;
+					}
+				}
+			}
+		}
+		.#{$breakpoint}-no-scroll-snap.scroll-snap-container-x {
+			display: block;
+			.scroll-snap-element {
+				&.#{$breakpoint}-width-medium, &.#{$breakpoint}-width-small {
+					flex-basis: 100%;
+				}
+			}
+		}
 	}
-
-	@include breakpoint(large) {
-		@include xy-cell(
-			$gutter-type: padding,
-			$gutter-position: top right bottom left,
-			$breakpoint: large
-		);
-		width: initial;
+	@include breakpoint(#{$breakpoint}) {
+		.scroll-snap-element {
+			@include xy-cell(
+				$gutter-type: padding,
+				$gutter-position: top right bottom left,
+				$breakpoint: #{$breakpoint}
+			);
+		}
 	}
 }
 
@@ -2527,16 +2637,15 @@ $icon-line-weight: 2;
 	.grid-container:not(.no-padding) & {
 		@each $breakpoint, $width in $breakpoints {
 			@include breakpoint($breakpoint) {
-				$container-width: 100vw;
 				$gutter: map-get($grid-container-padding, #{$breakpoint});
 
-				@if (
-					strip-unit(rem-calc(strip-unit($width))) >=strip-unit($grid-container)
-				) {
-					$container-width: $grid-container;
+				width: calc(100% + #{$gutter});
+				margin: calc(-#{$gutter} / 2);
+				padding: calc(#{$gutter} / 2) calc(#{$gutter} / 4);
+				&:after {
+					content: '';
+					min-width: calc(#{$gutter} / 2);
 				}
-
-				width: calc(#{$container-width} - #{$gutter});
 			}
 		}
 	}
@@ -2644,6 +2753,8 @@ $icon-line-weight: 2;
 			&,
 			& > label {
 				display: flex;
+				align-items: center;
+				width: 100%;
 				padding: $size;
 
 				@if length($size) >3 {
@@ -2675,6 +2786,9 @@ $icon-line-weight: 2;
 }
 .align-flex-end {
 	justify-content: flex-end;
+}
+.nowrap {
+	flex-wrap: nowrap;
 }
 .sticky {
 	position: -webkit-sticky;

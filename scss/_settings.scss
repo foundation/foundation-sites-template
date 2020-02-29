@@ -123,9 +123,9 @@ $print-hrefs: true;
 
 $breakpoints: (
 	small: 0,
-    medium: 480px,
-    large: 720px,
-    xlarge: 960px,
+	medium: 480px,
+	large: 720px,
+	xlarge: 960px,
 	xxlarge: 1200px
 );
 $breakpoints-hidpi: (
@@ -164,10 +164,10 @@ $header-margin-bottom: 0.5rem;
 $header-styles: (
 	small: (
 		'h1': ('font-size': 24),
-        'h2': ('font-size': 20),
-        'h3': ('font-size': 18),
-        'h4': ('font-size': 16),
-        'h5': ('font-size': 14),
+		'h2': ('font-size': 20),
+		'h3': ('font-size': 18),
+		'h4': ('font-size': 16),
+		'h5': ('font-size': 14),
 		'h6': ('font-size': 12),
 	),
     medium: (
@@ -309,8 +309,8 @@ $breadcrumbs-item-separator-color: $breadcrumbs-item-color;
 // ----------
 $button-sizes: (
 	tiny: 0.625rem,
-    small: 0.75rem,
-    default: 0.875rem,
+	small: 0.75rem,
+	default: 0.875rem,
 	large: 1rem
 );
 $button-font-family: inherit;
@@ -417,7 +417,7 @@ $dropdown-width: 250px;
 $dropdown-radius: $global-radius;
 $dropdown-sizes: (
 	tiny: 100px,
-    small: 200px,
+	small: 200px,
 	large: 400px
 );
 
@@ -866,16 +866,16 @@ $grid-container: $global-width;
 $grid-columns: 12;
 $grid-margin-gutters: (
 	small: $global-gutter-small,
-    medium: $global-gutter-small,
-    large: $global-gutter-large,
-    xlarge: $global-gutter-large,
-    xxlarge: $global-gutter-large);
+	medium: $global-gutter-small,
+	large: $global-gutter-large,
+	xlarge: $global-gutter-large,
+	xxlarge: $global-gutter-large);
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: (
 	small: 2 * $global-gutter-small,
-    medium: 2 * $global-gutter-small,
-    large: 2 * $global-gutter-large,
-    xlarge: 2 * $global-gutter-large,
-    xxlarge: 2 * $global-gutter-large);
+	medium: 2 * $global-gutter-small,
+	large: 2 * $global-gutter-large,
+	xlarge: 2 * $global-gutter-large,
+	xxlarge: 2 * $global-gutter-large);
 $grid-container-max: $global-width;
 $xy-block-grid-max: 8;
