@@ -172,8 +172,16 @@ p {
 	@include breakpoint(medium down) {
 		font-size: 2rem;
 	}
-
 }
+.highlight-word {
+	&:before {
+		content: '»';
+	}
+	&:after {
+		content: '«';
+	}
+}
+
 span {
 	&.small {
 		font-size: $small-font-size;
@@ -193,7 +201,7 @@ a {
 	@include button-sizes();
 }
 .text-truncate {
-	display: flex;
+	display: block;
 	flex-shrink: 1;
 }
 .hover-underline:hover {
@@ -207,6 +215,11 @@ small {
 	color: $header-small-font-color;
 	display: inline-block;
 	line-height: $header-lineheight;
+	& > a {
+		&:hover {
+			color: $black;
+		}
+	}
 }
 
 code {
@@ -707,6 +720,12 @@ label[for] {
 	z-index: 20;
 	width: $user-card-default-size;
 	min-width: $user-card-default-size;
+	@each $user-card-size, $size in $user-card-sizes {
+		&.#{$user-card-size} {
+			width: $size;
+			min-width: $size;
+		}
+	}
 
 	img[data-toggle] {
 		cursor: pointer;
@@ -786,19 +805,16 @@ label[for] {
 
 .avatar {
 	flex: 0 0 auto;
-
+	width: $user-card-default-size;
+	height: $user-card-default-size;
 	img {
 		border-radius: $global-radius;
 	}
-
-	&.small {
-		width: 36px;
-		height: 36px;
-	}
-
-	&.large {
-		width: 48px;
-		height: 48px;
+	@each $user-card-size, $size in $user-card-sizes {
+		&.#{$user-card-size} {
+			width: $size;
+			height: $size;
+		}
 	}
 }
 
@@ -1059,7 +1075,7 @@ label[for] {
 			max-height: 25vw;
 			min-height: 64px;
 		}
-		.activity-card > &{
+		.activity-card > & {
 			height: 36px;
     }
 	}
@@ -1164,7 +1180,9 @@ label[for] {
 	margin: 3px;
 	border-radius: $global-radius;
 	overflow: hidden;
-	line-height: $header-lineheight;
+	line-height: 1.3;
+	text-align: center;
+	white-space: nowrap;
 	.round > & {
 		border-radius: 1rem;
 	}
@@ -1662,8 +1680,8 @@ textarea {
 .add {
 	cursor: pointer;
 	z-index: 50;
-	width: 36px;
-	height: 36px;
+	width: 2.25rem;
+	height: 2rem;
 	color: $dark-gray;
 
 	&:hover {
@@ -1675,12 +1693,10 @@ textarea {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 36px;
-		height: 36px;
+		width: 2.25rem;
 		line-height: 0;
 		font-weight: $global-weight-bold;
 		font-size: 1.25rem;
-		letter-spacing: 0.03125rem;
 		white-space: nowrap;
 		color: currentColor;
 	}
@@ -1689,12 +1705,14 @@ textarea {
 	padding-bottom: 0.675rem;
 	&::after {
 		content: "...";
+		letter-spacing: 0.03125rem;
 		height: 0;
 	}
 }
 .add {
 	&::after {
 		content: "+";
+		height: 2rem;
 	}
 }
 .reply-button {
@@ -2768,6 +2786,9 @@ $icon-line-weight: 2;
 }
 .align-flex-end {
 	justify-content: flex-end;
+}
+.nowrap {
+	flex-wrap: nowrap;
 }
 .sticky {
 	position: -webkit-sticky;
