@@ -104,6 +104,7 @@
 	pointer-events: none;
 	transition: $global-transition-medium ease-in-out;
 	&>a {
+		padding: map-get($padding-sizes, small);
 		box-shadow: 0 0 0 nth($hr-border, 1) nth($hr-border, 3);
 		border-radius: $global-radius 0 0 $global-radius;
 		display: flex;
