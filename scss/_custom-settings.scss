@@ -473,7 +473,7 @@ label[for] {
 		}
 	}
 	&:last-child {
-		margin-top: auto;
+		//margin-top: auto;
 	}
 }
 
@@ -820,7 +820,7 @@ label[for] {
 .avatar {
 	flex: 0 0 auto;
 	width: $user-card-default-size;
-	height: $user-card-default-size;
+	//height: $user-card-default-size;
 	img {
 		border-radius: $global-radius;
 	}
@@ -872,10 +872,10 @@ label[for] {
 		font-weight: normal;
 	}
 	h1 {
-		font-size: 1.25rem;
+		font-size: 1.1rem;
 	}
 	h2 {
-		font-size: 1.125rem;
+		font-size: 1.025rem;
 	}
 	h3 {
 		font-size: 1rem;
@@ -940,6 +940,9 @@ label[for] {
 	}
 	.user:not(:first-child) {
 		border-top: $hr-border;
+	}
+	.dropdown-pane  {
+		width: 150px;
 	}
 }
 .main-menu {
@@ -2368,6 +2371,7 @@ $icon-line-weight: 2;
 			justify-content: center;
 			color: inherit;
 			height: 40px;
+			padding: 0.25rem .75rem;
 		}
 		&.is-active-tab,
 		&.is-active {
@@ -3179,7 +3183,7 @@ $spinner-sizes: (
 
 .pagination {
 	display: flex;
-	justify-content: center;
+	justify-content: left;
 	.page-numbers {
 		min-width: 36px;
 		display: flex;
@@ -3290,8 +3294,8 @@ $spinner-sizes: (
 // ---------
 
 .breadcrumbs {
-	padding: $button-padding;
+	padding: .5rem 0.75rem;
 	li {
-		height: 1rem;
+		//height: 1rem;
 	}
 }
