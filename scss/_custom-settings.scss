@@ -61,6 +61,18 @@
 	}
 }
 
+@mixin dynamic-padding() {
+	@include breakpoint(small) {
+		padding: map-get($padding-sizes, medium);
+	}
+	@include breakpoint(medium) {
+		padding: map-get($padding-sizes, large);
+	}
+	@include breakpoint(large) {
+		padding: map-get($padding-sizes, xlarge);
+	}
+}
+
 @mixin cross-browser($property, $val) {
 	-webkit-#{$property}: $val;
 	-moz-#{$property}: $val;
@@ -98,12 +110,13 @@
 	);
 }
 
+
 $padding-sizes: (
 	small: 0.3125rem,
 	medium: 0.5rem 0.75rem,
 	large: 1rem 1.25rem,
-	xlarge: 1.25rem 2rem,
-	xxlarge: 1.25rem 2rem,
+	xlarge: 1.5rem 2rem,
+	xxlarge: 1.5rem 2rem,
 	button: $button-padding
 );
 
@@ -180,6 +193,7 @@ p {
 	&:after {
 		content: '«';
 	}
+	margin-right: 1ch;
 }
 
 span {
@@ -811,7 +825,7 @@ label[for] {
 		border-radius: $global-radius;
 	}
 	@each $user-card-size, $size in $user-card-sizes {
-		&.#{$user-card-size} {
+		&.#{$user-card-size}, .avatar.#{$user-card-size} & {
 			width: $size;
 			height: $size;
 		}
@@ -884,15 +898,7 @@ label[for] {
 .post-card {
 	.post-content {
 		// padding: map-get($padding-sizes, xlarge);
-		@include breakpoint(small) {
-			padding: map-get($padding-sizes, medium);
-		}
-		@include breakpoint(medium) {
-			padding: map-get($padding-sizes, large);
-		}
-		@include breakpoint(large) {
-			padding: map-get($padding-sizes, xlarge);
-		}
+		@include dynamic-padding();
 		overflow-wrap: break-word; /* break long links in post-content. */
 
 		.alignfull {
@@ -924,9 +930,13 @@ label[for] {
 		overflow: hidden;
 		border-radius: $card-border-radius 0 0 0;
 	}
-	.card-divider:last-child .post-images .avatar-container:first-child {
-		overflow: hidden;
-		border-radius: 0 0 0 $card-border-radius;
+	.card-divider:last-child .post-images {
+		flex-wrap: wrap;
+		height: map-get($user-card-sizes, small);
+		.avatar-container:first-child {
+			overflow: hidden;
+			border-radius: 0 0 0 $card-border-radius;
+		}
 	}
 	.user:not(:first-child) {
 		border-top: $hr-border;
@@ -941,12 +951,11 @@ label[for] {
 		}
 	}
 }
-.notification-message {
-	color: $dark-gray;
-}
 .notification-author, .notification-post, .notification-space {
 	display: initial !important;
 	padding: initial !important;
+}
+.notification-post {
 	color: $black;
 }
 .dot-after {
@@ -995,7 +1004,16 @@ label[for] {
 		position: absolute;
 	}
 }
-
+.page-section {
+	.page-header, .page-content {
+		@include dynamic-padding();
+	}
+}
+.report-card {
+	.report-header, .report-content {
+		@include dynamic-padding();
+	}
+}
 
 // 8. Clipping
 // ---------
@@ -1116,6 +1134,21 @@ label[for] {
 	}
 	&.full {
 		padding-bottom: 100vh;
+	}
+	.add-new {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 80px;
+		width: 100%;
+		background: $very-light-gray;
+		color: $dark-gray;
+		font-size: 1.25rem;
+		&:after {
+			content: '\f055';
+			font-family: 'Font Awesome 5 Free';
+			font-weight: bold;
+		}
 	}
 
 	@for $i from 1 through 8 {
@@ -1630,10 +1663,11 @@ select {
 	}
 	&.load {
 		transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
-		color: #fff;
-		background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-		background-size: 300% 300%;
-		animation: gradient 7s ease infinite;
+		color: #fff !important;
+		// background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+		// background-size: 300% 300%;
+		background-color: get-color(success);
+		animation: backgound-pulse 2s $global-transition-timing-cubic-bezier infinite;
 	}
 }
 button,
@@ -1671,6 +1705,17 @@ textarea {
 	}
 	100% {
 		background-position: 0% 50%;
+	}
+}
+@keyframes backgound-pulse {
+	0% {
+		background-color: rgba( get-color(success), 1);
+	}
+	50% {
+		background-color: rgba( get-color(success), .5);
+	}
+	100% {
+		background-color: rgba( get-color(success), 1);
 	}
 }
 
@@ -1952,8 +1997,10 @@ $border: 1px solid $very-light-gray;
 }
 
 .caret {
-	content: "\f107";
-	font-family: FontAwesome;
+	content: '\f078';
+	font-family: 'Font Awesome 5 Free';
+	font-size: 0.625em;
+	font-weight: bold;
 	border: none;
 }
 .main-menu {
@@ -2090,7 +2137,7 @@ $border: 1px solid $very-light-gray;
 				&::after {
 					@extend .caret;
 					margin-right: 0.75rem;
-					line-height: 0.5;
+					line-height: 0.75;
 				}
 			}
 			&.is-dropdown-submenu-parent:not(.no-arrow) > a {
@@ -2463,7 +2510,7 @@ $icon-line-weight: 2;
 		background: $white;
 		border-radius: $global-radius-small;
 		box-shadow: $global-drop-shadow;
-		font-family: FontAwesome;
+		font-family: 'Font Awesome 5 Free';
 		font-size: 1rem;
 		font-weight: $global-weight-bold;
 		z-index: 10;
@@ -2788,7 +2835,10 @@ $icon-line-weight: 2;
 .align-flex-end {
 	justify-content: flex-end;
 }
-.nowrap {
+.flex-wrap {
+	flex-wrap: wrap;
+}
+.flex-nowrap {
 	flex-wrap: nowrap;
 }
 .sticky {
@@ -2836,19 +2886,22 @@ $icon-line-weight: 2;
 	cursor: pointer;
 	font-size: 1.5rem;
 	padding: 0;
+	&:before, &:after {
+		font-family: 'Font Awesome 5 Free';
+		font-weight: bold;
+		font-size: 0.75em;
+	}
 }
 .orbit-previous {
 	left: 5px;
 	&::after {
-		content: "\f104";
-		font-family: FontAwesome;
+		content: "\f053";
 	}
 }
 .orbit-next {
 	right: 5px;
 	&::after {
-		content: "\f105";
-		font-family: FontAwesome;
+		content: "\f054";
 	}
 }
 .orbit-bullets {
@@ -2987,7 +3040,8 @@ $spinner-sizes: (
 	width: 100%;
 	&::before {
 		content: "\f002";
-		font-family: FontAwesome;
+		font-family: 'Font Awesome 5 Free';
+		font-weight: bold;
 		font-size: 0.75rem;
 		position: absolute;
 		z-index: 1;
@@ -3045,6 +3099,39 @@ $spinner-sizes: (
 		-webkit-transform: translateX(0);
 	}
 }
+
+
+
+
+.sf-switch-to {
+	position: absolute;
+	right: -50px;
+	background: $card-background;
+	opacity: 0;
+	pointer-events: none;
+	transition: $global-transition-medium ease-in-out;
+	align-self: center;
+	&>a {
+		padding: map-get($padding-sizes, small);
+		box-shadow: 0 0 0 nth($hr-border, 1) nth($hr-border, 3);
+		border-radius: $global-radius 0 0 $global-radius;
+		display: flex;
+		align-items: center;
+		transition: $global-transition-medium ease-in-out;
+		&:hover {
+			box-shadow: $global-drop-shadow;
+			background: $card-background !important;
+		}
+	}
+	.user:hover & {
+		right: 0;
+		opacity: 1;
+		pointer-events: all;
+	}
+}
+
+
+
 
 // 23. Accordion
 // ---------
@@ -3111,6 +3198,11 @@ $spinner-sizes: (
 			color: $pagination-item-color;
 			&::after {
 				display: none;
+			}
+		}
+		&.prev, &.next {
+			i {
+				font-size: 0.625em;
 			}
 		}
 	}
