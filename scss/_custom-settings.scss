@@ -2013,25 +2013,39 @@ $border: 1px solid $very-light-gray;
 	.dropdown .menu-anchor:hover {
 		background: $very-light-gray;
 	}
-	& > * > .dropdown .is-dropdown-submenu,
-	& > * > .accordion-menu .is-accordion-submenu {
-		border-top: $hr-border;
-		border-radius: 0 0 $global-radius $global-radius;
-		// overflow: hidden; // if you have lots of blogcategories the selectbox is cropped.
-		box-shadow: $global-drop-shadow;
-		z-index: 1; // enforce drop-shadow hierachie.
-
-		a {
-			border-right: none;
-		}
-
-		li {
-			&:first-child .submenu-anchor {
-				padding-top: 1rem;
+	& > * > .dropdown,
+	& > * > .accordion-menu {
+		.submenu {
+			border-top: $hr-border;
+			border-radius: 0 0 $global-radius $global-radius;
+			// overflow: hidden; // if you have lots of blogcategories the selectbox is cropped.
+			box-shadow: $global-drop-shadow;
+			z-index: 1; // enforce drop-shadow hierachie.
+			a {
+				border-right: none;
 			}
+			.submenu-element {
+				.notifications-item:hover {
+					background: $very-light-gray;
+				}
+			}
+			a.submenu-element:hover {
+				background: $very-light-gray;
+			}
+			.is-submenu-item, .is-submenu-item {
+				&:first-child a.submenu-element {
+					padding-top: 1rem;
+				}
 
-			&:last-child .submenu-anchor {
-				padding-bottom: 1rem;
+				&:last-child {
+					border-radius: 0 0 $global-radius $global-radius;
+					a.submenu-element {
+						padding-bottom: 1rem;
+					}
+					&>*, .submenu-element>*{
+						border-radius: 0 0 $global-radius $global-radius;
+					}
+				}
 			}
 
 			.card-anchor {
