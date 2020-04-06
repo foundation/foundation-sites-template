@@ -136,7 +136,7 @@ body {
 	min-height: 100vh;
 }
 html {
-    overflow-y: scroll;
+	overflow-y: scroll;
 }
 .grid-container {
 	&.space {
@@ -158,7 +158,7 @@ html {
 }
 
 .sidebar {
-	z-index: 10;
+	z-index: 30;
 }
 
 // 3. Typography
@@ -185,6 +185,9 @@ p {
 	@include breakpoint(medium down) {
 		font-size: 2rem;
 	}
+}
+.lead {
+	font-size: 1.25em;
 }
 .highlight-word {
 	&:before {
@@ -239,58 +242,13 @@ small {
 code {
 	border-radius: $global-radius-small;
 }
-
+pre {
+	tab-size: 2ch;
+}
 input,
 textarea,
 select {
 	font-size: $paragraph-font-size;
-}
-.button-group {
-	select {
-		margin: 0;
-		border-radius: 0;
-		&:first-child {
-			border-top-left-radius: $global-radius;
-			border-bottom-left-radius: $global-radius;
-		}
-		&:last-child {
-			border-top-right-radius: $global-radius;
-			border-bottom-right-radius: $global-radius;
-		}
-	}
-	input {
-		width: initial;
-	}
-	&.hollow {
-		border-radius: $global-radius;
-		button,
-		.button {
-			border: $button-hollow-border-width solid transparent;
-			color: get-color(primary);
-			background-color: transparent;
-			box-shadow: inset 0 0 0 nth($hr-border, 1) currentColor;
-			&:hover {
-				color: scale-color(get-color(primary), $lightness: -15%);
-				background-color: transparent;
-				z-index: 1;
-			}
-			&:not(:last-child) {
-				margin-right: -#{nth($hr-border, 1)};
-				margin-bottom: 0;
-			}
-		}
-		@each $color-name, $color in $foundation-palette {
-			&.#{$color-name} {
-				button,
-				.button {
-					color: $color;
-					&:hover {
-						color: scale-color($color, $lightness: -15%);
-					}
-				}
-			}
-		}
-	}
 }
 small > label,
 label.small {
@@ -364,14 +322,19 @@ label[for] {
 .card-header {
 	position: relative;
 	width: 100%;
+	min-width: 0; // necessary to override flex-box default (e.g. members hover in default space).
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
 	flex: 1;
 	padding: $button-padding;
-	padding-bottom: 0.25rem;
+	// padding-bottom: 0.25rem;
 	line-height: $paragraph-lineheight;
+
+	h1 {
+		margin-bottom: 0;
+	}
 	&.flex-dir-row {
 		flex-direction: row;
 		justify-content: flex-start;
@@ -381,12 +344,12 @@ label[for] {
 		padding: 0;
 		padding-left: nth($button-padding, 2);
 	}
-	@each $size-label, $size in $user-card-sizes {
-		.#{$size-label} & {
-			width: calc(100% - #{$size});
-			padding-left: nth($button-padding, 2);
-		}
-	}
+	// @each $size-label, $size in $user-card-sizes {
+	// 	.#{$size-label} & {
+	// 		width: calc(100% - #{$size});
+	// 		padding-left: nth($button-padding, 2);
+	// 	}
+	// }
 }
 .post-card-anchor {
 	width: 100%;
@@ -395,7 +358,7 @@ label[for] {
 	display: flex;
 	align-items: center;
 	font-size: 1rem;
-	padding-bottom: 0.3rem;
+	// padding-bottom: 0.3rem;
 	line-height: $header-lineheight;
 	font-weight: $global-weight-normal;
 	margin: 0;
@@ -531,7 +494,7 @@ label[for] {
 	-webkit-backdrop-filter: (20px) saturate(200%);
 	backdrop-filter: blur(20px) saturate(200%);
 	left: 0;
-	top: 50%;
+	top: 70%;
 	transform: perspective(1px) translateY(-50%);
 	max-width: 80% !important; // .text-truncate will otherwise override with 100%
 	border-radius: 0 2px 2px 0;
@@ -871,11 +834,13 @@ label[for] {
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: normal;
 	}
+}
+.post-card {
 	h1 {
-		font-size: 1.1rem;
+		font-size: 1.125rem;
 	}
 	h2 {
-		font-size: 1.025rem;
+		font-size: 1.0625rem;
 	}
 	h3 {
 		font-size: 1rem;
@@ -891,6 +856,30 @@ label[for] {
 	}
 	h6 {
 		font-size: 0.75rem;
+		font-style: italic;
+		color: $dark-gray;
+	}
+}
+.page-section, .report-card {
+	h1 {
+		font-size: 1.5rem;
+	}
+	h2 {
+		font-size: 1.25rem;
+	}
+	h3 {
+		font-size: 1.125rem;
+	}
+	h4 {
+		font-size: 1rem;
+		color: $dark-gray;
+	}
+	h5 {
+		font-size: 0.875rem;
+		color: $dark-gray;
+	}
+	h6 {
+		font-size: 0.875rem;
 		font-style: italic;
 		color: $dark-gray;
 	}
@@ -956,6 +945,9 @@ label[for] {
 }
 .notifications-item {
 	flex: 1;
+}
+.notification-message {
+	line-height: 1.4;
 }
 .notification-author, .notification-post, .notification-space {
 	display: initial !important;
@@ -1053,8 +1045,9 @@ label[for] {
 
 	&.tint {
 		&::after {
-			content: "";
+			content: '';
 			position: absolute;
+			z-index: 1;
 			width: 100%;
 			height: 100%;
 			pointer-events: none;
@@ -1179,6 +1172,12 @@ label[for] {
 	min-width: 200px;
 	&.is-open {
 		z-index: 2000;
+	}
+	.card-divider, .card-section {
+		&>a {
+			line-height: 1rem;
+			box-sizing: content-box;
+		}
 	}
 }
 
@@ -1438,6 +1437,11 @@ label[for] {
 	&.large {
 		font-size: $switch-height-large;
 	}
+	.label-wrapper {
+		&>span {
+			padding-right: 0.5rem;
+		}
+	}
 }
 .checkbox-label,
 .radio-label {
@@ -1649,19 +1653,26 @@ select {
 	justify-content: center;
 	// border: none;
 	&.hollow {
+		color: get-color(primary);
+		&:hover {
+			color: scale-color(get-color(primary), $lightness: -15%);
+		}
 		@each $color-name, $color in $foundation-palette {
 			&.#{$color-name} {
-				box-shadow: inset 0 0 0 nth($hr-border, 1) $color;
-
+				color: $color;
+				border: $button-hollow-border-width solid transparent;
 				&:hover {
-					box-shadow: inset
-						0
-						0
-						0
-						nth($hr-border, 1)
-						scale-color($color, $lightness: $button-hollow-hover-lightness);
+					color: scale-color($color, $lightness: -15%);
+					border: $button-hollow-border-width solid transparent;
 				}
 			}
+		}
+		border: $button-hollow-border-width solid transparent;
+		background-color: transparent;
+		box-shadow: inset 0 0 0 nth($hr-border, 1) currentColor;
+		&:hover {
+			border: $button-hollow-border-width solid transparent;
+			background-color: transparent;
 		}
 	}
 	.menu & {
@@ -1674,6 +1685,59 @@ select {
 		// background-size: 300% 300%;
 		background-color: get-color(success);
 		animation: backgound-pulse 2s $global-transition-timing-cubic-bezier infinite;
+	}
+}
+
+.button-group {
+	select {
+		margin: 0;
+		border-radius: 0;
+		&:first-child {
+			border-top-left-radius: $global-radius;
+			border-bottom-left-radius: $global-radius;
+		}
+		&:last-child {
+			border-top-right-radius: $global-radius;
+			border-bottom-right-radius: $global-radius;
+		}
+	}
+	input {
+		width: initial;
+	}
+	button,
+	.button {
+		margin-bottom: 0;
+	}
+	&.hollow {
+		button,
+		.button {
+			color: get-color(primary);
+			&:hover {
+				color: scale-color(get-color(primary), $lightness: -15%);
+			}
+			@each $color-name, $color in $foundation-palette {
+				&.#{$color-name} {
+					color: $color;
+					border: $button-hollow-border-width solid transparent;
+					&:hover {
+						color: scale-color($color, $lightness: -15%);
+						border: $button-hollow-border-width solid transparent;
+					}
+				}
+			}
+			border: $button-hollow-border-width solid transparent;
+			background-color: transparent;
+			box-shadow: inset 0 0 0 nth($hr-border, 1) currentColor;
+			&:hover {
+				border: $button-hollow-border-width solid transparent;
+				background-color: transparent;
+				z-index: 1;
+			}
+			&:not(:last-child) {
+				margin-right: -#{nth($hr-border, 1)};
+				margin-bottom: 0;
+			}
+		}
 	}
 }
 button,
@@ -1751,6 +1815,12 @@ textarea {
 		font-size: 1.25rem;
 		white-space: nowrap;
 		color: currentColor;
+	}
+	&.hidden {
+		display: none;
+	}
+	&.visible {
+		display: block !important;
 	}
 }
 .dots {
@@ -2007,6 +2077,7 @@ $border: 1px solid $very-light-gray;
 	font-family: 'Font Awesome 5 Free';
 	font-size: 0.625em;
 	font-weight: bold;
+	align-self: center;
 	border: none;
 }
 .main-menu {
@@ -2059,8 +2130,6 @@ $border: 1px solid $very-light-gray;
 	& > a {
 		&::after {
 			@extend .caret;
-			display: inline-block;
-			width: 0.62em;
 			margin-left: auto;
 		}
 		&[aria-expanded="false"]::after {
@@ -2081,6 +2150,7 @@ $border: 1px solid $very-light-gray;
 		transition: $global-transition-medium;
 	}
 }
+
 .accordion-menu {
 	// .is-accordion-submenu-parent:not(.has-submenu-toggle) {
 	//	 &>a {
@@ -2103,6 +2173,22 @@ $border: 1px solid $very-light-gray;
 	//		 transition: $global-transition-medium;
 	// 	}
 	// }
+	.menu-item {
+		&>a:hover {
+			background-color: $very-light-gray;
+		}
+	}
+	&>.menu-item {
+		&:first-child:not(:last-child)>a {
+			padding-top: nth($global-menu-padding, 2);
+		}
+		&:last-child:not(:first-child)>a {
+			padding-bottom:nth($global-menu-padding, 2);
+		}
+	}
+	.sub-menu {
+		margin-left:nth($global-menu-padding, 2);
+	}
 	.button {
 		text-align: left;
 	}
@@ -2120,15 +2206,6 @@ $border: 1px solid $very-light-gray;
 	}
 }
 
-// .dropdown,
-// .accordion-menu {
-//   .menu-anchor {
-//     img {
-//       width: 36px;
-//       height: 36px;
-//     }
-//   }
-// }
 .dropdown {
 	& > li > a {
 		display: flex;
@@ -2387,8 +2464,10 @@ $icon-line-weight: 2;
 			align-items: center;
 			justify-content: center;
 			color: inherit;
-			height: 40px;
-			padding: 0.25rem .75rem;
+			height: 36px;
+			& > *:last-child:not(:first-child) {
+				margin-left: 0.5em;
+			}
 		}
 		&.is-active-tab,
 		&.is-active {
@@ -2401,9 +2480,27 @@ $icon-line-weight: 2;
 	&.expanded {
 		.tabs-title {
 			width: 100%;
-			a {
-				padding-left: 0.25rem;
-				padding-right: 0.25rem;
+		}
+	}
+	&.label-is-active {
+		overflow: hidden;
+		.tabs-title {
+			span {
+				transition-duration: $global-transition-long;
+				// transition-delay: $global-transition-short;
+				overflow: hidden;
+				max-width: 100px;
+				line-height:$header-lineheight;
+			}
+			&:not(.is-active) {
+				// a > *:first-child:not(:last-child) {
+				// 	margin-left: 0;
+				// }
+				span {
+					transition-duration: $global-transition-medium;
+					margin-left: 0;
+					max-width: 0;
+				}
 			}
 		}
 	}
@@ -2603,17 +2700,18 @@ $icon-line-weight: 2;
 			&.#{$breakpoint}-scroll-snap {
 				display: flex;
 				.scroll-snap-element {
+					flex: 1 1 100%;
 					&.width-large {
-						flex-basis: 80%;
+						min-width: 80%;
 					}
 					&.width-medium {
-						flex-basis: 60%;
+						min-width: 60%;
 					}
 					&.width-small {
-						flex-basis: 60%;
+						min-width: 40%;
 					}
 					&.width-fixed {
-						flex-basis: 40%;
+						flex: 1 1 100%;
 						min-width: 200px;
 						max-width: 360px;
 					}
@@ -2710,10 +2808,11 @@ $icon-line-weight: 2;
 
 				width: calc(100% + #{$gutter});
 				margin: calc(-#{$gutter} / 2);
-				padding: calc(#{$gutter} / 2) calc(#{$gutter} / 4);
-				&:after {
+				padding: calc(#{$gutter} / 4);
+
+				.scroll-snap-element:last-child:not(:first-child):after {
 					content: '';
-					min-width: calc(#{$gutter} / 2);
+					min-width: calc(#{$gutter} / 4);
 				}
 			}
 		}
@@ -3012,11 +3111,30 @@ $spinner-sizes: (
 		min-width: 250px;
 	}
 }
-.tt-suggestion.tt-cursor {
-	background-color: get-color(primary);
-	span,
-	small {
-		color: #fff;
+.tt-suggestion {
+	display: flex;
+	align-items: baseline;
+	*:first-child {
+		margin-right: 0.5em;
+	}
+	span, small {
+		font-size: $small-font-size;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+	&.tt-cursor {
+		background-color: get-color(primary);
+		&:after {
+			content: '\f067';
+			font-family: 'Font Awesome 5 Free';
+			font-weight: bold;
+			margin-left: auto;
+			font-size: 0.625rem;
+		}
+		span, small, &:after {
+			color: #fff;
+		}
 	}
 }
 .menu .twitter-typeahead {
@@ -3160,6 +3278,10 @@ $spinner-sizes: (
 .accordion {
 	.accordion-item {
 		position: relative;
+		&:first-child>:first-child {
+			word-break: break-word;
+			@include cross-browser(hyphens, auto);
+		}
 		.expand-button {
 			position: absolute;
 			top: 0;
@@ -3173,8 +3295,6 @@ $spinner-sizes: (
 			z-index: 100;
 			&::after {
 				@extend .caret;
-				display: inline-block;
-				width: 0.62em;
 				margin-left: 0.5em;
 				opacity: 0.5;
 			}
@@ -3311,7 +3431,13 @@ $spinner-sizes: (
 // ---------
 
 .breadcrumbs {
-	padding: .5rem 0.75rem;
+	padding: $button-padding;
+	height: 2rem;
+	display: flex;
+	align-items: center;
+	&.no-padding {
+		padding: 0;
+	}
 	li {
 		//height: 1rem;
 	}
