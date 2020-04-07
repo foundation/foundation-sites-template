@@ -3119,9 +3119,6 @@ $spinner-sizes: (
 .tt-suggestion {
 	display: flex;
 	align-items: baseline;
-	*:first-child {
-		margin-right: 0.5em;
-	}
 	span, small {
 		font-size: $small-font-size;
 		white-space: nowrap;
@@ -3140,6 +3137,9 @@ $spinner-sizes: (
 		span, small, &:after {
 			color: #fff;
 		}
+	}
+	.card {
+		width: 100%;
 	}
 }
 .menu .twitter-typeahead {
