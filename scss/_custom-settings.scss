@@ -1675,6 +1675,9 @@ select {
 			background-color: transparent;
 		}
 	}
+	&.expanded {
+		box-sizing: border-box;
+	}
 	.menu & {
 		padding: $button-padding;
 	}
@@ -2460,12 +2463,15 @@ $icon-line-weight: 2;
 		text-align: center;
 		float: initial;
 		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 		& > a {
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			color: inherit;
-			height: 36px;
+			min-height: 36px;
 			& > *:last-child:not(:first-child) {
 				margin-left: 0.5em;
 			}
@@ -2491,6 +2497,7 @@ $icon-line-weight: 2;
 	&.label-is-active {
 		.tabs-title {
 			min-width: auto;
+			overflow: initial;
 			span {
 				transition-duration: $global-transition-long;
 				overflow: hidden;
@@ -2498,6 +2505,7 @@ $icon-line-weight: 2;
 				line-height:$header-lineheight;
 			}
 			&:not(.is-active) {
+				overflow: hidden;
 				span {
 					transition-duration: $global-transition-medium;
 					margin-left: 0;
