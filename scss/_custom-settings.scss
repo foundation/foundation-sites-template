@@ -153,6 +153,10 @@ html {
 		padding: 0;
 	}
 }
+.reverse-grid-container {
+	margin-left: calc(-50vw + 50%);
+	margin-right: calc(-50vw + 50%);
+}
 .cell {
 	position: relative;
 }
@@ -241,6 +245,7 @@ small {
 
 code {
 	border-radius: $global-radius-small;
+	font-size: 0.875em;
 }
 pre {
 	tab-size: 2ch;
@@ -249,6 +254,7 @@ input,
 textarea,
 select {
 	font-size: $paragraph-font-size;
+	flex: 1;
 }
 small > label,
 label.small {
@@ -316,6 +322,9 @@ label[for] {
 	textarea,
 	select {
 		font-size: $paragraph-font-size;
+	}
+	&.accordion {
+		background: $card-background;
 	}
 }
 
@@ -975,13 +984,11 @@ label[for] {
 .post-tags {
 	display: flex;
 	flex-wrap: wrap;
+	font-size: $small-font-size;
+	margin: -0.25rem;
 	a {
+		padding: 0.25rem;
 		width: initial;
-		margin: 0;
-		padding: 0;
-		&:not(:last-child) {
-			margin-right: 0.5rem;
-		}
 	}
 }
 .comment-reply-content {
@@ -1044,6 +1051,8 @@ label[for] {
 	}
 
 	&.tint {
+		color: $white;
+		background-color: $black;
 		&::after {
 			content: '';
 			position: absolute;
@@ -1051,22 +1060,31 @@ label[for] {
 			width: 100%;
 			height: 100%;
 			pointer-events: none;
-			background-color: rgba(0, 0, 0, 0.4);
-			transition: background-color $global-transition-medium
+			background-color: $black;
+			opacity: 0.25;
+			transition: opacity $global-transition-medium
 				$global-transition-timing;
 		}
-
-		& > *:not(img, iframe) {
-			color: $white;
-			z-index: 1;
+		& > *:not(img) {
+			z-index: 10;
+		}
+		img, iframe {
+			z-index: 0;
+		}
+		&.tint-negativ {
+			color: $black;
+			background-color: $white;
+			&::after {
+				background-color: $white;
+			}
 		}
 	}
 
 	a:hover &.tint,
 	.is-active &.tint {
 		&::after {
-			background-color: rgba(0, 0, 0, 0.7);
-			transition: background-color $global-transition-medium
+			opacity: 0.5;
+			transition: opacity $global-transition-medium
 				$global-transition-timing;
 		}
 	}
@@ -1692,24 +1710,15 @@ select {
 }
 
 .button-group {
-	select {
-		margin: 0;
-		border-radius: 0;
-		&:first-child {
-			border-top-left-radius: $global-radius;
-			border-bottom-left-radius: $global-radius;
-		}
-		&:last-child {
-			border-top-right-radius: $global-radius;
-			border-bottom-right-radius: $global-radius;
-		}
-	}
+	border-radius: $global-radius;
+	overflow: hidden;
 	input {
 		width: initial;
 	}
 	button,
-	.button {
+	.button, select {
 		margin-bottom: 0;
+		border-radius: 0 !important;
 	}
 	&.hollow {
 		button,
@@ -1953,6 +1962,12 @@ $border: 1px solid $very-light-gray;
 
 	.menu {
 		font-size: 0.875rem;
+		&.dropdown {
+			flex-wrap: nowrap;
+			li {
+				min-width: 0;
+			}
+		}
 
 		li {
 			&.menu-main-expand {
@@ -2357,15 +2372,90 @@ $icon-line-weight: 2;
 	}
 }
 
-#global-search.twitter-typeahead {
-	display: none;
-	position: absolute;
+
+.search-container {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	top: 70px;
 	left: 0;
-	z-index: 10;
-	width: calc(100% - 85px);
-	.search-container.is-active & {
-		display: block;
+	z-index: 100;
+	width: 100vw;
+	pointer-events: none;
+
+	@each $breakpoint, $width in $breakpoints {
+		@include breakpoint($breakpoint) {
+			$grid-container-gutter: map-get($grid-container-padding, #{$breakpoint});
+			padding: 0 $grid-container-gutter;
+		}
 	}
+	.spinner-container {
+		margin-left: -2rem;
+		margin-top: 1.125rem;
+		width: 2rem;
+		z-index: 100;
+	}
+	&:not(.is-active) {
+		.spinner-container {
+			display: none;
+		}
+	}
+	&::after {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		z-index: 10;
+		background: #000000;
+		opacity: 0;
+		will-change: opacity;
+		transition: $global-transition-medium;
+	}
+	span.twitter-typeahead {
+		opacity: 0;
+		pointer-events: none;
+		z-index: 100;
+		box-shadow: $global-drop-shadow;
+		height: initial !important;
+		transform: scale(0.97);
+		transition: $global-transition-medium;
+    max-width: 100%;
+	}
+	input.twitter-typeahead {
+		height: $user-card-default-size;
+		border: none;
+		padding: $global-padding;
+		width: map-get($breakpoints, 'medium');
+    max-width: 100%;
+		&.is-active {
+			border-radius: $global-radius-small $global-radius-small 0 0;
+			border-bottom: $hr-border;
+		}
+	}
+	&.is-active {
+		pointer-events: all;
+		&::after {
+			opacity: 0.5;
+			will-change: opacity;
+			transition: $global-transition-medium;
+		}
+		span.twitter-typeahead {
+			opacity: 1;
+			pointer-events: all;
+			transform: scale(1);
+			transition: $global-transition-medium;
+			box-shadow: $global-drop-shadow-large;
+		}
+	}
+	.tt-menu {
+		position: relative !important;
+	}
+}
+.user.tt-suggestion.cursor,
+.user.tt-suggestion:hover {
+	background-color: $very-light-gray;
 }
 
 .twitter-typeahead.tt-hint {
@@ -2438,9 +2528,7 @@ $icon-line-weight: 2;
 
 // 16. Tabs
 // ---------
-.tabs-panel.is-active-tab {
-	display: block;
-}
+
 .tabs {
 	display: flex;
 	overflow: hidden;
@@ -2458,7 +2546,6 @@ $icon-line-weight: 2;
 	&.large {
 		font-size: $global-font-size;
 	}
-
 	.tabs-title {
 		text-align: center;
 		float: initial;
@@ -2505,7 +2592,6 @@ $icon-line-weight: 2;
 				line-height:$header-lineheight;
 			}
 			&:not(.is-active) {
-				overflow: hidden;
 				span {
 					transition-duration: $global-transition-medium;
 					margin-left: 0;
@@ -2593,6 +2679,7 @@ $icon-line-weight: 2;
 
 				& > span {
 					margin-bottom: $header-margin-bottom;
+					white-space: initial;
 
 					&:last-child {
 						margin-bottom: initial;
@@ -2607,9 +2694,16 @@ $icon-line-weight: 2;
 
 .tabs-content {
 	border: none;
+	&[data-transition] .tabs-panel {
+		display: none;
+	}
 	// .card>&:last-child {
 	// 	border-radius: 0 0 $global-radius $global-radius;
 	// }
+}
+
+.tabs-panel.is-active-tab {
+	display: block;
 }
 
 // 17. Scroll Snapping
@@ -2656,90 +2750,84 @@ $icon-line-weight: 2;
 }
 
 .scroll-snap-container-x {
-	display: flex;
+	@include xy-grid(
+		$direction: horizontal,
+		$wrap: false
+	);
 	position: relative;
-	flex-wrap: nowrap;
-	@include cross-browser(scroll-snap-type, x mandatory);
 	overflow-x: auto;
 	overflow-y: hidden;
 	-webkit-overflow-scrolling: touch;
-	.activity-card {
-		.card-header {
-			width: 100vw;
+
+	@include cross-browser(scroll-snap-type, x mandatory);
+
+	.scroll-snap-element {
+		width: initial;
+		max-width: 100%;
+		width: 100%;
+		min-width: 100%;
+		width: initial;
+		box-sizing: border-box;
+		margin: 0;
+		flex: 1 1 100%;
+
+		& > span {
+			position: relative;
+			left: 0.5rem;
+
+			& + * {
+				margin-top: 0.5rem;
+			}
 		}
 	}
-}
 
-.scroll-snap-element {
-	width: initial;
-	max-width: 100%;
-	width: 100%;
-	min-width: 100%;
-	width: initial;
-	box-sizing: border-box;
-	margin: 0;
-
-	&.start {
+	&.snap-align-start .scroll-snap-element {
 		@include cross-browser(scroll-snap-align, start);
 	}
 
-	&.center {
+	&.snap-align-center .scroll-snap-element {
 		@include cross-browser(scroll-snap-align, center);
 	}
 
-	&.end {
+	&.snap-align-end .scroll-snap-element {
 		@include cross-browser(scroll-snap-align, end);
 	}
 
-	& > span {
-		position: relative;
-		left: 0.5rem;
-
-		& + * {
-			margin-top: 0.5rem;
-		}
+	&.width-large .scroll-snap-element {
+		min-width: 80%;
 	}
+	&.width-medium .scroll-snap-element {
+		min-width: 60%;
+	}
+	&.width-small .scroll-snap-element {
+		min-width: 40%;
+	}
+	&.width-fixed .scroll-snap-element {
+		min-width: 240px;
+	}
+
 }
 
 @each $breakpoint, $width in $breakpoints {
 	.#{$breakpoint}-scroll-snap.scroll-snap-container-x {
 		display: block;
 	}
-	@include breakpoint(#{$breakpoint} down) {
+	@include breakpoint(#{$breakpoint} up) {
 		.scroll-snap-container-x {
 			&.#{$breakpoint}-scroll-snap {
 				display: flex;
-				.scroll-snap-element {
-					flex: 1 1 100%;
-					&.width-large {
-						min-width: 80%;
-					}
-					&.width-medium {
-						min-width: 60%;
-					}
-					&.width-small {
-						min-width: 40%;
-					}
-					&.width-fixed {
-						flex: 1 1 100%;
-						min-width: 200px;
-						max-width: 360px;
-					}
-				}
 			}
-		}
-		.#{$breakpoint}-no-scroll-snap.scroll-snap-container-x {
-			display: block;
-			.scroll-snap-element {
-				&.#{$breakpoint}-width-medium, &.#{$breakpoint}-width-small {
-					flex-basis: 100%;
+			&.#{$breakpoint}-no-scroll-snap {
+				display: block;
+				.scroll-snap-element {
+					min-width: 100%;
 				}
 			}
 		}
 	}
 	@include breakpoint(#{$breakpoint}) {
 		.scroll-snap-element {
-			@include xy-cell(
+			@include xy-cell-gutters(
 				$gutter-type: padding,
 				$gutter-position: top right bottom left,
 				$breakpoint: #{$breakpoint}
@@ -2811,19 +2899,35 @@ $icon-line-weight: 2;
 		}
 	}
 
-	.grid-container:not(.no-padding) & {
+	.grid-container & {
 		@each $breakpoint, $width in $breakpoints {
 			@include breakpoint($breakpoint) {
 				$gutter: map-get($grid-container-padding, #{$breakpoint});
+				$gutter-padding: calc(#{$gutter} / 4);
+				$grid-padding: calc(50vw - (#{$grid-container} / 2) + #{$gutter-padding});
 
 				width: calc(100% + #{$gutter});
 				margin: calc(-#{$gutter} / 2);
-				padding: calc(#{$gutter} / 4);
+				padding: $gutter-padding;
 
-				.scroll-snap-element:last-child:not(:first-child):after {
-					content: '';
-					min-width: calc(#{$gutter} / 4);
+
+				&.scroll-snap-grid-container {
+					width: 100vw;
+					margin: 0;
+					padding-left: $grid-padding;
+					&:after {
+						content: '';
+						min-width: $grid-padding;
+						height: 10px;
+					}
+					@media screen and (max-width: #{$grid-container}) {
+					padding-left: $gutter-padding;
+						&:after {
+							min-width: $gutter-padding;
+						}
+					}
 				}
+
 			}
 		}
 	}
@@ -2900,6 +3004,24 @@ $icon-line-weight: 2;
 		height: 61.8%;
 	}
 }
+.event-items-container {
+	&:before, &:after {
+		content: '';
+		position: absolute;
+		width: 1rem;
+		height: 100%;
+		top: 0;
+		z-index: 10;
+	}
+	&:before {
+		left: 0;
+		box-shadow: inset $global-gutter-large 0 calc(#{$global-gutter-large} / 2) calc(-#{$global-gutter-large} / 2) $body-background;
+	}
+	&:after {
+		box-shadow: inset -#{$global-gutter-large} 0 calc(#{$global-gutter-large} / 2) calc(-#{$global-gutter-large} / 2) $body-background;
+		right: 0;
+	}
+}
 
 // 19. Utilities
 // ---------
@@ -2910,7 +3032,13 @@ $icon-line-weight: 2;
 .flex-spacer-right {
 	margin-right: auto;
 }
-
+.flex-spacer-around {
+	margin-left: auto;
+	margin-right: auto;
+}
+.width-article {
+	width: 640px;
+}
 .no-padding {
 	padding: 0;
 
@@ -3104,24 +3232,17 @@ $spinner-sizes: (
 .tt-menu {
 	width: 100%;
 	background-color: $dropdown-background;
-	z-index: 200;
-	box-shadow: $global-drop-shadow;
 	border-radius: 0 0 $global-radius $global-radius;
 	overflow: hidden;
+	top: 0 !important;
 }
 .twitter-typeahead,
 .tt-input,
 .tt-hint {
 	font-size: $paragraph-font-size;
 	margin-bottom: 0;
-	width: 100%;
 	.menu & {
 		height: 40px;
-	}
-}
-.tt-input {
-	.menu & {
-		min-width: 250px;
 	}
 }
 .tt-suggestion {
@@ -3151,7 +3272,7 @@ $spinner-sizes: (
 	}
 }
 .menu .twitter-typeahead {
-	.tt-dataset-blogs {
+	.tt-dataset-blogs:not(:empty) {
 		padding: map-get($padding-sizes, small);
 		.tt-suggestion {
 			padding: map-get($padding-sizes, small);
