@@ -1756,6 +1756,7 @@ button,
 .button,
 input,
 .input,
+.button-group,
 textarea {
 	&:focus,
 	&:active {
@@ -2397,7 +2398,7 @@ $icon-line-weight: 2;
 	}
 	&:not(.is-active) {
 		.spinner-container {
-			display: none;
+			display: none !important;
 		}
 	}
 	&::after {
@@ -2442,6 +2443,7 @@ $icon-line-weight: 2;
 			transition: $global-transition-medium;
 		}
 		span.twitter-typeahead {
+			width: auto;
 			opacity: 1;
 			pointer-events: all;
 			transform: scale(1);
@@ -2451,6 +2453,7 @@ $icon-line-weight: 2;
 	}
 	.tt-menu {
 		position: relative !important;
+		top: 0 !important;
 	}
 }
 .user.tt-suggestion.cursor,
@@ -3197,7 +3200,7 @@ $spinner-sizes: (
 );
 
 .spinner {
-	border: 2px solid #f0f0f0;
+	border: 2px solid rgba($black, 0.17);
 	border-radius: 50%;
 	border-top: 2px solid get-color(primary);
 	animation: spin 0.875s infinite cubic-bezier(0.9, 0.3, 0.3, 0.7);
@@ -3234,11 +3237,11 @@ $spinner-sizes: (
 	background-color: $dropdown-background;
 	border-radius: 0 0 $global-radius $global-radius;
 	overflow: hidden;
-	top: 0 !important;
 }
 .twitter-typeahead,
 .tt-input,
 .tt-hint {
+	width: 100%;
 	font-size: $paragraph-font-size;
 	margin-bottom: 0;
 	.menu & {
@@ -3566,7 +3569,7 @@ $spinner-sizes: (
 
 .breadcrumbs {
 	padding: $button-padding;
-	height: 2rem;
+	height: 36px;
 	display: flex;
 	align-items: center;
 	&.no-padding {
