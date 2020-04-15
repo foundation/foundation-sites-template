@@ -129,6 +129,7 @@ $user-card-sizes: (
 );
 $user-card-default-size: map-get($user-card-sizes, medium);
 
+
 // 2. Grid
 // ---------
 
@@ -1061,7 +1062,7 @@ label[for] {
 			height: 100%;
 			pointer-events: none;
 			background-color: $black;
-			opacity: 0.25;
+			opacity: 0.375;
 			transition: opacity $global-transition-medium
 				$global-transition-timing;
 		}
@@ -1083,7 +1084,7 @@ label[for] {
 	a:hover &.tint,
 	.is-active &.tint {
 		&::after {
-			opacity: 0.5;
+			opacity: 0.625;
 			transition: opacity $global-transition-medium
 				$global-transition-timing;
 		}
@@ -2422,6 +2423,7 @@ $icon-line-weight: 2;
 		height: initial !important;
 		transform: scale(0.97);
 		transition: $global-transition-medium;
+		width: auto;
     max-width: 100%;
 	}
 	input.twitter-typeahead {
@@ -2443,7 +2445,6 @@ $icon-line-weight: 2;
 			transition: $global-transition-medium;
 		}
 		span.twitter-typeahead {
-			width: auto;
 			opacity: 1;
 			pointer-events: all;
 			transform: scale(1);
@@ -2796,19 +2797,41 @@ $icon-line-weight: 2;
 		@include cross-browser(scroll-snap-align, end);
 	}
 
-	&.width-large .scroll-snap-element {
-		min-width: 80%;
+	&.width-small .scroll-snap-element {
+		min-width: 20%;
 	}
 	&.width-medium .scroll-snap-element {
-		min-width: 60%;
-	}
-	&.width-small .scroll-snap-element {
 		min-width: 40%;
 	}
-	&.width-fixed .scroll-snap-element {
+	&.width-large .scroll-snap-element {
+		min-width: 60%;
+	}
+	&.width-xlarge .scroll-snap-element {
+		min-width: 80%;
+	}
+	&.width-fixed-small .scroll-snap-element {
 		min-width: 240px;
 	}
-
+	&.width-fixed-medium .scroll-snap-element {
+		min-width: 320px;
+	}
+	&.width-fixed-large .scroll-snap-element {
+		min-width: 480px;
+	}
+	// &.scroll-snap-grid-container {
+	// 	&.width-xlarge .scroll-snap-element {
+	// 		min-width: calc( #{$grid-container} * 0.8 );
+	// 	}
+	// 	&.width-large .scroll-snap-element {
+	// 		min-width: calc( #{$grid-container} * 0.6 );
+	// 	}
+	// 	&.width-medium .scroll-snap-element {
+	// 		min-width: calc( #{$grid-container} * 0.4 );
+	// 	}
+	// 	&.width-small .scroll-snap-element {
+	// 		min-width: calc( #{$grid-container} * 0.2 );
+	// 	}
+	// }
 }
 
 @each $breakpoint, $width in $breakpoints {
@@ -3048,6 +3071,9 @@ $icon-line-weight: 2;
 	& > a {
 		display: flex;
 	}
+}
+.dynamic-padding {
+	@include dynamic-padding();
 }
 .disabled {
 	opacity: 0.5;
