@@ -2379,7 +2379,7 @@ $icon-line-weight: 2;
 	position: fixed;
 	display: flex;
 	justify-content: center;
-	top: 70px;
+	top: 10vh;
 	left: 0;
 	z-index: 100;
 	width: 100vw;
@@ -2455,6 +2455,8 @@ $icon-line-weight: 2;
 	.tt-menu {
 		position: relative !important;
 		top: 0 !important;
+    max-height: calc(70vh);
+		overflow-y: auto;
 	}
 }
 .user.tt-suggestion.cursor,
@@ -3302,9 +3304,9 @@ $spinner-sizes: (
 }
 .menu .twitter-typeahead {
 	.tt-dataset-blogs:not(:empty) {
-		padding: map-get($padding-sizes, small);
+		padding: nth(map-get($padding-sizes, medium), 1);
 		.tt-suggestion {
-			padding: map-get($padding-sizes, small);
+			padding: nth(map-get($padding-sizes, medium), 1);
 		}
 	}
 
@@ -3604,4 +3606,41 @@ $spinner-sizes: (
 	li {
 		//height: 1rem;
 	}
+}
+
+
+
+// 28. Swiper
+// ---------
+.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+	margin: 0 !important;
+}
+.swiper-pagination.timespans {
+	width: 100% !important;
+	border-bottom: $hr-border;
+}
+
+.swiper-pagination-bullet-custom {
+	border-radius: 0 !important;
+	background: none !important;
+		&:hover {
+			background: none;
+			box-shadow: inset 0 -2px rgba($black, 0.17);
+		}
+		&:focus {
+			background: none;
+			outline: none;
+		}
+		&.swiper-pagination-bullet-active {
+			color: inherit !important;
+			background: none;
+			box-shadow: inset 0 -2px $dark-gray;
+
+			&-prev,
+			&-prev-prev,
+			&-next,
+			&-next-next {
+				transform: scale(1) !important;
+			}
+		}
 }
