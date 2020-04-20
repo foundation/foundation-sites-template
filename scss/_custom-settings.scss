@@ -32,6 +32,25 @@
 // 1. Mixins and Functions
 // ---------
 
+
+$padding-sizes: (
+	small: 0.3125rem,
+	medium: 0.5rem 0.75rem,
+	large: 1rem 1.25rem,
+	xlarge: 1.5rem 2rem,
+	xxlarge: 1.5rem 2rem,
+	button: $button-padding
+);
+
+$user-card-sizes: (
+	small: 36px,
+	medium: 54px,
+	large: 96px,
+	xlarge: 144px,
+	xxlarge: 240px
+);
+$user-card-default-size: map-get($user-card-sizes, medium);
+
 @mixin foundation-palette(
 	$selector: "&",
 	$child: "",
@@ -60,16 +79,36 @@
 		}
 	}
 }
-
-@mixin dynamic-padding() {
-	@include breakpoint(small) {
-		padding: map-get($padding-sizes, medium);
-	}
-	@include breakpoint(medium) {
-		padding: map-get($padding-sizes, large);
-	}
-	@include breakpoint(large) {
-		padding: map-get($padding-sizes, xlarge);
+$dynamic-relation: (
+	small: medium,
+	medium: large,
+	large: xlarge,
+);
+/// Computes an dynamic padding box.
+///
+/// @param {string} $edge
+///   Padding or Margin.
+/// @param {boolean} $negative
+///   If negative or not.
+/// @return {string} $axis
+///   both, vertical or horizontal.
+@mixin dynamic-box( $edge: padding, $negative: false, $axis: both ) {
+	$multiplier: if($negative, -1, 1);
+	@each $breakpoint, $edge-size in $dynamic-relation {
+		@include breakpoint($breakpoint) {
+			@if $axis == both {
+				#{$edge}: multiply-list(map-get($padding-sizes, $edge-size), $multiplier);
+			}
+			@else if $axis == vertical {
+				#{$edge}: multiply-list(extract-from-compact(map-get($padding-sizes, $edge-size), top), $multiplier) 0;
+			}
+			@else if $axis == horizontal {
+				#{$edge}: 0 multiply-list(extract-from-compact(map-get($padding-sizes, $edge-size), left), $multiplier);
+				@if $negative {
+					max-width: calc(100% + (#{extract-from-compact(map-get($padding-sizes, $edge-size), left)} * 2));
+				}
+			}
+		}
 	}
 }
 
@@ -109,25 +148,39 @@
 		scale-color($color, $lightness) 100%
 	);
 }
+@function multiply-list($list, $multiplier) {
+	$new-list: ();
+	@each $item in $list {
+		$new-list: join($new-list, ($item * $multiplier));
+	}
+	@return $new-list;
+}
+@function extract-from-compact( $value, $side ) {
+	$index: 1;
 
+	// Top values are always at index 1. The same for when the list has only one item
+	@if ( $side == top or length( $value ) == 1 ) {
+			$index: 1;
+	}
+	// Covers "vertical horizontal" style
+	@else if ( length( $value ) == 2 ) {
+			@if ( $side == left or $side == right ) { $index: 2; }
+			@if ( $side == bottom ) { $index: 1; }
+	}
+	// Covers "top horizontal bottom" style
+	@else if ( length( $value ) == 3 ) {
+			@if ( $side == left or $side == right ) { $index: 2; }
+			@if ( $side == bottom ) { $index: 3; }
+	}
+	// Covers "top right bottom left" style
+	@else if ( length( $value ) == 4 ) {
+			@if ( $side == right ) { $index: 2; }
+			@if ( $side == bottom ) { $index: 3; }
+			@if ( $side == left ) { $index: 4; }
+	}
 
-$padding-sizes: (
-	small: 0.3125rem,
-	medium: 0.5rem 0.75rem,
-	large: 1rem 1.25rem,
-	xlarge: 1.5rem 2rem,
-	xxlarge: 1.5rem 2rem,
-	button: $button-padding
-);
-
-$user-card-sizes: (
-	small: 36px,
-	medium: 54px,
-	large: 96px,
-	xlarge: 144px,
-	xxlarge: 240px
-);
-$user-card-default-size: map-get($user-card-sizes, medium);
+	@return nth( $value, $index );
+}
 
 
 // 2. Grid
@@ -897,17 +950,37 @@ label[for] {
 .post-card {
 	.post-content {
 		// padding: map-get($padding-sizes, xlarge);
-		@include dynamic-padding();
+		@include dynamic-box();
 		overflow-wrap: break-word; /* break long links in post-content. */
 
 		.alignfull {
-			margin: 1rem -2.2rem;
-			max-width: calc(100% + 4.4rem);
-			box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+			@include dynamic-box($edge: margin, $negative: true, $axis: horizontal);
+			@each $breakpoint, $width in $breakpoints {
+				@include breakpoint($breakpoint) {
+					margin-top: 1rem;
+					margin-bottom: 1rem;
+				}
+			}
+			img {
+				@include xy-gutters($gutters: $grid-container-padding, $negative: true);
+				@each $breakpoint, $width in $breakpoints {
+					@include breakpoint($breakpoint) {
+						$grid-margin-gutter: map-get($grid-container-padding, #{$breakpoint});
+						max-width: calc(100% + #{$grid-margin-gutter});
+						width: calc(100% + #{$grid-margin-gutter});
+					}
+				}
+				box-shadow: $global-drop-shadow;
+			}
 		}
 		.alignwide {
-			margin: 0rem -2rem 1rem;
-			max-width: calc(100% + 4rem);
+			@include dynamic-box($edge: margin, $negative: true, $axis: horizontal);
+			@each $breakpoint, $width in $breakpoints {
+				@include breakpoint($breakpoint) {
+					margin-top: 1rem;
+					margin-bottom: 1rem;
+				}
+			}
 		}
 		a {
 			&:hover {
@@ -1012,12 +1085,12 @@ label[for] {
 }
 .page-section {
 	.page-header, .page-content {
-		@include dynamic-padding();
+		@include dynamic-box();
 	}
 }
 .report-card {
 	.report-header, .report-content {
-		@include dynamic-padding();
+		@include dynamic-box();
 	}
 }
 
@@ -1866,16 +1939,24 @@ textarea {
 }
 .edit-button {
 	a {
-		&::after {
-			content: "edit";
-			padding: 0.5rem;
-			font-size: 0.75rem;
-			color: $dark-gray;
-		}
-		&:hover::after {
+		padding: 0.5rem;
+		font-size: 0.75rem;
+		color: $dark-gray;
+		&:hover {
 			color: $black;
 		}
 	}
+	// a {
+	// 	&::after {
+	// 		content: "edit";
+	// 		padding: 0.5rem;
+	// 		font-size: 0.75rem;
+	// 		color: $dark-gray;
+	// 	}
+	// 	&:hover::after {
+	// 		color: $black;
+	// 	}
+	// }
 }
 .edit-bar {
 	display: flex;
@@ -3074,8 +3155,8 @@ $icon-line-weight: 2;
 		display: flex;
 	}
 }
-.dynamic-padding {
-	@include dynamic-padding();
+.dynamic-box {
+	@include dynamic-box();
 }
 .disabled {
 	opacity: 0.5;
