@@ -181,6 +181,10 @@ $dynamic-relation: (
 
 	@return nth( $value, $index );
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 65e43ec4411733ff2645770b053885ff949a4f44
 
 
 // 2. Grid
@@ -947,49 +951,6 @@ label[for] {
 		color: $dark-gray;
 	}
 }
-.post-card {
-	.post-content {
-		// padding: map-get($padding-sizes, xlarge);
-		@include dynamic-box();
-		overflow-wrap: break-word; /* break long links in post-content. */
-
-		.alignfull {
-			@include dynamic-box($edge: margin, $negative: true, $axis: horizontal);
-			@each $breakpoint, $width in $breakpoints {
-				@include breakpoint($breakpoint) {
-					margin-top: 1rem;
-					margin-bottom: 1rem;
-				}
-			}
-			img {
-				@include xy-gutters($gutters: $grid-container-padding, $negative: true);
-				@each $breakpoint, $width in $breakpoints {
-					@include breakpoint($breakpoint) {
-						$grid-margin-gutter: map-get($grid-container-padding, #{$breakpoint});
-						max-width: calc(100% + #{$grid-margin-gutter});
-						width: calc(100% + #{$grid-margin-gutter});
-					}
-				}
-				box-shadow: $global-drop-shadow;
-			}
-		}
-		.alignwide {
-			@include dynamic-box($edge: margin, $negative: true, $axis: horizontal);
-			@each $breakpoint, $width in $breakpoints {
-				@include breakpoint($breakpoint) {
-					margin-top: 1rem;
-					margin-bottom: 1rem;
-				}
-			}
-		}
-		a {
-			&:hover {
-				text-decoration: underline;
-			}
-		}
-	}
-
-}
 .post-card,
 .activity-card {
 	a:first-child .post-feature-image,
@@ -1083,14 +1044,49 @@ label[for] {
 		position: absolute;
 	}
 }
-.page-section {
-	.page-header, .page-content {
-		@include dynamic-box();
-	}
+.report-card .report-header,
+.page-section .page-header {
+	@include dynamic-box();
 }
-.report-card {
-	.report-header, .report-content {
-		@include dynamic-box();
+.post-card .post-content,
+.report-card .report-content,
+.page-section .page-content {
+	@include dynamic-box();
+	overflow-wrap: break-word; /* break long links in post-content. */
+
+	.alignfull {
+		@include dynamic-box($edge: margin, $negative: true, $axis: horizontal);
+		@each $breakpoint, $width in $breakpoints {
+			@include breakpoint($breakpoint) {
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+			}
+		}
+		img {
+			@include xy-gutters($gutters: $grid-container-padding, $negative: true);
+			@each $breakpoint, $width in $breakpoints {
+				@include breakpoint($breakpoint) {
+					$grid-margin-gutter: map-get($grid-container-padding, #{$breakpoint});
+					max-width: calc(100% + #{$grid-margin-gutter});
+					width: calc(100% + #{$grid-margin-gutter});
+				}
+			}
+			box-shadow: $global-drop-shadow;
+		}
+	}
+	.alignwide {
+		@include dynamic-box($edge: margin, $negative: true, $axis: horizontal);
+		@each $breakpoint, $width in $breakpoints {
+			@include breakpoint($breakpoint) {
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+			}
+		}
+	}
+	a {
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 }
 
@@ -2538,6 +2534,16 @@ $icon-line-weight: 2;
     max-height: calc(70vh);
 		overflow-y: auto;
 	}
+	.tt-menu {
+		position: relative !important;
+		top: 0 !important;
+    max-height: calc(70vh);
+		overflow-y: auto;
+	}
+}
+.user.tt-suggestion.cursor,
+.user.tt-suggestion:hover {
+	background-color: $very-light-gray;
 }
 .user.tt-suggestion.cursor,
 .user.tt-suggestion:hover {
@@ -3154,7 +3160,7 @@ $icon-line-weight: 2;
 		display: flex;
 	}
 }
-.dynamic-box {
+.dynamic-padding {
 	@include dynamic-box();
 }
 .disabled {
