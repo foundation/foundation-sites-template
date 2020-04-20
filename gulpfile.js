@@ -2,7 +2,7 @@ var gulp          = require('gulp');
 var browserSync   = require('browser-sync').create();
 var $             = require('gulp-load-plugins')();
 var autoprefixer  = require('autoprefixer');
-var sourcemaps = require('gulp-sourcemaps');
+//var sourcemaps = require('gulp-sourcemaps');
 
 var sassPaths = [
   'node_modules/foundation-sites/scss',
@@ -11,16 +11,16 @@ var sassPaths = [
 
 function sass( path ) {
 	return gulp.src( path )
-		.pipe(sourcemaps.init())
+		//.pipe(sourcemaps.init())
     .pipe($.sass({
       includePaths: sassPaths,
       outputStyle: 'compressed' // if css compressed **file size**
     })
-      .on('error', $.sass.logError))
+    .on('error', $.sass.logError))
     .pipe($.postcss([
       autoprefixer({ overrideBrowserslist: ['last 2 versions', 'ie >= 9'] })
 		]))
-		.pipe(sourcemaps.write('./maps'))
+		//.pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest('css'))
     .pipe(browserSync.stream());
 };
