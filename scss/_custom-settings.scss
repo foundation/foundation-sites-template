@@ -112,6 +112,18 @@ $dynamic-relation: (
 	}
 }
 
+@mixin dynamic-padding() {
+	@include breakpoint(small) {
+		padding: map-get($padding-sizes, medium);
+	}
+	@include breakpoint(medium) {
+		padding: map-get($padding-sizes, large);
+	}
+	@include breakpoint(large) {
+		padding: map-get($padding-sizes, xlarge);
+	}
+}
+
 @mixin cross-browser($property, $val) {
 	-webkit-#{$property}: $val;
 	-moz-#{$property}: $val;
@@ -181,6 +193,7 @@ $dynamic-relation: (
 
 	@return nth( $value, $index );
 }
+
 
 
 // 2. Grid
@@ -2530,6 +2543,16 @@ $icon-line-weight: 2;
     max-height: calc(70vh);
 		overflow-y: auto;
 	}
+	.tt-menu {
+		position: relative !important;
+		top: 0 !important;
+    max-height: calc(70vh);
+		overflow-y: auto;
+	}
+}
+.user.tt-suggestion.cursor,
+.user.tt-suggestion:hover {
+	background-color: $very-light-gray;
 }
 .user.tt-suggestion.cursor,
 .user.tt-suggestion:hover {
@@ -3146,7 +3169,7 @@ $icon-line-weight: 2;
 		display: flex;
 	}
 }
-.dynamic-box {
+.dynamic-padding {
 	@include dynamic-box();
 }
 .disabled {
