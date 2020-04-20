@@ -32,6 +32,25 @@
 // 1. Mixins and Functions
 // ---------
 
+
+$padding-sizes: (
+	small: 0.3125rem,
+	medium: 0.5rem 0.75rem,
+	large: 1rem 1.25rem,
+	xlarge: 1.5rem 2rem,
+	xxlarge: 1.5rem 2rem,
+	button: $button-padding
+);
+
+$user-card-sizes: (
+	small: 36px,
+	medium: 54px,
+	large: 96px,
+	xlarge: 144px,
+	xxlarge: 240px
+);
+$user-card-default-size: map-get($user-card-sizes, medium);
+
 @mixin foundation-palette(
 	$selector: "&",
 	$child: "",
@@ -57,6 +76,38 @@
 	@each $size-name, $size in $button-sizes {
 		&.#{$size-name} {
 			font-size: $size;
+		}
+	}
+}
+$dynamic-relation: (
+	small: medium,
+	medium: large,
+	large: xlarge,
+);
+/// Computes an dynamic padding box.
+///
+/// @param {string} $edge
+///   Padding or Margin.
+/// @param {boolean} $negative
+///   If negative or not.
+/// @return {string} $axis
+///   both, vertical or horizontal.
+@mixin dynamic-box( $edge: padding, $negative: false, $axis: both ) {
+	$multiplier: if($negative, -1, 1);
+	@each $breakpoint, $edge-size in $dynamic-relation {
+		@include breakpoint($breakpoint) {
+			@if $axis == both {
+				#{$edge}: multiply-list(map-get($padding-sizes, $edge-size), $multiplier);
+			}
+			@else if $axis == vertical {
+				#{$edge}: multiply-list(extract-from-compact(map-get($padding-sizes, $edge-size), top), $multiplier) 0;
+			}
+			@else if $axis == horizontal {
+				#{$edge}: 0 multiply-list(extract-from-compact(map-get($padding-sizes, $edge-size), left), $multiplier);
+				@if $negative {
+					max-width: calc(100% + (#{extract-from-compact(map-get($padding-sizes, $edge-size), left)} * 2));
+				}
+			}
 		}
 	}
 }
@@ -97,24 +148,40 @@
 		scale-color($color, $lightness) 100%
 	);
 }
+@function multiply-list($list, $multiplier) {
+	$new-list: ();
+	@each $item in $list {
+		$new-list: join($new-list, ($item * $multiplier));
+	}
+	@return $new-list;
+}
+@function extract-from-compact( $value, $side ) {
+	$index: 1;
 
-$padding-sizes: (
-	small: 0.3125rem,
-	medium: 0.5rem 0.75rem,
-	large: 1rem 1.25rem,
-	xlarge: 1.25rem 2rem,
-	xxlarge: 1.25rem 2rem,
-	button: $button-padding
-);
+	// Top values are always at index 1. The same for when the list has only one item
+	@if ( $side == top or length( $value ) == 1 ) {
+			$index: 1;
+	}
+	// Covers "vertical horizontal" style
+	@else if ( length( $value ) == 2 ) {
+			@if ( $side == left or $side == right ) { $index: 2; }
+			@if ( $side == bottom ) { $index: 1; }
+	}
+	// Covers "top horizontal bottom" style
+	@else if ( length( $value ) == 3 ) {
+			@if ( $side == left or $side == right ) { $index: 2; }
+			@if ( $side == bottom ) { $index: 3; }
+	}
+	// Covers "top right bottom left" style
+	@else if ( length( $value ) == 4 ) {
+			@if ( $side == right ) { $index: 2; }
+			@if ( $side == bottom ) { $index: 3; }
+			@if ( $side == left ) { $index: 4; }
+	}
 
-$user-card-sizes: (
-	small: 36px,
-	medium: 54px,
-	large: 96px,
-	xlarge: 144px,
-	xxlarge: 240px
-);
-$user-card-default-size: map-get($user-card-sizes, medium);
+	@return nth( $value, $index );
+}
+
 
 // 2. Grid
 // ---------
@@ -123,7 +190,7 @@ body {
 	min-height: 100vh;
 }
 html {
-    overflow-y: scroll;
+	overflow-y: scroll;
 }
 .grid-container {
 	&.space {
@@ -140,12 +207,16 @@ html {
 		padding: 0;
 	}
 }
+.reverse-grid-container {
+	margin-left: calc(-50vw + 50%);
+	margin-right: calc(-50vw + 50%);
+}
 .cell {
 	position: relative;
 }
 
 .sidebar {
-	z-index: 10;
+	z-index: 30;
 }
 
 // 3. Typography
@@ -173,6 +244,9 @@ p {
 		font-size: 2rem;
 	}
 }
+.lead {
+	font-size: 1.25em;
+}
 .highlight-word {
 	&:before {
 		content: '»';
@@ -180,6 +254,7 @@ p {
 	&:after {
 		content: '«';
 	}
+	margin-right: 1ch;
 }
 
 span {
@@ -224,59 +299,16 @@ small {
 
 code {
 	border-radius: $global-radius-small;
+	font-size: 0.875em;
 }
-
+pre {
+	tab-size: 2ch;
+}
 input,
 textarea,
 select {
 	font-size: $paragraph-font-size;
-}
-.button-group {
-	select {
-		margin: 0;
-		border-radius: 0;
-		&:first-child {
-			border-top-left-radius: $global-radius;
-			border-bottom-left-radius: $global-radius;
-		}
-		&:last-child {
-			border-top-right-radius: $global-radius;
-			border-bottom-right-radius: $global-radius;
-		}
-	}
-	input {
-		width: initial;
-	}
-	&.hollow {
-		border-radius: $global-radius;
-		button,
-		.button {
-			border: $button-hollow-border-width solid transparent;
-			color: get-color(primary);
-			background-color: transparent;
-			box-shadow: inset 0 0 0 nth($hr-border, 1) currentColor;
-			&:hover {
-				color: scale-color(get-color(primary), $lightness: -15%);
-				background-color: transparent;
-				z-index: 1;
-			}
-			&:not(:last-child) {
-				margin-right: -#{nth($hr-border, 1)};
-				margin-bottom: 0;
-			}
-		}
-		@each $color-name, $color in $foundation-palette {
-			&.#{$color-name} {
-				button,
-				.button {
-					color: $color;
-					&:hover {
-						color: scale-color($color, $lightness: -15%);
-					}
-				}
-			}
-		}
-	}
+	flex: 1;
 }
 small > label,
 label.small {
@@ -345,19 +377,27 @@ label[for] {
 	select {
 		font-size: $paragraph-font-size;
 	}
+	&.accordion {
+		background: $card-background;
+	}
 }
 
 .card-header {
 	position: relative;
 	width: 100%;
+	min-width: 0; // necessary to override flex-box default (e.g. members hover in default space).
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
 	flex: 1;
 	padding: $button-padding;
-	padding-bottom: 0.25rem;
+	// padding-bottom: 0.25rem;
 	line-height: $paragraph-lineheight;
+
+	h1 {
+		margin-bottom: 0;
+	}
 	&.flex-dir-row {
 		flex-direction: row;
 		justify-content: flex-start;
@@ -367,12 +407,12 @@ label[for] {
 		padding: 0;
 		padding-left: nth($button-padding, 2);
 	}
-	@each $size-label, $size in $user-card-sizes {
-		.#{$size-label} & {
-			width: calc(100% - #{$size});
-			padding-left: nth($button-padding, 2);
-		}
-	}
+	// @each $size-label, $size in $user-card-sizes {
+	// 	.#{$size-label} & {
+	// 		width: calc(100% - #{$size});
+	// 		padding-left: nth($button-padding, 2);
+	// 	}
+	// }
 }
 .post-card-anchor {
 	width: 100%;
@@ -381,7 +421,7 @@ label[for] {
 	display: flex;
 	align-items: center;
 	font-size: 1rem;
-	padding-bottom: 0.3rem;
+	// padding-bottom: 0.3rem;
 	line-height: $header-lineheight;
 	font-weight: $global-weight-normal;
 	margin: 0;
@@ -459,7 +499,7 @@ label[for] {
 		}
 	}
 	&:last-child {
-		margin-top: auto;
+		//margin-top: auto;
 	}
 }
 
@@ -517,7 +557,7 @@ label[for] {
 	-webkit-backdrop-filter: (20px) saturate(200%);
 	backdrop-filter: blur(20px) saturate(200%);
 	left: 0;
-	top: 50%;
+	top: 70%;
 	transform: perspective(1px) translateY(-50%);
 	max-width: 80% !important; // .text-truncate will otherwise override with 100%
 	border-radius: 0 2px 2px 0;
@@ -806,12 +846,12 @@ label[for] {
 .avatar {
 	flex: 0 0 auto;
 	width: $user-card-default-size;
-	height: $user-card-default-size;
+	//height: $user-card-default-size;
 	img {
 		border-radius: $global-radius;
 	}
 	@each $user-card-size, $size in $user-card-sizes {
-		&.#{$user-card-size} {
+		&.#{$user-card-size}, .avatar.#{$user-card-size} & {
 			width: $size;
 			height: $size;
 		}
@@ -857,11 +897,13 @@ label[for] {
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: normal;
 	}
+}
+.post-card {
 	h1 {
-		font-size: 1.25rem;
+		font-size: 1.125rem;
 	}
 	h2 {
-		font-size: 1.125rem;
+		font-size: 1.0625rem;
 	}
 	h3 {
 		font-size: 1rem;
@@ -881,36 +923,29 @@ label[for] {
 		color: $dark-gray;
 	}
 }
-.post-card {
-	.post-content {
-		// padding: map-get($padding-sizes, xlarge);
-		@include breakpoint(small) {
-			padding: map-get($padding-sizes, medium);
-		}
-		@include breakpoint(medium) {
-			padding: map-get($padding-sizes, large);
-		}
-		@include breakpoint(large) {
-			padding: map-get($padding-sizes, xlarge);
-		}
-		overflow-wrap: break-word; /* break long links in post-content. */
-
-		.alignfull {
-			margin: 1rem -2.2rem;
-			max-width: calc(100% + 4.4rem);
-			box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-		}
-		.alignwide {
-			margin: 0rem -2rem 1rem;
-			max-width: calc(100% + 4rem);
-		}
-		a {
-			&:hover {
-				text-decoration: underline;
-			}
-		}
+.page-section, .report-card {
+	h1 {
+		font-size: 1.5rem;
 	}
-
+	h2 {
+		font-size: 1.25rem;
+	}
+	h3 {
+		font-size: 1.125rem;
+	}
+	h4 {
+		font-size: 1rem;
+		color: $dark-gray;
+	}
+	h5 {
+		font-size: 0.875rem;
+		color: $dark-gray;
+	}
+	h6 {
+		font-size: 0.875rem;
+		font-style: italic;
+		color: $dark-gray;
+	}
 }
 .post-card,
 .activity-card {
@@ -924,12 +959,19 @@ label[for] {
 		overflow: hidden;
 		border-radius: $card-border-radius 0 0 0;
 	}
-	.card-divider:last-child .post-images .avatar-container:first-child {
-		overflow: hidden;
-		border-radius: 0 0 0 $card-border-radius;
+	.card-divider:last-child .post-images {
+		flex-wrap: wrap;
+		height: map-get($user-card-sizes, small);
+		.avatar-container:first-child {
+			overflow: hidden;
+			border-radius: 0 0 0 $card-border-radius;
+		}
 	}
 	.user:not(:first-child) {
 		border-top: $hr-border;
+	}
+	.dropdown-pane  {
+		width: 150px;
 	}
 }
 .main-menu {
@@ -941,12 +983,17 @@ label[for] {
 		}
 	}
 }
+.notifications-item {
+	flex: 1;
+}
 .notification-message {
-	color: $dark-gray;
+	line-height: 1.4;
 }
 .notification-author, .notification-post, .notification-space {
 	display: initial !important;
 	padding: initial !important;
+}
+.notification-post {
 	color: $black;
 }
 .dot-after {
@@ -968,13 +1015,11 @@ label[for] {
 .post-tags {
 	display: flex;
 	flex-wrap: wrap;
+	font-size: $small-font-size;
+	margin: -0.25rem;
 	a {
+		padding: 0.25rem;
 		width: initial;
-		margin: 0;
-		padding: 0;
-		&:not(:last-child) {
-			margin-right: 0.5rem;
-		}
 	}
 }
 .comment-reply-content {
@@ -995,7 +1040,51 @@ label[for] {
 		position: absolute;
 	}
 }
+.report-card .report-header,
+.page-section .page-header {
+	@include dynamic-box();
+}
+.post-card .post-content,
+.report-card .report-content,
+.page-section .page-content {
+	@include dynamic-box();
+	overflow-wrap: break-word; /* break long links in post-content. */
 
+	.alignfull {
+		@include dynamic-box($edge: margin, $negative: true, $axis: horizontal);
+		@each $breakpoint, $width in $breakpoints {
+			@include breakpoint($breakpoint) {
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+			}
+		}
+		img {
+			@include xy-gutters($gutters: $grid-container-padding, $negative: true);
+			@each $breakpoint, $width in $breakpoints {
+				@include breakpoint($breakpoint) {
+					$grid-margin-gutter: map-get($grid-container-padding, #{$breakpoint});
+					max-width: calc(100% + #{$grid-margin-gutter});
+					width: calc(100% + #{$grid-margin-gutter});
+				}
+			}
+			box-shadow: $global-drop-shadow;
+		}
+	}
+	.alignwide {
+		@include dynamic-box($edge: margin, $negative: true, $axis: horizontal);
+		@each $breakpoint, $width in $breakpoints {
+			@include breakpoint($breakpoint) {
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+			}
+		}
+	}
+	a {
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
 
 // 8. Clipping
 // ---------
@@ -1028,28 +1117,40 @@ label[for] {
 	}
 
 	&.tint {
+		color: $white;
+		background-color: $black;
 		&::after {
-			content: "";
+			content: '';
 			position: absolute;
+			z-index: 1;
 			width: 100%;
 			height: 100%;
 			pointer-events: none;
-			background-color: rgba(0, 0, 0, 0.4);
-			transition: background-color $global-transition-medium
+			background-color: $black;
+			opacity: 0.375;
+			transition: opacity $global-transition-medium
 				$global-transition-timing;
 		}
-
-		& > *:not(img, iframe) {
-			color: $white;
-			z-index: 1;
+		& > *:not(img) {
+			z-index: 10;
+		}
+		img, iframe {
+			z-index: 0;
+		}
+		&.tint-negativ {
+			color: $black;
+			background-color: $white;
+			&::after {
+				background-color: $white;
+			}
 		}
 	}
 
 	a:hover &.tint,
 	.is-active &.tint {
 		&::after {
-			background-color: rgba(0, 0, 0, 0.7);
-			transition: background-color $global-transition-medium
+			opacity: 0.625;
+			transition: opacity $global-transition-medium
 				$global-transition-timing;
 		}
 	}
@@ -1117,6 +1218,21 @@ label[for] {
 	&.full {
 		padding-bottom: 100vh;
 	}
+	.add-new {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 80px;
+		width: 100%;
+		background: $very-light-gray;
+		color: $dark-gray;
+		font-size: 1.25rem;
+		&:after {
+			content: '\f055';
+			font-family: 'Font Awesome 5 Free';
+			font-weight: bold;
+		}
+	}
 
 	@for $i from 1 through 8 {
 		$number: $i * 50;
@@ -1140,6 +1256,12 @@ label[for] {
 	min-width: 200px;
 	&.is-open {
 		z-index: 2000;
+	}
+	.card-divider, .card-section {
+		&>a {
+			line-height: 1rem;
+			box-sizing: content-box;
+		}
 	}
 }
 
@@ -1399,6 +1521,11 @@ label[for] {
 	&.large {
 		font-size: $switch-height-large;
 	}
+	.label-wrapper {
+		&>span {
+			padding-right: 0.5rem;
+		}
+	}
 }
 .checkbox-label,
 .radio-label {
@@ -1610,36 +1737,92 @@ select {
 	justify-content: center;
 	// border: none;
 	&.hollow {
+		color: get-color(primary);
+		&:hover {
+			color: scale-color(get-color(primary), $lightness: -15%);
+		}
 		@each $color-name, $color in $foundation-palette {
 			&.#{$color-name} {
-				box-shadow: inset 0 0 0 nth($hr-border, 1) $color;
-
+				color: $color;
+				border: $button-hollow-border-width solid transparent;
 				&:hover {
-					box-shadow: inset
-						0
-						0
-						0
-						nth($hr-border, 1)
-						scale-color($color, $lightness: $button-hollow-hover-lightness);
+					color: scale-color($color, $lightness: -15%);
+					border: $button-hollow-border-width solid transparent;
 				}
 			}
 		}
+		border: $button-hollow-border-width solid transparent;
+		background-color: transparent;
+		box-shadow: inset 0 0 0 nth($hr-border, 1) currentColor;
+		&:hover {
+			border: $button-hollow-border-width solid transparent;
+			background-color: transparent;
+		}
+	}
+	&.expanded {
+		box-sizing: border-box;
 	}
 	.menu & {
 		padding: $button-padding;
 	}
 	&.load {
 		transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
-		color: #fff;
-		background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-		background-size: 300% 300%;
-		animation: gradient 7s ease infinite;
+		color: #fff !important;
+		// background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+		// background-size: 300% 300%;
+		background-color: get-color(success);
+		animation: backgound-pulse 2s $global-transition-timing-cubic-bezier infinite;
+	}
+}
+
+.button-group {
+	border-radius: $global-radius;
+	overflow: hidden;
+	input {
+		width: initial;
+	}
+	button,
+	.button, select {
+		margin-bottom: 0;
+		border-radius: 0 !important;
+	}
+	&.hollow {
+		button,
+		.button {
+			color: get-color(primary);
+			&:hover {
+				color: scale-color(get-color(primary), $lightness: -15%);
+			}
+			@each $color-name, $color in $foundation-palette {
+				&.#{$color-name} {
+					color: $color;
+					border: $button-hollow-border-width solid transparent;
+					&:hover {
+						color: scale-color($color, $lightness: -15%);
+						border: $button-hollow-border-width solid transparent;
+					}
+				}
+			}
+			border: $button-hollow-border-width solid transparent;
+			background-color: transparent;
+			box-shadow: inset 0 0 0 nth($hr-border, 1) currentColor;
+			&:hover {
+				border: $button-hollow-border-width solid transparent;
+				background-color: transparent;
+				z-index: 1;
+			}
+			&:not(:last-child) {
+				margin-right: -#{nth($hr-border, 1)};
+				margin-bottom: 0;
+			}
+		}
 	}
 }
 button,
 .button,
 input,
 .input,
+.button-group,
 textarea {
 	&:focus,
 	&:active {
@@ -1673,6 +1856,17 @@ textarea {
 		background-position: 0% 50%;
 	}
 }
+@keyframes backgound-pulse {
+	0% {
+		background-color: rgba( get-color(success), 1);
+	}
+	50% {
+		background-color: rgba( get-color(success), .5);
+	}
+	100% {
+		background-color: rgba( get-color(success), 1);
+	}
+}
 
 // 12. Dot Menu
 // ---------
@@ -1700,6 +1894,12 @@ textarea {
 		font-size: 1.25rem;
 		white-space: nowrap;
 		color: currentColor;
+	}
+	&.hidden {
+		display: none;
+	}
+	&.visible {
+		display: block !important;
 	}
 }
 .dots {
@@ -1731,23 +1931,30 @@ textarea {
 }
 .edit-button {
 	a {
-		&::after {
-			content: "edit";
-			padding: 0.5rem;
-			font-size: 0.75rem;
-			color: $dark-gray;
-		}
-		&:hover::after {
+		padding: 0.5rem;
+		font-size: 0.75rem;
+		color: $dark-gray;
+		&:hover {
 			color: $black;
 		}
 	}
+	// a {
+	// 	&::after {
+	// 		content: "edit";
+	// 		padding: 0.5rem;
+	// 		font-size: 0.75rem;
+	// 		color: $dark-gray;
+	// 	}
+	// 	&:hover::after {
+	// 		color: $black;
+	// 	}
+	// }
 }
 .edit-bar {
 	display: flex;
 	align-items: center;
 	margin-left: auto;
 }
-
 // 13. Excerpt
 // ---------
 @mixin excerpt(
@@ -1829,6 +2036,12 @@ $border: 1px solid $very-light-gray;
 
 	.menu {
 		font-size: 0.875rem;
+		&.dropdown {
+			flex-wrap: nowrap;
+			li {
+				min-width: 0;
+			}
+		}
 
 		li {
 			&.menu-main-expand {
@@ -1952,33 +2165,50 @@ $border: 1px solid $very-light-gray;
 }
 
 .caret {
-	content: "\f107";
-	font-family: FontAwesome;
+	content: '\f078';
+	font-family: 'Font Awesome 5 Free';
+	font-size: 0.625em;
+	font-weight: bold;
+	align-self: center;
 	border: none;
 }
 .main-menu {
 	.dropdown .menu-anchor:hover {
 		background: $very-light-gray;
 	}
-	& > * > .dropdown .is-dropdown-submenu,
-	& > * > .accordion-menu .is-accordion-submenu {
-		border-top: $hr-border;
-		border-radius: 0 0 $global-radius $global-radius;
-		// overflow: hidden; // if you have lots of blogcategories the selectbox is cropped.
-		box-shadow: $global-drop-shadow;
-		z-index: 1; // enforce drop-shadow hierachie.
-
-		a {
-			border-right: none;
-		}
-
-		li {
-			&:first-child .submenu-anchor {
-				padding-top: 1rem;
+	& > * > .dropdown,
+	& > * > .accordion-menu {
+		.submenu {
+			border-top: $hr-border;
+			border-radius: 0 0 $global-radius $global-radius;
+			// overflow: hidden; // if you have lots of blogcategories the selectbox is cropped.
+			box-shadow: $global-drop-shadow;
+			z-index: 1; // enforce drop-shadow hierachie.
+			a {
+				border-right: none;
 			}
+			.submenu-element {
+				.notifications-item:hover {
+					background: $very-light-gray;
+				}
+			}
+			a.submenu-element:hover {
+				background: $very-light-gray;
+			}
+			.is-submenu-item, .is-submenu-item {
+				&:first-child a.submenu-element {
+					padding-top: 1rem;
+				}
 
-			&:last-child .submenu-anchor {
-				padding-bottom: 1rem;
+				&:last-child {
+					border-radius: 0 0 $global-radius $global-radius;
+					a.submenu-element {
+						padding-bottom: 1rem;
+					}
+					&>*, .submenu-element>*{
+						border-radius: 0 0 $global-radius $global-radius;
+					}
+				}
 			}
 
 			.card-anchor {
@@ -1992,8 +2222,6 @@ $border: 1px solid $very-light-gray;
 	& > a {
 		&::after {
 			@extend .caret;
-			display: inline-block;
-			width: 0.62em;
 			margin-left: auto;
 		}
 		&[aria-expanded="false"]::after {
@@ -2014,6 +2242,7 @@ $border: 1px solid $very-light-gray;
 		transition: $global-transition-medium;
 	}
 }
+
 .accordion-menu {
 	// .is-accordion-submenu-parent:not(.has-submenu-toggle) {
 	//	 &>a {
@@ -2036,6 +2265,22 @@ $border: 1px solid $very-light-gray;
 	//		 transition: $global-transition-medium;
 	// 	}
 	// }
+	.menu-item {
+		&>a:hover {
+			background-color: $very-light-gray;
+		}
+	}
+	&>.menu-item {
+		&:first-child:not(:last-child)>a {
+			padding-top: nth($global-menu-padding, 2);
+		}
+		&:last-child:not(:first-child)>a {
+			padding-bottom:nth($global-menu-padding, 2);
+		}
+	}
+	.sub-menu {
+		margin-left:nth($global-menu-padding, 2);
+	}
 	.button {
 		text-align: left;
 	}
@@ -2053,15 +2298,6 @@ $border: 1px solid $very-light-gray;
 	}
 }
 
-// .dropdown,
-// .accordion-menu {
-//   .menu-anchor {
-//     img {
-//       width: 36px;
-//       height: 36px;
-//     }
-//   }
-// }
 .dropdown {
 	& > li > a {
 		display: flex;
@@ -2090,7 +2326,7 @@ $border: 1px solid $very-light-gray;
 				&::after {
 					@extend .caret;
 					margin-right: 0.75rem;
-					line-height: 0.5;
+					line-height: 0.75;
 				}
 			}
 			&.is-dropdown-submenu-parent:not(.no-arrow) > a {
@@ -2210,15 +2446,94 @@ $icon-line-weight: 2;
 	}
 }
 
-#global-search.twitter-typeahead {
-	display: none;
-	position: absolute;
+
+.search-container {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	top: 10vh;
 	left: 0;
-	z-index: 10;
-	width: calc(100% - 85px);
-	.search-container.is-active & {
-		display: block;
+	z-index: 100;
+	width: 100vw;
+	pointer-events: none;
+
+	@each $breakpoint, $width in $breakpoints {
+		@include breakpoint($breakpoint) {
+			$grid-container-gutter: map-get($grid-container-padding, #{$breakpoint});
+			padding: 0 $grid-container-gutter;
+		}
 	}
+	.spinner-container {
+		margin-left: -2rem;
+		margin-top: 1.125rem;
+		width: 2rem;
+		z-index: 100;
+	}
+	&:not(.is-active) {
+		.spinner-container {
+			display: none !important;
+		}
+	}
+	&::after {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		z-index: 10;
+		background: #000000;
+		opacity: 0;
+		will-change: opacity;
+		transition: $global-transition-medium;
+	}
+	span.twitter-typeahead {
+		opacity: 0;
+		pointer-events: none;
+		z-index: 100;
+		box-shadow: $global-drop-shadow;
+		height: initial !important;
+		transform: scale(0.97);
+		transition: $global-transition-medium;
+		width: auto;
+    max-width: 100%;
+	}
+	input.twitter-typeahead {
+		height: $user-card-default-size;
+		border: none;
+		padding: $global-padding;
+		width: map-get($breakpoints, 'medium');
+    max-width: 100%;
+		&.is-active {
+			border-radius: $global-radius-small $global-radius-small 0 0;
+			border-bottom: $hr-border;
+		}
+	}
+	&.is-active {
+		pointer-events: all;
+		&::after {
+			opacity: 0.5;
+			will-change: opacity;
+			transition: $global-transition-medium;
+		}
+		span.twitter-typeahead {
+			opacity: 1;
+			pointer-events: all;
+			transform: scale(1);
+			transition: $global-transition-medium;
+			box-shadow: $global-drop-shadow-large;
+		}
+	}
+	.tt-menu {
+		position: relative !important;
+		top: 0 !important;
+    max-height: calc(70vh);
+		overflow-y: auto;
+	}
+}
+.user.tt-suggestion.cursor,
+.user.tt-suggestion:hover {
+	background-color: $very-light-gray;
 }
 
 .twitter-typeahead.tt-hint {
@@ -2291,11 +2606,10 @@ $icon-line-weight: 2;
 
 // 16. Tabs
 // ---------
-.tabs-panel.is-active-tab {
-	display: block;
-}
+
 .tabs {
 	display: flex;
+	overflow: hidden;
 	border: none;
 	font-size: $paragraph-font-size;
 	&::before,
@@ -2310,17 +2624,27 @@ $icon-line-weight: 2;
 	&.large {
 		font-size: $global-font-size;
 	}
-
 	.tabs-title {
 		text-align: center;
 		float: initial;
-
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 		& > a {
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			color: inherit;
-			height: 40px;
+			min-height: 36px;
+			& > *:last-child:not(:first-child) {
+				margin-left: 0.5em;
+			}
+			span {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
 		}
 		&.is-active-tab,
 		&.is-active {
@@ -2333,9 +2657,24 @@ $icon-line-weight: 2;
 	&.expanded {
 		.tabs-title {
 			width: 100%;
-			a {
-				padding-left: 0.25rem;
-				padding-right: 0.25rem;
+		}
+	}
+	&.label-is-active {
+		.tabs-title {
+			min-width: auto;
+			overflow: initial;
+			span {
+				transition-duration: $global-transition-long;
+				overflow: hidden;
+				max-width: 150px;
+				line-height:$header-lineheight;
+			}
+			&:not(.is-active) {
+				span {
+					transition-duration: $global-transition-medium;
+					margin-left: 0;
+					max-width: 0;
+				}
 			}
 		}
 	}
@@ -2418,6 +2757,7 @@ $icon-line-weight: 2;
 
 				& > span {
 					margin-bottom: $header-margin-bottom;
+					white-space: initial;
 
 					&:last-child {
 						margin-bottom: initial;
@@ -2432,9 +2772,16 @@ $icon-line-weight: 2;
 
 .tabs-content {
 	border: none;
+	&[data-transition] .tabs-panel {
+		display: none;
+	}
 	// .card>&:last-child {
 	// 	border-radius: 0 0 $global-radius $global-radius;
 	// }
+}
+
+.tabs-panel.is-active-tab {
+	display: block;
 }
 
 // 17. Scroll Snapping
@@ -2463,7 +2810,7 @@ $icon-line-weight: 2;
 		background: $white;
 		border-radius: $global-radius-small;
 		box-shadow: $global-drop-shadow;
-		font-family: FontAwesome;
+		font-family: 'Font Awesome 5 Free';
 		font-size: 1rem;
 		font-weight: $global-weight-bold;
 		z-index: 10;
@@ -2481,89 +2828,106 @@ $icon-line-weight: 2;
 }
 
 .scroll-snap-container-x {
-	display: flex;
+	@include xy-grid(
+		$direction: horizontal,
+		$wrap: false
+	);
 	position: relative;
-	flex-wrap: nowrap;
-	@include cross-browser(scroll-snap-type, x mandatory);
 	overflow-x: auto;
 	overflow-y: hidden;
 	-webkit-overflow-scrolling: touch;
-	.activity-card {
-		.card-header {
-			width: 100vw;
+
+	@include cross-browser(scroll-snap-type, x mandatory);
+
+	.scroll-snap-element {
+		width: initial;
+		max-width: 100%;
+		width: 100%;
+		min-width: 100%;
+		width: initial;
+		box-sizing: border-box;
+		margin: 0;
+		flex: 1 1 100%;
+
+		& > span {
+			position: relative;
+			left: 0.5rem;
+
+			& + * {
+				margin-top: 0.5rem;
+			}
 		}
 	}
-}
 
-.scroll-snap-element {
-	width: initial;
-	max-width: 100%;
-	width: 100%;
-	min-width: 100%;
-	width: initial;
-	box-sizing: border-box;
-	margin: 0;
-
-	&.start {
+	&.snap-align-start .scroll-snap-element {
 		@include cross-browser(scroll-snap-align, start);
 	}
 
-	&.center {
+	&.snap-align-center .scroll-snap-element {
 		@include cross-browser(scroll-snap-align, center);
 	}
 
-	&.end {
+	&.snap-align-end .scroll-snap-element {
 		@include cross-browser(scroll-snap-align, end);
 	}
 
-	& > span {
-		position: relative;
-		left: 0.5rem;
-
-		& + * {
-			margin-top: 0.5rem;
-		}
+	&.width-small .scroll-snap-element {
+		min-width: 20%;
 	}
+	&.width-medium .scroll-snap-element {
+		min-width: 40%;
+	}
+	&.width-large .scroll-snap-element {
+		min-width: 60%;
+	}
+	&.width-xlarge .scroll-snap-element {
+		min-width: 80%;
+	}
+	&.width-fixed-small .scroll-snap-element {
+		min-width: 240px;
+	}
+	&.width-fixed-medium .scroll-snap-element {
+		min-width: 320px;
+	}
+	&.width-fixed-large .scroll-snap-element {
+		min-width: 480px;
+	}
+	// &.scroll-snap-grid-container {
+	// 	&.width-xlarge .scroll-snap-element {
+	// 		min-width: calc( #{$grid-container} * 0.8 );
+	// 	}
+	// 	&.width-large .scroll-snap-element {
+	// 		min-width: calc( #{$grid-container} * 0.6 );
+	// 	}
+	// 	&.width-medium .scroll-snap-element {
+	// 		min-width: calc( #{$grid-container} * 0.4 );
+	// 	}
+	// 	&.width-small .scroll-snap-element {
+	// 		min-width: calc( #{$grid-container} * 0.2 );
+	// 	}
+	// }
 }
 
 @each $breakpoint, $width in $breakpoints {
 	.#{$breakpoint}-scroll-snap.scroll-snap-container-x {
 		display: block;
 	}
-	@include breakpoint(#{$breakpoint} down) {
+	@include breakpoint(#{$breakpoint} up) {
 		.scroll-snap-container-x {
 			&.#{$breakpoint}-scroll-snap {
 				display: flex;
-				.scroll-snap-element {
-					&.width-large {
-						flex-basis: 80%;
-					}
-					&.width-medium {
-						flex-basis: 60%;
-					}
-					&.width-small {
-						flex-basis: 60%;
-					}
-					&.width-fixed {
-						flex-basis: 40%;
-						min-width: 200px;
-						max-width: 360px;
-					}
-				}
 			}
-		}
-		.#{$breakpoint}-no-scroll-snap.scroll-snap-container-x {
-			display: block;
-			.scroll-snap-element {
-				&.#{$breakpoint}-width-medium, &.#{$breakpoint}-width-small {
-					flex-basis: 100%;
+			&.#{$breakpoint}-no-scroll-snap {
+				display: block;
+				.scroll-snap-element {
+					min-width: 100%;
 				}
 			}
 		}
 	}
 	@include breakpoint(#{$breakpoint}) {
 		.scroll-snap-element {
-			@include xy-cell(
+			@include xy-cell-gutters(
 				$gutter-type: padding,
 				$gutter-position: top right bottom left,
 				$breakpoint: #{$breakpoint}
@@ -2635,18 +2999,35 @@ $icon-line-weight: 2;
 		}
 	}
 
-	.grid-container:not(.no-padding) & {
+	.grid-container & {
 		@each $breakpoint, $width in $breakpoints {
 			@include breakpoint($breakpoint) {
 				$gutter: map-get($grid-container-padding, #{$breakpoint});
+				$gutter-padding: calc(#{$gutter} / 4);
+				$grid-padding: calc(50vw - (#{$grid-container} / 2) + #{$gutter-padding});
 
 				width: calc(100% + #{$gutter});
 				margin: calc(-#{$gutter} / 2);
-				padding: calc(#{$gutter} / 2) calc(#{$gutter} / 4);
-				&:after {
-					content: '';
-					min-width: calc(#{$gutter} / 2);
+				padding: $gutter-padding;
+
+
+				&.scroll-snap-grid-container {
+					width: 100vw;
+					margin: 0;
+					padding-left: $grid-padding;
+					&:after {
+						content: '';
+						min-width: $grid-padding;
+						height: 10px;
+					}
+					@media screen and (max-width: #{$grid-container}) {
+					padding-left: $gutter-padding;
+						&:after {
+							min-width: $gutter-padding;
+						}
+					}
 				}
+
 			}
 		}
 	}
@@ -2723,6 +3104,24 @@ $icon-line-weight: 2;
 		height: 61.8%;
 	}
 }
+.event-items-container {
+	&:before, &:after {
+		content: '';
+		position: absolute;
+		width: 1rem;
+		height: 100%;
+		top: 0;
+		z-index: 10;
+	}
+	&:before {
+		left: 0;
+		box-shadow: inset $global-gutter-large 0 calc(#{$global-gutter-large} / 2) calc(-#{$global-gutter-large} / 2) $body-background;
+	}
+	&:after {
+		box-shadow: inset -#{$global-gutter-large} 0 calc(#{$global-gutter-large} / 2) calc(-#{$global-gutter-large} / 2) $body-background;
+		right: 0;
+	}
+}
 
 // 19. Utilities
 // ---------
@@ -2730,13 +3129,25 @@ $icon-line-weight: 2;
 .flex-spacer-left {
 	margin-left: auto;
 }
-
+.flex-spacer-right {
+	margin-right: auto;
+}
+.flex-spacer-around {
+	margin-left: auto;
+	margin-right: auto;
+}
+.width-article {
+	width: 640px;
+}
 .no-padding {
 	padding: 0;
 
 	& > a {
 		display: flex;
 	}
+}
+.dynamic-box {
+	@include dynamic-box();
 }
 .disabled {
 	opacity: 0.5;
@@ -2788,7 +3199,10 @@ $icon-line-weight: 2;
 .align-flex-end {
 	justify-content: flex-end;
 }
-.nowrap {
+.flex-wrap {
+	flex-wrap: wrap;
+}
+.flex-nowrap {
 	flex-wrap: nowrap;
 }
 .sticky {
@@ -2836,19 +3250,22 @@ $icon-line-weight: 2;
 	cursor: pointer;
 	font-size: 1.5rem;
 	padding: 0;
+	&:before, &:after {
+		font-family: 'Font Awesome 5 Free';
+		font-weight: bold;
+		font-size: 0.75em;
+	}
 }
 .orbit-previous {
 	left: 5px;
 	&::after {
-		content: "\f104";
-		font-family: FontAwesome;
+		content: "\f053";
 	}
 }
 .orbit-next {
 	right: 5px;
 	&::after {
-		content: "\f105";
-		font-family: FontAwesome;
+		content: "\f054";
 	}
 }
 .orbit-bullets {
@@ -2883,7 +3300,7 @@ $spinner-sizes: (
 );
 
 .spinner {
-	border: 2px solid #f0f0f0;
+	border: 2px solid rgba($black, 0.17);
 	border-radius: 50%;
 	border-top: 2px solid get-color(primary);
 	animation: spin 0.875s infinite cubic-bezier(0.9, 0.3, 0.3, 0.7);
@@ -2918,38 +3335,50 @@ $spinner-sizes: (
 .tt-menu {
 	width: 100%;
 	background-color: $dropdown-background;
-	z-index: 200;
-	box-shadow: $global-drop-shadow;
 	border-radius: 0 0 $global-radius $global-radius;
 	overflow: hidden;
 }
 .twitter-typeahead,
 .tt-input,
 .tt-hint {
+	width: 100%;
 	font-size: $paragraph-font-size;
 	margin-bottom: 0;
-	width: 100%;
 	.menu & {
 		height: 40px;
 	}
 }
-.tt-input {
-	.menu & {
-		min-width: 250px;
+.tt-suggestion {
+	display: flex;
+	align-items: baseline;
+	span, small {
+		font-size: $small-font-size;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
-}
-.tt-suggestion.tt-cursor {
-	background-color: get-color(primary);
-	span,
-	small {
-		color: #fff;
+	&.tt-cursor {
+		background-color: get-color(primary);
+		&:after {
+			content: '\f067';
+			font-family: 'Font Awesome 5 Free';
+			font-weight: bold;
+			margin-left: auto;
+			font-size: 0.625rem;
+		}
+		span, small, &:after {
+			color: #fff;
+		}
+	}
+	.card {
+		width: 100%;
 	}
 }
 .menu .twitter-typeahead {
-	.tt-dataset-blogs {
-		padding: map-get($padding-sizes, small);
+	.tt-dataset-blogs:not(:empty) {
+		padding: nth(map-get($padding-sizes, medium), 1);
 		.tt-suggestion {
-			padding: map-get($padding-sizes, small);
+			padding: nth(map-get($padding-sizes, medium), 1);
 		}
 	}
 
@@ -2987,7 +3416,8 @@ $spinner-sizes: (
 	width: 100%;
 	&::before {
 		content: "\f002";
-		font-family: FontAwesome;
+		font-family: 'Font Awesome 5 Free';
+		font-weight: bold;
 		font-size: 0.75rem;
 		position: absolute;
 		z-index: 1;
@@ -3046,12 +3476,49 @@ $spinner-sizes: (
 	}
 }
 
+
+
+
+.sf-switch-to {
+	position: absolute;
+	right: -50px;
+	background: $card-background;
+	opacity: 0;
+	pointer-events: none;
+	transition: $global-transition-medium ease-in-out;
+	align-self: center;
+	&>a {
+		padding: map-get($padding-sizes, small);
+		box-shadow: 0 0 0 nth($hr-border, 1) nth($hr-border, 3);
+		border-radius: $global-radius 0 0 $global-radius;
+		display: flex;
+		align-items: center;
+		transition: $global-transition-medium ease-in-out;
+		&:hover {
+			box-shadow: $global-drop-shadow;
+			background: $card-background !important;
+		}
+	}
+	.user:hover & {
+		right: 0;
+		opacity: 1;
+		pointer-events: all;
+	}
+}
+
+
+
+
 // 23. Accordion
 // ---------
 
 .accordion {
 	.accordion-item {
 		position: relative;
+		&:first-child>:first-child {
+			word-break: break-word;
+			@include cross-browser(hyphens, auto);
+		}
 		.expand-button {
 			position: absolute;
 			top: 0;
@@ -3065,8 +3532,6 @@ $spinner-sizes: (
 			z-index: 100;
 			&::after {
 				@extend .caret;
-				display: inline-block;
-				width: 0.62em;
 				margin-left: 0.5em;
 				opacity: 0.5;
 			}
@@ -3092,7 +3557,7 @@ $spinner-sizes: (
 
 .pagination {
 	display: flex;
-	justify-content: center;
+	justify-content: left;
 	.page-numbers {
 		min-width: 36px;
 		display: flex;
@@ -3111,6 +3576,11 @@ $spinner-sizes: (
 			color: $pagination-item-color;
 			&::after {
 				display: none;
+			}
+		}
+		&.prev, &.next {
+			i {
+				font-size: 0.625em;
 			}
 		}
 	}
@@ -3199,7 +3669,50 @@ $spinner-sizes: (
 
 .breadcrumbs {
 	padding: $button-padding;
-	li {
-		height: 1rem;
+	height: 36px;
+	display: flex;
+	align-items: center;
+	&.no-padding {
+		padding: 0;
 	}
+	li {
+		//height: 1rem;
+	}
+}
+
+
+
+// 28. Swiper
+// ---------
+.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+	margin: 0 !important;
+}
+.swiper-pagination.timespans {
+	width: 100% !important;
+	border-bottom: $hr-border;
+}
+
+.swiper-pagination-bullet-custom {
+	border-radius: 0 !important;
+	background: none !important;
+		&:hover {
+			background: none;
+			box-shadow: inset 0 -2px rgba($black, 0.17);
+		}
+		&:focus {
+			background: none;
+			outline: none;
+		}
+		&.swiper-pagination-bullet-active {
+			color: inherit !important;
+			background: none;
+			box-shadow: inset 0 -2px $dark-gray;
+
+			&-prev,
+			&-prev-prev,
+			&-next,
+			&-next-next {
+				transform: scale(1) !important;
+			}
+		}
 }

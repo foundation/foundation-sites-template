@@ -76,6 +76,7 @@ $global-transition-long: $global-transition-short * 5;
 $global-transition-timing: ease-in-out;
 $global-transition-timing-cubic-bezier: cubic-bezier(0.8, 0, 0.2, 1.2);
 $global-drop-shadow: 0 5px 20px rgba(0, 0, 0, 0.05), 0 2px 5px rgba(0, 0, 0, 0.15);
+$global-drop-shadow-large: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 $paragraph-font-size: 0.875rem;
 
 // 1. Global
@@ -86,10 +87,10 @@ $global-width: rem-calc(960);
 $global-lineheight: 1.5;
 $foundation-palette: (
 	primary: #668899,
-    secondary: #455a64,
-    success: #28aa6d,
-    warning: #ffae00,
-    alert: #f1484d,
+	secondary: #455a64,
+	success: #28aa6d,
+	warning: #ffae00,
+	alert: #f1484d,
 );
 $light-gray: #eee;
 $medium-gray: #ccc;
@@ -157,7 +158,8 @@ $block-grid-max: 8;
 $header-font-family: $body-font-family;
 $header-font-weight: $global-weight-bold;
 $header-font-style: normal;
-$font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
+// $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
+$font-family-monospace: Monaco, 'Consolas', 'Liberation Mono', 'Courier New', Courier, monospace;
 $header-color: inherit;
 $header-lineheight: 1.3;
 $header-margin-bottom: 0.5rem;
@@ -250,7 +252,7 @@ $input-error-font-weight: $global-weight-normal;
 // 7. Accordion
 // ------------
 
-$accordion-background: $white;
+$accordion-background: transparent;
 $accordion-plusminus: true;
 $accordion-plus-content: '\002B';
 $accordion-minus-content: '\2013';
@@ -258,7 +260,7 @@ $accordion-title-font-size: rem-calc(12);
 $accordion-item-color: $primary-color;
 $accordion-item-background-hover: $very-light-gray;
 $accordion-item-padding: 1.25rem 1rem;
-$accordion-content-background: $white;
+$accordion-content-background: transparent;
 $accordion-content-border: null;
 $accordion-content-color: $body-font-color;
 $accordion-content-padding: 1rem;
@@ -294,7 +296,8 @@ $badge-font-size: 0.6rem;
 // ---------------
 
 $breadcrumbs-margin: 0;
-$breadcrumbs-item-font-size: $small-font-size;
+
+$breadcrumbs-item-font-size: .875rem;
 $breadcrumbs-item-color: $dark-gray;
 $breadcrumbs-item-color-current: $very-dark-gray;
 $breadcrumbs-item-color-disabled: $medium-gray;
@@ -327,7 +330,7 @@ $button-hollow-border-width: 0;
 $button-border: 1px solid transparent;
 $button-hollow-border-width: 1px;
 $button-palette: $foundation-palette;
-$button-opacity-disabled: 0.25;
+$button-opacity-disabled: 0.5;
 $button-background-hover-lightness: -20%;
 $button-hollow-hover-lightness: -20%;
 $button-transition: background-color $global-transition-short $global-transition-timing, color $global-transition-short $global-transition-timing;
@@ -740,7 +743,7 @@ $reveal-padding: $global-padding;
 $reveal-border: none;
 $reveal-radius: $global-radius;
 $reveal-zindex: 1005;
-$reveal-overlay-background: rgba($black, 0.45);
+$reveal-overlay-background: rgba($black, 0.5);
 
 // 48. Slider
 // ----------
@@ -806,7 +809,7 @@ $tab-background-active: $very-light-gray;
 $tab-active-color: $body-font-color;
 $tab-item-font-size: inherit;
 $tab-item-background-hover: $white;
-$tab-item-padding: 0.25rem 1.5rem;
+$tab-item-padding: 0.25rem 0.5rem;
 $tab-content-background: transparent;
 $tab-content-border: $light-gray;
 $tab-content-color: $body-font-color;
