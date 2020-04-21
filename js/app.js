@@ -10,8 +10,6 @@ jQuery.getScript("https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.j
 });
 !function( window, document, $ ){
 
-
-
 	$(document).ready(function() {
 		$('.tabs[data-transition]').map(function() {
 			var el = $(`.tabs-content[data-tabs-content=${this.id}]`);
