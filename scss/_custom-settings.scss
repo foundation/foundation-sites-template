@@ -3610,11 +3610,7 @@ $spinner-sizes: (
 
 // 28. Swiper
 // ---------
-.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
-	margin: 0 !important;
-}
 .swiper-pagination.timespans {
-	width: 100% !important;
 	border-bottom: $hr-border;
 }
 
