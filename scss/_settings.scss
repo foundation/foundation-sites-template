@@ -322,7 +322,7 @@ $button-padding: 0.5rem 0.75rem;
 $button-margin: 0 0 map-get($button-sizes, default) 0;
 $button-fill: solid;
 $button-background: $primary-color;
-$button-background-hover: scale-color($button-background, $lightness: -15%);
+$button-background-hover: scale-color($button-background, $lightness: -20%);
 $button-color: $white;
 $button-color-alt: $black;
 $button-radius: $global-radius;

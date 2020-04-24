@@ -106,6 +106,7 @@ $dynamic-relation: (
 				#{$edge}: 0 multiply-list(extract-from-compact(map-get($padding-sizes, $edge-size), left), $multiplier);
 				@if $negative {
 					max-width: calc(100% + (#{extract-from-compact(map-get($padding-sizes, $edge-size), left)} * 2));
+					width: calc(100% + (#{extract-from-compact(map-get($padding-sizes, $edge-size), left)} * 2));
 				}
 			}
 		}
@@ -1047,6 +1048,7 @@ label[for] {
 .report-card .report-content,
 .page-section .page-content {
 	@include dynamic-box();
+	align-items: flex-start;
 	overflow-wrap: break-word; /* break long links in post-content. */
 
 	.alignfull {
@@ -1733,30 +1735,6 @@ select {
 
 .button {
 	justify-content: center;
-	// border: none;
-	&.hollow {
-		color: get-color(primary);
-		&:hover {
-			color: scale-color(get-color(primary), $lightness: -15%);
-		}
-		@each $color-name, $color in $foundation-palette {
-			&.#{$color-name} {
-				color: $color;
-				border: $button-hollow-border-width solid transparent;
-				&:hover {
-					color: scale-color($color, $lightness: -15%);
-					border: $button-hollow-border-width solid transparent;
-				}
-			}
-		}
-		border: $button-hollow-border-width solid transparent;
-		background-color: transparent;
-		box-shadow: inset 0 0 0 nth($hr-border, 1) currentColor;
-		&:hover {
-			border: $button-hollow-border-width solid transparent;
-			background-color: transparent;
-		}
-	}
 	&.expanded {
 		box-sizing: border-box;
 	}
@@ -1780,46 +1758,72 @@ select {
 		width: initial;
 	}
 	button,
-	.button, select {
+	.button, select, input {
 		margin-bottom: 0;
-		border-radius: 0 !important;
-	}
-	&.hollow {
-		button,
-		.button {
-			color: get-color(primary);
-			&:hover {
-				color: scale-color(get-color(primary), $lightness: -15%);
-			}
-			@each $color-name, $color in $foundation-palette {
-				&.#{$color-name} {
-					color: $color;
-					border: $button-hollow-border-width solid transparent;
-					&:hover {
-						color: scale-color($color, $lightness: -15%);
-						border: $button-hollow-border-width solid transparent;
-					}
-				}
-			}
-			border: $button-hollow-border-width solid transparent;
-			background-color: transparent;
-			box-shadow: inset 0 0 0 nth($hr-border, 1) currentColor;
-			&:hover {
-				border: $button-hollow-border-width solid transparent;
-				background-color: transparent;
-				z-index: 1;
-			}
+		&:hover {
+			z-index: 1;
+		}
+		&:not(:first-child):not(:last-child) {
+			border-radius: 0;
+		}
+		&:first-child:not(:last-child) {
+			border-radius: $global-radius 0 0 $global-radius;
+		}
+		&:last-child:not(:first-child) {
+			margin-right: 0;
+			border-radius: 0 $global-radius $global-radius 0;
+		}
+		&.hollow {
 			&:not(:last-child) {
-				margin-right: -#{nth($hr-border, 1)};
-				margin-bottom: 0;
+				margin-right: -1px;
 			}
 		}
 	}
+	button, .button {
+		&:not(.hollow) + .hollow {
+			margin-left: -2px;
+		}
+	}
+	&.hollow {
+		button,
+		.button, select, input {
+			&:first-child {
+				border-radius: $global-radius 0 0 $global-radius;
+			}
+			&:last-child {
+				border-radius: 0 $global-radius $global-radius 0;
+			}
+			&:not(:last-child) {
+				margin-right: -1px;
+			}
+		}
+	}
+	&.expanded {
+		width: 100%;
+		button,
+		.button, select {
+			&:not(:last-child) {
+				margin-right: 1px;
+			}
+		}
+	}
+}
+.input-group {
+	button,
+	.button,
+	input,
+	.input,
+	select,
+	textarea {
+		margin-bottom: 0;
+	}
+	margin-bottom: $paragraph-margin-bottom;
 }
 button,
 .button,
 input,
 .input,
+select,
 .button-group,
 textarea {
 	&:focus,
@@ -2082,9 +2086,8 @@ $border: 1px solid $very-light-gray;
 		}
 	}
 }
-
-@include breakpoint(medium) {
-	.main-menu .menu {
+.main-menu .menu {
+	&.dropdown {
 		& > .navbar-icon {
 			& > a {
 				& > span {
@@ -2112,10 +2115,7 @@ $border: 1px solid $very-light-gray;
 			}
 		}
 	}
-}
-
-@include breakpoint(small down) {
-	.main-menu .menu {
+	&.accordion-menu {
 		justify-content: space-around;
 
 		& > li {
@@ -2144,20 +2144,18 @@ $border: 1px solid $very-light-gray;
 				color: $dark-gray;
 				fill: currentColor;
 			}
+
+			&:not(.navbar-icon) {
+				display: none;
+
+				#menu-state:checked ~ & {
+					display: block;
+				}
+			}
 		}
 
 		& > .flex-spacer-left {
 			margin-left: initial;
-		}
-	}
-}
-
-@include breakpoint(small) {
-	.main-menu > * > .accordion-menu > li:not(.navbar-icon) {
-		display: none;
-
-		#menu-state:checked ~ & {
-			display: block;
 		}
 	}
 }
@@ -2169,6 +2167,11 @@ $border: 1px solid $very-light-gray;
 	font-weight: bold;
 	align-self: center;
 	border: none;
+}
+.caret-icon {
+	&::after {
+		@extend .caret;
+	}
 }
 .main-menu {
 	.dropdown .menu-anchor:hover {
@@ -3675,11 +3678,36 @@ $spinner-sizes: (
 // 27. Breadcrumbs
 // ---------
 
+
+$breadcrumbs-margin: 0;
+
+$breadcrumbs-item-font-size: .875rem;
+$breadcrumbs-item-color: $dark-gray;
+$breadcrumbs-item-color-current: $very-dark-gray;
+$breadcrumbs-item-color-disabled: $medium-gray;
+$breadcrumbs-item-margin: 0.5rem;
+$breadcrumbs-item-uppercase: false;
+$breadcrumbs-item-separator: true;
+$breadcrumbs-item-separator-item: '·';
+$breadcrumbs-item-separator-item-rtl: '·';
+$breadcrumbs-item-separator-color: $breadcrumbs-item-color;
+
 .breadcrumbs {
 	padding: $button-padding;
 	height: 36px;
 	display: flex;
 	align-items: center;
+	li:not(:last-child)::after {
+		content: '';
+		margin: 0;
+	}
+	li:not(:first-child)::before {
+    content: $breadcrumbs-item-separator-item;
+    position: relative;
+    margin: 0 $breadcrumbs-item-margin;
+    opacity: 1;
+    color: $breadcrumbs-item-separator-color;
+	}
 	&.no-padding {
 		padding: 0;
 	}
@@ -3694,6 +3722,10 @@ $spinner-sizes: (
 // ---------
 .swiper-pagination.timespans {
 	border-bottom: $hr-border;
+}
+
+.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+	transform: scale(1) !important;
 }
 
 .swiper-pagination-bullet-custom {
