@@ -893,17 +893,23 @@ label[for] {
 // 6. Post Card
 // ---------
 
-.post-card, .page-section, .report-card {
+
+.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline{
+	&.ck-blurred, &.ck-focused {
+		@include dynamic-box();
+	}
+}
+.post-card, .page-section, .report-card, .ck-content {
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: normal;
 	}
 }
-.post-card {
+.post-card, .ck-content {
 	h1 {
-		font-size: 1.125rem;
+		font-size: 1.25rem;
 	}
 	h2 {
-		font-size: 1.0625rem;
+		font-size: 1.125rem;
 	}
 	h3 {
 		font-size: 1rem;
@@ -962,6 +968,7 @@ label[for] {
 	.card-divider:last-child .post-images {
 		flex-wrap: wrap;
 		height: map-get($user-card-sizes, small);
+		overflow: hidden;
 		.avatar-container:first-child {
 			overflow: hidden;
 			border-radius: 0 0 0 $card-border-radius;
@@ -1050,6 +1057,9 @@ label[for] {
 	@include dynamic-box();
 	align-items: flex-start;
 	overflow-wrap: break-word; /* break long links in post-content. */
+	&>* {
+		width: 100%;
+	}
 
 	.alignfull {
 		@include dynamic-box($edge: margin, $negative: true, $axis: horizontal);
