@@ -351,15 +351,16 @@ label[for] {
 		overflow: initial;
 	}
 
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		display: flex;
-		align-items: center;
-	}
+	// HTML-Elements in Headings turn into blocks.
+	// h1,
+	// h2,
+	// h3,
+	// h4,
+	// h5,
+	// h6 {
+	// 	display: flex;
+	// 	align-items: center;
+	// }
 
 	&.muted {
 		opacity: 0.5;
