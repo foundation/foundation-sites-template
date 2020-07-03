@@ -2659,6 +2659,7 @@ $icon-line-weight: 2;
 			justify-content: center;
 			color: inherit;
 			min-height: 36px;
+			line-height: initial !important;
 			& > *:last-child:not(:first-child) {
 				margin-left: 0.5em;
 			}
@@ -2700,7 +2701,6 @@ $icon-line-weight: 2;
 			}
 		}
 	}
-
 	&.line {
 		.tabs-title {
 			& > a {
@@ -2731,7 +2731,6 @@ $icon-line-weight: 2;
 			border-top: #{nth($hr-border, 1)} solid rgba($dark-gray, 0.17);
 		}
 	}
-
 	&.bar {
 		border-bottom: none;
 		// &:last-child {
