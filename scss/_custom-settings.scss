@@ -1304,32 +1304,6 @@ label[for] {
 		}
 	}
 }
-.sticky {
-	position: -webkit-sticky;
-	position: sticky;
-	z-index: 200;
-	&.card-divider,
-	&.card-section {
-		background: $card-background;
-	}
-	&[data-sticky-top] {
-		top: 0;
-	}
-	&[data-sticky-bottom] {
-		bottom: 0;
-	}
-	@each $breakpoint, $width in $breakpoints {
-		@include breakpoint($breakpoint) {
-			$grid-padding-gutter: map-get($grid-padding-gutters, #{$breakpoint});
-			&[data-sticky-top="padding"] {
-				top: $grid-padding-gutter / 2;
-			}
-			&[data-sticky-bottom="padding"] {
-				bottom: $grid-padding-gutter / 2;
-			}
-		}
-	}
-}
 .space-info-block {
 	flex-wrap: wrap;
 	display: flex;
