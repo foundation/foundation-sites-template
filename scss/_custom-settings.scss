@@ -32,10 +32,11 @@
 // 1. Mixins and Functions
 // ---------
 
+$button-height: 2.25rem;
 
 $padding-sizes: (
 	small: 0.3125rem,
-	medium: 0.5rem 0.75rem,
+	medium: 0.75rem 0.875rem,
 	large: 1rem 1.25rem,
 	xlarge: 1.5rem 2rem,
 	xxlarge: 1.5rem 2rem,
@@ -439,10 +440,10 @@ label[for] {
 
 .card-section,
 .card-divider {
-	padding: $button-padding;
+	padding: map-get($padding-sizes, medium );
 	&-negative {
-		margin-left: -#{nth($button-padding, 2)};
-		margin-right:-#{nth($button-padding, 2)};
+		margin-left: -#{nth(map-get($padding-sizes, medium ), 2)};
+		margin-right:-#{nth(map-get($padding-sizes, medium ), 2)};
 	}
 	display: flex;
 	flex-direction: column;
@@ -968,6 +969,8 @@ label[for] {
 	}
 	.card-divider:last-child .post-images {
 		flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
 		height: map-get($user-card-sizes, small);
 		overflow: hidden;
 		.avatar-container:first-child {
@@ -981,6 +984,9 @@ label[for] {
 	.dropdown-pane  {
 		width: 150px;
 	}
+}
+.post-card-footer {
+	height: map-get($user-card-sizes, small);
 }
 .main-menu {
 	.notifications-item {
@@ -1303,6 +1309,9 @@ label[for] {
 			}
 		}
 	}
+	.post-card-footer &:last-child {
+		padding: $button-padding;
+	}
 }
 
 .space-info-block {
@@ -1315,7 +1324,7 @@ label[for] {
 	overflow: hidden;
 	line-height: 1.3;
 	text-align: center;
-	white-space: nowrap;
+	// white-space: nowrap; // check if necessary
 	.round > & {
 		border-radius: 1rem;
 	}
@@ -1475,12 +1484,12 @@ label[for] {
 		}
 	}
 	.switch-paddle::before{
-		height: 2rem;
+		height: $button-height;
 		border-radius: 20px
 	}
 	 .switch-paddle::after {
-		width:2rem;
-		height:2rem;
+		width: $button-height;
+		height: $button-height;
 		box-shadow: inset 0 0 0 2px $medium-gray !important;
 	}
 
@@ -1675,7 +1684,7 @@ label[for] {
 // 11. Button & Input
 // ---------
 
-$input-height: 2rem;
+$input-height: $button-height;
 
 [type="text"],
 [type="password"],
@@ -1731,7 +1740,11 @@ select {
 		}
 	}
 }
-
+input, .input {
+	&.clear {
+		border-color: transparent;
+	}
+}
 .help-text {
 	margin-top: 0.375rem;
 	font-size: 0.75rem;
@@ -1746,6 +1759,10 @@ select {
 
 .button {
 	justify-content: center;
+	align-items: center;
+	&:not(.small) {
+		min-height: $button-height;
+	}
 	&.expanded {
 		box-sizing: border-box;
 	}
@@ -1837,6 +1854,7 @@ input,
 select,
 .button-group,
 textarea {
+	line-height: $form-label-line-height;
 	&:focus,
 	&:active {
 		outline: none;
@@ -1888,8 +1906,8 @@ textarea {
 .add {
 	cursor: pointer;
 	z-index: 50;
-	width: 2.25rem;
-	height: 2rem;
+	width: $button-height;
+	height: $button-height;
 	color: $dark-gray;
 
 	&:hover {
@@ -1901,7 +1919,7 @@ textarea {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 2.25rem;
+		width: $button-height;
 		line-height: 0;
 		font-weight: $global-weight-bold;
 		font-size: 1.25rem;
@@ -1926,7 +1944,7 @@ textarea {
 .add {
 	&::after {
 		content: "+";
-		height: 2rem;
+		height: $button-height;
 	}
 }
 .reply-button {
@@ -2371,10 +2389,15 @@ li {
 
 .icons {
 	&.icon-left {
-		li {
-			i {
-				margin-right: 0.5rem;
-			}
+		i {
+			margin-left: 0;
+			margin-right: 0.5rem;
+		}
+	}
+	&.icon-right {
+		i {
+			margin-left: 0.5rem;
+			margin-right: 0;
 		}
 	}
 }
@@ -2476,10 +2499,16 @@ $icon-line-weight: 2;
 		}
 	}
 	.spinner-container {
-		margin-left: -2rem;
-		margin-top: 1.125rem;
-		width: 2rem;
 		z-index: 100;
+		transform: translateX(-100%);
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: $user-card-default-size;
+		width: $user-card-default-size;
+		margin-left: calc(-#{$user-card-default-size} / 2);
+		margin-right: calc(-#{$user-card-default-size} / 2);
 	}
 	&:not(.is-active) {
 		.spinner-container {
@@ -3029,7 +3058,7 @@ $icon-line-weight: 2;
 
 				width: calc(100% + #{$gutter});
 				margin: calc(-#{$gutter} / 2);
-				padding: $gutter-padding;
+				// padding: $gutter-padding;
 
 
 				&.scroll-snap-grid-container {
@@ -3626,7 +3655,7 @@ $spinner-sizes: (
 		border: $input-border;
 		border-radius: $global-radius;
 		padding: $input-padding / 2;
-		min-height: 2rem;
+		min-height: $button-height;
 		input {
 			border-radius: 0;
 			box-shadow: none;
@@ -3703,7 +3732,7 @@ $breadcrumbs-item-separator-item-rtl: '·';
 $breadcrumbs-item-separator-color: $breadcrumbs-item-color;
 
 .breadcrumbs {
-	padding: $button-padding;
+	padding: map-get($padding-sizes, medium);
 	height: 36px;
 	display: flex;
 	align-items: center;
