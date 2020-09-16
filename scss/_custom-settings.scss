@@ -3057,8 +3057,7 @@ $icon-line-weight: 2;
 
 				width: calc(100% + #{$gutter});
 				margin: calc(-#{$gutter} / 2);
-				// padding: $gutter-padding;
-
+				padding: $gutter-padding; // took me an hour to find. commenting this out destroys the home-layout (sidebar)
 
 				&.scroll-snap-grid-container {
 					width: 100vw;
