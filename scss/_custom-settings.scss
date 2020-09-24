@@ -3169,6 +3169,23 @@ $icon-line-weight: 2;
 		box-shadow: inset -#{$global-gutter-large} 0 calc(#{$global-gutter-large} / 2) calc(-#{$global-gutter-large} / 2) $body-background;
 		right: 0;
 	}
+
+	@each $breakpoint, $width in $breakpoints {
+		@include breakpoint(#{$breakpoint} up) {
+			.no-overflow-#{$breakpoint} {
+				@for $i from 1 through $grid-column-count {
+					$n: $i + 1;
+					&.snap-show-#{$i} {
+						.event-item {
+							&:nth-child(n+#{$n}) {
+								display: none;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 // 19. Utilities
