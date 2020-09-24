@@ -582,7 +582,6 @@ label[for] {
 		max-height: 3em;
 
 		@include breakpoint(large) {
-			white-space: nowrap;
 			max-height: initial;
 		}
 	}
