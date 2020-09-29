@@ -1075,7 +1075,7 @@ label[for] {
 				margin-bottom: 1rem;
 			}
 		}
-		img {
+		&>* {
 			@include xy-gutters($gutters: $grid-container-padding, $negative: true);
 			@each $breakpoint, $width in $breakpoints {
 				@include breakpoint($breakpoint) {
