@@ -1545,6 +1545,11 @@ label[for] {
 		}
 	}
 }
+
+label>[disabled] ~* {
+	opacity: 0.5; // we use nested labels. if a label inside a label is disabled, we assume that the siblings are also disabled.
+}
+
 .checkbox-label,
 .radio-label {
 	position: relative;
