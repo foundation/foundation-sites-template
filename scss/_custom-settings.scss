@@ -895,9 +895,19 @@ label[for] {
 // ---------
 
 
-.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline{
-	&.ck-blurred, &.ck-focused {
-		@include dynamic-box();
+#respond {
+	.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
+		&.ck-blurred, &.ck-focused {
+			margin: map-get($padding-sizes, small);
+		}
+	}
+}
+.spaces-editor-container {
+	.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
+		&.ck-blurred, &.ck-focused {
+			@include dynamic-box();
+			margin: map-get($padding-sizes, medium);
+		}
 	}
 }
 .post-card, .page-section, .report-card, .ck-content {
