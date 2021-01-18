@@ -278,7 +278,7 @@ a {
 }
 .text-truncate {
 	display: block;
-	flex-shrink: 1;
+	flex: 1;
 }
 .hover-underline:hover {
 	text-decoration: underline;
@@ -978,14 +978,13 @@ label[for] {
 	}
 	.card-divider:last-child .post-images {
 		flex-wrap: wrap;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
+		flex-direction: row-reverse;
+		justify-content: flex-end;
 		height: map-get($user-card-sizes, small);
+		min-width: map-get($user-card-sizes, small);
+		max-width: 20%;
 		overflow: hidden;
-		.avatar-container:first-child {
-			overflow: hidden;
-			border-radius: 0 0 0 $card-border-radius;
-		}
+		border-radius: 0 0 0 $card-border-radius;
 	}
 	.user:not(:first-child) {
 		border-top: $hr-border;
@@ -996,6 +995,7 @@ label[for] {
 }
 .post-card-footer {
 	height: map-get($user-card-sizes, small);
+	box-sizing: content-box;
 }
 .main-menu {
 	.notifications-item {
@@ -1018,6 +1018,12 @@ label[for] {
 }
 .notification-post {
 	color: $black;
+}
+.dot-list {
+	&>*:not(:last-child):after {
+		content: "\00b7";
+		margin: 0 0.5em;
+	}
 }
 .dot-after {
 	&:after {
@@ -1126,6 +1132,9 @@ label[for] {
 	img {
 		// this shows the upper third of the image. think about images with people where you don't want to crop heads...
 		object-position: 50% 33%;
+		&[src=""], &:not([src]) {
+			display: none;
+		}
 	}
 
 	img,
@@ -1314,6 +1323,7 @@ label[for] {
 				span {
 					overflow: hidden;
 					text-overflow: ellipsis;
+					white-space: nowrap;
 				}
 			}
 		}
@@ -1321,7 +1331,15 @@ label[for] {
 	.post-card-footer &:last-child {
 		padding: $button-padding;
 	}
+	&.no-margin {
+		margin: 0 -3px;
+	}
 }
+
+// $space-info-block-padding: 0.1875em 0.375em 0.125em;
+$space-info-block-padding: 0.1875em 0.375em 0.03125em;
+$space-info-block-padding-round: 0.1875em 0.75em 0.03125em;
+
 .space-info-block {
 	flex-wrap: wrap;
 	display: flex;
@@ -1333,10 +1351,15 @@ label[for] {
 	line-height: 1.3;
 	text-align: center;
 	// white-space: nowrap; // check if necessary
-	.round > & {
-		border-radius: 1rem;
+	.round > &, &.round {
+		border-radius: 2rem;
 	}
-
+	&.hollow {
+		border: 1px solid $very-dark-gray;
+		&, span, span:last-child {
+			background: none;
+		}
+	}
 	&.clear {
 		width: 100%;
 		background: none;
@@ -1349,8 +1372,8 @@ label[for] {
 		&:last-child {
 			margin-bottom: 0;
 		}
-		& span,
-		& a {
+		&>span,
+		&>a {
 			color: $black;
 			display: block;
 			padding: 0;
@@ -1362,12 +1385,12 @@ label[for] {
 		}
 	}
 
-	& span {
+	&>span {
 		display: inline-block;
-		padding: 0.25em 0.375em 0.125em;
+		padding: $space-info-block-padding;
 		.round > & {
 			border-radius: 1rem;
-			padding: 0.25em 0.75em 0.125em;
+			padding: $space-info-block-padding-round;
 		}
 
 		&:last-child {
@@ -1378,7 +1401,7 @@ label[for] {
 
 	& a {
 		display: inline-block;
-		padding: 0.25em 0.375em 0.125em;
+		padding: $space-info-block-padding;
 		background: $light-gray;
 		color: inherit;
 	}
@@ -1860,13 +1883,13 @@ input, .input {
 	}
 	margin-bottom: $paragraph-margin-bottom;
 }
-button,
+// button,
+// input,
+// select,
+// textarea,
 .button,
-input,
 .input,
-select,
-.button-group,
-textarea {
+.button-group {
 	line-height: $form-label-line-height;
 	&:focus,
 	&:active {
