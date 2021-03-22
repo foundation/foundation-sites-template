@@ -982,7 +982,7 @@ label[for] {
 		justify-content: flex-end;
 		height: map-get($user-card-sizes, small);
 		min-width: map-get($user-card-sizes, small);
-		max-width: 20%;
+		max-width: 40%;
 		overflow: hidden;
 		border-radius: 0 0 0 $card-border-radius;
 	}
@@ -993,7 +993,7 @@ label[for] {
 		width: 150px;
 	}
 }
-.post-card-footer {
+.post-card-footer, .activity-card-footer {
 	height: map-get($user-card-sizes, small);
 	box-sizing: content-box;
 }
@@ -3345,13 +3345,20 @@ $icon-line-weight: 2;
 	}
 }
 .orbit-bullets {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
 	button {
 		cursor: pointer;
+		border: $hr-border
 	}
 }
 
 .orbit-container {
 	max-height: 60vh;
+	display: flex;
+	align-items: center;
+	background: $very-light-gray;
 }
 
 .orbit-slide {

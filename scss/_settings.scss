@@ -554,8 +554,8 @@ $maincontent-class: 'off-canvas-content';
 // 26. Orbit
 // ---------
 
-$orbit-bullet-background: $light-gray;
-$orbit-bullet-background-active: $medium-gray;
+$orbit-bullet-background: rgba($light-gray, 0.5);
+$orbit-bullet-background-active: $white;
 $orbit-bullet-diameter: 0.75rem;
 $orbit-bullet-margin: 0.25rem;
 $orbit-bullet-margin-top: 0.5rem;
