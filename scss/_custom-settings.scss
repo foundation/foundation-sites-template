@@ -978,8 +978,7 @@ label[for] {
 	}
 	.card-divider:last-child .post-images {
 		flex-wrap: wrap;
-		flex-direction: row-reverse;
-		justify-content: flex-end;
+		flex-direction: row;
 		height: map-get($user-card-sizes, small);
 		min-width: map-get($user-card-sizes, small);
 		max-width: 40%;
