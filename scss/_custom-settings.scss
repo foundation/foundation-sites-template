@@ -3672,8 +3672,7 @@ $spinner-sizes: (
 // ---------
 
 .callout {
-	@include foundation-palette();
-	border: none;
+	@include foundation-palette($property: "border-color");
 	&:last-child {
 		margin-bottom: 0;
 	}
