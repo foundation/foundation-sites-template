@@ -83,7 +83,7 @@ $paragraph-font-size: 0.875rem;
 // ---------
 
 $global-font-size: 16px;
-$global-width: rem-calc(960);
+$global-width: rem-calc(1280);
 $global-lineheight: 1.5;
 $foundation-palette: (
 	primary: #668899,
@@ -147,7 +147,7 @@ $grid-column-count: 12;
 $grid-column-gutter: (
 	small: $global-gutter-small,
 	medium: $global-gutter-small,
-	);
+);
 $grid-column-align-edge: true;
 $grid-column-alias: 'columns';
 $block-grid-max: 8;

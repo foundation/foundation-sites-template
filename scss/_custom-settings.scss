@@ -61,10 +61,10 @@ $user-card-default-size: map-get($user-card-sizes, medium);
 	@each $color-name, $color in $foundation-palette {
 		#{$selector}.#{$color-name} #{$child} {
 			#{$property}: $color;
-			@if $property== "background" {
+			@if $property == "background" {
 				color: color-pick-contrast($color);
 			}
-			@if $hover== "true" {
+			@if $hover == "true" {
 				&:hover {
 					#{$property}: scale-color($color, $lightness: -15%);
 				}
@@ -583,6 +583,16 @@ label[for] {
 
 		@include breakpoint(large) {
 			max-height: initial;
+		}
+
+		&>* {
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			hyphens: auto;
+			overflow: hidden;
+			padding: 2px;
+			margin: -2px;
 		}
 	}
 }
@@ -1333,18 +1343,26 @@ label[for] {
 	&.no-margin {
 		margin: 0 -3px;
 	}
+	@each $color-name, $color in $foundation-palette {
+		&.#{$color-name} span {
+			background: $light-gray;
+			border-color: $light-gray;
+		}
+	}
+	@include foundation-palette($child: ".space-info-block span:last-child", $property: "border-color", $hover: "false");
+	@include foundation-palette($child: ".space-info-block span:last-child", $property: "background", $hover: "false");
 }
 
 // $space-info-block-padding: 0.1875em 0.375em 0.125em;
-$space-info-block-padding: 0.1875em 0.375em 0.125em;
-$space-info-block-padding-round: 0.1875em 0.75em 0.125em;
+$space-info-block-padding: 0.375em 0.5em 0.25em;
+$space-info-block-padding-round: 0.375em 0.875em 0.25em;
 
 .space-info-block {
 	flex-wrap: wrap;
 	display: flex;
 	background: $very-light-gray;
-	color: $very-dark-gray;
-	margin: 3px;
+	color: $black;
+	margin: 0.25em;
 	border-radius: $global-radius;
 	overflow: hidden;
 	line-height: 1.3;
@@ -1387,14 +1405,22 @@ $space-info-block-padding-round: 0.1875em 0.75em 0.125em;
 
 	&>span {
 		display: inline-block;
+		border: 1px solid $light-gray;
 		padding: $space-info-block-padding;
 		.round > & {
 			border-radius: 1rem;
 			padding: $space-info-block-padding-round;
 		}
 
+		&:first-child {
+			border-top-left-radius: $global-radius;
+			border-bottom-left-radius: $global-radius;
+		}
 		&:last-child {
 			@include foundation-palette($property: "background", $hover: "false");
+			@include foundation-palette($property: "border-color", $hover: "false");
+			border-top-right-radius: $global-radius;
+			border-bottom-right-radius: $global-radius;
 			background: $light-gray;
 		}
 	}
@@ -1709,6 +1735,9 @@ label>[disabled] ~* {
 	}
 	.radio-accordion-item {
 		padding: 0.625rem 0;
+		&:last-child {
+			padding-bottom: 0;
+		}
 	}
 	.radio-label::before {
 		position: relative;
@@ -2799,14 +2828,14 @@ $icon-line-weight: 2;
 			min-width: auto;
 			overflow: initial;
 			span {
-				transition-duration: $global-transition-long;
-				overflow: hidden;
 				max-width: 150px;
-				line-height:$header-lineheight;
+				transition: max-width $global-transition-long;
+				line-height: $header-lineheight;
+				overflow: hidden;
 			}
 			&:not(.is-active) {
 				span {
-					transition-duration: $global-transition-medium;
+					transition: all $global-transition-medium;
 					margin-left: 0;
 					max-width: 0;
 				}
@@ -3339,6 +3368,37 @@ $icon-line-weight: 2;
 		}
 	}
 }
+.gutter {
+	@each $breakpoint, $width in $breakpoints {
+		@include breakpoint( #{$breakpoint} only ) {
+			$gutter: map-get(
+				$grid-margin-gutters,
+				#{$breakpoint}
+			);
+			margin: $gutter;
+			&-vertical {
+				margin-top: $gutter;
+				margin-bottom: $gutter;
+			}
+			&-horizontal {
+				margin-left: $gutter;
+				margin-right: $gutter;
+			}
+			&-left {
+				margin-left: $gutter;
+			}
+			&-top {
+				margin-top: $gutter;
+			}
+			&-right {
+				margin-right: $gutter;
+			}
+			&-bottom {
+				margin-bottom: $gutter;
+			}
+		}
+	}
+}
 .flex {
 	display: flex !important;
 }
@@ -3353,6 +3413,18 @@ $icon-line-weight: 2;
 }
 .flex-nowrap {
 	flex-wrap: nowrap;
+}
+.flex-grow-1 {
+	flex-grow: 1;
+}
+.flex-grow-0 {
+	flex-grow: 0;
+}
+.flex-shrink-1 {
+	flex-shrink: 1;
+}
+.flex-shrink-0 {
+	flex-shrink: 0;
 }
 
 // 20. Orbit
