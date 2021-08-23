@@ -135,6 +135,36 @@ $dynamic-relation: (
 	}
 }
 
+
+@mixin header-list($scale: (
+	h1: h1,
+	h2: h2,
+	h3: h3,
+	h4: h4,
+	h5: h5,
+	h6: h6,
+), $property-list: null) {
+	@each $breakpoint in ('small', 'medium', 'large') {
+		@include breakpoint($breakpoint) {
+			@each $header-size, $properties in map-get($header-styles, $breakpoint) {
+				$h: map-get($scale, $header-size); // h1 -> h3
+				$size: map-get(map-get($header-styles, $breakpoint), $h); // small -> ()
+				#{$header-size} {
+					font-weight: normal;
+					@each $label, $value in $size {
+						@if $property-list == null or index($property-list, $label) {
+							@if type-of($value) == 'number' {
+								$value: rem-calc($value);
+							}
+							#{$label}: $value;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 @function strip-unit($number) {
 	@if type-of($number) == "number" and not unitless($number) {
 		@return $number / ($number * 0 + 1);
@@ -905,6 +935,27 @@ label[for] {
 // ---------
 
 
+
+.user-generated-content {
+	@include header-list();
+}
+.user-generated-content-overview, .ck-content {
+	@include header-list((
+		h1: h3,
+		h2: h4,
+		h3: h5,
+		h4: h6,
+		h5: h6,
+		h6: h6,
+	), ('font-size'));
+	.card-header {
+		[title] {
+			margin-top: 0.25em;
+		}
+	}
+}
+
+
 #respond {
 	.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
 		&.ck-blurred, &.ck-focused {
@@ -918,60 +969,6 @@ label[for] {
 			@include dynamic-box();
 			margin: map-get($padding-sizes, medium);
 		}
-	}
-}
-.post-card, .page-section, .report-card, .ck-content {
-	h1, h2, h3, h4, h5, h6 {
-		font-weight: normal;
-	}
-}
-.post-card, .ck-content {
-	h1 {
-		font-size: 1.25rem;
-	}
-	h2 {
-		font-size: 1.125rem;
-	}
-	h3 {
-		font-size: 1rem;
-	}
-	h4 {
-		font-size: 0.875rem;
-		color: $dark-gray;
-	}
-	h5 {
-		font-size: 0.875rem;
-		font-style: italic;
-		color: $dark-gray;
-	}
-	h6 {
-		font-size: 0.75rem;
-		font-style: italic;
-		color: $dark-gray;
-	}
-}
-.page-section, .report-card {
-	h1 {
-		font-size: 1.5rem;
-	}
-	h2 {
-		font-size: 1.25rem;
-	}
-	h3 {
-		font-size: 1.125rem;
-	}
-	h4 {
-		font-size: 1rem;
-		color: $dark-gray;
-	}
-	h5 {
-		font-size: 0.875rem;
-		color: $dark-gray;
-	}
-	h6 {
-		font-size: 0.875rem;
-		font-style: italic;
-		color: $dark-gray;
 	}
 }
 .post-card,
@@ -1081,6 +1078,15 @@ label[for] {
 .report-card .report-header,
 .page-section .page-header {
 	@include dynamic-box();
+	@include breakpoint(medium) {
+		@include dynamic-box($edge: margin);
+	}
+}
+.report-card .report-content,
+.page-section .page-content {
+	@include breakpoint(medium) {
+		@include dynamic-box($edge: margin);
+	}
 }
 .post-card .post-content,
 .report-card .report-content,
