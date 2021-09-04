@@ -1078,15 +1078,6 @@ label[for] {
 .report-card .report-header,
 .page-section .page-header {
 	@include dynamic-box();
-	@include breakpoint(medium) {
-		@include dynamic-box($edge: margin);
-	}
-}
-.report-card .report-content,
-.page-section .page-content {
-	@include breakpoint(medium) {
-		@include dynamic-box($edge: margin);
-	}
 }
 .post-card .post-content,
 .report-card .report-content,
@@ -1401,6 +1392,7 @@ $space-info-block-padding-round: 0.375em 0.875em 0.25em;
 		&>a {
 			display: block;
 			padding: 0;
+			border: none;
 
 			&:last-child {
 				color: $black;
@@ -1860,12 +1852,18 @@ input, .input {
 .button-group {
 	border-radius: $global-radius;
 	overflow: hidden;
+	--gap: 1px;
+	--gap-legacy: 0;
+	gap: var(--gap);
+	@supports not (gap: var(--gap)) {
+		--gap-legacy: var(--gap);
+	}
 	input {
 		width: initial;
 	}
-	button,
-	.button, select, input {
+	button, .button, select, input {
 		margin-bottom: 0;
+		margin-right: var(--gap-legacy);
 		&:hover {
 			z-index: 1;
 		}
@@ -1883,6 +1881,10 @@ input, .input {
 			&:not(:last-child) {
 				margin-right: -1px;
 			}
+		}
+		&.expanded {
+			flex: 1;
+			width: initial;
 		}
 	}
 	button, .button {
