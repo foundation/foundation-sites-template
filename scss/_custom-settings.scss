@@ -498,23 +498,23 @@ label[for] {
 		}
 	}
 	&.no-padding {
-		[type="text"],
-		[type="password"],
-		[type="date"],
-		[type="datetime"],
-		[type="datetime-local"],
-		[type="month"],
-		[type="week"],
-		[type="email"],
-		[type="number"],
-		[type="search"],
-		[type="tel"],
-		[type="time"],
-		[type="url"],
-		[type="color"],
-		textarea,
-		select,
-		.input {
+		& > [type="text"],
+		& > [type="password"],
+		& > [type="date"],
+		& > [type="datetime"],
+		& > [type="datetime-local"],
+		& > [type="month"],
+		& > [type="week"],
+		& > [type="email"],
+		& > [type="number"],
+		& > [type="search"],
+		& > [type="tel"],
+		& > [type="time"],
+		& > [type="url"],
+		& > [type="color"],
+		& > textarea,
+		& > select,
+		& > .input {
 			border: none;
 			resize: none;
 		}
@@ -1576,6 +1576,9 @@ $space-info-block-padding-round: 0.375em 0.875em 0.25em;
 		margin-left: 10px;
 	}
 }
+.switch-input {
+	pointer-events: none;
+}
 
 .checkbox,
 .radio {
@@ -1597,8 +1600,8 @@ $space-info-block-padding-round: 0.375em 0.875em 0.25em;
 		font-size: $switch-height-large;
 	}
 	.label-wrapper {
-		&>span {
-			padding-right: 0.5rem;
+		&>label {
+			padding-left: 0.5rem;
 		}
 	}
 }
@@ -1925,6 +1928,9 @@ input, .input {
 	textarea {
 		margin-bottom: 0;
 	}
+	input.clear:not(:focus) {
+		border-color: transparent;
+	}
 	margin-bottom: $paragraph-margin-bottom;
 }
 // button,
@@ -1944,13 +1950,13 @@ input, .input {
 		margin-bottom: 0;
 	}
 
-	.card-section.no-padding:not(:first-child) &,
-	.card-divider.no-padding:not(:first-child) & {
+	.card-section.no-padding:not(:first-child) > &,
+	.card-divider.no-padding:not(:first-child) > & {
 		border-top-left-radius: 0;
 		border-top-right-radius: 0;
 	}
-	.card-section.no-padding:not(:last-child) &,
-	.card-divider.no-padding:not(:last-child) & {
+	.card-section.no-padding:not(:last-child) > &,
+	.card-divider.no-padding:not(:last-child) > & {
 		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 0;
 	}
@@ -3804,8 +3810,11 @@ $spinner-sizes: (
 
 .callout {
 	@include foundation-palette($property: "border-color");
-	&:last-child {
+	&:not(.cell):last-child {
 		margin-bottom: 0;
+	}
+	p {
+		line-height: $global-lineheight;
 	}
 }
 
