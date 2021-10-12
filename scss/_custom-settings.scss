@@ -2547,6 +2547,29 @@ i.fa {
 	font-style: normal;
 }
 
+// allow slashing any icon.
+.fa.slash::after,
+.fas.slash::after {
+    position: absolute;
+    transform: translateX(-90%);
+    /* fa-slash */
+    content: "\f715";
+    text-shadow: 0px 2px white;
+    animation-duration: 0.3s;
+    animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    animation-name: clip-top-left-to-bottom-right;
+}
+
+@keyframes clip-top-left-to-bottom-right {
+    from {
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    }
+    to {
+        /* full square */
+        clip-path: polygon(100% 100%, 100% 0%, 0 0, 0% 100%);
+    }
+}
+
 $icon-line-weight: 2;
 
 .sandwich-icon,
