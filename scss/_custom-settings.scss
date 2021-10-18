@@ -3389,26 +3389,26 @@ $icon-line-weight: 2;
 				$grid-margin-gutters,
 				#{$breakpoint}
 			);
-			margin: $gutter;
+			margin: $gutter !important;
 			&-vertical {
-				margin-top: $gutter;
-				margin-bottom: $gutter;
+				margin-top: $gutter !important;
+				margin-bottom: $gutter !important;
 			}
 			&-horizontal {
-				margin-left: $gutter;
-				margin-right: $gutter;
+				margin-left: $gutter !important;
+				margin-right: $gutter !important;
 			}
 			&-left {
-				margin-left: $gutter;
+				margin-left: $gutter !important;
 			}
 			&-top {
-				margin-top: $gutter;
+				margin-top: $gutter !important;
 			}
 			&-right {
-				margin-right: $gutter;
+				margin-right: $gutter !important;
 			}
 			&-bottom {
-				margin-bottom: $gutter;
+				margin-bottom: $gutter !important;
 			}
 		}
 	}
