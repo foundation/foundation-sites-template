@@ -33,7 +33,6 @@
   },
   "private": true,
   "browserslist": [
-    "last 2 versions",
-    "ie >= 9"
+    "last 2 versions"
   ]
 }
