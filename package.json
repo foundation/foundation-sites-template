@@ -20,12 +20,13 @@
     "what-input": ">=5.2.10"
   },
   "devDependencies": {
-    "autoprefixer": "^9.4.5",
+    "autoprefixer": "^10.3.4",
     "browser-sync": "^2.18.13",
     "gulp": "^4.0.0",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-postcss": "^8.0.0",
-    "gulp-sass": "^4.1.1"
+    "gulp-load-plugins": "^2.0.7",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^4.1.1",
+    "postcss": "^8.3.11"
   },
   "repository": {
     "type": "git",
