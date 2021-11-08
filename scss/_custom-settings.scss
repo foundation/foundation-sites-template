@@ -956,21 +956,6 @@ label[for] {
 }
 
 
-#respond {
-	.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
-		&.ck-blurred, &.ck-focused {
-			margin: map-get($padding-sizes, small);
-		}
-	}
-}
-.spaces-editor-container {
-	.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
-		&.ck-blurred, &.ck-focused {
-			@include dynamic-box();
-			margin: map-get($padding-sizes, medium);
-		}
-	}
-}
 .post-card,
 .activity-card {
 	a:first-child .post-feature-image,
