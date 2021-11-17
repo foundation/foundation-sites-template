@@ -2810,6 +2810,8 @@ $icon-line-weight: 2;
 		font-size: $global-font-size;
 	}
 	.tabs-title {
+		display: flex;
+		align-items: center;
 		text-align: center;
 		float: initial;
 		min-width: 0;
@@ -2817,6 +2819,8 @@ $icon-line-weight: 2;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		& > a {
+			overflow: hidden;
+			flex: 1;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -2837,7 +2841,6 @@ $icon-line-weight: 2;
 			& > a {
 				background: $very-light-gray;
 			}
-		}
 	}
 
 	&.expanded {
