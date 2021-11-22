@@ -1,8 +1,8 @@
-var gulp          = require('gulp');
-var browserSync   = require('browser-sync').create();
-var $             = require('gulp-load-plugins')();
-var autoprefixer  = require('autoprefixer');
-//var sourcemaps = require('gulp-sourcemaps');
+var gulp         = require('gulp');
+var browserSync  = require('browser-sync').create();
+var $            = require('gulp-load-plugins')();
+var autoprefixer = require('autoprefixer');
+var gsass        = require('gulp-sass')(require('node-sass'));
 
 var sassPaths = [
   'node_modules/foundation-sites/scss',
@@ -10,26 +10,25 @@ var sassPaths = [
 ];
 
 function sass( path ) {
-	return gulp.src( path )
-		//.pipe(sourcemaps.init())
-    .pipe($.sass({
+  return gulp.src( path )
+    //.pipe(sourcemaps.init())
+    .pipe(gsass({
       includePaths: sassPaths,
       outputStyle: 'compressed' // if css compressed **file size**
     })
-    .on('error', $.sass.logError))
+      .on('error', gsass.logError))
     .pipe($.postcss([
-      autoprefixer({ overrideBrowserslist: ['last 2 versions', 'ie >= 9'] })
-		]))
-		//.pipe(sourcemaps.write('./maps'))
+      autoprefixer()
+    ]))
     .pipe(gulp.dest('css'))
     .pipe(browserSync.stream());
 };
 
 function sassFrontend(){
-	return sass('scss/app.scss');
+  return sass('scss/app.scss');
 }
 function sassBackend(){
-	return sass('scss/app-backend.scss');
+  return sass('scss/app-backend.scss');
 }
 
 

@@ -14,19 +14,22 @@
     "email": "foundation@zurb.com"
   },
   "dependencies": {
-    "foundation-sites": "^6.6.3",
-    "jquery": "^3.5.0",
+    "foundation-sites": "^6.7.4",
+    "jquery": ">=3.6.0",
     "motion-ui": "~2.0.0",
-    "what-input": "^5.2.7"
+    "what-input": ">=5.2.10"
   },
   "devDependencies": {
-    "autoprefixer": "^9.7.6",
-    "browser-sync": "^2.26.7",
+    "autoprefixer": "^10.3.4",
+    "node-sass": "^6.0.1",
+    "browser-sync": "^2.18.13",
     "gulp": "^4.0.2",
-    "gulp-load-plugins": "^1.6.0",
-    "gulp-postcss": "^8.0.0",
-    "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.5"
+    "gulp-load-plugins": "^2.0.7",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^5.0.0",
+    "stylelint": "^14.1.0",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-config-standard-scss": "^3.0.0"
   },
   "repository": {
     "type": "git",

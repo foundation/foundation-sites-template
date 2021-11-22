@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "stylelint-config-recommended-scss",
+    "stylelint-config-standard"
+  ],
+  "rules": {
+    "indentation": [
+      "tab"
+    ],
+    "color-function-notation": "legacy",
+    "function-blacklist": [
+      "/^rgb/",
+      "/^rgba/"
+    ]
+  }
+}
