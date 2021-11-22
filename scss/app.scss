@@ -1,14 +1,10 @@
 @charset 'utf-8';
-@import 'settings';
-@import 'foundation';
-@import 'motion-ui';
 
-@import 'custom-foundation-global-styles-not-prefixed'; // a partial copy (first part) of the foundation-global-styles mixin.
-
-@import 'custom-foundation-global-styles-prefixed'; // a partial copy (second part) of the foundation-global-styles mixin.
-@import 'custom-foundation-includes';
-@import 'custom-settings';
-
-@import 'kisd-settings';
-
-@import 'fonts';
+@import "settings";
+@import "foundation";
+@import "motion-ui";
+@import "custom-foundation-global-styles-not-prefixed"; // a partial copy (first part) of the foundation-global-styles mixin.
+@import "custom-foundation-global-styles-prefixed"; // a partial copy (second part) of the foundation-global-styles mixin.
+@import "custom-foundation-includes";
+@import "custom-settings";
+@import "fonts";

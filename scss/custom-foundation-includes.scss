@@ -4,9 +4,7 @@
 
 @include foundation-forms;
 @include foundation-typography;
-
 @include foundation-xy-grid-classes;
-
 
 // Generic components
 @include foundation-button;
@@ -53,6 +51,7 @@
 @include foundation-flex-classes;
 
 // Motion UI
-@import 'motion-ui';
+@import "motion-ui";
+
 @include motion-ui-transitions;
 @include motion-ui-animations;
