@@ -2,17 +2,35 @@
 
 // These styles are applied to a <meta> tag, which is read by the Foundation JavaScript
 .foundation-mq {
-    font-family: '#{-zf-bp-serialize($breakpoints)}';
+	font-family: "#{-zf-bp-serialize($breakpoints)}";
 }
 
 html {
-    box-sizing: border-box;
-    font-size: $global-font-size;
+	box-sizing: border-box;
+	font-size: $global-font-size;
 }
 
 // Set box-sizing globally to handle padding and border widths
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+	box-sizing: inherit;
 }
+
+// Details
+details {
+	&>summary {
+		display: inline-block;
+		cursor: pointer;
+		&::before {
+			content: "▶";
+			margin-right: .5rem;
+			display: inline-block;
+			transition: all 0.15s ease;
+		}
+	}
+	&[open] summary::before {
+		transform: rotate(90deg);
+	}
+}
+
