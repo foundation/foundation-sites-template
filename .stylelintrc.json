@@ -1,7 +1,6 @@
 {
   "extends": [
-    "stylelint-config-recommended-scss",
-    "stylelint-config-standard"
+    "stylelint-config-recommended-scss"
   ],
   "rules": {
     "indentation": [
@@ -11,6 +10,7 @@
     "function-blacklist": [
       "/^rgb/",
       "/^rgba/"
-    ]
+    ],
+    "alpha-value-notation": "number"
   }
 }
