@@ -326,7 +326,7 @@ $button-sizes: (
 );
 $button-font-family: inherit;
 $button-font-weight: null;
-$button-padding: 0.5rem 0.75rem;
+$button-padding: 0.5rem 0.75rem; // same as button padding.
 $button-margin: 0 0 map-get($button-sizes, default) 0;
 $button-fill: solid;
 $button-background: $primary-color;
@@ -505,7 +505,7 @@ $label-color: $white;
 $label-color-alt: $black;
 $label-palette: $foundation-palette;
 $label-font-size: $paragraph-font-size;
-$label-padding: 0.375rem 0.5rem;
+$label-padding: 0.5rem 0.75rem; // same as button padding
 $label-radius: $global-radius;
 
 // 22. Media Object
