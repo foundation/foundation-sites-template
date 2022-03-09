@@ -335,7 +335,7 @@ a {
 }
 
 .text-truncate {
-	display: block;
+	display: inline-block;
 	flex: 1;
 }
 
@@ -963,25 +963,6 @@ label[for] {
 	// transform: translateY(50%);
 }
 
-.user-info {
-	font-size: 0.875rem;
-	color: $dark-gray;
-
-	.small & {
-		height: 1.125rem;
-	}
-
-	.large &,
-	&.large {
-		font-size: 0.875rem;
-	}
-
-	.xlarge &,
-	.xxlarge & {
-		font-size: 1rem;
-	}
-}
-
 .avatar {
 	flex: 0 0 auto;
 	width: $user-card-default-size;
@@ -1446,7 +1427,7 @@ label[for] {
 	}
 }
 
-.space-info-container {
+.chip-group {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
@@ -1464,15 +1445,12 @@ label[for] {
 		flex-wrap: nowrap;
 		overflow: hidden;
 
-		& > a {
+		.info-chip {
 			overflow: hidden;
-
-			.space-info-block {
-				span {
-					overflow: hidden;
-					text-overflow: ellipsis;
-					white-space: nowrap;
-				}
+			span {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
 			}
 		}
 	}
@@ -1492,33 +1470,46 @@ label[for] {
 		}
 	}
 
-	@include foundation-palette($child: ".space-info-block span:last-child", $property: "border-color", $hover: "false");
-	@include foundation-palette($child: ".space-info-block span:last-child", $property: "background", $hover: "false");
+	@include foundation-palette($child: ".info-chip span:last-child", $property: "border-color", $hover: "false");
+	@include foundation-palette($child: ".info-chip span:last-child", $property: "background", $hover: "false");
 }
 
-// $space-info-block-padding: 0.1875em 0.375em 0.125em;
-$space-info-block-padding: 0.375em 0.5em 0.25em;
-$space-info-block-padding-round: 0.375em 0.875em 0.25em;
+// $info-chip-padding: 0.1875em 0.375em 0.125em;
+$info-chip-padding: 0.375em 0.5em 0.25em;
+$info-chip-padding-round: 0.375em 0.8em 0.25em;
 
-.space-info-block {
-	flex-wrap: wrap;
+.info-chip {
+	text-decoration: none !important;
 	display: flex;
-	background: $very-light-gray;
+	background: $white;
 	color: $black;
 	margin: 0.25em;
+	margin-left: 0;
 	border-radius: $global-radius;
 	overflow: hidden;
 	line-height: 1.3;
 	text-align: center;
-	// white-space: nowrap; // check if necessary
-	.round > &,
+	border: 0.5px solid #ccc;
+	cursor: default;	
+
+	&[href] {
+		/* the element has the href attr set, so it is clickable (if not .disable). */
+		cursor: pointer;
+		box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.06);
+	}
+	&[href]:hover {
+		color: $black;
+		box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.25);
+	}
+
 	&.round {
+		&>span {
+			padding: $info-chip-padding-round;
+		}
 		border-radius: 2rem;
 	}
 
 	&.hollow {
-		border: 1px solid $very-dark-gray;
-
 		&,
 		span,
 		span:last-child {
@@ -1558,13 +1549,12 @@ $space-info-block-padding-round: 0.375em 0.875em 0.25em;
 
 	& > span {
 		display: inline-block;
-		border: 1px solid $light-gray;
-		padding: $space-info-block-padding;
-
-		.round > & {
-			border-radius: 1rem;
-			padding: $space-info-block-padding-round;
-		}
+		padding: $info-chip-padding;
+		border-right: 1px solid $light-gray;
+		
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 
 		&:first-child {
 			border-top-left-radius: $global-radius;
@@ -1574,26 +1564,24 @@ $space-info-block-padding-round: 0.375em 0.875em 0.25em;
 		&:last-child {
 			@include foundation-palette($property: "background", $hover: "false");
 			@include foundation-palette($property: "border-color", $hover: "false");
+			border-right: none;
+		}
 
-			border-top-right-radius: $global-radius;
-			border-bottom-right-radius: $global-radius;
-			background: $light-gray;
+		&:nth-child(2) {
+			background: linear-gradient(120deg, rgba(245,245,245,1) 0%, rgba(250,250,250,1) 100%);;
 		}
 	}
 
 	& a {
 		display: inline-block;
-		padding: $space-info-block-padding;
+		padding: $info-chip-padding;
 		background: $light-gray;
 		color: inherit;
+		text-decoration: none;
 	}
 
 	a:hover > & {
-		background: $light-gray;
-
-		& span:last-child {
-			background: $medium-gray;
-		}
+		box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.25);
 	}
 }
 
@@ -4382,10 +4370,10 @@ $breadcrumbs-item-separator-item-rtl: "·";
 $breadcrumbs-item-separator-color: $breadcrumbs-item-color;
 
 .breadcrumbs {
-	padding: map-get($padding-sizes, medium);
-	height: 36px;
+	/* padding: map-get($padding-sizes, medium); */
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
 
 	&.no-padding {
 		padding: 0;

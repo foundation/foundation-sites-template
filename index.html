@@ -7,26 +7,36 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Spaces Documentation</title>
 	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 	<script rel="script" href="js/app.js"></script>
-	<script type="text/javascript" src="../../../../assets/js/foundation.min.js?ver=6.6.1"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.4/js/foundation.min.js"></script>
+	<script>
+		jQuery(document).ready(function ($) {
+			jQuery(document).foundation();
+		});
+	</script>
 </head>
 
 <body class="home blog logged-in admin-bar no-customize-support">
 	<div class="flex align-center margin-top-2">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45.92 50" width="50" height="50">
-	<title>spaces</title>
-	<path style="fill: #ddd;"
-		d="M41.4,4,18.57.12a8.77,8.77,0,0,0-7.66,2.45L2.57,10.91A8.77,8.77,0,0,0,0,17.12V40.71a5.42,5.42,0,0,0,4.52,5.34l22.83,3.83A8.77,8.77,0,0,0,35,47.43l8.34-8.34a8.77,8.77,0,0,0,2.57-6.21V9.29A5.42,5.42,0,0,0,41.4,4ZM21.86,36.48a12.32,12.32,0,0,1-7.25-2.35L16.69,30a10.76,10.76,0,0,0,5.17,1.55c2.05,0,2.9-.72,2.9-1.83s-.67-1.65-3.21-2.5c-4.51-1.51-6.25-4-6.2-6.55,0-4.06,3.48-7.14,8.87-7.14a12.51,12.51,0,0,1,6.43,1.9l-2.18,4a7.94,7.94,0,0,0-4-1.23c-1.65,0-2.59.67-2.59,1.79s.85,1.56,3.52,2.49c4.15,1.43,5.89,3.53,5.93,6.74C31.31,33.28,28.1,36.48,21.86,36.48Z">
-	</path>
-</svg>
-</div>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45.92 50" width="50" height="50">
+			<title>spaces</title>
+			<path style="fill: #ddd;"
+				d="M41.4,4,18.57.12a8.77,8.77,0,0,0-7.66,2.45L2.57,10.91A8.77,8.77,0,0,0,0,17.12V40.71a5.42,5.42,0,0,0,4.52,5.34l22.83,3.83A8.77,8.77,0,0,0,35,47.43l8.34-8.34a8.77,8.77,0,0,0,2.57-6.21V9.29A5.42,5.42,0,0,0,41.4,4ZM21.86,36.48a12.32,12.32,0,0,1-7.25-2.35L16.69,30a10.76,10.76,0,0,0,5.17,1.55c2.05,0,2.9-.72,2.9-1.83s-.67-1.65-3.21-2.5c-4.51-1.51-6.25-4-6.2-6.55,0-4.06,3.48-7.14,8.87-7.14a12.51,12.51,0,0,1,6.43,1.9l-2.18,4a7.94,7.94,0,0,0-4-1.23c-1.65,0-2.59.67-2.59,1.79s.85,1.56,3.52,2.49c4.15,1.43,5.89,3.53,5.93,6.74C31.31,33.28,28.1,36.48,21.86,36.48Z">
+			</path>
+		</svg>
+	</div>
 	<div class="space grid-container">
 		<div class="grid-x grid-margin-x grid-margin-y">
 			<div class="cell">
 				<div class="card static large static current">
 					<div class="clipped space-header">
-						<div class="space-title"><a href="http://spaces.test/new-working-space" title="Foundation for Spaces Documentation">Spaces Documentation</a></div>
-						<img src="https://images.unsplash.com/photo-1525241499786-8afb11227d15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80" />
+						<div class="space-title"><a href="http://spaces.test/new-working-space"
+								title="Foundation for Spaces Documentation">Spaces Documentation</a></div>
+						<img
+							src="https://images.unsplash.com/photo-1525241499786-8afb11227d15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80" />
 					</div>
 				</div>
 			</div>
@@ -34,33 +44,32 @@
 				<div class="grid-y grid-margin-y">
 					<div class="cell">
 						<div class="card static overflow-initial">
-							<ul id="defaultspace-settings-menu" class="tabs line expanded" data-active-collapse="true" data-tabs=""
-								role="tablist">
+							<ul id="defaultspace-settings-menu" class="tabs line expanded" data-active-collapse="true"
+								data-tabs="" role="tablist">
 
-								<li class="tabs-title" role="presentation">
-									<a href="#overview" role="tab" aria-controls="overview" aria-selected="false" id="overview-label"
-										tabindex="-1">Overview</a>
+								<li class="tabs-title is-active" role="presentation">
+									<a href="#overview" role="tab" aria-controls="overview" aria-selected="false"
+										id="overview-label" tabindex="-1">Overview</a>
 								</li>
 
 
-
 								<li class="tabs-title " role="presentation">
-									<a href="#settings" role="tab" aria-controls="settings" aria-selected="false" id="settings-label"
-										tabindex="-1">Settings</a>
+									<a href="#settings" role="tab" aria-controls="settings" aria-selected="false"
+										id="settings-label" tabindex="-1">Settings</a>
 								</li>
 
 							</ul>
 							<div class="tabs-content" data-tabs-content="defaultspace-settings-menu">
 
-								<div class="tabs-panel" id="overview" role="tabpanel" aria-labelledby="overview-label"
-									aria-hidden="true">
+								<div class="tabs-panel is-active" id="overview" role="tabpanel"
+									aria-labelledby="overview-label" aria-hidden="true">
 
 									<div class="card-divider padding-small">
-										<div class="space-info-container small round">
+										<div class="chip-group small round">
 
-											<div class="space-info-block small">
+											<a class="info-chip small">
 												<span>Long Term Project</span>
-											</div>
+											</a>
 
 										</div>
 									</div>
@@ -70,19 +79,22 @@
 									</div>
 
 									<div class="card-divider padding-small">
-										<div class="space-info-container small">
+										<div class="chip-group small">
 
-											<a href="http://spaces.test/new-working-space/status/draft" alt="Draft">
-												<div class="space-info-block small">
-													<span>Draft</span>
-													<span>1</span>
-												</div>
+											<a class="info-chip small"
+												href="http://spaces.test/new-working-space/status/draft" alt="Draft">
+
+												<span>Draft</span>
+												<span>1</span>
+
 											</a>
-											<a href="http://spaces.test/new-working-space/status/publish" alt="Published">
-												<div class="space-info-block small">
-													<span>Published</span>
-													<span>2</span>
-												</div>
+											<a class="info-chip small"
+												href="http://spaces.test/new-working-space/status/publish"
+												alt="Published">
+
+												<span>Published</span>
+												<span>2</span>
+
 											</a>
 										</div>
 									</div>
@@ -95,21 +107,24 @@
 									aria-hidden="true">
 
 									<ul class="vertical menu accordion-menu icons icon-left" data-accordion-menu=""
-										data-multi-open="false" role="tree" aria-multiselectable="false" data-n="mj6tu1-n">
+										data-multi-open="false" role="tree" aria-multiselectable="false"
+										data-n="mj6tu1-n">
 
 										<li class="card-divider padding-button " id="space-user-info" role="treeitem">
 											<small>You are a super admin and you can make changes in any space.</small>
 										</li>
 
-										<li class="card-divider padding-button " id="notification-toogle-switch" role="treeitem">
+										<li class="card-divider padding-button " id="notification-toogle-switch"
+											role="treeitem">
 
 											<label class="icon-left label-wrapper" for="notification-toggle">
 												<i class="fa fa-envelope"></i>
 												<span>Notify Me</span>
 												<div class="switch small notification-toggle success"
 													title="Email notifications for New Working Space">
-													<input class="switch-input" id="notification-toggle-current_blog" data-blog-id="current_blog"
-														type="checkbox" name="notification-toggle" checked="">
+													<input class="switch-input" id="notification-toggle-current_blog"
+														data-blog-id="current_blog" type="checkbox"
+														name="notification-toggle" checked="">
 													<label class="switch-paddle" for="notification-toggle-current_blog">
 														<span class="show-for-sr"><span>Notify Me</span></span>
 													</label>
@@ -119,104 +134,127 @@
 										</li>
 
 										<li class="card-divider padding-button flex-dir-column is-accordion-submenu-parent"
-											id="space-privacy" role="treeitem" aria-controls="w3ldkb-acc-menu" aria-expanded="false">
+											id="space-privacy" role="treeitem" aria-controls="w3ldkb-acc-menu"
+											aria-expanded="false">
 
 											<a>
 												<i class="fa fa fa-graduation-cap privacy-icon"></i>
 												<span>Space Privacy</span>
 											</a>
-											<ul class="radio-accordion icons icon-left success submenu is-accordion-submenu" data-submenu=""
-												role="group" aria-labelledby="space-privacy" aria-hidden="true" id="w3ldkb-acc-menu"
-												style="display: none;">
-												<li class="radio-accordion-item is-submenu-item is-accordion-submenu-item" role="treeitem">
+											<ul class="radio-accordion icons icon-left success submenu is-accordion-submenu"
+												data-submenu="" role="group" aria-labelledby="space-privacy"
+												aria-hidden="true" id="w3ldkb-acc-menu" style="display: none;">
+												<li class="radio-accordion-item is-submenu-item is-accordion-submenu-item"
+													role="treeitem">
 													<div class="radio">
 														<label class="label-wrapper" for="privacy_spaces_1-59c50eb">
 															<i class="fa fa-globe-europe"></i>
-															<input type="radio" id="privacy_spaces_1-59c50eb" class="radio-input"
-																name="blog_public-59c50eb" value="1" data-space-settings="">
+															<input type="radio" id="privacy_spaces_1-59c50eb"
+																class="radio-input" name="blog_public-59c50eb" value="1"
+																data-space-settings="">
 															<span>World</span>
-															<label for="privacy_spaces_1-59c50eb" class="radio-label flex-spacer-left">
+															<label for="privacy_spaces_1-59c50eb"
+																class="radio-label flex-spacer-left">
 																<span class="show-for-sr">World</span>
 															</label>
 														</label>
 													</div>
 													<div class="card-section no-padding radio-accordion-content ">
 														<small>
-															Visible to the world. Allow search engines to index this space.
+															Visible to the world. Allow search engines to index this
+															space.
 														</small>
 
 													</div>
 												</li>
 
-												<li class="radio-accordion-item is-submenu-item is-accordion-submenu-item" role="treeitem">
+												<li class="radio-accordion-item is-submenu-item is-accordion-submenu-item"
+													role="treeitem">
 													<div class="radio">
 														<label class="label-wrapper" for="privacy_spaces_0-59c50eb">
 															<i class="fa fa-globe-europe"></i>
-															<input type="radio" id="privacy_spaces_0-59c50eb" class="radio-input"
-																name="blog_public-59c50eb" value="0" data-space-settings="">
+															<input type="radio" id="privacy_spaces_0-59c50eb"
+																class="radio-input" name="blog_public-59c50eb" value="0"
+																data-space-settings="">
 															<span>World, discourage search engines</span>
-															<label for="privacy_spaces_0-59c50eb" class="radio-label flex-spacer-left">
-																<span class="show-for-sr">World, discourage search engines</span>
+															<label for="privacy_spaces_0-59c50eb"
+																class="radio-label flex-spacer-left">
+																<span class="show-for-sr">World, discourage search
+																	engines</span>
 															</label>
 														</label>
 													</div>
 													<div class="card-section no-padding radio-accordion-content ">
 														<small>
-															Visible to the world. Discourage search engines from indexing this space.
+															Visible to the world. Discourage search engines from
+															indexing this space.
 														</small>
 
 													</div>
 												</li>
 
-												<li class="radio-accordion-item is-submenu-item is-accordion-submenu-item" role="treeitem">
+												<li class="radio-accordion-item is-submenu-item is-accordion-submenu-item"
+													role="treeitem">
 													<div class="radio">
 														<label class="label-wrapper" for="privacy_spaces_-1-59c50eb">
 															<i class="fa fa-graduation-cap"></i>
-															<input type="radio" id="privacy_spaces_-1-59c50eb" class="radio-input"
-																name="blog_public-59c50eb" value="-1" checked="checked" data-space-settings="">
+															<input type="radio" id="privacy_spaces_-1-59c50eb"
+																class="radio-input" name="blog_public-59c50eb"
+																value="-1" checked="checked" data-space-settings="">
 															<span>Spaces Community</span>
-															<label for="privacy_spaces_-1-59c50eb" class="radio-label flex-spacer-left">
+															<label for="privacy_spaces_-1-59c50eb"
+																class="radio-label flex-spacer-left">
 																<span class="show-for-sr">Spaces Community</span>
 															</label>
 														</label>
 													</div>
-													<div class="card-section no-padding radio-accordion-content visible">
+													<div
+														class="card-section no-padding radio-accordion-content visible">
 														<small>
 															Visible only to registered users of the Spaces Community.
 														</small>
 
 														<label class="label-wrapper" for="selfregistration-59c50eb">
 															<div class="checkbox small success">
-																<input type="checkbox" id="selfregistration-59c50eb" class="checkbox-input"
-																	name="space_registration-59c50eb" checked="checked" data-space-settings=""
-																	data-self-reg="">
-																<label class="checkbox-label" for="selfregistration-59c50eb">
-																	<span class="show-for-sr">Self Registration (if enabled, users can join this space on
+																<input type="checkbox" id="selfregistration-59c50eb"
+																	class="checkbox-input"
+																	name="space_registration-59c50eb" checked="checked"
+																	data-space-settings="" data-self-reg="">
+																<label class="checkbox-label"
+																	for="selfregistration-59c50eb">
+																	<span class="show-for-sr">Self Registration (if
+																		enabled, users can join this space on
 																		their own)</span>
 																</label>
 															</div>
-															<small>Self Registration (if enabled, users can join this space on their own)</small>
+															<small>Self Registration (if enabled, users can join this
+																space on their own)</small>
 														</label>
 
 													</div>
 												</li>
 
-												<li class="radio-accordion-item is-submenu-item is-accordion-submenu-item" role="treeitem">
+												<li class="radio-accordion-item is-submenu-item is-accordion-submenu-item"
+													role="treeitem">
 													<div class="radio">
 														<label class="label-wrapper" for="privacy_spaces_-2-59c50eb">
 															<i class="fa fa-lock"></i>
-															<input type="radio" id="privacy_spaces_-2-59c50eb" class="radio-input"
-																name="blog_public-59c50eb" value="-2" data-space-settings="">
+															<input type="radio" id="privacy_spaces_-2-59c50eb"
+																class="radio-input" name="blog_public-59c50eb"
+																value="-2" data-space-settings="">
 															<span>Space Members</span>
-															<label for="privacy_spaces_-2-59c50eb" class="radio-label flex-spacer-left">
+															<label for="privacy_spaces_-2-59c50eb"
+																class="radio-label flex-spacer-left">
 																<span class="show-for-sr">Space Members</span>
 															</label>
 														</label>
 													</div>
 													<div class="card-section no-padding radio-accordion-content ">
 														<small>
-															This space is private. Only members of this space can read posts. It is, however, possible
-															to see the space in public lists, read its description, see who is responsible for the
+															This space is private. Only members of this space can read
+															posts. It is, however, possible
+															to see the space in public lists, read its description, see
+															who is responsible for the
 															space.
 														</small>
 
@@ -232,7 +270,8 @@
 
 										<li class="card-divider padding-button " id="goto-backend" role="treeitem">
 
-											<a href="http://spaces.test/new-working-space/wp-admin/admin.php?page=spaces-blog-options">
+											<a
+												href="http://spaces.test/new-working-space/wp-admin/admin.php?page=spaces-blog-options">
 												<i class="fa fa-sliders-h"></i>
 												<span>Go to Backend</span>
 											</a>
@@ -247,8 +286,8 @@
 										</li>
 
 										<li class="card-divider padding-button " id="leave-space" role="treeitem">
-											<a href="/new-working-space/?change_role=leave" title="Click here to leave this Space."
-												class="alert"
+											<a href="/new-working-space/?change_role=leave"
+												title="Click here to leave this Space." class="alert"
 												onclick="return confirm(&quot;Are you sure you want to leave this space? You will not be able to write posts or see private posts here anymore.&quot;)"
 												value="Leave space">Leave Space</a>
 										</li>
@@ -271,13 +310,14 @@
 
 							<div class="cell">
 								<div class="card static overflow-initial">
-									<ul id="defaultspace-main-menu" class="tabs line expanded toggle-menu-second" data-tabs=""
-										role="tablist" data-n="ay6awe-n">
+									<ul id="defaultspace-main-menu" class="tabs line expanded toggle-menu-second"
+										data-tabs="" role="tablist" data-n="ay6awe-n">
 
 										<li class="tabs-title is-active" role="presentation">
-											<a href="#menu-second" role="tab" aria-controls="menu-second" aria-selected="true"
-												id="menu-second-label" tabindex="0">
-												<i class="fa fa-book margin-right-1" aria-hidden="true"></i><span>Book</span>
+											<a href="#menu-second" role="tab" aria-controls="menu-second"
+												aria-selected="true" id="menu-second-label" tabindex="0">
+												<i class="fa fa-book margin-right-1"
+													aria-hidden="true"></i><span>Book</span>
 											</a>
 										</li>
 
@@ -297,14 +337,19 @@
 														<div class="simplebar-content-wrapper"
 															style="height: auto; padding-right: 0px; padding-bottom: 0px; overflow: hidden;">
 															<div class="simplebar-content" style="padding: 0px;">
-																<ul id="menu-book" class="vertical menu accordion-menu" data-resize="menu-book"
-																	data-scroll="menu-book" data-n="92b2jm-n" role="tree" aria-multiselectable="true">
+																<ul id="menu-book" class="vertical menu accordion-menu"
+																	data-resize="menu-book" data-scroll="menu-book"
+																	data-n="92b2jm-n" role="tree"
+																	aria-multiselectable="true">
 																	<li id="menu-item-8"
 																		class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8"
-																		role="treeitem"><a href="#page-second-sample-page">Sample Page</a></li>
+																		role="treeitem"><a
+																			href="#page-second-sample-page">Sample
+																			Page</a></li>
 																	<li id="menu-item-16"
 																		class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16"
-																		role="treeitem"><a href="#page-second-new-page" class="s-fg-c1 active-magellan">New
+																		role="treeitem"><a href="#page-second-new-page"
+																			class="s-fg-c1 active-magellan">New
 																			Page</a></li>
 
 																</ul>
@@ -312,14 +357,18 @@
 														</div>
 													</div>
 												</div>
-												<div class="simplebar-placeholder" style="width: auto; height: 76px;"></div>
+												<div class="simplebar-placeholder" style="width: auto; height: 76px;">
+												</div>
 											</div>
-											<div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
-												<div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;">
+											<div class="simplebar-track simplebar-horizontal"
+												style="visibility: hidden;">
+												<div class="simplebar-scrollbar"
+													style="transform: translate3d(0px, 0px, 0px); display: none;">
 												</div>
 											</div>
 											<div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
-												<div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;">
+												<div class="simplebar-scrollbar"
+													style="transform: translate3d(0px, 0px, 0px); display: none;">
 												</div>
 											</div>
 										</div>
@@ -347,127 +396,322 @@
 
 
 						<div class="cell">
-							<div class="card static overflow-initial"><div class="card-divider page-section no-padding ">
-								<div class="">
-									<section class="card-section page-header padding-bottom-0 flex-dir-row" id="page-first-scroll-snap" data-magellan-target="page-first-scroll-snap">
-										<div class="flex flex-dir-column align-center">
-											<h1 class="page-title">Scroll Snap</h1>
-										</div>
-											<div class="edit-bar align-self-top padding-right-0">
-												<button class="dots" type="button" data-toggle="page-74024-dropdown" aria-controls="page-74024-dropdown" data-is-focus="false" data-yeti-box="page-74024-dropdown" aria-haspopup="true" aria-expanded="false" id="aafax4-dd-anchor"></button>
+							<div class="card static overflow-initial">
+								<div class="card-divider page-section no-padding ">
+									<div class="">
+										<section class="card-section page-header padding-bottom-0 flex-dir-row"
+											id="page-first-scroll-snap" data-magellan-target="page-first-scroll-snap">
+											<div class="flex flex-dir-column align-center">
+												<h1 class="page-title">Scroll Snap</h1>
 											</div>
-									</section>
+											<div class="edit-bar align-self-top padding-right-0">
+												<button class="dots" type="button" data-toggle="page-74024-dropdown"
+													aria-controls="page-74024-dropdown" data-is-focus="false"
+													data-yeti-box="page-74024-dropdown" aria-haspopup="true"
+													aria-expanded="false" id="aafax4-dd-anchor"></button>
+											</div>
+										</section>
 
 										<div class="page-content user-generated card-section s-fg-a-c1-parent">
 
-							<h2>Basics</h2>
+											<h2>Basics</h2>
 
 
 
-							<p>The Scroll Snap Container is an overflow-container that contains elements arranged horizontally (or vertically) and when scrolled, those elements “snap” into place.</p>
+											<p>The Scroll Snap Container is an overflow-container that contains elements
+												arranged horizontally (or vertically) and when scrolled, those elements
+												“snap” into place.</p>
 
 
 
-							<p>You give a <code>.scroll-snap-container-x</code> class to the parent and a <code>.scroll-snap-element</code> to the children.</p>
+											<p>You give a <code>.scroll-snap-container-x</code> class to the parent and
+												a <code>.scroll-snap-element</code> to the children.</p>
 
 
 
-							<h3>Snapping</h3>
+											<h3>Snapping</h3>
 
 
 
-							<p>To tell the elements where to snap to give the <code>.scroll-snap-container-x</code> one of the following classes:</p>
+											<p>To tell the elements where to snap to give the
+												<code>.scroll-snap-container-x</code> one of the following classes:
+											</p>
 
 
 
-							<ul><li><code>.snap-align-start</code></li><li><code>.snap-align-center</code></li><li><code>.snap-align-end</code></li></ul>
+											<ul>
+												<li><code>.snap-align-start</code></li>
+												<li><code>.snap-align-center</code></li>
+												<li><code>.snap-align-end</code></li>
+											</ul>
+
+
+
+											<h3>Width</h3>
+
+
+
+											<p>By default, the width of the <code>.scroll-snap-element</code> is 100%.
+												There is, however, room for variation. Apply one of the following
+												classes to the <code>.scroll-snap-container-x</code>.</p>
+
+
+
+											<ul>
+												<li><code>.width-fixed</code></li>
+												<li><code>.width-small</code></li>
+												<li><code>.width-medium</code></li>
+												<li><code>.width-large</code></li>
+											</ul>
+
 
 
+											<p>It is set-up like so:</p>
 
-							<h3>Width</h3>
 
+											<div>
+												<div id="highlighter_616608" class="syntaxhighlighter  xml">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tbody>
+															<tr>
+																<td class="gutter">
+																	<div class="line number1 index0 alt2">1</div>
+																	<div class="line number2 index1 alt1">2</div>
+																	<div class="line number3 index2 alt2">3</div>
+																	<div class="line number4 index3 alt1">4</div>
+																	<div class="line number5 index4 alt2">5</div>
+																</td>
+																<td class="code">
+																	<div class="container">
+																		<div class="line number1 index0 alt2"><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">div</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"scroll-snap-container-x snap-align-center width-medium"</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number2 index1 alt1"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">div</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"scroll-snap-element"</code><code
+																				class="xml plain">&gt;Element 1&lt;/</code><code
+																				class="xml keyword">div</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number3 index2 alt2"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">div</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"scroll-snap-element"</code><code
+																				class="xml plain">&gt;Element 2&lt;/</code><code
+																				class="xml keyword">div</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number4 index3 alt1"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">...</code></div>
+																		<div class="line number5 index4 alt2"><code
+																				class="xml plain">&lt;/</code><code
+																				class="xml keyword">div</code><code
+																				class="xml plain">&gt;</code></div>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
 
 
-							<p>By default,  the width of the <code>.scroll-snap-element</code> is 100%. There is, however, room for variation. Apply one of the following classes to the <code>.scroll-snap-container-x</code>.</p>
+											<div
+												class="alignwide scroll-snap-container-x snap-align-center width-medium">
+												<div class="scroll-snap-element">
+													<div class="card">
+														<div class="card-section">Element 1</div>
+													</div>
+												</div>
+												<div class="scroll-snap-element">
+													<div class="card">
+														<div class="card-section">Element 2</div>
+													</div>
+												</div>
+												<div class="scroll-snap-element">
+													<div class="card">
+														<div class="card-section">Element 3</div>
+													</div>
+												</div>
+												<div class="scroll-snap-element">
+													<div class="card">
+														<div class="card-section">Element 4</div>
+													</div>
+												</div>
+												<div class="scroll-snap-element">
+													<div class="card">
+														<div class="card-section">Element 5</div>
+													</div>
+												</div>
+											</div>
+											<br>
 
 
 
-							<ul><li><code>.width-fixed</code></li><li><code>.width-small</code></li><li><code>.width-medium</code></li><li><code>.width-large</code></li></ul>
+											<h2>Advanced</h2>
 
 
 
-							<p>It is set-up like so:</p>
+											<h3>Breakpoints</h3>
 
 
-							<div><div id="highlighter_616608" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"scroll-snap-container-x snap-align-center width-medium"</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"scroll-snap-element"</code><code class="xml plain">&gt;Element 1&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"scroll-snap-element"</code><code class="xml plain">&gt;Element 2&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">...</code></div><div class="line number5 index4 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
 
+											<p>For specific breakpoints and upwards add one of the following
+												to<code> .scroll-snap-container-x</code>: </p>
 
-							<div class="alignwide scroll-snap-container-x snap-align-center width-medium">
-								<div class="scroll-snap-element"><div class="card"><div class="card-section">Element 1</div></div></div>
-								<div class="scroll-snap-element"><div class="card"><div class="card-section">Element 2</div></div></div>
-								<div class="scroll-snap-element"><div class="card"><div class="card-section">Element 3</div></div></div>
-								<div class="scroll-snap-element"><div class="card"><div class="card-section">Element 4</div></div></div>
-								<div class="scroll-snap-element"><div class="card"><div class="card-section">Element 5</div></div></div>
-							</div>
-							<br>
 
 
-
-							<h2>Advanced</h2>
-
-
-
-							<h3>Breakpoints</h3>
-
-
-
-							<p>For specific breakpoints and upwards add one of the following to<code> .scroll-snap-container-x</code>: </p>
-
-
-
-							<ul><li><code>.small-scroll-snap</code></li><li><code>.medium-scroll-snap</code></li><li><code>.large-scroll-snap</code></li><li><code>.xlarge-scroll-snap</code></li><li><code>.xxlarge-scroll-snap</code></li></ul>
-
-
-
-							<p>To remove scroll-snapping for specific breakpoints and upwards add one of the following to<code> .scroll-snap-container-x</code>: </p>
-
-
-
-							<ul><li><code>.small-no-scroll-snap</code></li><li><code>.medium-no-scroll-snap</code></li><li><code>.large-no-scroll-snap</code></li><li><code>.xlarge-no-scroll-snap</code></li><li><code>.xxlarge-no-scroll-snap</code></li></ul>
-
-
-
-							<h3>Arrows</h3>
-
-
-
-							<p>Adding arrows: <code>.left-right-navigation</code></p>
-
-
-
-							<p><code>@todo: work it out.</code></p>
-
-
-
-							<h3>Scroll Snap Grid Container</h3>
-
-
-
-							<p>When the elements should be contained by a grid-container but the overflow should be visible, add <code>.scroll-snap-grid-container</code> to <code>.scroll-snap-container-x</code>.</p>
-
-
-
-							<p>To reverse the effect of the existing grid-container wrap an element around the <code>.scroll-snap-container-x</code> with the class <code>.reverse-grid-container</code>.</p>
-
-
-							<div><div id="highlighter_212171" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">'grid-container'</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">...</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">'reverse-grid-container'</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">'scroll-snap-container-x scroll-grid-container'</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">'scroll-snap-element'</code><code class="xml plain">&gt;...&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number6 index5 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">...</code></div><div class="line number7 index6 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number8 index7 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number9 index8 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">...</code></div><div class="line number10 index9 alt1"><code class="xml plain">&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
-
-
-							<p></p>
+											<ul>
+												<li><code>.small-scroll-snap</code></li>
+												<li><code>.medium-scroll-snap</code></li>
+												<li><code>.large-scroll-snap</code></li>
+												<li><code>.xlarge-scroll-snap</code></li>
+												<li><code>.xxlarge-scroll-snap</code></li>
+											</ul>
+
+
+
+											<p>To remove scroll-snapping for specific breakpoints and upwards add one of
+												the following to<code> .scroll-snap-container-x</code>: </p>
+
+
+
+											<ul>
+												<li><code>.small-no-scroll-snap</code></li>
+												<li><code>.medium-no-scroll-snap</code></li>
+												<li><code>.large-no-scroll-snap</code></li>
+												<li><code>.xlarge-no-scroll-snap</code></li>
+												<li><code>.xxlarge-no-scroll-snap</code></li>
+											</ul>
+
+
+
+											<h3>Arrows</h3>
+
+
+											<p>Adding arrows: <code>.left-right-navigation</code></p>
+
+
+
+											<p><code>@todo: work it out.</code></p>
+
+
+
+											<h3>Scroll Snap Grid Container</h3>
+
+
+
+											<p>When the elements should be contained by a grid-container but the
+												overflow should be visible, add <code>.scroll-snap-grid-container</code>
+												to <code>.scroll-snap-container-x</code>.</p>
+
+
+
+											<p>To reverse the effect of the existing grid-container wrap an element
+												around the <code>.scroll-snap-container-x</code> with the class
+												<code>.reverse-grid-container</code>.
+											</p>
+
+
+											<div>
+												<div id="highlighter_212171" class="syntaxhighlighter  xml">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tbody>
+															<tr>
+																<td class="gutter">
+																	<div class="line number1 index0 alt2">1</div>
+																	<div class="line number2 index1 alt1">2</div>
+																	<div class="line number3 index2 alt2">3</div>
+																	<div class="line number4 index3 alt1">4</div>
+																	<div class="line number5 index4 alt2">5</div>
+																	<div class="line number6 index5 alt1">6</div>
+																	<div class="line number7 index6 alt2">7</div>
+																	<div class="line number8 index7 alt1">8</div>
+																	<div class="line number9 index8 alt2">9</div>
+																	<div class="line number10 index9 alt1">10</div>
+																</td>
+																<td class="code">
+																	<div class="container">
+																		<div class="line number1 index0 alt2"><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">div</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">'grid-container'</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number2 index1 alt1"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">...</code></div>
+																		<div class="line number3 index2 alt2"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">div</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">'reverse-grid-container'</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number4 index3 alt1"><code
+																				class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">div</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">'scroll-snap-container-x scroll-grid-container'</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number5 index4 alt2"><code
+																				class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">div</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">'scroll-snap-element'</code><code
+																				class="xml plain">&gt;...&lt;/</code><code
+																				class="xml keyword">div</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number6 index5 alt1"><code
+																				class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+																				class="xml plain">...</code></div>
+																		<div class="line number7 index6 alt2"><code
+																				class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;/</code><code
+																				class="xml keyword">div</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number8 index7 alt1"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;/</code><code
+																				class="xml keyword">div</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number9 index8 alt2"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">...</code></div>
+																		<div class="line number10 index9 alt1"><code
+																				class="xml plain">&lt;/</code><code
+																				class="xml keyword">div</code><code
+																				class="xml plain">&gt;</code></div>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+
+
+											<p></p>
 
 										</div>
 
-									<!--
+										<!--
 									<div class='card-divider no-padding flex-dir-row'>
 										<small class='card-section flex-dir-row align-middle padding-left-0'>
 												<span class='dot-after'>admin spaces</span>
@@ -475,240 +719,674 @@
 										</small>
 									</div>
 									-->
+									</div>
 								</div>
-							</div>
 
 
-							<ul class="dropdown-pane card static icons icon-left has-position-bottom has-alignment-right" data-position="bottom" data-alignment="right" id="page-74024-dropdown" data-dropdown="" data-auto-focus="true" data-v-offset="2" data-close-on-click="true" aria-labelledby="aafax4-dd-anchor" aria-hidden="true" data-yeti-box="page-74024-dropdown" data-resize="page-74024-dropdown" data-n="c1oprv-n" data-events="resize">
+								<ul class="dropdown-pane card static icons icon-left has-position-bottom has-alignment-right"
+									data-position="bottom" data-alignment="right" id="page-74024-dropdown"
+									data-dropdown="" data-auto-focus="true" data-v-offset="2" data-close-on-click="true"
+									aria-labelledby="aafax4-dd-anchor" aria-hidden="true"
+									data-yeti-box="page-74024-dropdown" data-resize="page-74024-dropdown"
+									data-n="c1oprv-n" data-events="resize">
 
 
-										<li class="card-divider padding-button">
-											<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=74024&amp;action=edit" class="js-editpage"> Edit  Scroll Snap</a>
-										</li>
-										<li class="card-divider padding-button">
-											<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=74024&amp;action=trash&amp;_wpnonce=ca4df6be39" class="alert js-deletepage"> Delete  Scroll Snap</a>
-										</li>
+									<li class="card-divider padding-button">
+										<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=74024&amp;action=edit"
+											class="js-editpage"> Edit Scroll Snap</a>
+									</li>
+									<li class="card-divider padding-button">
+										<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=74024&amp;action=trash&amp;_wpnonce=ca4df6be39"
+											class="alert js-deletepage"> Delete Scroll Snap</a>
+									</li>
 
-							</ul>
+								</ul>
 
-							<div class="card-divider page-section no-padding ">
-								<div class="">
-									<section class="card-section page-header padding-bottom-0 flex-dir-row" id="page-first-tabs" data-magellan-target="page-first-tabs">
-										<div class="flex flex-dir-column align-center">
-											<h1 class="page-title">Tabs</h1>
-										</div>
-											<div class="edit-bar align-self-top padding-right-0">
-												<button class="dots" type="button" data-toggle="page-73974-dropdown" aria-controls="page-73974-dropdown" data-is-focus="false" data-yeti-box="page-73974-dropdown" aria-haspopup="true" aria-expanded="false" id="oa0mgl-dd-anchor"></button>
+								<div class="card-divider page-section no-padding ">
+									<div class="">
+										<section class="card-section page-header padding-bottom-0 flex-dir-row"
+											id="page-first-tabs" data-magellan-target="page-first-tabs">
+											<div class="flex flex-dir-column align-center">
+												<h1 class="page-title">Tabs</h1>
 											</div>
-									</section>
+											<div class="edit-bar align-self-top padding-right-0">
+												<button class="dots" type="button" data-toggle="page-73974-dropdown"
+													aria-controls="page-73974-dropdown" data-is-focus="false"
+													data-yeti-box="page-73974-dropdown" aria-haspopup="true"
+													aria-expanded="false" id="oa0mgl-dd-anchor"></button>
+											</div>
+										</section>
 
 										<div class="page-content user-generated card-section s-fg-a-c1-parent">
 
-							<p>Tabs are elements that help you organize and navigate multiple documents in a single container. They can be used for switching between items in the container.</p>
-
-
-
-							<h2>Basics</h2>
-
-
-
-							<p>There are two pieces to a tabbed interface: the tabs themselves, and the content for each tab. The tabs are an element with the class&nbsp;<code>.tabs</code>, and each item has the class&nbsp;<code>.tabs-title</code>. Each tab contains a link to a tab. The&nbsp;<code>href</code>&nbsp;of each link should match the ID of a tab. Alternatively, the ID can be specified with the attribute&nbsp;<code>data-tabs-target</code>.</p>
-
-
-							<div><div id="highlighter_718315" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs"</code> <code class="xml plain">data-tabs </code><code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">"example-tabs"</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs-title is-active"</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">a</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"#panel1"</code> <code class="xml color1">aria-selected</code><code class="xml plain">=</code><code class="xml string">"true"</code><code class="xml plain">&gt;Tab 1&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs-title"</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">a</code> <code class="xml color1">data-tabs-target</code><code class="xml plain">=</code><code class="xml string">"panel2"</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"#panel2"</code><code class="xml plain">&gt;Tab 2&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml plain">&lt;/</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
-
-
-							<p>The tab content container has the class&nbsp;<code>.tabs-content</code>, while each section has the class&nbsp;<code>.tabs-panel</code>. Each content pane also has a unique ID, which is targeted by a link in the tabstrip.</p>
-
-
-							<div><div id="highlighter_141464" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number5 index0 alt2">5</div><div class="line number6 index1 alt1">6</div><div class="line number7 index2 alt2">7</div><div class="line number8 index3 alt1">8</div><div class="line number9 index4 alt2">9</div><div class="line number10 index5 alt1">10</div><div class="line number11 index6 alt2">11</div><div class="line number12 index7 alt1">12</div></td><td class="code"><div class="container"><div class="line number5 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs-content"</code> <code class="xml color1">data-tabs-content</code><code class="xml plain">=</code><code class="xml string">"example-tabs"</code><code class="xml plain">&gt;</code></div><div class="line number6 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs-panel is-active"</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">"panel1"</code><code class="xml plain">&gt;</code></div><div class="line number7 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">p</code><code class="xml plain">&gt;Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.&lt;/</code><code class="xml keyword">p</code><code class="xml plain">&gt;</code></div><div class="line number8 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number9 index4 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs-panel"</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">"panel2"</code><code class="xml plain">&gt;</code></div><div class="line number10 index5 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">p</code><code class="xml plain">&gt;Suspendisse dictum feugiat nisl ut dapibus.&nbsp; Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.&nbsp; Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.&lt;/</code><code class="xml keyword">p</code><code class="xml plain">&gt;</code></div><div class="line number11 index6 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number12 index7 alt1"><code class="xml plain">&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
-
-
-							<p>Put it all together, and we get this:</p>
-
-
-
-							<ul class="tabs" data-tabs="" id="example-tabs" role="tabpanel" data-n="og01u3-n" aria-labelledby="example-tabs-label">
-								<li class="tabs-title is-active" role="presentation"><a href="#panel1" aria-selected="true" role="tab" aria-controls="panel1" id="panel1-label" tabindex="0">Tab 1</a></li>
-								<li class="tabs-title" role="presentation"><a data-tabs-target="panel2" href="#panel2" role="tab" aria-controls="panel2" aria-selected="false" id="panel2-label" tabindex="-1">Tab 2</a></li>
-							</ul>
-							<div class="tabs-content" data-tabs-content="example-tabs">
-								<div class="tabs-panel is-active" id="panel1" role="tabpanel" aria-labelledby="panel1-label">
-									<p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
-								</div>
-								<div class="tabs-panel" id="panel2" role="tabpanel" aria-labelledby="panel2-label" aria-hidden="true">
-									<p>Suspendisse dictum feugiat nisl ut dapibus.  Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.  Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
-								</div>
-							</div>
-
-
-
-							<div class="wp-block-group"><div class="wp-block-group__inner-container">
-							<h2>Icons and Long Titles</h2>
-
-
-
-							<p>Add a <code>span</code>-Tag around the title within the link this way long titles will be truncated.</p>
-
-
-							<div><div id="highlighter_250143" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs"</code> <code class="xml plain">data-tabs </code><code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">"example-tabs"</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs-title is-active"</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">a</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"#panel1"</code> <code class="xml color1">aria-selected</code><code class="xml plain">=</code><code class="xml string">"true"</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">span</code><code class="xml plain">&gt;A very long title that will probably be too long.&lt;/</code><code class="xml keyword">span</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs-title"</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">a</code> <code class="xml color1">data-tabs-target</code><code class="xml plain">=</code><code class="xml string">"panel2"</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"#panel2"</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">span</code><code class="xml plain">&gt;Yet another very long title.&lt;/</code><code class="xml keyword">span</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml plain">&lt;/</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
-
-
-							<ul class="tabs" data-tabs="" id="example-tabs" style="max-width: 50%;" role="tablist" data-n="ngt886-n">
-								<li class="tabs-title is-active" role="presentation"><a href="#panel1" aria-selected="true" role="tab" aria-controls="panel1" id="panel1-label" tabindex="0"><span>A very long title that will probably be too long.</span></a></li>
-								<li class="tabs-title" role="presentation"><a data-tabs-target="panel2" href="#panel2" role="tab" aria-controls="panel2" aria-selected="false" id="panel2-label" tabindex="-1"><span>Yet another very long title.</span></a></li>
-							</ul>
-
-
-
-							<p>You can also add Icons to your tabs. When you do, make sure you wrap your label in a <code>span</code>-Tag.</p>
-
-
-							<div><div id="highlighter_740860" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs"</code> <code class="xml plain">data-tabs </code><code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">"example-tabs"</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs-title is-active"</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">a</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"#panel1"</code> <code class="xml color1">aria-selected</code><code class="xml plain">=</code><code class="xml string">"true"</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">i</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"fa fa-cat"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">i</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">span</code><code class="xml plain">&gt;Cat&lt;/</code><code class="xml keyword">span</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs-title"</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">a</code> <code class="xml color1">data-tabs-target</code><code class="xml plain">=</code><code class="xml string">"panel2"</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"#panel2"</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">i</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"fa fa-dog"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">i</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">span</code><code class="xml plain">&gt;Dog&lt;/</code><code class="xml keyword">span</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml plain">&lt;/</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
-
-
-							<ul class="tabs" data-tabs="" id="example-tabs" role="tablist" data-n="2zdazm-n">
-								<li class="tabs-title is-active" role="presentation"><a href="#" aria-selected="true" role="tab" aria-controls="" id="-label" tabindex="0"><i class="fa fa-cat"></i><span>Cat</span></a></li>
-								<li class="tabs-title" role="presentation"><a data-tabs-target="panel2" href="#" role="tab" aria-controls="panel2" aria-selected="false" id="panel2-label" tabindex="-1"><i class="fa fa-dog"></i><span>Dog</span></a></li>
-							</ul>
-							</div></div>
-
-
-
-							<h2>Tab Utilities</h2>
-
-
-
-							<p>You can use&nbsp;<code>.small</code> and&nbsp;<code>.large</code> on the <code>.tabs</code> element to change the font-size.</p>
-
-
-							<div><div id="highlighter_739983" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs small"</code> <code class="xml plain">data-tabs </code><code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">"example-tabs"</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">...</code></div></div></td></tr></tbody></table></div></div>
-
-
-							<ul class="tabs small" data-tabs="" id="example-tabs" role="tablist" data-n="b45gzz-n">
-								<li class="tabs-title is-active" role="presentation"><a href="#" aria-selected="true" role="tab" aria-controls="" id="-label" tabindex="0">Tab 1</a></li>
-								<li class="tabs-title" role="presentation"><a data-tabs-target="panel2" href="#" role="tab" aria-controls="panel2" aria-selected="false" id="panel2-label" tabindex="-1">Tab 2</a></li>
-							</ul>
-
-
-							<div><div id="highlighter_623994" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs large"</code> <code class="xml plain">data-tabs </code><code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">"example-tabs"</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">...</code></div></div></td></tr></tbody></table></div></div>
-
-
-							<ul class="tabs large" data-tabs="" id="example-tabs" role="tablist" data-n="229o6x-n">
-								<li class="tabs-title is-active" role="presentation"><a href="#panel1" aria-selected="true" role="tab" aria-controls="panel1" id="panel1-label" tabindex="0">Tab 1</a></li>
-								<li class="tabs-title" role="presentation"><a data-tabs-target="panel2" href="#" role="tab" aria-controls="panel2" aria-selected="false" id="panel2-label" tabindex="-1">Tab 2</a></li>
-							</ul>
-
-
-
-							<p>If you want the Tabs to span the entire container add a <code>.expanded</code> to the <code>.tabs</code>.</p>
-
-
-							<div><div id="highlighter_329491" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs expanded"</code> <code class="xml plain">data-tabs </code><code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">"example-tabs"</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">...</code></div></div></td></tr></tbody></table></div></div>
-
-
-							<ul class="tabs expanded" data-tabs="" id="example-tabs" role="tablist" data-n="vdsul7-n">
-								<li class="tabs-title is-active" role="presentation"><a href="#" aria-selected="true" role="tab" aria-controls="" id="-label" tabindex="0"><span>Cat</span></a></li>
-								<li class="tabs-title" role="presentation"><a data-tabs-target="panel2" href="#" role="tab" aria-controls="panel2" aria-selected="false" id="panel2-label" tabindex="-1"><span>Dog</span></a></li>
-							</ul>
-
-
-
-							<h2>Tab Styles</h2>
-
-
-
-							<h3>Bar</h3>
-
-
-
-							<p>Makes most sense when <code>.expanded</code> and in a card</p>
-
-
-							<div><div id="highlighter_563959" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">'card static'</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">ul</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs bar expanded"</code> <code class="xml plain">data-tabs </code><code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">"example-tabs"</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">...</code></div></div></td></tr></tbody></table></div></div>
-
-
-							<div class="card static">
-							<ul class="tabs bar expanded" data-tabs="" id="example-tabs" role="tablist" data-n="wi4os0-n">
-								<li class="tabs-title is-active" role="presentation"><a href="#" aria-selected="true" role="tab" aria-controls="" id="-label" tabindex="0"><span>Cat</span></a></li>
-								<li class="tabs-title" role="presentation"><a data-tabs-target="panel2" href="#" role="tab" aria-controls="panel2" aria-selected="false" id="panel2-label" tabindex="-1"><span>Dog</span></a></li>
-							</ul>
-							</div>
-
-
-
-							<h3>Line</h3>
-
-
-							<div><div id="highlighter_967322" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs line"</code> <code class="xml plain">data-tabs </code><code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">"example-tabs"</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">...</code></div></div></td></tr></tbody></table></div></div>
-
-
-							<ul class="tabs line" data-tabs="" id="example-tabs" role="tablist" data-n="0ktm62-n">
-								<li class="tabs-title is-active" role="presentation"><a href="#" aria-selected="true" role="tab" aria-controls="" id="-label" tabindex="0"><span>Cat</span></a></li>
-								<li class="tabs-title" role="presentation"><a data-tabs-target="panel2" href="#" role="tab" aria-controls="panel2" aria-selected="false" id="panel2-label" tabindex="-1"><span>Dog</span></a></li>
-							</ul>
-
-
-
-							<div class="wp-block-group"><div class="wp-block-group__inner-container">
-							<h2>Label is Active</h2>
-
-
-
-							<p>When there is not a lot of space the <code>.label-is-active</code> may be a good option. Caution: You need an icon and wrap the title in a <code>span</code>.</p>
-
-
-							<div><div id="highlighter_765433" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs label-is-active"</code> <code class="xml plain">data-tabs </code><code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">"example-tabs"</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs-title is-active"</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">a</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"#panel1"</code> <code class="xml color1">aria-selected</code><code class="xml plain">=</code><code class="xml string">"true"</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">i</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"fa fa-rocket"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">i</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">span</code><code class="xml plain">&gt;Rockets are complicated things.&lt;/</code><code class="xml keyword">span</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs-title"</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">a</code> <code class="xml color1">data-tabs-target</code><code class="xml plain">=</code><code class="xml string">"panel2"</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"#example-tabs"</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">i</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"fa fa-satellite"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">i</code><code class="xml plain">&gt;&lt;</code><code class="xml keyword">span</code><code class="xml plain">&gt;And so are satellites&lt;/</code><code class="xml keyword">span</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml plain">&lt;/</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
-
-
-							<ul class="tabs label-is-active" data-tabs="" id="example-tabs" role="tablist" data-n="bt8cb7-n">
-								<li class="tabs-title is-active" role="presentation"><a href="#example-tabs" aria-selected="true" role="tab" aria-controls="example-tabs" id="example-tabs-label" tabindex="0"><i class="fa fa-rocket"></i><span>Rockets are complicated things.</span></a></li>
-								<li class="tabs-title" role="presentation"><a data-tabs-target="panel2" href="#example-tabs" role="tab" aria-controls="panel2" aria-selected="false" id="panel2-label" tabindex="-1"><i class="fa fa-satellite"></i><span>And so are satellites</span></a></li>
-							</ul>
-							</div></div>
-
-
-
-							<div class="wp-block-group"><div class="wp-block-group__inner-container">
-							<h2>Image</h2>
-
-
-
-							<p>Lastly: <code>.image</code>.</p>
-
-
-							<div><div id="highlighter_497365" class="syntaxhighlighter  xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">ul</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs image expanded"</code> <code class="xml color1">id</code><code class="xml plain">=</code><code class="xml string">"image-tabs"</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs-title is-active"</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">a</code> <code class="xml color1">aria-selected</code><code class="xml plain">=</code><code class="xml string">"true"</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"#"</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"clipped height-200 tint"</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"title"</code><code class="xml plain">&gt;</code></div><div class="line number6 index5 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">span</code><code class="xml plain">&gt;Space Exploration&lt;/</code><code class="xml keyword">span</code><code class="xml plain">&gt;</code></div><div class="line number7 index6 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">span</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"flat-arrow-down-icon"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">span</code><code class="xml plain">&gt;</code></div><div class="line number8 index7 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number9 index8 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">img</code> <code class="xml color1">width</code><code class="xml plain">=</code><code class="xml string">"300"</code> <code class="xml color1">height</code><code class="xml plain">=</code><code class="xml string">"225"</code> <code class="xml color1">src</code><code class="xml plain">=</code><code class="xml string">"<a href="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&amp;amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=800&amp;amp;q=60">https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&amp;amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=800&amp;amp;q=60</a>"</code> <code class="xml color1">alt</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;</code></div><div class="line number10 index9 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number11 index10 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;</code></div><div class="line number12 index11 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number13 index12 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">li</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"tabs-title"</code><code class="xml plain">&gt;</code></div><div class="line number14 index13 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">a</code> <code class="xml color1">href</code><code class="xml plain">=</code><code class="xml string">"#"</code><code class="xml plain">&gt;</code></div><div class="line number15 index14 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"clipped height-200 tint"</code><code class="xml plain">&gt;</code></div><div class="line number16 index15 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">div</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"title"</code><code class="xml plain">&gt;</code></div><div class="line number17 index16 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">span</code><code class="xml plain">&gt;Networked collaboration in the community&lt;/</code><code class="xml keyword">span</code><code class="xml plain">&gt;</code></div><div class="line number18 index17 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">span</code> <code class="xml color1">class</code><code class="xml plain">=</code><code class="xml string">"flat-arrow-down-icon"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">span</code><code class="xml plain">&gt;</code></div><div class="line number19 index18 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number20 index19 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">img</code> <code class="xml color1">width</code><code class="xml plain">=</code><code class="xml string">"300"</code> <code class="xml color1">height</code><code class="xml plain">=</code><code class="xml string">"225"</code> <code class="xml color1">src</code><code class="xml plain">=</code><code class="xml string">"<a href="https://images.unsplash.com/photo-1484589065579-248aad0d8b13?ixlib=rb-1.2.1&amp;amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=800&amp;amp;q=60">https://images.unsplash.com/photo-1484589065579-248aad0d8b13?ixlib=rb-1.2.1&amp;amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=800&amp;amp;q=60</a>"</code> <code class="xml color1">alt</code><code class="xml plain">=</code><code class="xml string">""</code><code class="xml plain">&gt;</code></div><div class="line number21 index20 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">div</code><code class="xml plain">&gt;</code></div><div class="line number22 index21 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">a</code><code class="xml plain">&gt;</code></div><div class="line number23 index22 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;/</code><code class="xml keyword">li</code><code class="xml plain">&gt;</code></div><div class="line number24 index23 alt1"><code class="xml plain">&lt;/</code><code class="xml keyword">ul</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
-
-
-							<ul class="tabs image expanded alignwide scroll-snap-container-x snap-align-center width-medium" id="image-tabs">
-								<li class="tabs-title is-active scroll-snap-element">
-									<a aria-selected="true" href="#">
-										<div class="clipped height-200 tint">
-											<div class="title">
-												<span>Space Exploration</span>
-												<span class="flat-arrow-down-icon"></span>
+											<p>Tabs are elements that help you organize and navigate multiple documents
+												in a single container. They can be used for switching between items in
+												the container.</p>
+
+
+
+											<h2>Basics</h2>
+
+
+
+											<p>There are two pieces to a tabbed interface: the tabs themselves, and the
+												content for each tab. The tabs are an element with the
+												class&nbsp;<code>.tabs</code>, and each item has the
+												class&nbsp;<code>.tabs-title</code>. Each tab contains a link to a tab.
+												The&nbsp;<code>href</code>&nbsp;of each link should match the ID of a
+												tab. Alternatively, the ID can be specified with the
+												attribute&nbsp;<code>data-tabs-target</code>.</p>
+
+
+											<div>
+												<div id="highlighter_718315" class="syntaxhighlighter  xml">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tbody>
+															<tr>
+																<td class="gutter">
+																	<div class="line number1 index0 alt2">1</div>
+																	<div class="line number2 index1 alt1">2</div>
+																	<div class="line number3 index2 alt2">3</div>
+																	<div class="line number4 index3 alt1">4</div>
+																</td>
+																<td class="code">
+																	<div class="container">
+																		<div class="line number1 index0 alt2"><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">ul</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"tabs"</code> <code
+																				class="xml plain">data-tabs </code><code
+																				class="xml color1">id</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"example-tabs"</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number2 index1 alt1"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">li</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"tabs-title is-active"</code><code
+																				class="xml plain">&gt;&lt;</code><code
+																				class="xml keyword">a</code> <code
+																				class="xml color1">href</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"#panel1"</code>
+																			<code
+																				class="xml color1">aria-selected</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"true"</code><code
+																				class="xml plain">&gt;Tab 1&lt;/</code><code
+																				class="xml keyword">a</code><code
+																				class="xml plain">&gt;&lt;/</code><code
+																				class="xml keyword">li</code><code
+																				class="xml plain">&gt;</code>
+																		</div>
+																		<div class="line number3 index2 alt2"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">li</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"tabs-title"</code><code
+																				class="xml plain">&gt;&lt;</code><code
+																				class="xml keyword">a</code> <code
+																				class="xml color1">data-tabs-target</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"panel2"</code> <code
+																				class="xml color1">href</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"#panel2"</code><code
+																				class="xml plain">&gt;Tab 2&lt;/</code><code
+																				class="xml keyword">a</code><code
+																				class="xml plain">&gt;&lt;/</code><code
+																				class="xml keyword">li</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number4 index3 alt1"><code
+																				class="xml plain">&lt;/</code><code
+																				class="xml keyword">ul</code><code
+																				class="xml plain">&gt;</code></div>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
 											</div>
-											<img width="300" height="225" src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="">
-										</div>
-									</a>
-								</li>
-								<li class="tabs-title scroll-snap-element">
-									<a href="#">
-										<div class="clipped height-200 tint">
-											<div class="title">
-												<span>Networked collaboration in the community</span>
-												<span class="flat-arrow-down-icon"></span>
+
+
+											<p>The tab content container has the class&nbsp;<code>.tabs-content</code>,
+												while each section has the class&nbsp;<code>.tabs-panel</code>. Each
+												content pane also has a unique ID, which is targeted by a link in the
+												tabstrip.</p>
+
+
+											<div>
+												<div id="highlighter_141464" class="syntaxhighlighter  xml">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tbody>
+															<tr>
+																<td class="gutter">
+																	<div class="line number5 index0 alt2">5</div>
+																	<div class="line number6 index1 alt1">6</div>
+																	<div class="line number7 index2 alt2">7</div>
+																	<div class="line number8 index3 alt1">8</div>
+																	<div class="line number9 index4 alt2">9</div>
+																	<div class="line number10 index5 alt1">10</div>
+																	<div class="line number11 index6 alt2">11</div>
+																	<div class="line number12 index7 alt1">12</div>
+																</td>
+																<td class="code">
+																	<div class="container">
+																		<div class="line number5 index0 alt2"><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">div</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"tabs-content"</code>
+																			<code
+																				class="xml color1">data-tabs-content</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"example-tabs"</code><code
+																				class="xml plain">&gt;</code>
+																		</div>
+																		<div class="line number6 index1 alt1"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">div</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"tabs-panel is-active"</code>
+																			<code class="xml color1">id</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"panel1"</code><code
+																				class="xml plain">&gt;</code>
+																		</div>
+																		<div class="line number7 index2 alt2"><code
+																				class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">p</code><code
+																				class="xml plain">&gt;Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.&lt;/</code><code
+																				class="xml keyword">p</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number8 index3 alt1"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;/</code><code
+																				class="xml keyword">div</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number9 index4 alt2"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">div</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"tabs-panel"</code>
+																			<code class="xml color1">id</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"panel2"</code><code
+																				class="xml plain">&gt;</code>
+																		</div>
+																		<div class="line number10 index5 alt1"><code
+																				class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">p</code><code
+																				class="xml plain">&gt;Suspendisse dictum feugiat nisl ut dapibus.&nbsp; Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.&nbsp; Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.&lt;/</code><code
+																				class="xml keyword">p</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number11 index6 alt2"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;/</code><code
+																				class="xml keyword">div</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number12 index7 alt1"><code
+																				class="xml plain">&lt;/</code><code
+																				class="xml keyword">div</code><code
+																				class="xml plain">&gt;</code></div>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
 											</div>
-											<img width="300" height="225" src="https://images.unsplash.com/photo-1484589065579-248aad0d8b13?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="">
-										</div>
-									</a>
-								</li>
-							</ul>
-							</div></div>
+
+
+											<p>Put it all together, and we get this:</p>
+
+
+
+											<ul class="tabs" data-tabs="" id="example-tabs" role="tabpanel"
+												data-n="og01u3-n" aria-labelledby="example-tabs-label">
+												<li class="tabs-title is-active" role="presentation"><a href="#panel1"
+														aria-selected="true" role="tab" aria-controls="panel1"
+														id="panel1-label" tabindex="0">Tab 1</a></li>
+												<li class="tabs-title" role="presentation"><a data-tabs-target="panel2"
+														href="#panel2" role="tab" aria-controls="panel2"
+														aria-selected="false" id="panel2-label" tabindex="-1">Tab 2</a>
+												</li>
+											</ul>
+											<div class="tabs-content" data-tabs-content="example-tabs">
+												<div class="tabs-panel is-active" id="panel1" role="tabpanel"
+													aria-labelledby="panel1-label">
+													<p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor
+														neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla
+														enim. Phasellus molestie magna non est bibendum non venenatis
+														nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+												</div>
+												<div class="tabs-panel" id="panel2" role="tabpanel"
+													aria-labelledby="panel2-label" aria-hidden="true">
+													<p>Suspendisse dictum feugiat nisl ut dapibus. Vivamus hendrerit
+														arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus
+														molestie magna non est bibendum non venenatis nisl tempor. Sed
+														auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+												</div>
+											</div>
+
+
+
+											<div class="wp-block-group">
+												<div class="wp-block-group__inner-container">
+													<h2>Icons and Long Titles</h2>
+
+
+
+													<p>Add a <code>span</code>-Tag around the title within the link this
+														way long titles will be truncated.</p>
+
+
+													<ul class="tabs" data-tabs="" id="example-tabs"
+														style="max-width: 50%;" role="tablist" data-n="ngt886-n">
+														<li class="tabs-title is-active" role="presentation"><a
+																href="#panel1" aria-selected="true" role="tab"
+																aria-controls="panel1" id="panel1-label"
+																tabindex="0"><span>A very long title that will probably
+																	be too long.</span></a></li>
+														<li class="tabs-title" role="presentation"><a
+																data-tabs-target="panel2" href="#panel2" role="tab"
+																aria-controls="panel2" aria-selected="false"
+																id="panel2-label" tabindex="-1"><span>Yet another very
+																	long title.</span></a></li>
+													</ul>
+
+
+
+													<p>You can also add Icons to your tabs. When you do, make sure you
+														wrap your label in a <code>span</code>-Tag.</p>
+
+
+													<!-- <ul class="tabs" data-tabs="" id="example-tabs" role="tablist"
+														data-n="2zdazm-n">
+														<li class="tabs-title is-active" role="presentation">
+															<a href="#" aria-selected="true" role="tab" aria-controls=""
+																id="-label" tabindex="0">
+																<i class="fa fa-cat"></i><span>Cat</span>
+															</a>
+														</li>
+														<li class="tabs-title" role="presentation">
+															<a data-tabs-target="panel2" href="#" role="tab"
+																aria-controls="panel2" aria-selected="false"
+																id="panel2-label" tabindex="-1">
+																<i class="fa fa-dog"></i><span>Dog</span>
+															</a>
+														</li>
+													</ul> -->
+												</div>
+											</div>
+
+											<h2>Tab Utilities</h2>
+
+
+
+											<p>You can use&nbsp;<code>.small</code> and&nbsp;<code>.large</code> on the
+												<code>.tabs</code> element to change the font-size.
+											</p>
+
+
+											<div>
+												<div id="highlighter_739983" class="syntaxhighlighter  xml">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tbody>
+															<tr>
+																<td class="gutter">
+																	<div class="line number1 index0 alt2">1</div>
+																	<div class="line number2 index1 alt1">2</div>
+																</td>
+																<td class="code">
+																	<div class="container">
+																		<div class="line number1 index0 alt2"><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">ul</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"tabs small"</code>
+																			<code
+																				class="xml plain">data-tabs </code><code
+																				class="xml color1">id</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"example-tabs"</code><code
+																				class="xml plain">&gt;</code>
+																		</div>
+																		<div class="line number2 index1 alt1"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">...</code></div>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+
+
+											<ul class="tabs small" data-tabs="" id="example-tabs" role="tablist"
+												data-n="b45gzz-n">
+												<li class="tabs-title is-active" role="presentation"><a href="#"
+														aria-selected="true" role="tab" aria-controls="" id="-label"
+														tabindex="0">Tab 1</a></li>
+												<li class="tabs-title" role="presentation"><a data-tabs-target="panel2"
+														href="#" role="tab" aria-controls="panel2" aria-selected="false"
+														id="panel2-label" tabindex="-1">Tab 2</a></li>
+											</ul>
+
+
+											<div>
+												<div id="highlighter_623994" class="syntaxhighlighter  xml">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tbody>
+															<tr>
+																<td class="gutter">
+																	<div class="line number1 index0 alt2">1</div>
+																	<div class="line number2 index1 alt1">2</div>
+																</td>
+																<td class="code">
+																	<div class="container">
+																		<div class="line number1 index0 alt2"><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">ul</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"tabs large"</code>
+																			<code
+																				class="xml plain">data-tabs </code><code
+																				class="xml color1">id</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"example-tabs"</code><code
+																				class="xml plain">&gt;</code>
+																		</div>
+																		<div class="line number2 index1 alt1"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">...</code></div>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+
+
+											<ul class="tabs large" data-tabs="" id="example-tabs" role="tablist"
+												data-n="229o6x-n">
+												<li class="tabs-title is-active" role="presentation"><a href="#panel1"
+														aria-selected="true" role="tab" aria-controls="panel1"
+														id="panel1-label" tabindex="0">Tab 1</a></li>
+												<li class="tabs-title" role="presentation"><a data-tabs-target="panel2"
+														href="#" role="tab" aria-controls="panel2" aria-selected="false"
+														id="panel2-label" tabindex="-1">Tab 2</a></li>
+											</ul>
+
+
+
+											<p>If you want the Tabs to span the entire container add a
+												<code>.expanded</code> to the <code>.tabs</code>.
+											</p>
+
+
+											<div>
+												<div id="highlighter_329491" class="syntaxhighlighter  xml">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tbody>
+															<tr>
+																<td class="gutter">
+																	<div class="line number1 index0 alt2">1</div>
+																	<div class="line number2 index1 alt1">2</div>
+																</td>
+																<td class="code">
+																	<div class="container">
+																		<div class="line number1 index0 alt2"><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">ul</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"tabs expanded"</code>
+																			<code
+																				class="xml plain">data-tabs </code><code
+																				class="xml color1">id</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"example-tabs"</code><code
+																				class="xml plain">&gt;</code>
+																		</div>
+																		<div class="line number2 index1 alt1"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">...</code></div>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+
+
+											<ul class="tabs expanded" data-tabs="" id="example-tabs" role="tablist"
+												data-n="vdsul7-n">
+												<li class="tabs-title is-active" role="presentation"><a href="#"
+														aria-selected="true" role="tab" aria-controls="" id="-label"
+														tabindex="0"><span>Cat</span></a></li>
+												<li class="tabs-title" role="presentation"><a data-tabs-target="panel2"
+														href="#" role="tab" aria-controls="panel2" aria-selected="false"
+														id="panel2-label" tabindex="-1"><span>Dog</span></a></li>
+											</ul>
+
+
+
+											<h2>Tab Styles</h2>
+
+
+
+											<h3>Bar</h3>
+
+
+
+											<p>Makes most sense when <code>.expanded</code> and in a card</p>
+
+
+											<div>
+												<div id="highlighter_563959" class="syntaxhighlighter  xml">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tbody>
+															<tr>
+																<td class="gutter">
+																	<div class="line number1 index0 alt2">1</div>
+																	<div class="line number2 index1 alt1">2</div>
+																	<div class="line number3 index2 alt2">3</div>
+																</td>
+																<td class="code">
+																	<div class="container">
+																		<div class="line number1 index0 alt2"><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">div</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">'card static'</code><code
+																				class="xml plain">&gt;</code></div>
+																		<div class="line number2 index1 alt1"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">ul</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"tabs bar expanded"</code>
+																			<code
+																				class="xml plain">data-tabs </code><code
+																				class="xml color1">id</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"example-tabs"</code><code
+																				class="xml plain">&gt;</code>
+																		</div>
+																		<div class="line number3 index2 alt2"><code
+																				class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+																				class="xml plain">...</code></div>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+
+
+											<div class="card static">
+												<ul class="tabs bar expanded" data-tabs="" id="example-tabs"
+													role="tablist" data-n="wi4os0-n">
+													<li class="tabs-title is-active" role="presentation"><a href="#"
+															aria-selected="true" role="tab" aria-controls="" id="-label"
+															tabindex="0"><span>Cat</span></a></li>
+													<li class="tabs-title" role="presentation"><a
+															data-tabs-target="panel2" href="#" role="tab"
+															aria-controls="panel2" aria-selected="false"
+															id="panel2-label" tabindex="-1"><span>Dog</span></a></li>
+												</ul>
+											</div>
+
+
+
+											<h3>Line</h3>
+
+
+											<div>
+												<div id="highlighter_967322" class="syntaxhighlighter  xml">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tbody>
+															<tr>
+																<td class="gutter">
+																	<div class="line number1 index0 alt2">1</div>
+																	<div class="line number2 index1 alt1">2</div>
+																</td>
+																<td class="code">
+																	<div class="container">
+																		<div class="line number1 index0 alt2"><code
+																				class="xml plain">&lt;</code><code
+																				class="xml keyword">ul</code> <code
+																				class="xml color1">class</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"tabs line"</code>
+																			<code
+																				class="xml plain">data-tabs </code><code
+																				class="xml color1">id</code><code
+																				class="xml plain">=</code><code
+																				class="xml string">"example-tabs"</code><code
+																				class="xml plain">&gt;</code>
+																		</div>
+																		<div class="line number2 index1 alt1"><code
+																				class="xml spaces">&nbsp;&nbsp;</code><code
+																				class="xml plain">...</code></div>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+
+
+											<ul class="tabs line" data-tabs="" id="example-tabs" role="tablist"
+												data-n="0ktm62-n">
+												<li class="tabs-title is-active" role="presentation"><a href="#"
+														aria-selected="true" role="tab" aria-controls="" id="-label"
+														tabindex="0"><span>Cat</span></a></li>
+												<li class="tabs-title" role="presentation"><a data-tabs-target="panel2"
+														href="#" role="tab" aria-controls="panel2" aria-selected="false"
+														id="panel2-label" tabindex="-1"><span>Dog</span></a></li>
+											</ul>
+
+
+
+											<div class="wp-block-group">
+												<div class="wp-block-group__inner-container">
+													<h2>Label is Active</h2>
+
+
+
+													<p>When there is not a lot of space the
+														<code>.label-is-active</code> may be a good option. Caution: You
+														need an icon and wrap the title in a <code>span</code>.
+													</p>
+
+
+													<ul class="tabs label-is-active" data-tabs="" id="example-tabs"
+														role="tablist" data-n="bt8cb7-n">
+														<li class="tabs-title is-active" role="presentation"><a
+																href="#example-tabs" aria-selected="true" role="tab"
+																aria-controls="example-tabs" id="example-tabs-label"
+																tabindex="0"><i class="fa fa-rocket"></i><span>Rockets
+																	are complicated things.</span></a></li>
+														<li class="tabs-title" role="presentation"><a
+																data-tabs-target="panel2" href="#example-tabs"
+																role="tab" aria-controls="panel2" aria-selected="false"
+																id="panel2-label" tabindex="-1"><i
+																	class="fa fa-satellite"></i><span>And so are
+																	satellites</span></a></li>
+													</ul>
+												</div>
+											</div>
+
+
+
+											<div class="wp-block-group">
+												<div class="wp-block-group__inner-container">
+													<h2>Image</h2>
+
+													<p>Lastly: <code>.image</code>.</p>
+
+													<ul class="tabs image expanded alignwide scroll-snap-container-x snap-align-center width-medium"
+														id="image-tabs">
+														<li class="tabs-title is-active scroll-snap-element">
+															<a aria-selected="true" href="#">
+																<div class="clipped height-200 tint">
+																	<div class="title">
+																		<span>Space Exploration</span>
+																		<span class="flat-arrow-down-icon"></span>
+																	</div>
+																	<img width="300" height="225"
+																		src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+																		alt="">
+																</div>
+															</a>
+														</li>
+														<li class="tabs-title scroll-snap-element">
+															<a href="#">
+																<div class="clipped height-200 tint">
+																	<div class="title">
+																		<span>Networked collaboration in the
+																			community</span>
+																		<span class="flat-arrow-down-icon"></span>
+																	</div>
+																	<img width="300" height="225"
+																		src="https://images.unsplash.com/photo-1484589065579-248aad0d8b13?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+																		alt="">
+																</div>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</div>
 
 										</div>
 
-									<!--
+										<!--
 									<div class='card-divider no-padding flex-dir-row'>
 										<small class='card-section flex-dir-row align-middle padding-left-0'>
 												<span class='dot-after'>admin spaces</span>
@@ -716,42 +1394,53 @@
 										</small>
 									</div>
 									-->
+									</div>
 								</div>
-							</div>
 
 
-							<ul class="dropdown-pane card static icons icon-left has-position-bottom has-alignment-right" data-position="bottom" data-alignment="right" id="page-73974-dropdown" data-dropdown="" data-auto-focus="true" data-v-offset="2" data-close-on-click="true" aria-labelledby="oa0mgl-dd-anchor" aria-hidden="true" data-yeti-box="page-73974-dropdown" data-resize="page-73974-dropdown" data-n="0ms11w-n" data-events="resize">
+								<ul class="dropdown-pane card static icons icon-left has-position-bottom has-alignment-right"
+									data-position="bottom" data-alignment="right" id="page-73974-dropdown"
+									data-dropdown="" data-auto-focus="true" data-v-offset="2" data-close-on-click="true"
+									aria-labelledby="oa0mgl-dd-anchor" aria-hidden="true"
+									data-yeti-box="page-73974-dropdown" data-resize="page-73974-dropdown"
+									data-n="0ms11w-n" data-events="resize">
 
 
-										<li class="card-divider padding-button">
-											<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73974&amp;action=edit" class="js-editpage"> Edit  Tabs</a>
-										</li>
-										<li class="card-divider padding-button">
-											<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73974&amp;action=trash&amp;_wpnonce=e1d216b306" class="alert js-deletepage"> Delete  Tabs</a>
-										</li>
+									<li class="card-divider padding-button">
+										<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73974&amp;action=edit"
+											class="js-editpage"> Edit Tabs</a>
+									</li>
+									<li class="card-divider padding-button">
+										<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73974&amp;action=trash&amp;_wpnonce=e1d216b306"
+											class="alert js-deletepage"> Delete Tabs</a>
+									</li>
 
-							</ul>
+								</ul>
 
-							<div class="card-divider page-section no-padding ">
-								<div class="">
-									<section class="card-section page-header padding-bottom-0 flex-dir-row" id="page-first-general" data-magellan-target="page-first-general">
-										<div class="flex flex-dir-column align-center">
-											<h1 class="page-title">General</h1>
-										</div>
-											<div class="edit-bar align-self-top padding-right-0">
-												<button class="dots" type="button" data-toggle="page-73937-dropdown" aria-controls="page-73937-dropdown" data-is-focus="false" data-yeti-box="page-73937-dropdown" aria-haspopup="true" aria-expanded="false" id="e1ya1f-dd-anchor"></button>
+								<div class="card-divider page-section no-padding ">
+									<div class="">
+										<section class="card-section page-header padding-bottom-0 flex-dir-row"
+											id="page-first-general" data-magellan-target="page-first-general">
+											<div class="flex flex-dir-column align-center">
+												<h1 class="page-title">General</h1>
 											</div>
-									</section>
+											<div class="edit-bar align-self-top padding-right-0">
+												<button class="dots" type="button" data-toggle="page-73937-dropdown"
+													aria-controls="page-73937-dropdown" data-is-focus="false"
+													data-yeti-box="page-73937-dropdown" aria-haspopup="true"
+													aria-expanded="false" id="e1ya1f-dd-anchor"></button>
+											</div>
+										</section>
 
 										<div class="page-content user-generated card-section s-fg-a-c1-parent">
 
-							<p class="lead">Here go general things.</p>
+											<p class="lead">Here go general things.</p>
 
 
 
 										</div>
 
-									<!--
+										<!--
 									<div class='card-divider no-padding flex-dir-row'>
 										<small class='card-section flex-dir-row align-middle padding-left-0'>
 												<span class='dot-after'>admin spaces</span>
@@ -759,44 +1448,60 @@
 										</small>
 									</div>
 									-->
+									</div>
 								</div>
-							</div>
 
 
-							<ul class="dropdown-pane card static icons icon-left has-position-bottom has-alignment-right" data-position="bottom" data-alignment="right" id="page-73937-dropdown" data-dropdown="" data-auto-focus="true" data-v-offset="2" data-close-on-click="true" aria-labelledby="e1ya1f-dd-anchor" aria-hidden="true" data-yeti-box="page-73937-dropdown" data-resize="page-73937-dropdown" data-n="tvpa7m-n" data-events="resize">
+								<ul class="dropdown-pane card static icons icon-left has-position-bottom has-alignment-right"
+									data-position="bottom" data-alignment="right" id="page-73937-dropdown"
+									data-dropdown="" data-auto-focus="true" data-v-offset="2" data-close-on-click="true"
+									aria-labelledby="e1ya1f-dd-anchor" aria-hidden="true"
+									data-yeti-box="page-73937-dropdown" data-resize="page-73937-dropdown"
+									data-n="tvpa7m-n" data-events="resize">
 
 
-										<li class="card-divider padding-button">
-											<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73937&amp;action=edit" class="js-editpage"> Edit  General</a>
-										</li>
-										<li class="card-divider padding-button">
-											<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73937&amp;action=trash&amp;_wpnonce=27fb2ff0c5" class="alert js-deletepage"> Delete  General</a>
-										</li>
+									<li class="card-divider padding-button">
+										<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73937&amp;action=edit"
+											class="js-editpage"> Edit General</a>
+									</li>
+									<li class="card-divider padding-button">
+										<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73937&amp;action=trash&amp;_wpnonce=27fb2ff0c5"
+											class="alert js-deletepage"> Delete General</a>
+									</li>
 
-							</ul>
+								</ul>
 
-							<div class="card-divider page-section no-padding ">
-								<div class="">
-									<section class="card-section page-header padding-bottom-0 flex-dir-row" id="page-first-grid" data-magellan-target="page-first-grid">
-										<div class="flex flex-dir-column align-center">
-											<h1 class="page-title">Grid</h1>
-										</div>
-											<div class="edit-bar align-self-top padding-right-0">
-												<button class="dots" type="button" data-toggle="page-73947-dropdown" aria-controls="page-73947-dropdown" data-is-focus="false" data-yeti-box="page-73947-dropdown" aria-haspopup="true" aria-expanded="false" id="20vd8b-dd-anchor"></button>
+								<div class="card-divider page-section no-padding ">
+									<div class="">
+										<section class="card-section page-header padding-bottom-0 flex-dir-row"
+											id="page-first-grid" data-magellan-target="page-first-grid">
+											<div class="flex flex-dir-column align-center">
+												<h1 class="page-title">Grid</h1>
 											</div>
-									</section>
+											<div class="edit-bar align-self-top padding-right-0">
+												<button class="dots" type="button" data-toggle="page-73947-dropdown"
+													aria-controls="page-73947-dropdown" data-is-focus="false"
+													data-yeti-box="page-73947-dropdown" aria-haspopup="true"
+													aria-expanded="false" id="20vd8b-dd-anchor"></button>
+											</div>
+										</section>
 
 										<div class="page-content user-generated card-section s-fg-a-c1-parent">
 
-							<p class="lead">Here go general things.</p>
+											<p class="lead">Here go general things.</p>
 
 
 
-							<p>The XY Grid is a huge advancement in Grids. Stay up-to-date with all the new features in Foundation 6.4 with our online webinar training. You’ll come away knowing the ins and outs of the XY Grid to create complex layouts faster and with less code. Not to mention all the useful UI components and Foundation JavaScript you’ll learn. You’ll make your coworkers jealous.</p>
+											<p>The XY Grid is a huge advancement in Grids. Stay up-to-date with all the
+												new features in Foundation 6.4 with our online webinar training. You’ll
+												come away knowing the ins and outs of the XY Grid to create complex
+												layouts faster and with less code. Not to mention all the useful UI
+												components and Foundation JavaScript you’ll learn. You’ll make your
+												coworkers jealous.</p>
 
 										</div>
 
-									<!--
+										<!--
 									<div class='card-divider no-padding flex-dir-row'>
 										<small class='card-section flex-dir-row align-middle padding-left-0'>
 												<span class='dot-after'>admin spaces</span>
@@ -804,44 +1509,55 @@
 										</small>
 									</div>
 									-->
+									</div>
 								</div>
-							</div>
 
 
-							<ul class="dropdown-pane card static icons icon-left has-position-bottom has-alignment-right" data-position="bottom" data-alignment="right" id="page-73947-dropdown" data-dropdown="" data-auto-focus="true" data-v-offset="2" data-close-on-click="true" aria-labelledby="20vd8b-dd-anchor" aria-hidden="true" data-yeti-box="page-73947-dropdown" data-resize="page-73947-dropdown" data-n="4evwi5-n" data-events="resize">
+								<ul class="dropdown-pane card static icons icon-left has-position-bottom has-alignment-right"
+									data-position="bottom" data-alignment="right" id="page-73947-dropdown"
+									data-dropdown="" data-auto-focus="true" data-v-offset="2" data-close-on-click="true"
+									aria-labelledby="20vd8b-dd-anchor" aria-hidden="true"
+									data-yeti-box="page-73947-dropdown" data-resize="page-73947-dropdown"
+									data-n="4evwi5-n" data-events="resize">
 
 
-										<li class="card-divider padding-button">
-											<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73947&amp;action=edit" class="js-editpage"> Edit  Grid</a>
-										</li>
-										<li class="card-divider padding-button">
-											<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73947&amp;action=trash&amp;_wpnonce=cc6baed1fe" class="alert js-deletepage"> Delete  Grid</a>
-										</li>
+									<li class="card-divider padding-button">
+										<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73947&amp;action=edit"
+											class="js-editpage"> Edit Grid</a>
+									</li>
+									<li class="card-divider padding-button">
+										<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73947&amp;action=trash&amp;_wpnonce=cc6baed1fe"
+											class="alert js-deletepage"> Delete Grid</a>
+									</li>
 
-							</ul>
+								</ul>
 
-							<div class="card-divider page-section no-padding ">
-								<div class="">
-									<section class="card-section page-header padding-bottom-0 flex-dir-row" id="page-first-utilities" data-magellan-target="page-first-utilities">
-										<div class="flex flex-dir-column align-center">
-											<h1 class="page-title">Utilities</h1>
-										</div>
-											<div class="edit-bar align-self-top padding-right-0">
-												<button class="dots" type="button" data-toggle="page-73950-dropdown" aria-controls="page-73950-dropdown" data-is-focus="false" data-yeti-box="page-73950-dropdown" aria-haspopup="true" aria-expanded="false" id="6jgpc8-dd-anchor"></button>
+								<div class="card-divider page-section no-padding ">
+									<div class="">
+										<section class="card-section page-header padding-bottom-0 flex-dir-row"
+											id="page-first-utilities" data-magellan-target="page-first-utilities">
+											<div class="flex flex-dir-column align-center">
+												<h1 class="page-title">Utilities</h1>
 											</div>
-									</section>
+											<div class="edit-bar align-self-top padding-right-0">
+												<button class="dots" type="button" data-toggle="page-73950-dropdown"
+													aria-controls="page-73950-dropdown" data-is-focus="false"
+													data-yeti-box="page-73950-dropdown" aria-haspopup="true"
+													aria-expanded="false" id="6jgpc8-dd-anchor"></button>
+											</div>
+										</section>
 
 										<div class="page-content user-generated card-section s-fg-a-c1-parent">
 
-							<h2>Flexbox Utilities</h2>
+											<h2>Flexbox Utilities</h2>
 
 
 
-							<p>The most ubiquitous utility.</p>
+											<p>The most ubiquitous utility.</p>
 
 										</div>
 
-									<!--
+										<!--
 									<div class='card-divider no-padding flex-dir-row'>
 										<small class='card-section flex-dir-row align-middle padding-left-0'>
 												<span class='dot-after'>admin spaces</span>
@@ -849,21 +1565,28 @@
 										</small>
 									</div>
 									-->
+									</div>
 								</div>
-							</div>
 
 
-							<ul class="dropdown-pane card static icons icon-left has-position-bottom has-alignment-right" data-position="bottom" data-alignment="right" id="page-73950-dropdown" data-dropdown="" data-auto-focus="true" data-v-offset="2" data-close-on-click="true" aria-labelledby="6jgpc8-dd-anchor" aria-hidden="true" data-yeti-box="page-73950-dropdown" data-resize="page-73950-dropdown" data-n="k9q8qj-n" data-events="resize">
+								<ul class="dropdown-pane card static icons icon-left has-position-bottom has-alignment-right"
+									data-position="bottom" data-alignment="right" id="page-73950-dropdown"
+									data-dropdown="" data-auto-focus="true" data-v-offset="2" data-close-on-click="true"
+									aria-labelledby="6jgpc8-dd-anchor" aria-hidden="true"
+									data-yeti-box="page-73950-dropdown" data-resize="page-73950-dropdown"
+									data-n="k9q8qj-n" data-events="resize">
 
 
-										<li class="card-divider padding-button">
-											<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73950&amp;action=edit" class="js-editpage"> Edit  Utilities</a>
-										</li>
-										<li class="card-divider padding-button">
-											<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73950&amp;action=trash&amp;_wpnonce=882fcc835f" class="alert js-deletepage"> Delete  Utilities</a>
-										</li>
+									<li class="card-divider padding-button">
+										<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73950&amp;action=edit"
+											class="js-editpage"> Edit Utilities</a>
+									</li>
+									<li class="card-divider padding-button">
+										<a href="http://spaces.test/spaces-documentation/wp-admin/post.php?post=73950&amp;action=trash&amp;_wpnonce=882fcc835f"
+											class="alert js-deletepage"> Delete Utilities</a>
+									</li>
 
-							</ul>
+								</ul>
 
 							</div>
 						</div>
@@ -891,228 +1614,282 @@
  * @license
  * Dual licensed under the MIT and GPL licenses.
  */
-.syntaxhighlighter a,
-.syntaxhighlighter div,
-.syntaxhighlighter code,
-.syntaxhighlighter table,
-.syntaxhighlighter table td,
-.syntaxhighlighter table tr,
-.syntaxhighlighter table tbody,
-.syntaxhighlighter table thead,
-.syntaxhighlighter table caption,
-.syntaxhighlighter textarea {
-  -moz-border-radius: 0 0 0 0 !important;
-  -webkit-border-radius: 0 0 0 0 !important;
-  background: none !important;
-  border: 0 !important;
-  bottom: auto !important;
-  float: none !important;
-  height: auto !important;
-  left: auto !important;
-  line-height: 1.1em !important;
-  margin: 0 !important;
-  outline: 0 !important;
-  overflow: visible !important;
-  padding: 0 !important;
-  position: static !important;
-  right: auto !important;
-  text-align: left !important;
-  top: auto !important;
-  vertical-align: baseline !important;
-  width: auto !important;
-  box-sizing: content-box !important;
-  font-family: Monaco, "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  font-size: 1em !important;
-  /*min-height: inherit !important; */
-  /*min-height: auto !important;*/
-  direction: ltr !important;
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  -ms-box-shadow: none !important;
-  -o-box-shadow: none !important;
-  box-shadow: none !important;
-}
+		.syntaxhighlighter a,
+		.syntaxhighlighter div,
+		.syntaxhighlighter code,
+		.syntaxhighlighter table,
+		.syntaxhighlighter table td,
+		.syntaxhighlighter table tr,
+		.syntaxhighlighter table tbody,
+		.syntaxhighlighter table thead,
+		.syntaxhighlighter table caption,
+		.syntaxhighlighter textarea {
+			-moz-border-radius: 0 0 0 0 !important;
+			-webkit-border-radius: 0 0 0 0 !important;
+			background: none !important;
+			border: 0 !important;
+			bottom: auto !important;
+			float: none !important;
+			height: auto !important;
+			left: auto !important;
+			line-height: 1.1em !important;
+			margin: 0 !important;
+			outline: 0 !important;
+			overflow: visible !important;
+			padding: 0 !important;
+			position: static !important;
+			right: auto !important;
+			text-align: left !important;
+			top: auto !important;
+			vertical-align: baseline !important;
+			width: auto !important;
+			box-sizing: content-box !important;
+			font-family: Monaco, "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
+			font-weight: normal !important;
+			font-style: normal !important;
+			font-size: 1em !important;
+			/*min-height: inherit !important; */
+			/*min-height: auto !important;*/
+			direction: ltr !important;
+			-webkit-box-shadow: none !important;
+			-moz-box-shadow: none !important;
+			-ms-box-shadow: none !important;
+			-o-box-shadow: none !important;
+			box-shadow: none !important;
+		}
 
-.syntaxhighlighter {
-  width: 100% !important;
-  margin: 1em 0 1em 0 !important;
-  position: relative !important;
-  overflow: auto !important;
-  overflow-y: hidden !important;
-  font-size: 1em !important;
-}
-.syntaxhighlighter code {
-  display: inline !important;
-}
-.syntaxhighlighter.source {
-  overflow: hidden !important;
-}
-.syntaxhighlighter .bold {
-  font-weight: bold !important;
-}
-.syntaxhighlighter .italic {
-  font-style: italic !important;
-}
-.syntaxhighlighter .line {
-  white-space: pre !important;
-}
-.syntaxhighlighter table {
-  table-layout: auto !important;
-  width: 100% !important;
-}
-.syntaxhighlighter table caption {
-  text-align: left !important;
-  padding: .5em 0 0.5em 1em !important;
-}
-.syntaxhighlighter table td.code {
-  width: 100% !important;
-}
-.syntaxhighlighter table td.code .container {
-  position: relative !important;
-}
-.syntaxhighlighter table td.code .container textarea {
-  box-sizing: border-box !important;
-  position: absolute !important;
-  left: 0 !important;
-  top: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  border: none !important;
-  background: white !important;
-  padding-left: 1em !important;
-  overflow: hidden !important;
-  white-space: pre !important;
-}
-.syntaxhighlighter table td.gutter .line {
-  text-align: right !important;
-  padding: 0 0.5em 0 1em !important;
-}
-.syntaxhighlighter table td.code .line {
-  padding: 0 1em !important;
-}
-.syntaxhighlighter.nogutter td.code .container textarea, .syntaxhighlighter.nogutter td.code .line {
-  padding-left: 0em !important;
-}
-.syntaxhighlighter.show {
-  display: block !important;
-}
-.syntaxhighlighter.collapsed table {
-  display: none !important;
-}
-.syntaxhighlighter.collapsed .toolbar {
-  padding: 0.1em 0.8em 0em 0.8em !important;
-  font-size: 1em !important;
-  position: static !important;
-  width: auto !important;
-  height: auto !important;
-}
-.syntaxhighlighter.collapsed .toolbar span {
-  display: inline !important;
-  margin-right: 1em !important;
-}
-.syntaxhighlighter.collapsed .toolbar span a {
-  padding: 0 !important;
-  display: none !important;
-}
-.syntaxhighlighter.collapsed .toolbar span a.expandSource {
-  display: inline !important;
-}
-.syntaxhighlighter .toolbar {
-  position: absolute !important;
-  right: 1px !important;
-  top: 1px !important;
-  width: 11px !important;
-  height: 11px !important;
-  font-size: 10px !important;
-  z-index: 10 !important;
-}
-.syntaxhighlighter .toolbar span.title {
-  display: inline !important;
-}
-.syntaxhighlighter .toolbar a {
-  display: block !important;
-  text-align: center !important;
-  text-decoration: none !important;
-  padding-top: 1px !important;
-}
-.syntaxhighlighter .toolbar a.expandSource {
-  display: none !important;
-}
-.syntaxhighlighter.ie {
-  font-size: .9em !important;
-  padding: 1px 0 1px 0 !important;
-}
-.syntaxhighlighter.ie .toolbar {
-  line-height: 8px !important;
-}
-.syntaxhighlighter.ie .toolbar a {
-  padding-top: 0px !important;
-}
-.syntaxhighlighter.printing .line.alt1 .content,
-.syntaxhighlighter.printing .line.alt2 .content,
-.syntaxhighlighter.printing .line.highlighted .number,
-.syntaxhighlighter.printing .line.highlighted.alt1 .content,
-.syntaxhighlighter.printing .line.highlighted.alt2 .content {
-  background: none !important;
-}
-.syntaxhighlighter.printing .line .number {
-  color: #bbbbbb !important;
-}
-.syntaxhighlighter.printing .line .content {
-  color: black !important;
-}
-.syntaxhighlighter.printing .toolbar {
-  display: none !important;
-}
-.syntaxhighlighter.printing a {
-  text-decoration: none !important;
-}
-.syntaxhighlighter.printing .plain, .syntaxhighlighter.printing .plain a {
-  color: black !important;
-}
-.syntaxhighlighter.printing .comments, .syntaxhighlighter.printing .comments a {
-  color: #008200 !important;
-}
-.syntaxhighlighter.printing .string, .syntaxhighlighter.printing .string a {
-  color: blue !important;
-}
-.syntaxhighlighter.printing .keyword {
-  color: #006699 !important;
-  font-weight: bold !important;
-}
-.syntaxhighlighter.printing .preprocessor {
-  color: gray !important;
-}
-.syntaxhighlighter.printing .variable {
-  color: #aa7700 !important;
-}
-.syntaxhighlighter.printing .value {
-  color: #009900 !important;
-}
-.syntaxhighlighter.printing .functions {
-  color: #ff1493 !important;
-}
-.syntaxhighlighter.printing .constants {
-  color: #0066cc !important;
-}
-.syntaxhighlighter.printing .script {
-  font-weight: bold !important;
-}
-.syntaxhighlighter.printing .color1, .syntaxhighlighter.printing .color1 a {
-  color: gray !important;
-}
-.syntaxhighlighter.printing .color2, .syntaxhighlighter.printing .color2 a {
-  color: #ff1493 !important;
-}
-.syntaxhighlighter.printing .color3, .syntaxhighlighter.printing .color3 a {
-  color: red !important;
-}
-.syntaxhighlighter.printing .break, .syntaxhighlighter.printing .break a {
-  color: black !important;
-}
-/**
+		.syntaxhighlighter {
+			width: 100% !important;
+			margin: 1em 0 1em 0 !important;
+			position: relative !important;
+			overflow: auto !important;
+			overflow-y: hidden !important;
+			font-size: 1em !important;
+		}
+
+		.syntaxhighlighter code {
+			display: inline !important;
+		}
+
+		.syntaxhighlighter.source {
+			overflow: hidden !important;
+		}
+
+		.syntaxhighlighter .bold {
+			font-weight: bold !important;
+		}
+
+		.syntaxhighlighter .italic {
+			font-style: italic !important;
+		}
+
+		.syntaxhighlighter .line {
+			white-space: pre !important;
+		}
+
+		.syntaxhighlighter table {
+			table-layout: auto !important;
+			width: 100% !important;
+		}
+
+		.syntaxhighlighter table caption {
+			text-align: left !important;
+			padding: .5em 0 0.5em 1em !important;
+		}
+
+		.syntaxhighlighter table td.code {
+			width: 100% !important;
+		}
+
+		.syntaxhighlighter table td.code .container {
+			position: relative !important;
+		}
+
+		.syntaxhighlighter table td.code .container textarea {
+			box-sizing: border-box !important;
+			position: absolute !important;
+			left: 0 !important;
+			top: 0 !important;
+			width: 100% !important;
+			height: 100% !important;
+			border: none !important;
+			background: white !important;
+			padding-left: 1em !important;
+			overflow: hidden !important;
+			white-space: pre !important;
+		}
+
+		.syntaxhighlighter table td.gutter .line {
+			text-align: right !important;
+			padding: 0 0.5em 0 1em !important;
+		}
+
+		.syntaxhighlighter table td.code .line {
+			padding: 0 1em !important;
+		}
+
+		.syntaxhighlighter.nogutter td.code .container textarea,
+		.syntaxhighlighter.nogutter td.code .line {
+			padding-left: 0em !important;
+		}
+
+		.syntaxhighlighter.show {
+			display: block !important;
+		}
+
+		.syntaxhighlighter.collapsed table {
+			display: none !important;
+		}
+
+		.syntaxhighlighter.collapsed .toolbar {
+			padding: 0.1em 0.8em 0em 0.8em !important;
+			font-size: 1em !important;
+			position: static !important;
+			width: auto !important;
+			height: auto !important;
+		}
+
+		.syntaxhighlighter.collapsed .toolbar span {
+			display: inline !important;
+			margin-right: 1em !important;
+		}
+
+		.syntaxhighlighter.collapsed .toolbar span a {
+			padding: 0 !important;
+			display: none !important;
+		}
+
+		.syntaxhighlighter.collapsed .toolbar span a.expandSource {
+			display: inline !important;
+		}
+
+		.syntaxhighlighter .toolbar {
+			position: absolute !important;
+			right: 1px !important;
+			top: 1px !important;
+			width: 11px !important;
+			height: 11px !important;
+			font-size: 10px !important;
+			z-index: 10 !important;
+		}
+
+		.syntaxhighlighter .toolbar span.title {
+			display: inline !important;
+		}
+
+		.syntaxhighlighter .toolbar a {
+			display: block !important;
+			text-align: center !important;
+			text-decoration: none !important;
+			padding-top: 1px !important;
+		}
+
+		.syntaxhighlighter .toolbar a.expandSource {
+			display: none !important;
+		}
+
+		.syntaxhighlighter.ie {
+			font-size: .9em !important;
+			padding: 1px 0 1px 0 !important;
+		}
+
+		.syntaxhighlighter.ie .toolbar {
+			line-height: 8px !important;
+		}
+
+		.syntaxhighlighter.ie .toolbar a {
+			padding-top: 0px !important;
+		}
+
+		.syntaxhighlighter.printing .line.alt1 .content,
+		.syntaxhighlighter.printing .line.alt2 .content,
+		.syntaxhighlighter.printing .line.highlighted .number,
+		.syntaxhighlighter.printing .line.highlighted.alt1 .content,
+		.syntaxhighlighter.printing .line.highlighted.alt2 .content {
+			background: none !important;
+		}
+
+		.syntaxhighlighter.printing .line .number {
+			color: #bbbbbb !important;
+		}
+
+		.syntaxhighlighter.printing .line .content {
+			color: black !important;
+		}
+
+		.syntaxhighlighter.printing .toolbar {
+			display: none !important;
+		}
+
+		.syntaxhighlighter.printing a {
+			text-decoration: none !important;
+		}
+
+		.syntaxhighlighter.printing .plain,
+		.syntaxhighlighter.printing .plain a {
+			color: black !important;
+		}
+
+		.syntaxhighlighter.printing .comments,
+		.syntaxhighlighter.printing .comments a {
+			color: #008200 !important;
+		}
+
+		.syntaxhighlighter.printing .string,
+		.syntaxhighlighter.printing .string a {
+			color: blue !important;
+		}
+
+		.syntaxhighlighter.printing .keyword {
+			color: #006699 !important;
+			font-weight: bold !important;
+		}
+
+		.syntaxhighlighter.printing .preprocessor {
+			color: gray !important;
+		}
+
+		.syntaxhighlighter.printing .variable {
+			color: #aa7700 !important;
+		}
+
+		.syntaxhighlighter.printing .value {
+			color: #009900 !important;
+		}
+
+		.syntaxhighlighter.printing .functions {
+			color: #ff1493 !important;
+		}
+
+		.syntaxhighlighter.printing .constants {
+			color: #0066cc !important;
+		}
+
+		.syntaxhighlighter.printing .script {
+			font-weight: bold !important;
+		}
+
+		.syntaxhighlighter.printing .color1,
+		.syntaxhighlighter.printing .color1 a {
+			color: gray !important;
+		}
+
+		.syntaxhighlighter.printing .color2,
+		.syntaxhighlighter.printing .color2 a {
+			color: #ff1493 !important;
+		}
+
+		.syntaxhighlighter.printing .color3,
+		.syntaxhighlighter.printing .color3 a {
+			color: red !important;
+		}
+
+		.syntaxhighlighter.printing .break,
+		.syntaxhighlighter.printing .break a {
+			color: black !important;
+		}
+
+		/**
  * SyntaxHighlighter
  * http://alexgorbatchev.com/
  *
@@ -1141,163 +1918,139 @@
  * You should have received a copy of the GNU General Public License
  * along with SyntaxHighlighter.  If not, see <http://www.gnu.org/copyleft/lesser.html>.
  */
-/************************************
+		/************************************
  * Default Syntax Highlighter theme.
  *
  * Interface elements.
  ************************************/
 
- .syntaxhighlighter
- {
-	 background-color: #fff !important;
-	 padding: 0.5rem 0 !important;
-	 border-radius: 5px;
-	 border: 1px solid #e0e0e0;
-	 font-family: Consolas, mono-space !important;
- }
- .syntaxhighlighter code,
- .syntaxhighlighter .line
- {
-	line-height: 1.7 !important;
- }
+		.syntaxhighlighter {
+			background-color: #fff !important;
+			padding: 0.5rem 0 !important;
+			border-radius: 5px;
+			border: 1px solid #e0e0e0;
+			font-family: Consolas, mono-space !important;
+		}
 
- /* Highlighed line number */
- .syntaxhighlighter .line.highlighted .number
- {
-	 color: black !important;
- }
+		.syntaxhighlighter code,
+		.syntaxhighlighter .line {
+			line-height: 1.7 !important;
+		}
 
- /* Highlighed line */
- .syntaxhighlighter .line.highlighted.alt1,
- .syntaxhighlighter .line.highlighted.alt2
- {
-	 background-color: #dce9ee !important;
- }
+		/* Highlighed line number */
+		.syntaxhighlighter .line.highlighted .number {
+			color: black !important;
+		}
 
- /* Gutter line numbers */
- .syntaxhighlighter .line
- {
-	 color: #afafaf !important;
- }
+		/* Highlighed line */
+		.syntaxhighlighter .line.highlighted.alt1,
+		.syntaxhighlighter .line.highlighted.alt2 {
+			background-color: #dce9ee !important;
+		}
 
- /* Add border to the lines */
- .syntaxhighlighter .line .content
- {
-	 border-left: 3px solid #6CE26C !important;
-	 color: #000 !important;
- }
+		/* Gutter line numbers */
+		.syntaxhighlighter .line {
+			color: #afafaf !important;
+		}
 
- .syntaxhighlighter.printing .line .content
- {
-	 border: 0 !important;
- }
+		/* Add border to the lines */
+		.syntaxhighlighter .line .content {
+			border-left: 3px solid #6CE26C !important;
+			color: #000 !important;
+		}
 
- /* First line */
- .syntaxhighlighter .line.alt1
- {
-	 background-color: #fff !important;
- }
+		.syntaxhighlighter.printing .line .content {
+			border: 0 !important;
+		}
 
- /* Second line */
- .syntaxhighlighter .line.alt2
- {
-	 background-color: #F8F8F8 !important;
- }
+		/* First line */
+		.syntaxhighlighter .line.alt1 {
+			background-color: #fff !important;
+		}
 
- .syntaxhighlighter .toolbar
- {
-	 background-color: #F8F8F8 !important;
-	 border: #E7E5DC solid 1px !important;
- }
+		/* Second line */
+		.syntaxhighlighter .line.alt2 {
+			background-color: #F8F8F8 !important;
+		}
 
- .syntaxhighlighter .toolbar a
- {
-	 color: #a0a0a0 !important;
- }
+		.syntaxhighlighter .toolbar {
+			background-color: #F8F8F8 !important;
+			border: #E7E5DC solid 1px !important;
+		}
 
- .syntaxhighlighter .toolbar a:hover
- {
-	 color: red !important;
- }
+		.syntaxhighlighter .toolbar a {
+			color: #a0a0a0 !important;
+		}
 
- .nogutter { border: none !important; }
+		.syntaxhighlighter .toolbar a:hover {
+			color: red !important;
+		}
 
- /************************************
+		.nogutter {
+			border: none !important;
+		}
+
+		/************************************
 	* Actual syntax highlighter colors.
 	************************************/
- .syntaxhighlighter .plain,
- .syntaxhighlighter .plain a
- {
-	 color: rgb(35, 92, 114) !important;
- }
+		.syntaxhighlighter .plain,
+		.syntaxhighlighter .plain a {
+			color: rgb(35, 92, 114) !important;
+		}
 
- .syntaxhighlighter .comments,
- .syntaxhighlighter .comments a
- {
-	 color: #008200 !important;
- }
+		.syntaxhighlighter .comments,
+		.syntaxhighlighter .comments a {
+			color: #008200 !important;
+		}
 
- .syntaxhighlighter .string,
- .syntaxhighlighter .string a
- {
-	 color: rgb(114, 165, 80) !important;
- }
+		.syntaxhighlighter .string,
+		.syntaxhighlighter .string a {
+			color: rgb(114, 165, 80) !important;
+		}
 
- .syntaxhighlighter .keyword
- {
-	 color: rgb(255, 38, 85) !important;
- }
+		.syntaxhighlighter .keyword {
+			color: rgb(255, 38, 85) !important;
+		}
 
- .syntaxhighlighter .preprocessor
- {
-	 color: gray !important;
- }
+		.syntaxhighlighter .preprocessor {
+			color: gray !important;
+		}
 
- .syntaxhighlighter .variable
- {
-	 color: #a70 !important;
- }
+		.syntaxhighlighter .variable {
+			color: #a70 !important;
+		}
 
- .syntaxhighlighter .value
- {
-	 color: #090 !important;
- }
+		.syntaxhighlighter .value {
+			color: #090 !important;
+		}
 
- .syntaxhighlighter .functions
- {
-	 color: #ff1493 !important;
- }
+		.syntaxhighlighter .functions {
+			color: #ff1493 !important;
+		}
 
- .syntaxhighlighter .constants
- {
-	 color: #0066CC !important;
- }
+		.syntaxhighlighter .constants {
+			color: #0066CC !important;
+		}
 
- .syntaxhighlighter .script
- {
-	 background-color: yellow !important;
- }
+		.syntaxhighlighter .script {
+			background-color: yellow !important;
+		}
 
- .syntaxhighlighter .color1,
- .syntaxhighlighter .color1 a
- {
-	 color: #664a94 !important;
-	 font-style: italic;
- }
+		.syntaxhighlighter .color1,
+		.syntaxhighlighter .color1 a {
+			color: #664a94 !important;
+			font-style: italic;
+		}
 
- .syntaxhighlighter .color2,
- .syntaxhighlighter .color2 a
- {
-	 color: #ff1493 !important;
- }
+		.syntaxhighlighter .color2,
+		.syntaxhighlighter .color2 a {
+			color: #ff1493 !important;
+		}
 
- .syntaxhighlighter .color3,
- .syntaxhighlighter .color3 a
- {
-	 color: red !important;
- }
-
-
+		.syntaxhighlighter .color3,
+		.syntaxhighlighter .color3 a {
+			color: red !important;
+		}
 	</style>
 
 </body>

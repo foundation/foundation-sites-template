@@ -704,7 +704,7 @@
   optionalDependencies:
     "fsevents" "^1.2.7"
 
-"chokidar@^3.5.1", "chokidar@>=3.0.0 <4.0.0":
+"chokidar@^3.5.1":
   "integrity" "sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ=="
   "resolved" "https://registry.npmjs.org/chokidar/-/chokidar-3.5.2.tgz"
   "version" "3.5.2"
@@ -3818,13 +3818,6 @@
     "lodash" "^4.0.0"
     "scss-tokenizer" "^0.2.3"
     "yargs" "^13.3.2"
-
-"sass@^1.43.4":
-  "integrity" "sha512-/ptG7KE9lxpGSYiXn7Ar+lKOv37xfWsZRtFYal2QHNigyVQDx685VFT/h7ejVr+R8w7H4tmUgtulsKl5YpveOg=="
-  "resolved" "https://registry.npmjs.org/sass/-/sass-1.43.4.tgz"
-  "version" "1.43.4"
-  dependencies:
-    "chokidar" ">=3.0.0 <4.0.0"
 
 "scss-tokenizer@^0.2.3":
   "integrity" "sha1-jrBtualyMzOCTT9VMGQRSYR85dE="
