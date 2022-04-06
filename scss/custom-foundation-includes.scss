@@ -14,7 +14,8 @@
 @include foundation-progress-bar;
 @include foundation-slider;
 @include foundation-switch;
-@include foundation-table;
+// @include foundation-table; // removed, as interferes with Gutenberg default table styles.
+
 // Basic components
 @include foundation-badge;
 @include foundation-breadcrumbs;
