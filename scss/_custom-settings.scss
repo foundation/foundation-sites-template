@@ -686,7 +686,7 @@ label[for] {
 	line-height: 1;
 	position: absolute;
 	display: flex;
-	padding: 0.375rem 0.75rem;
+	padding: 0.35rem 0.75rem;
 	z-index: 1;
 	color: $body-font-color;
 	background: rgba($white, 0.75);
@@ -694,7 +694,7 @@ label[for] {
 	backdrop-filter: blur(20px) saturate(200%);
 	left: 0;
 	top: 70%;
-	transform: perspective(1px) translateY(-50%);
+	transform: perspective(1px) translateY(-50.1%);
 	max-width: 80% !important; // .text-truncate will otherwise override with 100%
 	border-radius: 0 2px 2px 0;
 	align-items: center;
