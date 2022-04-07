@@ -3,6 +3,7 @@
 //
 //  Table of Contents:
 //
+//   0. CSS Vars
 //   1. Mixins and Functions
 //   2. Grid
 //   3. Typography
@@ -29,6 +30,41 @@
 //   24. Paginate
 //   25. Callout
 
+// 0. CSS Vars
+
+:root {
+	// Colors
+	--s--white: #{$white};
+	--s--very-light-gray: #{$very-light-gray};
+	--s--light-gray: #{$light-gray};
+	--s--medium-gray: #{$medium-gray};
+	--s--dark-gray: #{$dark-gray};
+	--s--very-dark-gray: #{$very-dark-gray};
+	--s--black: #{$black};
+	--s--body-background: #{$body-background};
+	--s--body-font-color: #{$body-font-color};
+	@each $color-name, $color in $foundation-palette {
+		--s--palette--#{$color-name}: #{$color};
+	}
+
+	--s--global-radius: #{$global-radius};
+	--s--global-radius--small: #{$global-radius-small};
+	--s--global-gutter--small: #{$global-gutter-small};
+	--s--global-gutter--large: #{$global-gutter-large};
+	--s--global-transition--short: #{$global-transition-short};
+	--s--global-transition--medium: #{$global-transition-medium};
+	--s--global-transition--long: #{$global-transition-long};
+	--s--global-transition--timing: #{$global-transition-timing};
+	--s--global-transition--timing-cubic-bezier: #{$global-transition-timing-cubic-bezier};
+	--s--global-drop-shadow: #{$global-drop-shadow};
+	--s--global-drop-shadow--large: #{$global-drop-shadow-large};
+
+	--s--global-margin: #{$global-margin};
+	--s--global-padding: #{$global-padding};
+	--s--global-menu-padding: #{$global-menu-padding};
+	--s--global-menu-nested-margin: #{$global-menu-nested-margin};
+}
+
 // 1. Mixins and Functions
 // ---------
 
@@ -51,7 +87,11 @@ $user-card-sizes: (
 	xxlarge: 240px
 );
 $user-card-default-size: map-get($user-card-sizes, medium);
-
+:root {
+	@each $size, $value in $user-card-sizes {
+		--user-card--#{$size}: #{$value};
+	}
+}
 @mixin foundation-palette(
 	$selector: "&",
 	$child: "",
@@ -259,8 +299,7 @@ html {
 }
 
 .reverse-grid-container {
-	margin-left: calc(-50vw + 50%);
-	margin-right: calc(-50vw + 50%);
+	margin-inline: calc(-50vw + 50%);
 }
 
 .cell {
@@ -520,8 +559,7 @@ label[for] {
 	padding: map-get($padding-sizes, medium);
 
 	&-negative {
-		margin-left: -#{nth(map-get($padding-sizes, medium), 2)};
-		margin-right: -#{nth(map-get($padding-sizes, medium), 2)};
+		margin-inline: -#{nth(map-get($padding-sizes, medium), 2)};
 	}
 
 	display: flex;
@@ -839,8 +877,7 @@ label[for] {
 
 			[type="checkbox"] + label {
 				display: flex;
-				margin-left: 0;
-				margin-right: 0;
+				margin-inline: 0;
 			}
 
 			& ~ .clipped {
@@ -1182,41 +1219,17 @@ label[for] {
 		width: 100%;
 	}
 
-	.alignfull {
+	.align-full, .align-wide {
 		@include dynamic-box($edge: margin, $negative: true, $axis: horizontal);
 
 		@each $breakpoint, $width in $breakpoints {
 			@include breakpoint($breakpoint) {
-				margin-top: 1rem;
-				margin-bottom: 1rem;
+				margin-block: 1rem;
 			}
-		}
-
-		& > * {
-			@include xy-gutters($gutters: $grid-container-padding, $negative: true);
-
-			@each $breakpoint, $width in $breakpoints {
-				@include breakpoint($breakpoint) {
-					$grid-margin-gutter: map-get($grid-container-padding, #{$breakpoint});
-
-					max-width: calc(100% + #{$grid-margin-gutter});
-					width: calc(100% + #{$grid-margin-gutter});
-				}
-			}
-
-			box-shadow: $global-drop-shadow;
 		}
 	}
-
-	.alignwide {
-		@include dynamic-box($edge: margin, $negative: true, $axis: horizontal);
-
-		@each $breakpoint, $width in $breakpoints {
-			@include breakpoint($breakpoint) {
-				margin-top: 1rem;
-				margin-bottom: 1rem;
-			}
-		}
+	.align-full > * {
+		margin-inline: -#{nth(map-get($padding-sizes, medium), 2)}; // negate .card-section
 	}
 
 	a {
@@ -1490,7 +1503,7 @@ $info-chip-padding-round: 0.375em 0.8em 0.25em;
 	line-height: 1.3;
 	text-align: center;
 	border: 0.5px solid #ccc;
-	cursor: default;	
+	cursor: default;
 
 	&[href] {
 		/* the element has the href attr set, so it is clickable (if not .disable). */
@@ -1551,7 +1564,6 @@ $info-chip-padding-round: 0.375em 0.8em 0.25em;
 		display: inline-block;
 		padding: $info-chip-padding;
 		border-right: 1px solid $light-gray;
-		
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -2221,11 +2233,8 @@ input,
 	z-index: 50;
 	width: $button-height;
 	height: $button-height;
-	color: $dark-gray;
+	// color: $dark-gray;
 
-	&:hover {
-		color: $black;
-	}
 
 	&::after {
 		position: relative;
@@ -2238,6 +2247,14 @@ input,
 		font-size: 1.25rem;
 		white-space: nowrap;
 		color: currentColor;
+	}
+	&.button {
+		&::after {
+			margin-top: -0.25em;
+		}
+	}
+	.button & {
+		margin: -0.5em -0.75em;
 	}
 
 	&.hidden {
@@ -2387,6 +2404,7 @@ $border: 1px solid $very-light-gray;
 }
 
 .main-menu {
+	--header-height: var(--user-card--small);
 	color: $very-dark-gray;
 	background-color: $white;
 	position: relative;
@@ -2402,9 +2420,16 @@ $border: 1px solid $very-light-gray;
 
 		&.dropdown {
 			flex-wrap: nowrap;
-
-			li {
-				min-width: 0;
+			& > li {
+				& > :is(a, span) {
+					height: var(--header-height);
+					min-width: var(--header-height);
+					padding-top: 0;
+					padding-bottom: 0;
+					margin-top: 0.25rem;
+					margin-bottom: 0.25rem;
+					border-radius: $global-radius;
+				}
 			}
 		}
 
@@ -2448,8 +2473,10 @@ $border: 1px solid $very-light-gray;
 			}
 		}
 	}
+	.avatar {
+		width: initial;
+	}
 }
-
 .main-menu .menu {
 	&.dropdown {
 		& > .navbar-icon {
@@ -2457,7 +2484,7 @@ $border: 1px solid $very-light-gray;
 				& > span {
 					display: initial;
 
-					& + svg {
+					& + svg, & + i {
 						display: none;
 					}
 				}
@@ -2522,6 +2549,12 @@ $border: 1px solid $very-light-gray;
 		& > .flex-spacer-left {
 			margin-left: initial;
 		}
+		&[data-multi-open="false"] .is-accordion-submenu-parent[aria-expanded="true"] {
+			box-shadow: none;
+			width: initial;
+			margin: initial;
+		}
+
 	}
 }
 
@@ -2663,7 +2696,7 @@ $border: 1px solid $very-light-gray;
 		overflow: hidden;
 
 		& > a {
-			border-bottom: $hr-border;
+			box-shadow: inset 0 -#{nth($hr-border, 1)} nth($hr-border, 3);
 		}
 	}
 }
@@ -2944,8 +2977,7 @@ $icon-line-weight: 2;
 		justify-content: center;
 		height: $user-card-default-size;
 		width: $user-card-default-size;
-		margin-left: calc(-#{$user-card-default-size} / 2);
-		margin-right: calc(-#{$user-card-default-size} / 2);
+		margin-inline: calc(-#{$user-card-default-size} / 2);
 	}
 
 	&:not(.is-active) {
@@ -3693,8 +3725,7 @@ $icon-line-weight: 2;
 }
 
 .flex-spacer-around {
-	margin-left: auto;
-	margin-right: auto;
+	margin-inline: auto;
 }
 
 .width-article {
@@ -3777,29 +3808,55 @@ $icon-line-weight: 2;
 			margin: $gutter !important;
 
 			&-vertical {
-				margin-top: $gutter !important;
-				margin-bottom: $gutter !important;
+				margin-block: $gutter !important;
 			}
 
 			&-horizontal {
-				margin-left: $gutter !important;
-				margin-right: $gutter !important;
+				margin-inline: $gutter !important;
 			}
 
 			&-left {
-				margin-left: $gutter !important;
+				margin-inline-start: $gutter !important;
 			}
 
 			&-top {
-				margin-top: $gutter !important;
+				margin-block-start: $gutter !important;
 			}
 
 			&-right {
-				margin-right: $gutter !important;
+				margin-inline-end: $gutter !important;
 			}
 
 			&-bottom {
-				margin-bottom: $gutter !important;
+				margin-block-end: $gutter !important;
+			}
+
+			&-padding {
+				padding: $gutter !important;
+
+				&-vertical {
+					padding-block: $gutter !important;
+				}
+
+				&-horizontal {
+					padding-inline: $gutter !important;
+				}
+
+				&-left {
+					padding-inline-start: $gutter !important;
+				}
+
+				&-top {
+					padding-block-start: $gutter !important;
+				}
+
+				&-right {
+					padding-inline-end: $gutter !important;
+				}
+
+				&-bottom {
+					margin-block-end: $gutter !important;
+				}
 			}
 		}
 	}
