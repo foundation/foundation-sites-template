@@ -1584,7 +1584,7 @@ $info-chip-padding-round: 0.375em 0.8em 0.25em;
 		}
 	}
 
-	& a {
+	a {
 		display: inline-block;
 		padding: $info-chip-padding;
 		background: $light-gray;
@@ -2414,7 +2414,6 @@ $border: 1px solid $very-light-gray;
 		margin: 0 auto;
 		border-bottom: $hr-border;
 	}
-
 	.menu {
 		font-size: 0.875rem;
 
@@ -2459,6 +2458,25 @@ $border: 1px solid $very-light-gray;
 
 			.menu-anchor {
 				fill: currentColor;
+
+
+			}
+		}
+		& > li {
+			.fa {
+				font-size: 1.25em;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: var(--header-height);
+				height: var(--header-height);
+			}
+			&.submenu, .submenu-element {
+				.fa {
+					font-size: inherit;
+					width: initial;
+					height: initial;
+				}
 			}
 		}
 
@@ -2468,13 +2486,21 @@ $border: 1px solid $very-light-gray;
 				min-width: 48px;
 
 				& > svg {
-					width: 0.875rem;
+					width: 1.125rem;
 				}
 			}
 		}
 	}
 	.avatar {
 		width: initial;
+		margin-left: var(--s--global-gutter--small);
+		&>a {
+			padding: 0 !important;
+			&:hover, &.is-active {
+				transform: scale(0.97);
+			}
+		}
+
 	}
 }
 .main-menu .menu {
@@ -2551,7 +2577,7 @@ $border: 1px solid $very-light-gray;
 		}
 		&[data-multi-open="false"] .is-accordion-submenu-parent[aria-expanded="true"] {
 			box-shadow: none;
-			width: initial;
+			width: 100%;
 			margin: initial;
 		}
 
@@ -2575,7 +2601,8 @@ $border: 1px solid $very-light-gray;
 
 .main-menu {
 	.dropdown .menu-anchor:hover {
-		background: $very-light-gray;
+		background: $light-gray;
+		color: $black;
 	}
 
 	& > * > .dropdown,
@@ -2592,12 +2619,13 @@ $border: 1px solid $very-light-gray;
 
 			.submenu-element {
 				.notifications-item:hover {
-					background: $very-light-gray;
+					background: $light-gray;
 				}
 			}
 
-			a.submenu-element:hover {
-				background: $very-light-gray;
+			li > a:hover {
+				background: $light-gray;
+				color: $black;
 			}
 
 			.is-submenu-item,
@@ -2668,7 +2696,7 @@ $border: 1px solid $very-light-gray;
 
 	&[aria-expanded="true"] {
 		& > a {
-			background: $very-light-gray;
+			background: $light-gray;
 
 			&::after {
 				transform: rotate(-180deg);
@@ -2725,7 +2753,8 @@ $border: 1px solid $very-light-gray;
 	// }
 	.menu-item {
 		& > a:hover {
-			background-color: $very-light-gray;
+			background-color: $light-gray;
+			color: $black;
 		}
 	}
 
@@ -3194,7 +3223,8 @@ $icon-line-weight: 2;
 		&.is-active-tab,
 		&.is-active {
 			& > a {
-				background: $very-light-gray;
+				background: $light-gray;
+				color: $black;
 			}
 		}
 	}
