@@ -1219,7 +1219,7 @@ label[for] {
 		width: 100%;
 	}
 
-	.align-full, .align-wide {
+	.alignfull, .alignwide {
 		@include dynamic-box($edge: margin, $negative: true, $axis: horizontal);
 
 		@each $breakpoint, $width in $breakpoints {
@@ -1228,7 +1228,7 @@ label[for] {
 			}
 		}
 	}
-	.align-full > * {
+	.alignfull > * {
 		margin-inline: -#{nth(map-get($padding-sizes, medium), 2)}; // negate .card-section
 	}
 
