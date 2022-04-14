@@ -2463,7 +2463,7 @@ $border: 1px solid $very-light-gray;
 			}
 		}
 		& > li {
-			.fa {
+			& > .menu-anchor .fa {
 				font-size: 1.25em;
 				display: flex;
 				align-items: center;
