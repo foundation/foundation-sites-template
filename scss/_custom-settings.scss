@@ -2624,7 +2624,8 @@ $border: 1px solid $very-light-gray;
 				}
 			}
 
-			li > a:hover {
+			li > .menu-anchor:hover,
+			li > .submenu-element:hover {
 				background: $light-gray;
 				color: $black;
 			}
