@@ -1401,7 +1401,7 @@ label[for] {
 
 		&::after {
 			content: "\f055";
-			font-family: "Font Awesome 5 Free";
+			font-family: "Font Awesome 6 Free";
 			font-weight: bold;
 		}
 	}
@@ -2586,7 +2586,7 @@ $border: 1px solid $very-light-gray;
 
 .caret {
 	content: "\f078";
-	font-family: "Font Awesome 5 Free";
+	font-family: "Font Awesome 6 Free";
 	font-size: 0.625em;
 	font-weight: bold;
 	align-self: center;
@@ -3394,7 +3394,7 @@ $icon-line-weight: 2;
 		background: $white;
 		border-radius: $global-radius-small;
 		box-shadow: $global-drop-shadow;
-		font-family: "Font Awesome 5 Free";
+		font-family: "Font Awesome 6 Free";
 		font-size: 1rem;
 		font-weight: $global-weight-bold;
 		z-index: 10;
@@ -3951,7 +3951,7 @@ $icon-line-weight: 2;
 
 	&::before,
 	&::after {
-		font-family: "Font Awesome 5 Free";
+		font-family: "Font Awesome 6 Free";
 		font-weight: bold;
 		font-size: 0.75em;
 	}
