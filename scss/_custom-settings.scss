@@ -2697,7 +2697,7 @@ $border: 1px solid $very-light-gray;
 
 	&[aria-expanded="true"] {
 		& > a {
-			background: $light-gray;
+			// background: $light-gray;
 
 			&::after {
 				transform: rotate(-180deg);
@@ -2706,8 +2706,8 @@ $border: 1px solid $very-light-gray;
 		}
 	}
 }
-// .accordion-menu .is-accordion-submenu-parent {
-.accordion-menu[data-multi-open="false"] .is-accordion-submenu-parent {
+.accordion-menu .is-accordion-submenu-parent {
+// .accordion-menu[data-multi-open="false"] .is-accordion-submenu-parent {
 	&[aria-expanded="false"] {
 		transition: all $global-transition-medium;
 	}
@@ -2720,11 +2720,15 @@ $border: 1px solid $very-light-gray;
 		border-color: $very-light-gray;
 		display: block;
 		width: calc(100% + #{$global-gutter-small});
-		z-index: 2;
+		// z-index: 2;
 		border-radius: $global-radius;
-		overflow: hidden;
+		& + [aria-expanded="true"] {
+			margin-top: $global-gutter-small;
+		}
 
 		& > a {
+			border-radius: $global-radius $global-radius 0 0;
+			overflow: hidden;
 			box-shadow: inset 0 -#{nth($hr-border, 1)} nth($hr-border, 3);
 		}
 	}
