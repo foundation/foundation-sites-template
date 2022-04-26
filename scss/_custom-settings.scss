@@ -1497,6 +1497,7 @@ $info-chip-padding-round: 0.375em 0.8em 0.25em;
 	background: $white;
 	color: $black;
 	margin: 0.25em;
+	padding: 0 !important;
 	margin-left: 0;
 	border-radius: $global-radius;
 	overflow: hidden;
