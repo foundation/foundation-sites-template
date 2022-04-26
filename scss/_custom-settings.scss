@@ -4021,7 +4021,7 @@ $spinner-sizes: (
 .spinner {
 	border: 2px solid rgba($black, 0.17);
 	border-radius: 50%;
-	border-top: 2px solid get-color(primary);
+	border-top: 2px solid var(--s--palette--primary);
 	animation: spin 0.875s infinite cubic-bezier(0.9, 0.3, 0.3, 0.7);
 	width: 1.5rem;
 	height: 1.5rem;
@@ -4087,7 +4087,7 @@ $spinner-sizes: (
 	}
 
 	&.tt-cursor {
-		background-color: get-color(primary);
+		background-color: var(--s--palette--primary);
 
 
 		span,
