@@ -297,6 +297,12 @@ html {
 		padding: 0;
 	}
 }
+.auto-grid {
+	display: grid;
+	// m#{i}n() is a dirty workaround to use var() in min() with sass
+	//(https://github.com/webpack-contrib/sass-loader/issues/930#issuecomment-785006897)
+	grid-template-columns: repeat(auto-fill, minmax(m#{i}n(var(--grid-column-min-width, 240px), 100%), 1fr));
+}
 
 .reverse-grid-container {
 	margin-inline: calc(-50vw + 50%);
