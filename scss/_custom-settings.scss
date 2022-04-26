@@ -4083,13 +4083,6 @@ $spinner-sizes: (
 	&.tt-cursor {
 		background-color: get-color(primary);
 
-		&::after {
-			content: "\f067";
-			font-family: "Font Awesome 5 Free";
-			font-weight: bold;
-			margin-left: auto;
-			font-size: 0.625rem;
-		}
 
 		span,
 		small,
@@ -4150,10 +4143,11 @@ $spinner-sizes: (
 .add-user-typeahead {
 	position: relative;
 	width: 100%;
+	z-index: 99;
 
 	&::before {
 		content: "\f002";
-		font-family: "Font Awesome 5 Free";
+		font-family: "Font Awesome 6 Free";
 		font-weight: bold;
 		font-size: 0.75rem;
 		position: absolute;
@@ -4165,6 +4159,17 @@ $spinner-sizes: (
 	input {
 		width: 100%;
 		padding-left: 2rem;
+		&, &:focus {
+			transition: 0ms;
+		}
+		&:focus:not(:placeholder-shown) {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+			box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.5);
+		}
+	}
+	.tt-menu {
+		border-top: $hr-border;
 	}
 
 	.tt-suggestion {
@@ -4180,6 +4185,13 @@ $spinner-sizes: (
 
 		&.tt-cursor {
 			background-color: get-color(success);
+			&::after {
+				content: "\f055";
+				font-family: "Font Awesome 6 Free";
+				font-weight: bold;
+				margin-left: auto;
+				font-size: 0.75rem;
+			}
 		}
 	}
 
