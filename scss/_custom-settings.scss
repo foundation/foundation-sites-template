@@ -2715,6 +2715,7 @@ $border: 1px solid $very-light-gray;
 }
 .accordion-menu .is-accordion-submenu-parent {
 // .accordion-menu[data-multi-open="false"] .is-accordion-submenu-parent {
+	--offset: #{$global-gutter-small};
 	&[aria-expanded="false"] {
 		transition: all $global-transition-medium;
 	}
@@ -2722,21 +2723,24 @@ $border: 1px solid $very-light-gray;
 	&[aria-expanded="true"] {
 		transition: all $global-transition-medium;
 		box-shadow: $global-drop-shadow;
-		margin: 0 calc(-#{$global-gutter-small} / 2);
+		margin: calc(var(--offset) / 2);
 		background: $card-background;
 		border-color: $very-light-gray;
 		display: block;
-		width: calc(100% + #{$global-gutter-small});
-		// z-index: 2;
+		width: calc(100% - var(--offset));
+		z-index: 2;
 		border-radius: $global-radius;
-		& + [aria-expanded="true"] {
-			margin-top: $global-gutter-small;
+		& + * {
+			border-top: 0;
 		}
-
+		// & + [aria-expanded="true"] {
+		// 	margin-top: var(--offset);
+		// }
 		& > a {
 			border-radius: $global-radius $global-radius 0 0;
 			overflow: hidden;
 			box-shadow: inset 0 -#{nth($hr-border, 1)} nth($hr-border, 3);
+			background: $very-light-gray;
 		}
 	}
 }
@@ -2765,8 +2769,8 @@ $border: 1px solid $very-light-gray;
 	// }
 	.menu-item {
 		& > a:hover {
-			background-color: $light-gray;
-			color: $black;
+			background-color: $very-light-gray;
+			// color: $black;
 		}
 	}
 
