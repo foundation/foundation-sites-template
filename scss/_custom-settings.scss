@@ -1061,7 +1061,7 @@ label[for] {
 	@include header-list();
 }
 
-.user-generated-content-overview,
+.user-generated-content.overview,
 .ck-content {
 	@include header-list((
 		h1: h3,
