@@ -2729,7 +2729,7 @@ $border: 1px solid $very-light-gray;
 		border-color: $very-light-gray;
 		display: block;
 		width: calc(100% - var(--offset));
-		z-index: 2;
+		/* z-index: 2; */
 		border-radius: $global-radius;
 		& + * {
 			border-top: 0;
