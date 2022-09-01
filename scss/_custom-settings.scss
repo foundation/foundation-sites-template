@@ -74,8 +74,8 @@ $padding-sizes: (
 	small: 0.3125rem,
 	medium: 0.75rem 0.875rem,
 	large: 1rem 1.25rem,
-	xlarge: 1.5rem 2rem,
-	xxlarge: 1.5rem 2rem,
+	xlarge: 1rem 2rem 1.5rem,
+	xxlarge: 1rem 2rem 1.5rem,
 	button: $button-padding
 );
 
@@ -574,6 +574,9 @@ label[for] {
 	&.flex-dir-row {
 		flex-direction: row;
 	}
+	&.flex-dir-row-reverse {
+		flex-direction: row-reverse;
+	}
 
 	&.flex-dir-column {
 		flex-direction: column;
@@ -584,7 +587,7 @@ label[for] {
 	}
 
 	& > a {
-		width: 100%;
+		/* width: 100%; */
 		text-decoration: none;
 		box-sizing: content-box;
 
@@ -592,7 +595,7 @@ label[for] {
 			line-height: 1;
 		}
 
-		&:hover {
+		&::only-child:hover {
 			background: $very-light-gray;
 		}
 	}
@@ -1093,9 +1096,13 @@ label[for] {
 		border-radius: $card-border-radius 0 0 0;
 	}
 
-	.card-divider:last-child .post-images {
+	.card-divider:last-child .comment-avatar-list {
 		flex-wrap: wrap;
-		flex-direction: row;
+		/* row-reverse is intended. we want to show most recent activity with higher prio.
+		 * so we send them in reverted directory, hide overflow and then revers. smart!
+		 */
+		flex-direction: row-reverse;
+		justify-content: flex-end;
 		height: map-get($user-card-sizes, small);
 		min-width: map-get($user-card-sizes, small);
 		max-width: 40%;
@@ -1446,11 +1453,12 @@ label[for] {
 	}
 }
 
-.chip-group {
+.info-chips {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
 	font-size: rem-calc($global-font-size * 0.875);
+	max-width: 100%;
 
 	&.small {
 		font-size: rem-calc($global-font-size * 0.75);
@@ -4532,4 +4540,8 @@ $breadcrumbs-item-separator-color: $breadcrumbs-item-color;
 			transform: scale(1) !important;
 		}
 	}
+}
+
+.tooltip {
+	overflow-wrap: break-word; // add to foundation?!
 }
