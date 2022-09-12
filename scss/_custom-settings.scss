@@ -703,7 +703,8 @@ label[for] {
 	backdrop-filter: blur(20px) saturate(200%);
 	left: 0;
 	top: 70%;
-	transform: perspective(1px) translateY(-50.1%);
+	// calc solves blurry font (win10). https://stackoverflow.com/questions/32034574/font-looks-blurry-after-translate-in-chrome
+	transform: translateY( calc( -50% + 0.5px ) );
 	max-width: 80% !important; // .text-truncate will otherwise override with 100%
 	border-radius: 0 2px 2px 0;
 	align-items: center;
@@ -2507,7 +2508,7 @@ $border: 1px solid $very-light-gray;
 			}
 		}
 	}
-	.avatar {
+	.is-dropdown-submenu-parent.avatar {
 		width: initial;
 		margin-left: var(--s--global-gutter--small);
 		&>a {
