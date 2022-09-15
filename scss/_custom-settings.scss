@@ -701,8 +701,6 @@ label[for] {
 .space-title {
 	// add below: text-truncate
 	@extend .card-title;
-
-	line-height: 1.2rem;
 	display: flex;
     margin: auto 0;
     padding: 0.35rem 0.5rem;
