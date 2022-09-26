@@ -380,7 +380,7 @@ a {
 }
 
 .text-truncate {
-	display: inline-block;
+	display: inline-block !important;
 	flex: 1;
 }
 
@@ -1126,6 +1126,13 @@ label[for] {
 	.dropdown-pane {
 		width: 150px;
 	}
+
+	.activity-blog {
+		text-decoration-color: rgba(0,0,0,0.3) !important;
+	}
+	.activity-description {
+		line-height: 1.4;
+	}
 }
 
 .post-card-footer,
@@ -1135,33 +1142,14 @@ label[for] {
 }
 
 .main-menu {
-	.notifications-item {
-		min-width: 300px;
+	.activity-card {
+		min-width: 350px;
 
 		a.card-section {
 			z-index: 100;
 			width: 100%;
 		}
 	}
-}
-
-.notifications-item {
-	flex: 1;
-}
-
-.notification-message {
-	line-height: 1.4;
-}
-
-.notification-author,
-.notification-post,
-.notification-space {
-	display: initial !important;
-	padding: initial !important;
-}
-
-.notification-post {
-	color: $black;
 }
 
 .dot-list {
