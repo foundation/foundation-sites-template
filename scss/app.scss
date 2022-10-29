@@ -63,3 +63,10 @@
 // Motion UI
 @include motion-ui-transitions;
 @include motion-ui-animations;
+
+//Custom styles
+@import 'about';
+@import 'backgroud';
+@import 'home';
+@import 'navbar';
+@import 'skills';

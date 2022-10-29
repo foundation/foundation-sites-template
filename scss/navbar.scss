@@ -1,0 +1,10 @@
+nav, .menu {
+    background-color: rgba(0, 0, 255, 0) !important;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    margin-bottom: 1rem;}

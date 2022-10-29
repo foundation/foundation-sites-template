@@ -1,0 +1,22 @@
+.backgroud{
+    background-image: url("https://i.ibb.co/vD0V8qZ/backgroud.png");
+  background-repeat: no-repeat;
+  width: 100% !important;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: initial;
+  z-index: 0;
+
+  color: white;
+}
+
+.backgroud-about{
+    background-image: url("https://i.ibb.co/vw4nL2Z/back-Ground.png");
+    height: 100vh;  
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
