@@ -29,7 +29,7 @@ details {
 			transition: all 0.15s ease;
 		}
 	}
-	&[open] summary::before {
+	&[open]>summary::before {
 		transform: rotate(90deg);
 	}
 }
