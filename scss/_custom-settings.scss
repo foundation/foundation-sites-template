@@ -3001,6 +3001,9 @@ $icon-line-weight: 2;
 	}
 }
 
+/*
+ * @todo: Typeahead things don't belong here. Make helper classes where needed and move to the plugin.
+*/
 .search-container {
 	position: fixed;
 	display: flex;
@@ -3060,7 +3063,7 @@ $icon-line-weight: 2;
 		transform: scale(0.97);
 		transition: $global-transition-medium;
 		width: auto;
-		max-width: 100%;
+		max-width: 480px;
 	}
 
 	input.twitter-typeahead {
