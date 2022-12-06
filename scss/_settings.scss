@@ -77,13 +77,13 @@ $global-transition-timing: ease-in-out;
 $global-transition-timing-cubic-bezier: cubic-bezier(0.8, 0, 0.2, 1.2);
 $global-drop-shadow: 0 5px 20px rgba(0, 0, 0, 0.05), 0 2px 5px rgba(0, 0, 0, 0.15);
 $global-drop-shadow-large: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-$paragraph-font-size: 0.875rem;
+$paragraph-font-size: 0.9rem;
 
 // 1. Global
 // ---------
 
-$global-font-size: 16px;
-$global-width: rem-calc(1080);
+$global-font-size: 1rem;
+$global-width: rem-calc(1120);
 $global-lineheight: 1.4;
 $foundation-palette: (
 	primary: #689,
@@ -190,7 +190,7 @@ $header-styles: (
 	),
 );
 $header-text-rendering: optimizeLegibility;
-$small-font-size: 0.75rem;
+$small-font-size: 0.80rem;
 $header-small-font-color: $dark-gray;
 $paragraph-lineheight: 1.6;
 $paragraph-margin-bottom: 1rem;
