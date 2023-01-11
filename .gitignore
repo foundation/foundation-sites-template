@@ -2,3 +2,6 @@
 node_modules
 npm-debug.log
 css
+.nova/Configuration.json
+.nova/Publishing/Namecheap-www.json
+old_versuchshausorg
