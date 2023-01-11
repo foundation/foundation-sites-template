@@ -1,0 +1,91 @@
+/* END CUSTOM */
+ul {
+  list-style: none;
+  position: relative;
+  width: 50%;
+  top: 60%;
+  left: 40%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-animation: rotateFlower 220s linear infinite;
+  animation: rotateFlower 220s linear infinite;
+}
+ul::before {
+  color: none;
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+ul li {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  opacity: 0.75;
+  -webkit-animation: animatePetals 16s alternate ease-in-out infinite;
+  animation: animatePetals 16s alternate ease-in-out infinite;
+}
+ul li:nth-child(1) {
+  background-color: #00d5ff;
+  -webkit-transform-origin: 75% 6.69873%;
+  -ms-transform-origin: 75% 6.69873%;
+  transform-origin: 75% 6.69873%;
+}
+ul li:nth-child(2) {
+  background-color: #ff00ea;
+  -webkit-transform-origin: 100% 50%;
+  -ms-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+}
+ul li:nth-child(3) {
+  background-color: #ffe600;
+  -webkit-transform-origin: 75% 93.30127%;
+  -ms-transform-origin: 75% 93.30127%;
+  transform-origin: 75% 93.30127%;
+}
+
+@-webkit-keyframes rotateFlower {
+  0% {
+    -webkit-transform: translateY(-50%) rotateZ(0deg);
+    transform: translateY(-50%) rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: translateY(-50%) rotateZ(-360deg);
+    transform: translateY(-50%) rotateZ(-360deg);
+  }
+}
+
+@keyframes rotateFlower {
+  0% {
+    -webkit-transform: translateY(-50%) rotateZ(0deg);
+    transform: translateY(-50%) rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: translateY(-50%) rotateZ(-360deg);
+    transform: translateY(-50%) rotateZ(-360deg);
+  }
+}
+@-webkit-keyframes animatePetals {
+  0% {
+    -webkit-transform: rotateZ(3deg);
+    transform: rotateZ(3deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(40deg);
+    transform: rotateZ(40deg);
+  }
+}
+@keyframes animatePetals {
+  0% {
+    -webkit-transform: rotateZ(3deg);
+    transform: rotateZ(3deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(40deg);
+    transform: rotateZ(40deg);
+  }
+}

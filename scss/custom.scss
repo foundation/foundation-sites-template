@@ -1,0 +1,53 @@
+/*
+*{
+  outline:1px red solid; 
+}
+.notion-callout-block > div > div 
+*/
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+body.dark {
+  background-color: #070e31 !important;
+  background: linear-gradient(
+    45deg,
+    #001066,
+    #76115b 33.61%,
+    #0a159c,
+    #001635
+  ) !important;
+  background-size: 100vw 110vh !important;
+  animation: gradient 8s ease infinite;
+}
+
+h1 {
+  padding-top: 0.8em;
+  color: #ff00ea;
+  text-align: center;
+  font-size: 3.1em;
+  font-family: "Josefin Sans", "Helvetica Neue", Helvetica, Roboto, Arial,
+    sans-serif;
+}
+
+h2 {
+  padding-top: 0.8em;
+  color: #00d5ff;
+  text-align: center;
+  font-size: 2.1em;
+  font-family: "Josefin Sans", "Helvetica Neue", Helvetica, Roboto, Arial,
+    sans-serif;
+}
+
+p {
+  font-family: "Josefin Sans", "Helvetica Neue", Helvetica, Roboto, Arial,
+    sans-serif;
+  color: #000;
+}
+
+.button {
+  color: #000;
+  background-color: #ffe600;
+  border-radius: 7px;
+  font-weight: 800;
+  padding: 1.2em;
+  margin: 1em;
+}
