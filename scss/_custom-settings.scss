@@ -3063,7 +3063,7 @@ $icon-line-weight: 2;
 		transform: scale(0.97);
 		transition: $global-transition-medium;
 		width: auto;
-		max-width: 480px;
+		max-width: calc( min( 480px, 95vw ) );
 	}
 
 	input.twitter-typeahead {
