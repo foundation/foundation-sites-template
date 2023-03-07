@@ -3025,13 +3025,9 @@ $icon-line-weight: 2;
 	.spinner-container {
 		z-index: 100;
 		transform: translateX(-100%);
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: $user-card-default-size;
-		width: $user-card-default-size;
-		margin-inline: calc(-#{$user-card-default-size} / 2);
+		position: absolute;
+		right: 40px;
+		top: 20px;
 	}
 
 	&:not(.is-active) {
