@@ -105,7 +105,7 @@ $global-margin: 1rem;
 $global-padding: 1rem;
 $global-position: 1rem;
 $global-weight-normal: 400;
-$global-weight-bold: 700;
+$global-weight-bold: 500;
 $global-radius: 0.1875rem;
 $global-menu-padding: 0.75rem 0.875rem;
 $global-menu-nested-margin: 1rem;
@@ -165,28 +165,28 @@ $header-lineheight: 1.1;
 $header-margin-bottom: 0.5rem;
 $header-styles: (
 	small: (
-		"h1": ("font-size": 25 ),
-		"h2": ("font-size": 22 ),
-		"h3": ("font-size": 19 ),
-		"h4": ("font-size": 16, "color": $dark-gray ),
-		"h5": ("font-size": 14, "color": $dark-gray ),
-		"h6": ("font-size": 14, "color": $dark-gray, "font-style": italic ),
-	),
-	medium: (
-		"h1": ("font-size": 29 ),
-		"h2": ("font-size": 24 ),
-		"h3": ("font-size": 20 ),
-		"h4": ("font-size": 16, "color": $dark-gray ),
-		"h5": ("font-size": 14, "color": $dark-gray ),
-		"h6": ("font-size": 14, "color": $dark-gray, "font-style": italic ),
-	),
-	large: (
-		"h1": ("font-size": 34 ),
-		"h2": ("font-size": 27 ),
-		"h3": ("font-size": 22 ),
-		"h4": ("font-size": 18, "color": $dark-gray ),
-		"h5": ("font-size": 16, "color": $dark-gray ),
-		"h6": ("font-size": 14, "color": $dark-gray, "font-style": italic ),
+		"h1": ("font-size": 25 * 0.9 , "font-weight": 400),
+		"h2": ("font-size": 22 * 0.9 , "font-weight": 500),
+		"h3": ("font-size": 20 * 0.9 , "font-weight": 500),
+		"h4": ("font-size": 19 * 0.9 , "color": $dark-gray, "font-weight": 700 ),
+		"h5": ("font-size": 17 * 0.9 , "color": $dark-gray, "font-weight": 700 ),
+		"h6": ("font-size": 17 * 0.9 , "color": $dark-gray, "font-style": italic, "font-weight": 700 ),
+	), 
+	medium: ( 
+		"h1": ("font-size": 25 * 0.9 , "font-weight": 400),
+		"h2": ("font-size": 22 * 0.9 , "font-weight": 500),
+		"h3": ("font-size": 20 * 0.9 , "font-weight": 500),
+		"h4": ("font-size": 19 * 0.9 , "color": $dark-gray, "font-weight": 700 ),
+		"h5": ("font-size": 17 * 0.9 , "color": $dark-gray, "font-weight": 700 ),
+		"h6": ("font-size": 17 * 0.9 , "color": $dark-gray, "font-style": italic, "font-weight": 700 ),
+	), 
+	large: ( 
+		"h1": ("font-size": 25, "font-weight": 400),
+		"h2": ("font-size": 22, "font-weight": 500),
+		"h3": ("font-size": 20, "font-weight": 500),
+		"h4": ("font-size": 19, "color": $dark-gray, "font-weight": 700 ),
+		"h5": ("font-size": 17, "color": $dark-gray, "font-weight": 700 ),
+		"h6": ("font-size": 17, "color": $dark-gray, "font-style": italic, "font-weight": 700 ),
 	),
 );
 $header-text-rendering: optimizeLegibility;

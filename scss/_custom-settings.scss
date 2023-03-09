@@ -171,7 +171,7 @@ $dynamic-relation: (
 	@each $breakpoint, $header-style in $header-styles {
 		@include breakpoint($breakpoint) {
 			$size: rem-calc(
-				map-deep-get($header-styles, $breakpoint, $header-size, font-size)
+				map-deep-get($header-styles, $breakpoint, $header-size, font-size )
 			);
 
 			@each $property, $value in $property {
@@ -195,11 +195,10 @@ $dynamic-relation: (
 				$h: map-get($scale, $header-size); // h1 -> h3
 				$size: map-get(map-get($header-styles, $breakpoint), $h); // small -> ()
 				#{$header-size} {
-					font-weight: normal;
 
 					@each $label, $value in $size {
 						@if $property-list == null or index($property-list, $label) {
-							@if type-of($value) == "number" {
+							@if $label == "font-size" {
 								$value: rem-calc($value);
 							}
 
@@ -665,12 +664,11 @@ label[for] {
 	box-shadow: $global-drop-shadow;
 }
 
-.page-title {
-	@extend .card-title;
-
-	font-size: 1.25rem;
+ .page-title {
+	/*@extend .card-title;
+	font-size: 1.25rem;*/
 	padding-top: 0.5rem;
-}
+} 
 
 .page-content {
 	padding: 1rem 0;
@@ -1069,11 +1067,11 @@ label[for] {
 // 6. Post Card
 // ---------
 
-.user-generated-content {
+.page-card, .post-card {
 	@include header-list();
 }
 
-.user-generated-content.overview,
+/* .user-generated-content.overview,
 .ck-content {
 	@include header-list((
 		h1: h3,
@@ -1089,7 +1087,7 @@ label[for] {
 			margin-top: 0.25em;
 		}
 	}
-}
+} */
 
 .post-card,
 .activity-card {
