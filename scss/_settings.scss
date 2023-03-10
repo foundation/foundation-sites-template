@@ -165,7 +165,7 @@ $header-lineheight: 1.1;
 $header-margin-bottom: 0.5rem;
 $header-styles: (
 	small: (
-		"h1": ("font-size": 25 * 0.85 , "font-weight": 400),
+		"h1": ("font-size": 24 * 0.85 , "font-weight": 400),
 		"h2": ("font-size": 21 * 0.85 , "font-weight": 500),
 		"h3": ("font-size": 19 * 0.85 , "font-weight": 500),
 		"h4": ("font-size": 19 * 0.85 , "color": $dark-gray, "font-weight": 700 ),
@@ -173,7 +173,7 @@ $header-styles: (
 		"h6": ("font-size": 17 * 0.85 , "color": $dark-gray, "font-style": italic, "font-weight": 700 ),
 	), 
 	medium: ( 
-		"h1": ("font-size": 25 * 0.9 , "font-weight": 400),
+		"h1": ("font-size": 24 * 0.9 , "font-weight": 400),
 		"h2": ("font-size": 21 * 0.9 , "font-weight": 500),
 		"h3": ("font-size": 19 * 0.9 , "font-weight": 500),
 		"h4": ("font-size": 19 * 0.9 , "color": $dark-gray, "font-weight": 700 ),
@@ -181,7 +181,7 @@ $header-styles: (
 		"h6": ("font-size": 17 * 0.9 , "color": $dark-gray, "font-style": italic, "font-weight": 700 ),
 	), 
 	large: ( 
-		"h1": ("font-size": 25, "font-weight": 400),
+		"h1": ("font-size": 24, "font-weight": 400),
 		"h2": ("font-size": 21, "font-weight": 500),
 		"h3": ("font-size": 19, "font-weight": 500),
 		"h4": ("font-size": 19, "color": $dark-gray, "font-weight": 700 ),
