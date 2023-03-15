@@ -29,8 +29,13 @@
 //   23. Accordion
 //   24. Paginate
 //   25. Callout
+//   26. Chips / Choices
+//   27. Breadcrumbs
+//   28. Swiper
+//   29. Keyboard focus
 
 // 0. CSS Vars
+// ---------
 
 :root {
 	// Colors
@@ -4537,3 +4542,151 @@ $breadcrumbs-item-separator-color: $breadcrumbs-item-color;
 .tooltip {
 	overflow-wrap: break-word; // add to foundation?!
 }
+
+
+// 29. Keyboard focus
+// ---------
+
+// Defaults
+@mixin a11y-focus {
+  &:active,
+  &:focus {
+	box-shadow: $global-focus;
+	// Set color to transparent to ensure compatibility with high contrast mode
+	outline-color: transparent !important;
+  }
+
+  &:focus-visible {
+	outline: unset;
+  }
+
+  // Unset box shadow if mouse or touch
+  [data-whatintent='mouse'] &:active,
+  [data-whatintent='mouse'] &:focus,
+  [data-whatintent='touch'] &:active,
+  [data-whatintent='touch'] &:focus {
+	box-shadow: none !important;
+  }
+}
+
+@mixin a11y-focus-inset {
+  box-shadow: inset $global-focus;
+  //box-shadow: inset 0 0 0 3px green !important;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  @include a11y-focus;
+}
+
+// Main menu
+.dropdown.menu > li > a {
+  // Fix cut off shadows
+  background-color: inherit;
+}
+
+.menu-main-expand .create-space-button,
+.menu-main-expand .tabs-title a {
+  [data-whatintent="keyboard"] &:active,
+  [data-whatintent="keyboard"] &:focus {
+	@include a11y-focus-inset;
+  }
+}
+
+.space-card:focus-within {
+	box-shadow: $global-focus;
+}
+
+// Tabs
+.tabs-title:focus-within {
+  @include a11y-focus-inset;
+}
+
+
+// Spaces editor
+.spaces-editor-post-title,
+.spaces-editor-container .ck-editor__editable,
+.spaces-editor-dots-dropdown a {
+  [data-whatintent="keyboard"] &:active,
+  [data-whatintent="keyboard"] &:focus {
+	@include a11y-focus-inset;
+  }
+}
+
+[data-whatintent="keyboard"] .spaces-editor-dots-dropdown .card-divider:focus-within {
+  @include a11y-focus-inset;
+}
+
+// Spaces editor: Community tags
+.spaces-editor-terms .tagify.tagify--focus {
+  [data-whatintent="keyboard"] & {
+	border: 1px solid $global-focus-color;
+	@include a11y-focus-inset;
+  }
+}
+
+// Post cards
+.card .post-card-anchor,
+.card .edit-button + button,
+.card .card-divider > a {
+  [data-whatintent="keyboard"] &:active,
+  [data-whatintent="keyboard"] &:focus {
+	@include a11y-focus-inset;
+  }
+}
+
+// Profile page: Edit Profile
+.card .edit-profile {
+  [data-whatintent="keyboard"] &:active,
+  [data-whatintent="keyboard"] &:focus {
+	@include a11y-focus-inset;
+  }
+}
+
+.card .tagify.tagify--focus {
+  [data-whatintent="keyboard"] & {
+	border: 1px solid $global-focus-color;
+	@include a11y-focus-inset;
+  }
+}
+
+// Profile page: Masonary cards
+[data-whatintent="keyboard"] .masonry-item:focus-within {
+  box-shadow: $global-focus;
+}
+
+.masonry-item .card-anchor {
+  box-shadow: none !important;
+}
+
+.masonry-item .card button {
+  [data-whatintent="keyboard"] &:active,
+  [data-whatintent="keyboard"] &:focus {
+	box-shadow: inset $global-focus;
+  }
+}
+
+// Meilensteine
+.sms-single-toggle-size .caret-icon {
+  [data-whatintent="keyboard"] &:active,
+  [data-whatintent="keyboard"] &:focus {
+	box-shadow: $global-focus;
+  }
+}
+
+.sms-widget a {
+  box-shadow: unset !important;
+}
+
+.sms-options:focus-within,
+.sms-single-bottom-container:focus-within {
+  box-shadow: $global-focus;
+}
+
+a.sms-single-option:focus {
+  box-shadow: inset $global-focus;
+}
+
