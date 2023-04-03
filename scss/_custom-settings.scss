@@ -4256,36 +4256,6 @@ $spinner-sizes: (
 	}
 }
 
-.sf-switch-to {
-	position: absolute;
-	right: -50px;
-	background: $card-background;
-	opacity: 0;
-	pointer-events: none;
-	transition: $global-transition-medium ease-in-out;
-	align-self: center;
-
-	& > a {
-		padding: map-get($padding-sizes, small);
-		box-shadow: 0 0 0 nth($hr-border, 1) nth($hr-border, 3);
-		border-radius: $global-radius 0 0 $global-radius;
-		display: flex;
-		align-items: center;
-		transition: $global-transition-medium ease-in-out;
-
-		&:hover {
-			box-shadow: $global-drop-shadow;
-			background: $card-background !important;
-		}
-	}
-
-	.user:hover & {
-		right: 0;
-		opacity: 1;
-		pointer-events: all;
-	}
-}
-
 // 23. Accordion
 // ---------
 
