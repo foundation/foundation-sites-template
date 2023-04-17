@@ -1240,9 +1240,10 @@ label[for] {
 			}
 		}
 	}
-	.alignfull > * {
+	
+	/* .alignfull > * {
 		margin-inline: -#{nth(map-get($padding-sizes, medium), 2)}; // negate .card-section
-	}
+	}  */
 
 	a {
 		&:hover {
