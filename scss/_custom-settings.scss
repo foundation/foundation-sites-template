@@ -1154,8 +1154,17 @@ label[for] {
 	}
 }
 
+// us this, if you dynamically hide elements in a dot list (not the last!)
 .dot-list {
 	& > *:not(:last-child)::after {
+		content: "\00b7";
+		margin: 0 0.5em;
+	}
+}
+
+// us this, if you dynamically hide elements in a dot list (not the first!)
+.dot-list-dot-before {
+	& > *:not(:first-child)::before {
 		content: "\00b7";
 		margin: 0 0.5em;
 	}
