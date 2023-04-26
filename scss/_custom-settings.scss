@@ -383,11 +383,6 @@ a {
 	@include button-sizes();
 }
 
-.text-truncate {
-	display: inline-block !important;
-	flex: 1;
-}
-
 .line-clamp {
 	-webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
