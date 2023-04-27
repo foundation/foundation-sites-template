@@ -599,9 +599,9 @@ label[for] {
 		text-decoration: none;
 		box-sizing: content-box;
 
-		span {
+		/* span {
 			line-height: 1;
-		}
+		} */
 
 		&::only-child:hover {
 			background: $very-light-gray;
