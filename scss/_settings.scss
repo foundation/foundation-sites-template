@@ -66,7 +66,7 @@
 
 // 0. Custom Settings (not Foundation-default)
 $very-light-gray: #fafafa;
-$very-dark-gray: #666;
+$very-dark-gray: #595959;
 $global-radius-small: 0.125rem;
 $global-gutter-small: 10px;
 $global-gutter-large: 15px;
@@ -96,7 +96,7 @@ $foundation-palette: (
 );
 $light-gray: #eee;
 $medium-gray: #bbb;
-$dark-gray: #777;
+$dark-gray: #767676; // https://coolors.co/contrast-checker/767676-ffffff
 $black: #333;
 $white: #fff;
 $body-background: $light-gray;
@@ -171,29 +171,29 @@ $header-styles: (
 		"h2": ("font-size": 21 * 0.80 , "font-weight": 500),
 		"h3": ("font-size": 19 * 0.80 , "font-weight": 500),
 		"h4": ("font-size": 19 * 0.80 , "color": $dark-gray, "font-weight": 700 ),
-		"h5": ("font-size": 17 * 0.80 , "color": $dark-gray, "font-weight": 700 ),
-		"h6": ("font-size": 17 * 0.80 , "color": $dark-gray, "font-style": italic, "font-weight": 700 ),
+		"h5": ("font-size": 17 * 0.80 , "color": $very-dark-gray, "font-weight": 700 ),
+		"h6": ("font-size": 17 * 0.80 , "color": $very-dark-gray, "font-style": italic, "font-weight": 700 ),
 	), 
 	medium: ( 
 		"h1": ("font-size": 23 * 0.9 , "font-weight": 400),
 		"h2": ("font-size": 21 * 0.9 , "font-weight": 500),
 		"h3": ("font-size": 19 * 0.9 , "font-weight": 500),
 		"h4": ("font-size": 19 * 0.9 , "color": $dark-gray, "font-weight": 700 ),
-		"h5": ("font-size": 17 * 0.9 , "color": $dark-gray, "font-weight": 700 ),
-		"h6": ("font-size": 17 * 0.9 , "color": $dark-gray, "font-style": italic, "font-weight": 700 ),
+		"h5": ("font-size": 17 * 0.9 , "color": $very-dark-gray, "font-weight": 700 ),
+		"h6": ("font-size": 17 * 0.9 , "color": $very-dark-gray, "font-style": italic, "font-weight": 700 ),
 	), 
 	large: ( 
 		"h1": ("font-size": 23, "font-weight": 400),
 		"h2": ("font-size": 21, "font-weight": 500),
 		"h3": ("font-size": 19, "font-weight": 500),
 		"h4": ("font-size": 19, "color": $dark-gray, "font-weight": 700 ),
-		"h5": ("font-size": 17, "color": $dark-gray, "font-weight": 700 ),
-		"h6": ("font-size": 17, "color": $dark-gray, "font-style": italic, "font-weight": 700 ),
+		"h5": ("font-size": 17, "color": $very-dark-gray, "font-weight": 700 ),
+		"h6": ("font-size": 17, "color": $very-dark-gray, "font-style": italic, "font-weight": 700 ),
 	),
 );
 $header-text-rendering: optimizeLegibility;
-$small-font-size: 0.80rem;
-$header-small-font-color: $dark-gray;
+$small-font-size: 0.85rem;
+$header-small-font-color: $very-dark-gray;
 $paragraph-lineheight: 1.6;
 $paragraph-margin-bottom: 1rem;
 $paragraph-text-rendering: optimizeLegibility;
