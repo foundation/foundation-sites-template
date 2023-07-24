@@ -668,7 +668,7 @@ label[for] {
 	/*@extend .card-title;
 	font-size: 1.25rem;*/
 	padding-top: 0.5rem;
-} 
+}
 
 .page-content {
 	padding: 1rem 0;
@@ -1097,9 +1097,15 @@ label[for] {
 		border-radius: $card-border-radius $card-border-radius 0 0;
 	}
 
-	& > .user:first-child .avatar-container {
-		overflow: hidden;
-		border-radius: $card-border-radius 0 0 0;
+	& > .card-section:first-child {
+		& > .avatar-container:first-child {
+			overflow: hidden;
+			border-radius: $card-border-radius 0 0 0;
+		}
+		& > .avatar-container:last-child {
+			overflow: hidden;
+			border-radius: 0 $card-border-radius 0 0;
+		}
 	}
 
 	.card-divider:last-child .comment-avatar-list {
@@ -1244,7 +1250,7 @@ label[for] {
 			}
 		}
 	}
-	
+
 	/* .alignfull > * {
 		margin-inline: -#{nth(map-get($padding-sizes, medium), 2)}; // negate .card-section
 	}  */
