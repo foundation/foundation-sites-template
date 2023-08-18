@@ -13,6 +13,9 @@
     "url": "https://github.com/foundation/foundation-sites/issues",
     "email": "contact@get.foundation"
   },
+  "engines": {
+    "node": ">=16.0"
+  },
   "dependencies": {
     "foundation-sites": "latest",
     "jquery": ">=3.6.0",
@@ -20,13 +23,15 @@
     "what-input": ">=5.2.10"
   },
   "devDependencies": {
-    "autoprefixer": "^10.3.4",
-    "browser-sync": "^2.18.13",
+    "autoprefixer": "^10.4.15",
+    "browser-sync": "^2.29.3",
     "gulp": "^4.0.0",
-    "gulp-load-plugins": "^2.0.7",
+    "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^9.0.1",
-    "gulp-sass": "^4.1.1",
-    "postcss": "^8.3.11"
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "postcss": "^8.4.28",
+    "sass": "^1.66.0"
   },
   "repository": {
     "type": "git",
